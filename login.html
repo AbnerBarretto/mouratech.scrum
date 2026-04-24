@@ -18,6 +18,10 @@
         font-family: "Inter", sans-serif;
       }
 
+      .transition-header {
+        transition: all 0.3s ease;
+      }
+
       .form-input {
         background: #f1f5f9;
         border: 2px solid transparent;
@@ -40,25 +44,137 @@
     </style>
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col">
-    <!-- HEADER (PADRÃO ESTABELECIDO) -->
-    <header class="bg-[#0056e0] shadow-md relative z-10">
-      <div class="container mx-auto px-6 py-4 flex items-center justify-center">
-        <div class="flex items-center gap-3 cursor-pointer group">
+    <!-- HEADER -->
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+    >
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2 group cursor-pointer">
           <div
-            class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center transition-transform group-hover:rotate-12 shadow-inner"
+            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
           >
-            <i data-lucide="flower" class="text-blue-700 w-8 h-8"></i>
+            <i
+              data-lucide="star"
+              class="w-6 h-6 text-blue-700 fill-current"
+            ></i>
           </div>
-          <span
-            class="text-white font-black text-2xl tracking-tighter uppercase italic"
-            >Belo Eventos</span
+          <a href="index.html"
+            ><span
+              class="text-white font-black text-xl tracking-tighter uppercase"
+              >Belo Eventos</span
+            ></a
           >
         </div>
+
+        <nav
+          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
+        >
+          <a
+            href="categorias.html"
+            class="hover:text-yellow-400 transition-colors"
+            >PROGRAMAÇÃO</a
+          >
+          <a
+            href="comunidade.html"
+            class="hover:text-yellow-400 transition-colors"
+            >COMUNIDADE</a
+          >
+          <a
+            href="#contato-section"
+            class="hover:text-yellow-400 transition-colors"
+            >CONTATO</a
+          >
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <div class="relative">
+            <i
+              data-lucide="search"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"
+            ></i>
+            <input
+              type="text"
+              placeholder="Buscar eventos..."
+              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
+            />
+          </div>
+          <a
+            href="cadastro.html"
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            >CADASTRAR</a
+          >
+          <div data-auth-profile class="relative group hidden">
+            <span
+              data-auth-user-name
+              class="text-white text-[10px] font-black uppercase tracking-widest"
+            ></span>
+            <button
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              aria-label="Menu do perfil"
+            >
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
+            </button>
+            <div
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            >
+              <a
+                href="meuperfil.html#dados-pessoais"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Dados Pessoais</a
+              >
+              <a
+                href="meuperfil.html#seguranca"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Segurança</a
+              >
+              <a
+                href="meuperfil.html#ingressos"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Meus Ingressos</a
+              >
+              <a
+                href="meuperfil.html#gerenciamento"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
+                >Gerenciamento de Conta</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
       </div>
     </header>
 
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
+    >
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="#contato-section">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <a
+          href="cadastro.html"
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          >Cadastrar</a
+        >
+      </nav>
+    </div>
+
     <!-- ÁREA DE LOGIN -->
-    <main class="flex-grow flex items-center justify-center p-6">
+    <main class="flex-grow flex items-center justify-center p-6 pt-28 md:pt-36">
       <div class="w-full max-w-lg login-card overflow-hidden">
         <div class="p-8 md:p-12">
           <div class="text-center mb-10">
@@ -142,7 +258,7 @@
             <p class="text-sm font-semibold text-slate-500">
               Não tem uma conta?
               <a
-                href="#"
+                href="cadastro.html"
                 class="text-blue-600 hover:underline font-black uppercase text-xs tracking-widest ml-1"
                 >Cadastre-se</a
               >
@@ -162,7 +278,7 @@
     </main>
 
     <!-- RODAPÉ DA PÁGINA -->
-    <footer class="p-8 text-center">
+    <footer id="contato-section" class="p-8 text-center">
       <p
         class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]"
       >
@@ -170,9 +286,33 @@
       </p>
     </footer>
 
+    <script src="auth-mock.js"></script>
     <script>
       // Inicializa os ícones Lucide
       lucide.createIcons();
+
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
 
       // Lógica de submissão (Mock)
       document
@@ -188,9 +328,26 @@
 
           // Simulação de delay de rede
           setTimeout(() => {
-            alert("Login processado! Redirecionando para o painel...");
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalContent;
+            const emailValue = this.querySelector("#email").value.trim();
+            const mockUser = {
+              id: "usr_mock_001",
+              name: "Fulano Mock",
+              email: emailValue || "fulano.mock@beloeventos.local",
+              role: "cliente",
+              memberSince: "2024",
+            };
+
+            localStorage.setItem(
+              "beloEventosMockUser",
+              JSON.stringify(mockUser),
+            );
+
+            if (window.BeloEventosAuth?.applyAuthUI) {
+              window.BeloEventosAuth.applyAuthUI();
+            }
+
+            alert("Login mockado realizado! Redirecionando...");
+            window.location.href = "meuperfil.html";
           }, 1500);
         });
     </script>

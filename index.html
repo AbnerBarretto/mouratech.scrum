@@ -59,12 +59,16 @@
           <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
-            >CATEGORIAS</a
+            >PROGRAMAÇÃO</a
           >
-          <a href="#" class="hover:text-yellow-400 transition-colors"
+          <a
+            href="comunidade.html"
+            class="hover:text-yellow-400 transition-colors"
             >COMUNIDADE</a
           >
-          <a href="#" class="hover:text-yellow-400 transition-colors"
+          <a
+            href="#contato-section"
+            class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
         </nav>
@@ -82,11 +86,50 @@
               class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
             />
           </div>
-          <button
+          <a
+            href="login.html"
+            data-auth-enter
             class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
           >
-            CADASTRO / PERFIL
-          </button>
+            ENTRAR
+          </a>
+          <div data-auth-profile class="relative group hidden">
+            <span
+              data-auth-user-name
+              class="text-white text-[10px] font-black uppercase tracking-widest"
+            ></span>
+            <button
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              aria-label="Menu do perfil"
+            >
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
+            </button>
+            <div
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            >
+              <a
+                href="meuperfil.html#dados-pessoais"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Dados Pessoais</a
+              >
+              <a
+                href="meuperfil.html#seguranca"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Segurança</a
+              >
+              <a
+                href="meuperfil.html#ingressos"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Meus Ingressos</a
+              >
+              <a
+                href="meuperfil.html#gerenciamento"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
+                >Gerenciamento de Conta</a
+              >
+            </div>
+          </div>
         </div>
 
         <!-- Mobile Toggle -->
@@ -109,13 +152,17 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="#">Categorias</a>
-        <a href="#">Comunidade</a>
-        <a href="#">Contato</a>
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="#contato-section">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
-        <button class="bg-yellow-400 text-blue-900 py-4 rounded-xl">
-          Cadastro / Perfil
-        </button>
+        <a
+          href="login.html"
+          data-auth-enter
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+        >
+          Entrar
+        </a>
       </nav>
     </div>
 
@@ -520,7 +567,10 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4">
+    <footer
+      id="contato-section"
+      class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4"
+    >
       <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div class="col-span-1 md:col-span-2">
@@ -598,6 +648,7 @@
       </div>
     </footer>
 
+    <script src="auth-mock.js"></script>
     <script>
       // Initialize Icons
       lucide.createIcons();

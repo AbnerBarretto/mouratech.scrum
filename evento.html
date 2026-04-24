@@ -23,8 +23,16 @@
         scrollbar-width: none;
       }
 
-      .transition-header {
-        transition: all 0.3s ease;
+      .mega-menu-content {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+      }
+      .mega-menu-trigger:hover .mega-menu-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
       .glass-card {
@@ -42,15 +50,47 @@
         filter: grayscale(0%);
         opacity: 1;
       }
+
+      .sponsor-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: sponsorMarqueeRight 24s linear infinite;
+      }
+
+      .sponsor-marquee-group {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+        padding-inline: 2rem;
+      }
+
+      .sponsor-marquee-item {
+        color: #0f172a;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        font-size: 1.75rem;
+        white-space: nowrap;
+        line-height: 1;
+      }
+
+      @keyframes sponsorMarqueeRight {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-900">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-all duration-300"
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
+        <!-- Logo -->
         <div class="flex items-center gap-2 group cursor-pointer">
           <div
             class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
@@ -60,14 +100,15 @@
               class="w-6 h-6 text-blue-700 fill-current"
             ></i>
           </div>
-          <a href="index.html"
-            ><span
+          <a href="index.html">
+            <span
               class="text-white font-black text-xl tracking-tighter uppercase"
               >Belo Eventos</span
             ></a
           >
         </div>
 
+        <!-- Desktop Nav -->
         <nav
           class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
         >
@@ -88,6 +129,7 @@
           >
         </nav>
 
+        <!-- Actions -->
         <div class="hidden md:flex items-center gap-4">
           <div class="relative">
             <i
@@ -104,8 +146,9 @@
             href="login.html"
             data-auth-enter
             class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
-            >ENTRAR</a
           >
+            ENTRAR
+          </a>
           <div data-auth-profile class="relative group hidden">
             <span
               data-auth-user-name
@@ -145,12 +188,14 @@
           </div>
         </div>
 
+        <!-- Mobile Toggle -->
         <button class="md:hidden text-white" id="menu-toggle">
           <i data-lucide="menu" class="w-7 h-7"></i>
         </button>
       </div>
     </header>
 
+    <!-- MOBILE MENU -->
     <div
       id="mobile-menu"
       class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
@@ -171,12 +216,36 @@
           href="login.html"
           data-auth-enter
           class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
-          >Entrar</a
         >
+          Entrar
+        </a>
       </nav>
     </div>
 
-    <main class="pt-24 md:pt-32">
+    <main class="pt-16 md:pt-16">
+      <section class="bg-white border-y border-slate-200">
+        <div class="overflow-hidden py-5">
+          <div class="sponsor-marquee-track">
+            <div class="sponsor-marquee-group">
+              <span class="sponsor-marquee-item italic">Mastercard</span>
+              <span class="sponsor-marquee-item">VIVO</span>
+              <span class="sponsor-marquee-item">BANCO DO BRASIL</span>
+              <span class="sponsor-marquee-item">RedBull</span>
+              <span class="sponsor-marquee-item">Spotify</span>
+              <span class="sponsor-marquee-item">Budweiser</span>
+            </div>
+            <div class="sponsor-marquee-group" aria-hidden="true">
+              <span class="sponsor-marquee-item italic">Mastercard</span>
+              <span class="sponsor-marquee-item">VIVO</span>
+              <span class="sponsor-marquee-item">BANCO DO BRASIL</span>
+              <span class="sponsor-marquee-item">RedBull</span>
+              <span class="sponsor-marquee-item">Spotify</span>
+              <span class="sponsor-marquee-item">Budweiser</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- HERO SECTION: GUNS N' ROSES -->
       <section
         class="relative h-[600px] flex items-center overflow-hidden bg-slate-900"
@@ -515,8 +584,10 @@
 
     <script src="auth-mock.js"></script>
     <script>
+      // Initialize Icons
       lucide.createIcons();
 
+      // Header Scroll Effect
       const header = document.getElementById("main-header");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
@@ -528,6 +599,7 @@
         }
       });
 
+      // Mobile Menu Toggle
       const menuToggle = document.getElementById("menu-toggle");
       const menuClose = document.getElementById("menu-close");
       const mobileMenu = document.getElementById("mobile-menu");

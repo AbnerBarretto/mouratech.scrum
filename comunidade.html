@@ -15,6 +15,9 @@
         font-family: "Inter", sans-serif;
         background-color: #f8fafc;
       }
+      .transition-header {
+        transition: all 0.3s ease;
+      }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
@@ -64,58 +67,138 @@
     </style>
   </head>
   <body class="text-slate-900">
-    <!-- HEADER (PADRÃO BELO EVENTOS) -->
-    <header class="bg-[#0056e0] sticky top-0 z-[100] shadow-md">
-      <div class="container mx-auto px-6">
-        <div class="flex items-center justify-between h-20">
-          <div class="flex items-center gap-3 cursor-pointer group">
-            <div
-              class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center transition-transform group-hover:rotate-12"
-            >
-              <i
-                data-lucide="star"
-                class="text-blue-700 w-6 h-6 fill-current"
-              ></i>
-            </div>
-            <span
-              class="text-white font-black text-2xl tracking-tighter uppercase italic"
-              >Belo Eventos</span
-            >
+    <!-- HEADER -->
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+    >
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2 group cursor-pointer">
+          <div
+            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
+          >
+            <i
+              data-lucide="star"
+              class="w-6 h-6 text-blue-700 fill-current"
+            ></i>
           </div>
+          <a href="index.html">
+            <span
+              class="text-white font-black text-xl tracking-tighter uppercase"
+              >Belo Eventos</span
+            ></a
+          >
+        </div>
 
-          <nav class="hidden lg:flex items-center h-full">
-            <a
-              href="#"
-              class="px-6 text-white/70 font-bold text-sm tracking-widest hover:text-white uppercase"
-              >Home</a
-            >
-            <a
-              href="#"
-              class="px-6 text-white/70 font-bold text-sm tracking-widest hover:text-white uppercase"
-              >Programação</a
-            >
-            <a
-              href="#"
-              class="px-6 text-white font-bold text-sm tracking-widest border-b-2 border-yellow-400 h-full flex items-center uppercase"
-              >Comunidade</a
-            >
-          </nav>
+        <nav
+          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
+        >
+          <a
+            href="categorias.html"
+            class="hover:text-yellow-400 transition-colors"
+            >PROGRAMAÇÃO</a
+          >
+          <a
+            href="comunidade.html"
+            class="hover:text-yellow-400 transition-colors"
+            >COMUNIDADE</a
+          >
+          <a
+            href="#contato-section"
+            class="hover:text-yellow-400 transition-colors"
+            >CONTATO</a
+          >
+        </nav>
 
-          <div class="flex items-center gap-4">
-            <button class="text-white/80 hover:text-white transition-colors">
-              <i data-lucide="bell" class="w-5 h-5"></i>
+        <div class="hidden md:flex items-center gap-4">
+          <div class="relative">
+            <i
+              data-lucide="search"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"
+            ></i>
+            <input
+              type="text"
+              placeholder="Buscar eventos..."
+              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
+            />
+          </div>
+          <a
+            href="login.html"
+            data-auth-enter
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            >ENTRAR</a
+          >
+          <div data-auth-profile class="relative group hidden">
+            <span
+              data-auth-user-name
+              class="text-white text-[10px] font-black uppercase tracking-widest"
+            ></span>
+            <button
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              aria-label="Menu do perfil"
+            >
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-white/20 flex items-center justify-center overflow-hidden cursor-pointer"
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
-              <i data-lucide="user" class="text-white w-6 h-6"></i>
+              <a
+                href="meuperfil.html#dados-pessoais"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Dados Pessoais</a
+              >
+              <a
+                href="meuperfil.html#seguranca"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Segurança</a
+              >
+              <a
+                href="meuperfil.html#ingressos"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Meus Ingressos</a
+              >
+              <a
+                href="meuperfil.html#gerenciamento"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
+                >Gerenciamento de Conta</a
+              >
             </div>
           </div>
         </div>
+
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
       </div>
     </header>
 
-    <main class="container mx-auto px-6 py-10">
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
+    >
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="#contato-section">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <a
+          href="login.html"
+          data-auth-enter
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          >Entrar</a
+        >
+      </nav>
+    </div>
+
+    <main class="container mx-auto px-6 py-10 pt-28 md:pt-36">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- COLUNA ESQUERDA: SIDEBAR -->
         <aside class="lg:col-span-3 space-y-6">
@@ -370,8 +453,32 @@
       </div>
     </main>
 
+    <script src="auth-mock.js"></script>
     <script>
       lucide.createIcons();
+
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
 
       // Feedback simples para o botão publicar
       document
