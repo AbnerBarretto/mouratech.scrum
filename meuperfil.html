@@ -496,7 +496,7 @@
           Sua conta e seus dados foram removidos do Belo Eventos.
         </p>
         <button
-          onclick="window.location.reload()"
+          onclick="window.location.href = 'index.html'"
           class="bg-[#0056e0] text-white font-black px-12 py-4 rounded-2xl uppercase tracking-widest text-xs"
         >
           Voltar ao InÃ­cio
@@ -573,6 +573,12 @@
         setTimeout(() => {
           successScreen.classList.remove("hidden");
           closeModal();
+
+          localStorage.removeItem(window.BeloEventosAuth.storageKey);
+
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1200);
         }, 2000);
       });
     </script>
