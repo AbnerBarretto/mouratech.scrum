@@ -219,3 +219,70 @@ window.BELO_EVENTS = {
     homeLocation: "Pátio de Eventos",
   },
 };
+
+// ──────────────── Sincronização com LocalStorage do Admin ────────────────
+// Quando o admin edita/exclui eventos via adminperfil.html, as mudanças
+// são salvas no localStorage. Este bloco aplica essas mudanças ao
+// window.BELO_EVENTS para que todas as páginas (index, evento, etc.)
+// reflitam as edições automaticamente.
+(function syncAdminEdits() {
+  const EVENTS_KEY = "beloEventosAdminEvents";
+  try {
+    const stored = localStorage.getItem(EVENTS_KEY);
+    if (!stored) return;
+
+    const adminEvents = JSON.parse(stored);
+    if (!Array.isArray(adminEvents)) return;
+
+    // Cria um mapa id -> dados admin para lookup rápido
+    const adminMap = {};
+    adminEvents.forEach(function (ev) {
+      adminMap[ev.id] = ev;
+    });
+
+    // 1. Atualizar títulos dos eventos existentes
+    Object.keys(window.BELO_EVENTS).forEach(function (key) {
+      const original = window.BELO_EVENTS[key];
+      const edited = adminMap[original.id];
+      if (edited) {
+        // Aplica o título editado pelo admin
+        original.title = edited.title;
+      }
+    });
+
+    // 2. Remover eventos que foram excluídos pelo admin
+    const adminIds = adminEvents.map(function (ev) { return ev.id; });
+    Object.keys(window.BELO_EVENTS).forEach(function (key) {
+      if (adminIds.indexOf(window.BELO_EVENTS[key].id) === -1) {
+        delete window.BELO_EVENTS[key];
+      }
+    });
+
+    // 3. Adicionar eventos novos criados pelo admin (que não existiam antes)
+    adminEvents.forEach(function (ev) {
+      if (!window.BELO_EVENTS[ev.id]) {
+        window.BELO_EVENTS[ev.id] = {
+          id: ev.id,
+          title: ev.title,
+          city: "Belo Jardim, PE",
+          badge: "NOVO EVENTO",
+          heroImage: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200",
+          heroAlt: ev.title,
+          heroDescription: "Novo evento cadastrado pelo administrador.",
+          about: ["Detalhes em breve.", "Fique atento para mais informações."],
+          mapImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800",
+          mapLocation: "Belo Jardim, PE",
+          videoHeading: "Em breve",
+          videoCaption: "Aguarde novidades",
+          videoImage: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=800",
+          videoAlt: ev.title,
+          classification: "EVENTO",
+          dateLabel: ev.date || "Data em breve",
+          homeLocation: "Belo Jardim",
+        };
+      }
+    });
+  } catch (e) {
+    // Fallback silencioso se localStorage não estiver disponível
+  }
+})();
