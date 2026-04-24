@@ -1,0 +1,23 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Node (se houver ferramentas de build)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# Editor
+.vscode/
+*.suo
+*.user
+
+# Environment
+.env
+
+# Logs
+*.log

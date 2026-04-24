@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro | Belo Eventos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .form-input {
+        background: #f1f5f9;
+        border: 2px solid transparent;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .form-input:focus {
+        background: white;
+        border-color: #0056e0;
+        box-shadow: 0 0 0 4px rgba(0, 86, 224, 0.1);
+        outline: none;
+      }
+
+      .custom-checkbox {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.375rem;
+        border: 2px solid #cbd5e1;
+        appearance: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+
+      .custom-checkbox:checked {
+        background-color: #0056e0;
+        border-color: #0056e0;
+      }
+
+      .custom-checkbox:checked::after {
+        content: "✓";
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-100 min-h-screen flex flex-col">
+    <!-- HEADER (ESTRUTURA PADRONIZADA) -->
+    <header class="bg-[#0056e0] shadow-lg relative z-10">
+      <div
+        class="container mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3 cursor-pointer group">
+          <div
+            class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center transition-transform group-hover:rotate-12"
+          >
+            <i data-lucide="flower" class="text-blue-700 w-7 h-7"></i>
+          </div>
+          <span
+            class="text-white font-black text-2xl tracking-tighter uppercase italic"
+            >Belo Eventos</span
+          >
+        </div>
+
+        <nav class="hidden md:flex gap-8">
+          <a
+            href="#"
+            class="text-white/80 hover:text-white font-bold text-sm uppercase tracking-widest transition-colors"
+            >Categorias</a
+          >
+          <a
+            href="#"
+            class="text-white/80 hover:text-white font-bold text-sm uppercase tracking-widest transition-colors"
+            >Comunidade</a
+          >
+          <a
+            href="#"
+            class="text-white/80 hover:text-white font-bold text-sm uppercase tracking-widest transition-colors"
+            >Contato</a
+          >
+        </nav>
+
+        <button class="text-white font-bold text-sm uppercase hover:underline">
+          Já tenho conta
+        </button>
+      </div>
+    </header>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <main class="flex-grow flex items-center justify-center p-6">
+      <div
+        class="w-full max-w-xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-200"
+      >
+        <div class="p-8 md:p-12">
+          <div class="text-center mb-10">
+            <h1
+              class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2"
+            >
+              Crie sua conta
+            </h1>
+            <p class="text-slate-500 font-medium text-sm">
+              Junte-se à maior comunidade de entretenimento da região.
+            </p>
+          </div>
+
+          <form id="registration-form" class="space-y-6">
+            <!-- Nome Completo -->
+            <div class="space-y-2">
+              <label
+                for="full-name"
+                class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
+                >Nome completo</label
+              >
+              <input
+                type="text"
+                id="full-name"
+                name="full-name"
+                required
+                class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
+                placeholder="Ex: João Silva Sauro"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
+                >E-mail</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
+                placeholder="seu@email.com"
+              />
+            </div>
+
+            <!-- Grid Senha e Nascimento -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label
+                  for="password"
+                  class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
+                  >Senha</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  for="birth-date"
+                  class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
+                  >Data de nascimento</label
+                >
+                <input
+                  type="date"
+                  id="birth-date"
+                  name="birth-date"
+                  required
+                  class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
+                />
+              </div>
+            </div>
+
+            <!-- Opções e Termos -->
+            <div class="space-y-4 pt-4">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="notifications"
+                  class="custom-checkbox mt-1"
+                />
+                <span
+                  class="text-sm font-semibold text-slate-600 group-hover:text-slate-900 transition-colors"
+                >
+                  Deseja receber notificações personalizadas sobre eventos
+                  próximos?
+                </span>
+              </label>
+
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  required
+                  class="custom-checkbox mt-1"
+                />
+                <span
+                  class="text-sm font-semibold text-slate-600 group-hover:text-slate-900 transition-colors"
+                >
+                  Li e aceito os
+                  <a href="#" class="text-blue-600 underline"
+                    >Termos de Autorização</a
+                  >
+                  e Privacidade de dados.
+                </span>
+              </label>
+            </div>
+
+            <!-- Botão de Ação -->
+            <div class="pt-6">
+              <button
+                type="submit"
+                class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black py-5 rounded-2xl shadow-xl shadow-yellow-400/20 uppercase tracking-[0.2em] transition-all active:scale-95"
+              >
+                Cadastrar agora
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Rodapé do Card -->
+        <div class="bg-slate-50 p-6 text-center border-t border-slate-100">
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            Segurança garantida por
+            <span class="text-slate-900">Belo Eventos Auth</span>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="p-8 text-center">
+      <p
+        class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]"
+      >
+        © 2026 Belo Eventos S.A.
+      </p>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+
+      document
+        .getElementById("registration-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          // Lógica de submissão seria implementada aqui
+          const button = e.target.querySelector("button");
+          button.innerText = "Processando...";
+          button.disabled = true;
+          button.classList.add("opacity-50", "cursor-not-allowed");
+
+          setTimeout(() => {
+            alert("Cadastro realizado com sucesso! Redirecionando...");
+            window.location.reload();
+          }, 1500);
+        });
+    </script>
+  </body>
+</html>

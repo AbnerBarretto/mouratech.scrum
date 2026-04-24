@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belo Eventos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .transition-header {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+    <!-- HEADER -->
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+    >
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-2 group cursor-pointer">
+          <div
+            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
+          >
+            <i
+              data-lucide="star"
+              class="w-6 h-6 text-blue-700 fill-current"
+            ></i>
+          </div>
+          <a href="index.html">
+            <span
+              class="text-white font-black text-xl tracking-tighter uppercase"
+              >Belo Eventos</span
+            ></a
+          >
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav
+          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
+        >
+          <a
+            href="categorias.html"
+            class="hover:text-yellow-400 transition-colors"
+            >CATEGORIAS</a
+          >
+          <a href="#" class="hover:text-yellow-400 transition-colors"
+            >COMUNIDADE</a
+          >
+          <a href="#" class="hover:text-yellow-400 transition-colors"
+            >CONTATO</a
+          >
+        </nav>
+
+        <!-- Actions -->
+        <div class="hidden md:flex items-center gap-4">
+          <div class="relative">
+            <i
+              data-lucide="search"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"
+            ></i>
+            <input
+              type="text"
+              placeholder="Buscar eventos..."
+              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
+            />
+          </div>
+          <button
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+          >
+            CADASTRO / PERFIL
+          </button>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
+    >
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
+        <a href="#">Categorias</a>
+        <a href="#">Comunidade</a>
+        <a href="#">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <button class="bg-yellow-400 text-blue-900 py-4 rounded-xl">
+          Cadastro / Perfil
+        </button>
+      </nav>
+    </div>
+
+    <main>
+      <!-- HERO / CAROUSEL -->
+      <section class="pt-24 md:pt-32 pb-12 px-4">
+        <div class="container mx-auto">
+          <div
+            class="relative group overflow-hidden rounded-[2rem] shadow-2xl aspect-[16/9] md:aspect-[21/9] bg-slate-900"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2000"
+              alt="Hero"
+              class="w-full h-full object-cover opacity-60"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-transparent to-transparent"
+            ></div>
+
+            <div
+              class="absolute inset-0 flex flex-col justify-center px-6 md:px-16"
+            >
+              <span
+                class="bg-yellow-400 text-blue-900 font-bold text-xs px-3 py-1 rounded-full w-fit mb-4 tracking-widest uppercase"
+                >EM ALTA</span
+              >
+              <h1
+                class="text-4xl md:text-7xl font-black text-white leading-none mb-6 drop-shadow-lg uppercase"
+              >
+                DJAVAN <br />
+                <span class="text-yellow-400">TURNÊ D</span>
+              </h1>
+              <div
+                class="flex flex-col md:flex-row gap-4 md:gap-8 text-white/90 text-lg font-medium mb-8"
+              >
+                <span class="flex items-center gap-2"
+                  ><i
+                    data-lucide="calendar"
+                    class="w-5 h-5 text-yellow-400"
+                  ></i>
+                  15 de Junho · 21h</span
+                >
+                <span class="flex items-center gap-2"
+                  ><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i>
+                  Arena Belo, MG</span
+                >
+              </div>
+              <div class="flex flex-wrap gap-4">
+                <button
+                  class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-xl"
+                >
+                  GARANTIR INGRESSO
+                </button>
+                <button
+                  class="glass text-white font-bold px-8 py-4 rounded-2xl transition-all"
+                >
+                  SAIBA MAIS
+                </button>
+              </div>
+            </div>
+
+            <!-- Carousel Nav Icons (Mock) -->
+            <button
+              class="absolute left-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+            <button
+              class="absolute right-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i data-lucide="chevron-right" class="w-8 h-8"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="py-8 px-4 bg-white border-y border-slate-200">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <button
+              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
+            >
+              <div
+                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+              >
+                <i data-lucide="music" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
+                >Shows</span
+              >
+            </button>
+            <button
+              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
+            >
+              <div
+                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+              >
+                <i data-lucide="theater" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
+                >Teatro</span
+              >
+            </button>
+            <button
+              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
+            >
+              <div
+                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+              >
+                <i data-lucide="mic-2" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
+                >Stand-up</span
+              >
+            </button>
+            <button
+              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
+            >
+              <div
+                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+              >
+                <i data-lucide="party-popper" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
+                >Festas</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENT GRID -->
+      <section class="py-16 px-4">
+        <div class="container mx-auto">
+          <div class="flex items-center justify-between mb-10">
+            <div>
+              <h2
+                class="text-3xl font-black text-slate-900 tracking-tight uppercase"
+              >
+                Próximos Eventos
+              </h2>
+              <div class="h-1.5 w-16 bg-yellow-400 mt-2 rounded-full"></div>
+            </div>
+            <a
+              href="#"
+              class="text-blue-600 font-bold hover:underline flex items-center gap-1 uppercase tracking-tighter text-sm"
+              >Ver todos <i data-lucide="chevron-right" class="w-4 h-4"></i
+            ></a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card Template -->
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+            >
+              <div class="relative h-52 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=800"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
+                >
+                  ESGOTANDO
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <span
+                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 05 Ago ·
+                  20:30</span
+                >
+                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
+                  Noite do Jazz
+                </h3>
+                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3"></i> Teatro Municipal
+                </p>
+                <div
+                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
+                >
+                  <span class="font-black text-slate-900 text-lg">R$ 80</span>
+                  <button
+                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
+                  >
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Repeat Cards (Simulated) -->
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+            >
+              <div class="relative h-52 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
+                >
+                  GRATUITO
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <span
+                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 22 Jul ·
+                  14:00</span
+                >
+                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
+                  Festival de Inverno
+                </h3>
+                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3"></i> Parque Central
+                </p>
+                <div
+                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
+                >
+                  <span class="font-black text-slate-900 text-lg"
+                    >Entrada Livre</span
+                  >
+                  <button
+                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
+                  >
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+            >
+              <div class="relative h-52 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
+                >
+                  CULTURA
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <span
+                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 10 Ago ·
+                  09:00</span
+                >
+                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
+                  Masterclass Gastronomia
+                </h3>
+                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3"></i> Centro Cultural
+                </p>
+                <div
+                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
+                >
+                  <span class="font-black text-slate-900 text-lg">R$ 150</span>
+                  <button
+                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
+                  >
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+            >
+              <div class="relative h-52 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=800"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
+                >
+                  SHOW ADIADO
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <span
+                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 12 Set ·
+                  22:00</span
+                >
+                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
+                  Noite Eletrônica
+                </h3>
+                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3"></i> Club 12
+                </p>
+                <div
+                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
+                >
+                  <span class="font-black text-slate-900 text-lg">R$ 45</span>
+                  <button
+                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
+                  >
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER -->
+      <section class="py-20 px-4 bg-slate-900 relative overflow-hidden">
+        <div
+          class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -mr-48 -mt-48"
+        ></div>
+        <div class="container mx-auto max-w-3xl text-center relative z-10">
+          <div class="inline-flex p-4 bg-blue-600 text-white rounded-3xl mb-8">
+            <i data-lucide="mail" class="w-8 h-8"></i>
+          </div>
+          <h2
+            class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight"
+          >
+            Inscreva-se para saber as novidades
+          </h2>
+          <p class="text-slate-400 text-lg mb-10">
+            Receba pré-vendas e ofertas exclusivas por meios eletrônicos
+            (e-mail, redes sociais, etc).
+          </p>
+
+          <form
+            class="flex flex-col md:flex-row gap-4 p-2 bg-white/5 border border-white/10 rounded-[2rem]"
+          >
+            <input
+              type="email"
+              placeholder="Insira seu e-mail aqui"
+              class="flex-grow bg-transparent px-8 py-4 text-white focus:outline-none"
+            />
+            <button
+              class="bg-blue-600 hover:bg-blue-500 text-white font-black px-12 py-4 rounded-full uppercase tracking-widest shadow-xl transition-all"
+            >
+              INSCREVA-SE
+            </button>
+          </form>
+
+          <div class="mt-6 flex items-center justify-center gap-3">
+            <input
+              type="checkbox"
+              id="terms"
+              class="w-5 h-5 rounded border-slate-700 bg-slate-800 text-blue-600 focus:ring-blue-500"
+            />
+            <label
+              for="terms"
+              class="text-slate-500 text-sm cursor-pointer select-none"
+            >
+              Deixe-nos mantê-lo informado sobre o que está por vir.
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNER CTA -->
+      <section class="py-20 px-4">
+        <div class="container mx-auto">
+          <div
+            class="relative rounded-[3rem] overflow-hidden bg-blue-700 h-[450px] flex items-center shadow-2xl"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1514525253361-bee8718a74a2?auto=format&fit=crop&q=80&w=1500"
+              class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30"
+            />
+            <div class="relative z-10 px-8 md:px-20 max-w-2xl">
+              <h2
+                class="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter leading-none"
+              >
+                Seu evento no <br />
+                Belo Eventos
+              </h2>
+              <p
+                class="text-blue-100 text-xl mb-10 font-medium leading-relaxed"
+              >
+                Produz eventos independentes? Alcance milhares de pessoas
+                apaixonadas por entretenimento e cultura.
+              </p>
+              <button
+                class="bg-yellow-400 hover:bg-white text-blue-900 font-black px-12 py-4 rounded-full uppercase tracking-widest shadow-xl flex items-center gap-3 transition-all"
+              >
+                SAIBA MAIS <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <div
+                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
+              >
+                <i
+                  data-lucide="star"
+                  class="w-5 h-5 text-blue-700 fill-current"
+                ></i>
+              </div>
+              <span
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
+                >Belo Eventos</span
+              >
+            </div>
+            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
+            </p>
+          </div>
+          <div>
+            <h4
+              class="font-black text-slate-900 uppercase tracking-widest mb-6"
+            >
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
+          </div>
+          <div>
+            <h4
+              class="font-black text-slate-900 uppercase tracking-widest mb-6"
+            >
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
+        >
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Icons
+      lucide.createIcons();
+
+      // Header Scroll Effect
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

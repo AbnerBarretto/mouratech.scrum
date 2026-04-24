@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Belo Eventos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .form-input {
+        background: #f1f5f9;
+        border: 2px solid transparent;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .form-input:focus {
+        background: white;
+        border-color: #0056e0;
+        box-shadow: 0 0 0 4px rgba(0, 86, 224, 0.1);
+        outline: none;
+      }
+
+      .login-card {
+        background: white;
+        border-radius: 2.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 min-h-screen flex flex-col">
+    <!-- HEADER (PADRÃO ESTABELECIDO) -->
+    <header class="bg-[#0056e0] shadow-md relative z-10">
+      <div class="container mx-auto px-6 py-4 flex items-center justify-center">
+        <div class="flex items-center gap-3 cursor-pointer group">
+          <div
+            class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center transition-transform group-hover:rotate-12 shadow-inner"
+          >
+            <i data-lucide="flower" class="text-blue-700 w-8 h-8"></i>
+          </div>
+          <span
+            class="text-white font-black text-2xl tracking-tighter uppercase italic"
+            >Belo Eventos</span
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DE LOGIN -->
+    <main class="flex-grow flex items-center justify-center p-6">
+      <div class="w-full max-w-lg login-card overflow-hidden">
+        <div class="p-8 md:p-12">
+          <div class="text-center mb-10">
+            <h1
+              class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2"
+            >
+              Bem-vindo de volta
+            </h1>
+            <p class="text-slate-500 font-medium text-sm">
+              Acesse sua conta para gerenciar seus eventos.
+            </p>
+          </div>
+
+          <form id="login-form" class="space-y-6">
+            <!-- E-mail -->
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
+                >E-mail</label
+              >
+              <div class="relative">
+                <i
+                  data-lucide="mail"
+                  class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
+                ></i>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="form-input w-full pl-14 pr-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
+                  placeholder="exemplo@email.com"
+                />
+              </div>
+            </div>
+
+            <!-- Senha -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center ml-1">
+                <label
+                  for="password"
+                  class="text-xs font-black text-slate-400 uppercase tracking-widest"
+                  >Senha</label
+                >
+                <a
+                  href="#"
+                  class="text-xs font-bold text-blue-600 hover:underline"
+                  >Esqueci minha senha</a
+                >
+              </div>
+              <div class="relative">
+                <i
+                  data-lucide="lock"
+                  class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
+                ></i>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  class="form-input w-full pl-14 pr-6 py-4 rounded-2xl font-semibold text-slate-700"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+
+            <!-- Botão Logar -->
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black py-5 rounded-2xl shadow-xl shadow-yellow-400/20 uppercase tracking-[0.2em] transition-all active:scale-95 flex items-center justify-center gap-2"
+              >
+                Entrar agora <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </form>
+
+          <!-- Footer do Form -->
+          <div class="mt-10 text-center">
+            <p class="text-sm font-semibold text-slate-500">
+              Não tem uma conta?
+              <a
+                href="#"
+                class="text-blue-600 hover:underline font-black uppercase text-xs tracking-widest ml-1"
+                >Cadastre-se</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Detalhe Visual de Rodapé -->
+        <div class="bg-slate-50 py-4 text-center border-t border-slate-100">
+          <p
+            class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]"
+          >
+            Autenticação Segura
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="p-8 text-center">
+      <p
+        class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]"
+      >
+        © 2026 Belo Eventos · Belo Jardim, PE
+      </p>
+    </footer>
+
+    <script>
+      // Inicializa os ícones Lucide
+      lucide.createIcons();
+
+      // Lógica de submissão (Mock)
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalContent = submitBtn.innerHTML;
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<span class="animate-pulse">Autenticando...</span>';
+
+          // Simulação de delay de rede
+          setTimeout(() => {
+            alert("Login processado! Redirecionando para o painel...");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+          }, 1500);
+        });
+    </script>
+  </body>
+</html>
