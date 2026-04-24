@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -29,6 +29,34 @@
       }
       .transition-header {
         transition: all 0.3s ease;
+      }
+
+      #hero-image,
+      #hero-content {
+        transition:
+          transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.45s ease;
+        will-change: transform, opacity;
+      }
+
+      .hero-shift-out-next {
+        transform: translateX(-48px) scale(1.05);
+        opacity: 0.15;
+      }
+
+      .hero-shift-out-prev {
+        transform: translateX(48px) scale(1.05);
+        opacity: 0.15;
+      }
+
+      .hero-shift-in-next {
+        transform: translateX(48px) scale(1.02);
+        opacity: 0;
+      }
+
+      .hero-shift-in-prev {
+        transform: translateX(-48px) scale(1.02);
+        opacity: 0;
       }
     </style>
   </head>
@@ -69,7 +97,7 @@
             >
             <span
               class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
-              >Cultura e Conexão</span
+              >Cultura e ConexÃ£o</span
             >
           </div>
         </div>
@@ -81,16 +109,14 @@
           <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
+            >PROGRAMAÃ‡ÃƒO</a
           >
           <a
             href="comunidade.html"
             class="hover:text-yellow-400 transition-colors"
             >COMUNIDADE</a
           >
-          <a
-            href="#contato-section"
-            class="hover:text-yellow-400 transition-colors"
+          <a href="contato.html" class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
         </nav>
@@ -138,7 +164,7 @@
               <a
                 href="meuperfil.html#seguranca"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >SeguranÃ§a</a
               >
               <a
                 href="meuperfil.html#ingressos"
@@ -174,7 +200,7 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="categorias.html">Programação</a>
+        <a href="categorias.html">ProgramaÃ§Ã£o</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="#contato-section">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
@@ -196,6 +222,7 @@
             class="relative group overflow-hidden rounded-[2rem] shadow-2xl aspect-[16/9] md:aspect-[21/9] bg-slate-900"
           >
             <img
+              id="hero-image"
               src="https://djavan.com.br/content/uploads/2025/10/djavan_improviso_0389-1920x0-c-default.jpg"
               alt="Hero"
               class="w-full h-full object-cover opacity-60"
@@ -205,17 +232,20 @@
             ></div>
 
             <div
+              id="hero-content"
               class="absolute inset-0 flex flex-col justify-center px-6 md:px-16"
             >
               <span
+                id="hero-classification"
                 class="bg-yellow-400 text-blue-900 font-bold text-xs px-3 py-1 rounded-full w-fit mb-4 tracking-widest uppercase"
                 >EM ALTA</span
               >
               <h1
+                id="hero-title"
                 class="text-4xl md:text-7xl font-black text-white leading-none mb-6 drop-shadow-lg uppercase"
               >
                 DJAVAN <br />
-                <span class="text-yellow-400">TURNÊ D</span>
+                <span class="text-yellow-400">TURNÃŠ D</span>
               </h1>
               <div
                 class="flex flex-col md:flex-row gap-4 md:gap-8 text-white/90 text-lg font-medium mb-8"
@@ -225,34 +255,40 @@
                     data-lucide="calendar"
                     class="w-5 h-5 text-yellow-400"
                   ></i>
-                  15 de Junho · 21h</span
+                  <span id="hero-date">15 de Junho Â· 21h</span></span
                 >
                 <span class="flex items-center gap-2"
                   ><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i>
-                  Marocas</span
+                  <span id="hero-location">Marocas</span></span
                 >
               </div>
               <div class="flex flex-wrap gap-4">
-                <button
+                <a
+                  id="hero-cta-ticket"
+                  href="evento.html?id=djavan-turne-d"
                   class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-xl"
                 >
                   GARANTIR INGRESSO
-                </button>
-                <button
+                </a>
+                <a
+                  id="hero-cta-more"
+                  href="evento.html?id=djavan-turne-d"
                   class="glass text-white font-bold px-8 py-4 rounded-2xl transition-all"
                 >
                   SAIBA MAIS
-                </button>
+                </a>
               </div>
             </div>
 
             <!-- Carousel Nav Icons (Mock) -->
             <button
+              id="hero-prev"
               class="absolute left-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <i data-lucide="chevron-left" class="w-8 h-8"></i>
             </button>
             <button
+              id="hero-next"
               class="absolute right-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <i data-lucide="chevron-right" class="w-8 h-8"></i>
@@ -329,7 +365,7 @@
               <h2
                 class="text-3xl font-black text-slate-900 tracking-tight uppercase"
               >
-                Próximos Eventos
+                PrÃ³ximos Eventos
               </h2>
               <div class="h-1.5 w-16 bg-yellow-400 mt-2 rounded-full"></div>
             </div>
@@ -359,7 +395,7 @@
               <div class="p-6 flex flex-col flex-grow">
                 <span
                   class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 05 Ago ·
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 05 Ago Â·
                   20:30</span
                 >
                 <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
@@ -399,7 +435,7 @@
               <div class="p-6 flex flex-col flex-grow">
                 <span
                   class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 22 Jul ·
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 22 Jul Â·
                   14:00</span
                 >
                 <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
@@ -440,7 +476,7 @@
               <div class="p-6 flex flex-col flex-grow">
                 <span
                   class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 10 Ago ·
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 10 Ago Â·
                   09:00</span
                 >
                 <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
@@ -479,11 +515,11 @@
               <div class="p-6 flex flex-col flex-grow">
                 <span
                   class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 12 Set ·
+                  ><i data-lucide="calendar" class="w-3 h-3"></i> 12 Set Â·
                   22:00</span
                 >
                 <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
-                  Noite Eletrônica
+                  Noite EletrÃ´nica
                 </h3>
                 <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
                   <i data-lucide="map-pin" class="w-3 h-3"></i> Club 12
@@ -519,7 +555,7 @@
             Inscreva-se para saber as novidades
           </h2>
           <p class="text-slate-400 text-lg mb-10">
-            Receba pré-vendas e ofertas exclusivas por meios eletrônicos
+            Receba prÃ©-vendas e ofertas exclusivas por meios eletrÃ´nicos
             (e-mail, redes sociais, etc).
           </p>
 
@@ -548,7 +584,7 @@
               for="terms"
               class="text-slate-500 text-sm cursor-pointer select-none"
             >
-              Deixe-nos mantê-lo informado sobre o que está por vir.
+              Deixe-nos mantÃª-lo informado sobre o que estÃ¡ por vir.
             </label>
           </div>
         </div>
@@ -612,7 +648,7 @@
             </div>
             <p class="text-slate-500 text-lg leading-relaxed max-w-sm">
               A maior plataforma de cultura e entretenimento de Belo Jardim e
-              região.
+              regiÃ£o.
             </p>
           </div>
           <div>
@@ -632,7 +668,7 @@
                 >Gastronomia</a
               >
               <a href="#" class="hover:text-blue-600 transition-colors"
-                >Sobre Nós</a
+                >Sobre NÃ³s</a
               >
             </nav>
           </div>
@@ -661,7 +697,7 @@
         <div
           class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
         >
-          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <p>Â© 2024 Belo Eventos. Todos os direitos reservados.</p>
           <div class="flex gap-6">
             <a href="#">Privacidade</a>
             <a href="#">Termos</a>
@@ -670,10 +706,119 @@
       </div>
     </footer>
 
+    <script src="events-data.js"></script>
     <script src="auth-mock.js"></script>
     <script>
       // Initialize Icons
       lucide.createIcons();
+
+      const eventCatalog = window.BELO_EVENTS || {};
+      const homeCarouselIds = [
+        "djavan-turne-d",
+        "guns-n-roses",
+        "capital-inicial",
+        "arraia-forro",
+      ];
+      const homeSlides = homeCarouselIds
+        .map((id) => eventCatalog[id])
+        .filter(Boolean)
+        .slice(0, 4);
+
+      const heroImage = document.getElementById("hero-image");
+      const heroClassification = document.getElementById("hero-classification");
+      const heroTitle = document.getElementById("hero-title");
+      const heroDate = document.getElementById("hero-date");
+      const heroLocation = document.getElementById("hero-location");
+      const heroContent = document.getElementById("hero-content");
+      const heroTicketLink = document.getElementById("hero-cta-ticket");
+      const heroMoreLink = document.getElementById("hero-cta-more");
+      const heroPrev = document.getElementById("hero-prev");
+      const heroNext = document.getElementById("hero-next");
+
+      let currentSlideIndex = 0;
+      let carouselTimer;
+      let isAnimating = false;
+
+      const renderHomeSlide = (index) => {
+        if (!homeSlides.length) return;
+        const slide = homeSlides[index];
+        if (!slide) return;
+
+        heroImage.src = slide.heroImage;
+        heroImage.alt = slide.heroAlt || slide.title;
+        heroClassification.textContent = slide.classification || slide.badge;
+        heroTitle.innerHTML = `${slide.title} <br /><span class="text-yellow-400">${slide.city.toUpperCase()}</span>`;
+        heroDate.textContent = slide.dateLabel || "Data em breve";
+        heroLocation.textContent = slide.homeLocation || slide.mapLocation;
+
+        const detailUrl = `evento.html?id=${slide.id}`;
+        heroTicketLink.href = detailUrl;
+        heroMoreLink.href = detailUrl;
+      };
+
+      const animateToSlide = (nextIndex, direction = 1) => {
+        if (!homeSlides.length || isAnimating) return;
+
+        isAnimating = true;
+        const outClass =
+          direction >= 0 ? "hero-shift-out-next" : "hero-shift-out-prev";
+        const inClass =
+          direction >= 0 ? "hero-shift-in-next" : "hero-shift-in-prev";
+
+        heroImage.classList.add(outClass);
+        heroContent.classList.add(outClass);
+
+        setTimeout(() => {
+          currentSlideIndex =
+            (nextIndex + homeSlides.length) % homeSlides.length;
+          renderHomeSlide(currentSlideIndex);
+
+          heroImage.classList.remove(outClass);
+          heroContent.classList.remove(outClass);
+
+          heroImage.classList.add(inClass);
+          heroContent.classList.add(inClass);
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              heroImage.classList.remove(inClass);
+              heroContent.classList.remove(inClass);
+            });
+          });
+
+          setTimeout(() => {
+            isAnimating = false;
+          }, 560);
+        }, 220);
+      };
+
+      const goToSlideInstant = (nextIndex) => {
+        if (!homeSlides.length) return;
+        currentSlideIndex = (nextIndex + homeSlides.length) % homeSlides.length;
+        renderHomeSlide(currentSlideIndex);
+      };
+
+      const startCarousel = () => {
+        if (carouselTimer) clearInterval(carouselTimer);
+        carouselTimer = setInterval(() => {
+          animateToSlide(currentSlideIndex + 1, 1);
+        }, 5000);
+      };
+
+      heroPrev.addEventListener("click", () => {
+        animateToSlide(currentSlideIndex - 1, -1);
+        startCarousel();
+      });
+
+      heroNext.addEventListener("click", () => {
+        animateToSlide(currentSlideIndex + 1, 1);
+        startCarousel();
+      });
+
+      if (homeSlides.length) {
+        goToSlideInstant(0);
+        startCarousel();
+      }
 
       // Header Scroll Effect
       const header = document.getElementById("main-header");
@@ -702,3 +847,4 @@
     </script>
   </body>
 </html>
+
