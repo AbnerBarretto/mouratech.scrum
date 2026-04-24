@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comentários | Belo Eventos</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .transition-header {
+        transition: all 0.3s ease;
+      }
+      .card-premium {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 2rem;
+        transition: all 0.3s ease;
+      }
+      .card-premium:hover {
+        box-shadow:
+          0 20px 25px -5px rgb(0 0 0 / 0.05),
+          0 8px 10px -6px rgb(0 0 0 / 0.05);
+      }
+      .back-button {
+        background: #e0f2fe;
+        color: #0960b5;
+      }
+      .comment-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body class="text-slate-900">
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+    >
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div
+          class="logo-container flex items-center gap-4 cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
+          >
+            <path
+              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+              fill="#6366F1"
+            />
+            <path
+              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+              fill="#10B981"
+            />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
+            <span class="text-white text-2xl font-black tracking-tighter leading-none"
+              >Belo<span class="text-indigo-300">Eventos</span></span
+            >
+            <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              >Cultura e Conexão</span
+            >
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
+          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
+          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
+          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <div class="relative">
+            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"></i>
+            <input
+              type="text"
+              placeholder="Buscar eventos..."
+              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
+            />
+          </div>
+          <a href="login.html" data-auth-enter class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
+        </div>
+
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300">
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="contato.html">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+      </nav>
+    </div>
+
+    <main class="container mx-auto px-6 py-10 pt-28 md:pt-36">
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="flex items-center gap-3">
+          <a href="comunidade.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-black text-sm uppercase tracking-widest back-button hover:bg-sky-100 transition-colors">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Voltar
+          </a>
+          <div class="rounded-full bg-slate-50 px-4 py-2 text-slate-500 text-xs uppercase tracking-[0.25em] font-bold">Aba de comentários</div>
+        </div>
+
+        <section class="card-premium overflow-hidden">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=1400"
+              alt="Post da comunidade"
+              class="w-full h-56 object-cover"
+            />
+            <div class="absolute left-6 bottom-6 bg-slate-950/70 backdrop-blur rounded-full px-4 py-2 text-white text-xs font-black uppercase tracking-[0.25em]">
+              @festadasmasrocas
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-col gap-2 mb-6">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-blue-600 flex items-center justify-center text-white font-black">FM</div>
+                <div>
+                  <p class="text-sm font-black text-slate-900">Festa das Maçrocas</p>
+                  <p class="text-[10px] uppercase font-bold text-slate-400">4 horas atrás · #cultura #música</p>
+                </div>
+              </div>
+              <p class="text-slate-600 leading-relaxed">
+                O show de ontem foi incrível! Nosso palco ficou cheio de energia, e agora queremos saber de vocês: qual momento foi o seu favorito?
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between gap-4 py-4 px-4 rounded-3xl bg-slate-50 border border-slate-200 mb-6">
+              <span class="text-slate-600 text-sm font-black">8 comentários</span>
+              <span class="text-blue-600 text-sm font-bold">129 curtidas</span>
+            </div>
+
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-black">M</div>
+                <div class="w-full">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <p class="text-sm font-black text-slate-900">marcel</p>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">Agora</span>
+                  </div>
+                  <p class="text-slate-600">eu ja to ansioso pra ir</p>
+                  <div class="flex items-center gap-3 mt-3 text-slate-400 text-xs font-black uppercase">
+                    <button class="flex items-center gap-2 hover:text-rose-500 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i>Curtir</button>
+                    <button class="flex items-center gap-2 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i>Responder</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-black">A</div>
+                <div class="w-full">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <p class="text-sm font-black text-slate-900">Arthur</p>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">Há 30 min</span>
+                  </div>
+                  <p class="text-slate-600">ja comecei a me arrumar</p>
+                  <div class="flex items-center gap-3 mt-3 text-slate-400 text-xs font-black uppercase">
+                    <button class="flex items-center gap-2 hover:text-rose-500 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i>Curtir</button>
+                    <button class="flex items-center gap-2 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i>Responder</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-black">D</div>
+                <div class="w-full">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <p class="text-sm font-black text-slate-900">Douglas</p>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">Há 1h</span>
+                  </div>
+                  <p class="text-slate-600">eu e @isabela estamos prontos</p>
+                  <div class="flex items-center gap-3 mt-3 text-slate-400 text-xs font-black uppercase">
+                    <button class="flex items-center gap-2 hover:text-rose-500 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i>Curtir</button>
+                    <button class="flex items-center gap-2 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i>Responder</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <label class="block text-slate-500 font-semibold mb-3 uppercase tracking-[0.2em] text-[10px]">Enviar comentário</label>
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <input
+                  type="text"
+                  placeholder="Escreva sua mensagem aqui..."
+                  class="flex-grow rounded-3xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100"
+                />
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-black rounded-3xl px-6 py-3 text-sm uppercase tracking-[0.15em] transition-all active:scale-95">
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="auth-mock.js"></script>
+    <script>
+      lucide.createIcons();
+
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
