@@ -349,11 +349,13 @@
             </div>
 
             <div class="flex flex-wrap gap-4">
-              <button
+              <a
+                id="buy-ticket-btn"
+                href="pagamento.html"
                 class="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-4 rounded-2xl shadow-2xl transition-all uppercase tracking-widest flex items-center gap-2"
               >
                 Comprar Ingressos <i data-lucide="ticket" class="w-5 h-5"></i>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -639,6 +641,7 @@
       const videoHeading = document.getElementById("event-video-heading");
       const videoImage = document.getElementById("event-video-image");
       const videoCaption = document.getElementById("event-video-caption");
+      const buyTicketBtn = document.getElementById("buy-ticket-btn");
 
       if (eventData) {
         document.title = `${eventData.title} | Belo Eventos`;
@@ -663,6 +666,10 @@
         videoImage.src = eventData.videoImage || videoImage.src;
         videoImage.alt = eventData.videoAlt || `Evento anterior de ${eventData.title}`;
         videoCaption.textContent = eventData.videoCaption || "Flashback";
+
+        if (buyTicketBtn && eventData.id) {
+          buyTicketBtn.href = `pagamento.html?id=${eventData.id}`;
+        }
       }
 
       // Header Scroll Effect

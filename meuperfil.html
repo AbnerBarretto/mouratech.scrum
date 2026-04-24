@@ -76,6 +76,16 @@
       .transition-header {
         transition: all 0.3s ease;
       }
+
+      .tab-btn.active {
+        background: #eff6ff;
+        color: #1d4ed8;
+      }
+
+      .tab-btn.tab-danger.active {
+        background: #fff1f2;
+        color: #e11d48;
+      }
     </style>
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col relative">
@@ -176,11 +186,6 @@
                 href="#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
                 >Dados Pessoais</a
-              >
-              <a
-                href="#seguranca"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
               >
               <a
                 href="#ingressos"
@@ -285,26 +290,20 @@
             <div class="profile-card p-6">
               <nav class="space-y-1">
                 <button
-                  id="dados-pessoais"
-                  class="w-full text-left px-4 py-3 bg-blue-50 text-blue-700 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3"
+                  data-tab="dados-pessoais"
+                  class="tab-btn active w-full text-left px-4 py-3 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
                 </button>
                 <button
-                  id="seguranca"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
-                >
-                  <i data-lucide="shield-check" class="w-4 h-4"></i> Segurança
-                </button>
-                <button
-                  id="ingressos"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                  data-tab="ingressos"
+                  class="tab-btn w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
                 </button>
                 <button
-                  id="gerenciamento"
-                  class="w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                  data-tab="gerenciamento"
+                  class="tab-btn tab-danger w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de
                   Conta
@@ -333,88 +332,132 @@
 
           <!-- CONTEÚDO PRINCIPAL -->
           <div class="lg:col-span-2 space-y-8">
-            <!-- FORMULÁRIO DE DADOS -->
-            <div class="profile-card p-8 md:p-10">
-              <div class="flex items-center justify-between mb-8">
-                <h2
-                  class="text-xl font-black text-slate-900 uppercase tracking-tight"
-                >
-                  Informações Básicas
-                </h2>
-                <button
-                  class="text-blue-600 font-bold text-xs uppercase hover:underline"
-                >
-                  Editar
-                </button>
+            <!-- ABA: DADOS PESSOAIS -->
+            <section id="dados-pessoais" data-panel="dados-pessoais" class="tab-panel">
+              <div class="profile-card p-8 md:p-10">
+                <div class="flex items-center justify-between mb-8">
+                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+                    Informações Básicas
+                  </h2>
+                  <button class="text-blue-600 font-bold text-xs uppercase hover:underline">
+                    Editar
+                  </button>
+                </div>
+
+                <form class="space-y-6">
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nome completo</label>
+                    <input
+                      type="text"
+                      readonly
+                      value="Fulano Ciclano"
+                      class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">E-mail de acesso</label>
+                    <input
+                      type="email"
+                      readonly
+                      value="fulaciclano@gmail.com"
+                      class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Data de nascimento</label>
+                    <input
+                      type="text"
+                      readonly
+                      value="03/12/2081"
+                      class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    />
+                  </div>
+                </form>
               </div>
+            </section>
 
-              <form class="space-y-6">
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >Nome completo</label
-                  >
-                  <input
-                    type="text"
-                    readonly
-                    value="Fulano Ciclano"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
+            <!-- ABA: INGRESSOS -->
+            <section id="ingressos" data-panel="ingressos" class="tab-panel hidden">
+              <div class="profile-card p-8 md:p-10">
+                <div class="flex items-center justify-between mb-8 gap-4">
+                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+                    Meus Ingressos
+                  </h2>
+                  <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-2 rounded-full">2 ingressos ativos</span>
                 </div>
 
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >E-mail de acesso</label
-                  >
-                  <input
-                    type="email"
-                    readonly
-                    value="fulaciclano@gmail.com"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
-                </div>
+                <div class="space-y-5">
+                  <article class="border border-slate-200 rounded-[1.5rem] overflow-hidden bg-white">
+                    <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5">
+                      <img
+                        src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=640"
+                        alt="Show Djavan"
+                        class="w-full md:w-40 h-28 rounded-xl object-cover"
+                      />
+                      <div class="flex-1">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Confirmado</p>
+                        <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight">Djavan - Turnê D</h3>
+                        <p class="text-slate-500 text-sm mt-1">15 de Junho · 21h · Marocas</p>
+                        <p class="text-slate-600 text-sm mt-2">Setor: Pista Premium · Portão B · Ingresso: Inteira</p>
+                      </div>
+                      <a
+                        href="evento.html?id=djavan-turne-d"
+                        class="bg-blue-600 hover:bg-blue-500 text-white font-black text-[10px] uppercase tracking-widest px-5 py-3 rounded-xl text-center"
+                      >
+                        Ver detalhes
+                      </a>
+                    </div>
+                  </article>
 
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >Data de nascimento</label
-                  >
-                  <input
-                    type="text"
-                    readonly
-                    value="03/12/2081"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
+                  <article class="border border-slate-200 rounded-[1.5rem] overflow-hidden bg-white">
+                    <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5">
+                      <img
+                        src="https://s2-g1.glbimg.com/3PHOW-V63BYBFuu43XAJS3n0lrg=/2048x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/b/8/lWkNIWQmeeagU30WMQcA/capital-inicial-1.jpg"
+                        alt="Show Capital Inicial"
+                        class="w-full md:w-40 h-28 rounded-xl object-cover"
+                      />
+                      <div class="flex-1">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Confirmado</p>
+                        <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight">Capital Inicial</h3>
+                        <p class="text-slate-500 text-sm mt-1">18 de Outubro · 21h · Centro de Eventos</p>
+                        <p class="text-slate-600 text-sm mt-2">Setor: Front Stage · Portão A · Ingresso: Meia-entrada</p>
+                      </div>
+                      <a
+                        href="evento.html?id=capital-inicial"
+                        class="bg-blue-600 hover:bg-blue-500 text-white font-black text-[10px] uppercase tracking-widest px-5 py-3 rounded-xl text-center"
+                      >
+                        Ver detalhes
+                      </a>
+                    </div>
+                  </article>
                 </div>
-              </form>
-            </div>
-
-            <!-- ZONA DE PERIGO (GERENCIAMENTO DE CONTA) -->
-            <div class="profile-card p-8 md:p-10 border-rose-100">
-              <div
-                class="flex flex-col md:flex-row items-center justify-between gap-6"
-              >
-                <div class="text-center md:text-left">
-                  <h3
-                    class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1"
-                  >
-                    Gerenciamento de Conta
-                  </h3>
-                  <p class="text-slate-500 text-xs font-medium">
-                    A exclusão da conta é permanente e removerá todos os seus
-                    dados.
-                  </p>
-                </div>
-                <!-- Trigger do Modal -->
-                <button
-                  id="open-modal"
-                  class="btn-danger px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95"
-                >
-                  Deletar conta
-                </button>
               </div>
-            </div>
+            </section>
+
+            <!-- ABA: GERENCIAMENTO -->
+            <section id="gerenciamento" data-panel="gerenciamento" class="tab-panel hidden">
+              <div class="profile-card p-8 md:p-10 border-rose-100">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div class="text-center md:text-left">
+                    <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1">
+                      Gerenciamento de Conta
+                    </h3>
+                    <p class="text-slate-500 text-xs font-medium">
+                      A exclusão da conta é permanente e removerá todos os seus
+                      dados.
+                    </p>
+                  </div>
+                  <button
+                    id="open-modal"
+                    class="btn-danger px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95"
+                  >
+                    Deletar conta
+                  </button>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
@@ -541,6 +584,42 @@
       menuClose.addEventListener("click", () => {
         mobileMenu.classList.add("hidden");
       });
+
+      const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
+      const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
+      const validTabs = new Set(["dados-pessoais", "ingressos", "gerenciamento"]);
+
+      const activateTab = (tabId) => {
+        const safeTabId = validTabs.has(tabId) ? tabId : "dados-pessoais";
+
+        tabButtons.forEach((button) => {
+          const isActive = button.dataset.tab === safeTabId;
+          button.classList.toggle("active", isActive);
+          if (!button.classList.contains("tab-danger")) {
+            button.classList.toggle("text-slate-500", !isActive);
+          }
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.toggle("hidden", panel.dataset.panel !== safeTabId);
+        });
+
+        if (window.location.hash !== `#${safeTabId}`) {
+          history.replaceState(null, "", `#${safeTabId}`);
+        }
+      };
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activateTab(button.dataset.tab);
+        });
+      });
+
+      window.addEventListener("hashchange", () => {
+        activateTab(window.location.hash.replace("#", ""));
+      });
+
+      activateTab(window.location.hash.replace("#", "") || "dados-pessoais");
 
       const deleteModal = document.getElementById("delete-modal");
       const openModalBtn = document.getElementById("open-modal");

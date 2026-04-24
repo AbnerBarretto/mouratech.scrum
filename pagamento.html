@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagamento | Belo Eventos</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .transition-header {
+        transition: all 0.3s ease;
+      }
+
+      .checkout-panel {
+        background: linear-gradient(130deg, #1d4ed8 0%, #1e40af 55%, #0f172a 100%);
+      }
+
+      .field {
+        border: 2px solid #e2e8f0;
+        transition: border-color 0.2s ease;
+      }
+
+      .field:focus {
+        border-color: #2563eb;
+        outline: none;
+      }
+
+      .form-error {
+        min-height: 1rem;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+    <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href = 'index.html'">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
+          >
+            <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#6366F1" />
+            <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10B981" />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
+            <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span class="text-indigo-300">Eventos</span></span>
+            <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e Conexão</span>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
+          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
+          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
+          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <a
+            href="login.html"
+            data-auth-enter
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+          >
+            ENTRAR
+          </a>
+          <div data-auth-profile class="relative group hidden">
+            <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
+            <button
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              aria-label="Menu do perfil"
+            >
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
+            </button>
+            <div
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            >
+              <a href="meuperfil.html#dados-pessoais" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Dados Pessoais</a>
+              <a href="meuperfil.html#seguranca" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Segurança</a>
+              <a href="meuperfil.html#ingressos" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meus Ingressos</a>
+              <a href="meuperfil.html#gerenciamento" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Gerenciamento de Conta</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="contato.html">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+      </nav>
+    </div>
+
+    <main class="pt-24 md:pt-28 pb-14 px-4">
+      <section class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <aside class="checkout-panel rounded-[2rem] p-6 lg:p-8 text-white lg:col-span-2 shadow-2xl">
+            <a id="back-link" href="evento.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-100 hover:text-yellow-300 transition-colors">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              Voltar para o evento
+            </a>
+
+            <div class="mt-6 inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-black uppercase text-[10px] tracking-widest px-3 py-1 rounded-full">
+              <i data-lucide="shield-check" class="w-3 h-3"></i>
+              Pagamento Seguro
+            </div>
+
+            <h1 id="event-title" class="mt-5 text-3xl font-black uppercase leading-tight">Guns N' Roses</h1>
+            <p id="event-city" class="mt-2 text-xl font-bold text-yellow-300">Belo Jardim, PE</p>
+
+            <div class="mt-8 space-y-4">
+              <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Data e Local</p>
+                <p id="event-datetime" class="mt-2 font-bold text-sm">25 de Novembro · IFPE Campus</p>
+              </div>
+              <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Classificação</p>
+                <p id="event-badge" class="mt-2 font-bold text-sm">Turne Internacional</p>
+              </div>
+              <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Resumo da Compra</p>
+                <p class="mt-2 text-sm">1 ingresso inteira</p>
+                <p id="event-total" class="mt-2 text-xl text-yellow-300 font-black">Total: R$ 450,00</p>
+              </div>
+            </div>
+          </aside>
+
+          <div class="bg-white rounded-[2rem] border border-slate-200 shadow-xl p-6 lg:p-8 lg:col-span-3">
+            <div class="flex items-start justify-between gap-4 mb-6">
+              <div>
+                <p class="text-xs uppercase tracking-[0.25em] font-black text-blue-600">Checkout</p>
+                <h2 class="text-2xl font-black uppercase tracking-tight text-slate-900">Dados de Pagamento</h2>
+                <p class="text-slate-500 text-sm mt-2">Preencha os dados para concluir a compra do seu ingresso.</p>
+              </div>
+              <div class="hidden sm:flex w-11 h-11 rounded-full bg-blue-50 items-center justify-center text-blue-700">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <form id="payment-form" novalidate>
+              <div>
+                <label for="card-name" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Nome Completo no Cartão</label>
+                <input id="card-name" type="text" class="field w-full rounded-xl px-4 py-3" placeholder="JOAO SILVA" required />
+                <p id="err-card-name" class="form-error text-rose-500 text-xs mt-1"></p>
+              </div>
+
+              <div class="mt-4">
+                <label for="card-number" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Número do Cartão</label>
+                <input id="card-number" type="text" inputmode="numeric" maxlength="19" class="field w-full rounded-xl px-4 py-3" placeholder="0000 0000 0000 0000" required />
+                <p id="err-card-number" class="form-error text-rose-500 text-xs mt-1"></p>
+              </div>
+
+              <div class="grid sm:grid-cols-3 gap-4 mt-4">
+                <div>
+                  <label for="expiry" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Validade</label>
+                  <input id="expiry" type="text" inputmode="numeric" maxlength="5" class="field w-full rounded-xl px-4 py-3" placeholder="MM/AA" required />
+                  <p id="err-expiry" class="form-error text-rose-500 text-xs mt-1"></p>
+                </div>
+                <div>
+                  <label for="cvv" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">CVV</label>
+                  <input id="cvv" type="text" inputmode="numeric" maxlength="4" class="field w-full rounded-xl px-4 py-3" placeholder="123" required />
+                  <p id="err-cvv" class="form-error text-rose-500 text-xs mt-1"></p>
+                </div>
+                <div>
+                  <label for="installments" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Parcelamento</label>
+                  <select id="installments" class="field w-full rounded-xl px-4 py-3 bg-white"></select>
+                </div>
+              </div>
+
+              <button id="pay-btn" type="submit" class="mt-6 w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl uppercase tracking-[0.2em] transition-all shadow-lg">
+                Finalizar Pagamento
+              </button>
+
+              <p class="mt-4 text-center text-[11px] uppercase tracking-[0.2em] text-slate-500 font-bold">
+                Ambiente criptografado · Belo Eventos 2026
+              </p>
+
+              <div id="success-box" class="hidden mt-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm font-semibold p-3">
+                Pagamento confirmado com sucesso! Redirecionando para meus ingressos...
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contato-section" class="bg-slate-900 text-white pt-20 pb-12">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-10 border-t border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+              <i data-lucide="star" class="text-blue-700 w-5 h-5 fill-current"></i>
+            </div>
+            <span class="font-black text-xl tracking-tighter uppercase italic">Belo Eventos</span>
+          </div>
+          <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">© 2026 Todos os direitos reservados</p>
+          <div class="flex gap-8">
+            <i data-lucide="instagram" class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"></i>
+            <i data-lucide="twitter" class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="events-data.js"></script>
+    <script src="auth-mock.js"></script>
+    <script>
+      lucide.createIcons();
+
+      const eventCatalog = window.BELO_EVENTS || {};
+      const params = new URLSearchParams(window.location.search);
+      const requestedId = params.get("id");
+      const fallbackId = "guns-n-roses";
+      const resolvedId = eventCatalog[requestedId] ? requestedId : fallbackId;
+      const eventData = eventCatalog[resolvedId] || eventCatalog[Object.keys(eventCatalog)[0]];
+
+      const basePrices = {
+        "guns-n-roses": 450,
+        "capital-inicial": 280,
+        "djavan-turne-d": 220,
+      };
+
+      const formatCurrency = (value) =>
+        value.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+
+      const price = basePrices[resolvedId] || 190;
+      const eventTitle = document.getElementById("event-title");
+      const eventCity = document.getElementById("event-city");
+      const eventDateTime = document.getElementById("event-datetime");
+      const eventBadge = document.getElementById("event-badge");
+      const eventTotal = document.getElementById("event-total");
+      const installments = document.getElementById("installments");
+      const backLink = document.getElementById("back-link");
+
+      if (eventData) {
+        document.title = `Pagamento | ${eventData.title} | Belo Eventos`;
+        eventTitle.textContent = eventData.title;
+        eventCity.textContent = eventData.city || "Belo Jardim, PE";
+        eventDateTime.textContent = `${eventData.dateLabel || "Data a confirmar"} · ${eventData.homeLocation || "Centro de Eventos"}`;
+        eventBadge.textContent = eventData.classification || eventData.badge || "Evento";
+        eventTotal.textContent = `Total: ${formatCurrency(price)}`;
+        backLink.href = `evento.html?id=${eventData.id}`;
+      }
+
+      const buildInstallments = (value) => {
+        const options = [];
+        for (let count = 1; count <= 3; count += 1) {
+          options.push({
+            count,
+            amount: formatCurrency(value / count),
+          });
+        }
+        return options;
+      };
+
+      buildInstallments(price).forEach((item) => {
+        const option = document.createElement("option");
+        option.value = `${item.count}`;
+        option.textContent = `${item.count}x de ${item.amount} sem juros`;
+        installments.appendChild(option);
+      });
+
+      const cardName = document.getElementById("card-name");
+      const cardNumber = document.getElementById("card-number");
+      const expiry = document.getElementById("expiry");
+      const cvv = document.getElementById("cvv");
+      const paymentForm = document.getElementById("payment-form");
+      const payBtn = document.getElementById("pay-btn");
+      const successBox = document.getElementById("success-box");
+
+      const user = window.BeloEventosAuth?.getUser?.();
+      if (user?.name) {
+        cardName.value = user.name.toUpperCase();
+      }
+
+      const err = {
+        cardName: document.getElementById("err-card-name"),
+        cardNumber: document.getElementById("err-card-number"),
+        expiry: document.getElementById("err-expiry"),
+        cvv: document.getElementById("err-cvv"),
+      };
+
+      cardNumber.addEventListener("input", (e) => {
+        const digits = e.target.value.replace(/\D/g, "").slice(0, 16);
+        e.target.value = digits.replace(/(\d{4})(?=\d)/g, "$1 ");
+      });
+
+      expiry.addEventListener("input", (e) => {
+        const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
+        if (digits.length >= 3) {
+          e.target.value = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+          return;
+        }
+        e.target.value = digits;
+      });
+
+      cvv.addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4);
+      });
+
+      const isValidExpiry = (value) => {
+        if (!/^\d{2}\/\d{2}$/.test(value)) return false;
+
+        const [monthStr, yearStr] = value.split("/");
+        const month = Number(monthStr);
+        if (month < 1 || month > 12) return false;
+
+        const now = new Date();
+        const currentYear = now.getFullYear() % 100;
+        const currentMonth = now.getMonth() + 1;
+        const year = Number(yearStr);
+
+        if (year < currentYear) return false;
+        if (year === currentYear && month < currentMonth) return false;
+
+        return true;
+      };
+
+      paymentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        Object.values(err).forEach((node) => {
+          node.textContent = "";
+        });
+
+        let hasError = false;
+
+        if (!cardName.value.trim() || cardName.value.trim().length < 5) {
+          err.cardName.textContent = "Informe o nome completo como está no cartão.";
+          hasError = true;
+        }
+
+        const cardDigits = cardNumber.value.replace(/\s/g, "");
+        if (!/^\d{16}$/.test(cardDigits)) {
+          err.cardNumber.textContent = "Digite um cartão com 16 dígitos.";
+          hasError = true;
+        }
+
+        if (!isValidExpiry(expiry.value.trim())) {
+          err.expiry.textContent = "Informe uma validade válida no formato MM/AA.";
+          hasError = true;
+        }
+
+        if (!/^\d{3,4}$/.test(cvv.value.trim())) {
+          err.cvv.textContent = "CVV inválido.";
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        payBtn.disabled = true;
+        payBtn.textContent = "Processando...";
+
+        setTimeout(() => {
+          successBox.classList.remove("hidden");
+          setTimeout(() => {
+            window.location.href = "meuperfil.html#ingressos";
+          }, 1600);
+        }, 1100);
+      });
+
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
