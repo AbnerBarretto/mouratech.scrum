@@ -134,7 +134,7 @@
             >PROGRAMAÇÃO</a
           >
           <a
-            href="comunidade.html"
+            href="convite-comunidade.html"
             class="hover:text-yellow-400 transition-colors"
             >COMUNIDADE</a
           >
@@ -229,11 +229,11 @@
       </nav>
     </div>
 
-    <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
+    <main class="flex-grow container mx-auto px-4 sm:px-6 py-8 sm:py-12 pt-28 md:pt-36">
       <div class="max-w-4xl mx-auto">
-        <div class="relative mb-24">
+        <div class="relative mb-20 sm:mb-24">
           <div
-            class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
+            class="h-32 sm:h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
           >
             <img
               src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
@@ -242,31 +242,35 @@
             />
           </div>
 
-          <div class="absolute -bottom-16 left-12 flex items-end gap-6">
-            <div class="relative group">
+          <div class="absolute -bottom-12 sm:-bottom-16 left-6 sm:left-12 flex items-end gap-4 sm:gap-6">
+            <div class="relative group inline-block">
               <div
-                class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden"
+                class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden relative"
               >
                 <img
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200"
                   alt="Profile"
                   class="w-full h-full object-cover"
                 />
+                <button
+                  class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest"
+                >
+                  Alterar Foto
+                </button>
               </div>
-              <button
-                class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold uppercase tracking-widest"
-              >
-                Alterar Foto
-              </button>
+              <div class="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 md:bottom-2 md:right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full border-2 sm:border-4 border-slate-50 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform cursor-pointer" title="Insígnia Ativa: Festeiro Ouro">
+                <i data-lucide="award" class="text-blue-700 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current"></i>
+              </div>
             </div>
-            <div class="mb-4">
+            
+            <div class="mb-2 sm:mb-4">
               <h1
-                class="text-3xl font-black text-slate-900 uppercase tracking-tighter"
+                class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter"
               >
                 Fulano Ciclano
               </h1>
               <p
-                class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2"
+                class="text-slate-500 font-bold uppercase text-[9px] sm:text-[10px] tracking-widest flex items-center gap-2"
               >
                 <span
                   class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
@@ -277,9 +281,9 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           <aside class="lg:col-span-1 space-y-4">
-            <div class="profile-card p-6">
+            <div class="profile-card p-5 sm:p-6">
               <nav class="space-y-1">
                 <button
                   data-tab="dados-pessoais"
@@ -288,10 +292,16 @@
                   <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
                 </button>
                 <button
-                  data-tab="ingressos"
-                  class="tab-btn w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                  id="ingressos"
+                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
+                </button>
+                <button
+                  id="nav-insignias"
+                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                >
+                  <i data-lucide="award" class="w-4 h-4"></i> Minhas Insígnias
                 </button>
                 <button
                   data-tab="gerenciamento"
@@ -303,7 +313,7 @@
             </div>
 
             <div
-              class="bg-[#0056e0] p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
+              class="bg-[#0056e0] p-5 sm:p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
             >
               <h4 class="font-black text-lg uppercase tracking-tighter mb-2">
                 Oferecer Serviços
@@ -450,7 +460,7 @@
 
     <div
       id="delete-modal"
-      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden"
+      class="fixed inset-0 z-[200] flex items-center justify-center px-4 sm:px-6 modal-hidden"
     >
       <div
         id="modal-overlay"
@@ -458,40 +468,42 @@
       ></div>
 
       <div
-        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
+        class="modal-content relative bg-white w-full max-w-lg rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden p-6 sm:p-10 text-center"
       >
         <div
-          class="w-32 h-32 mx-auto mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
+          class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 sm:mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
         >
           <div
-            class="absolute inset-0 border-8 border-rose-500/20 rounded-full animate-ping"
+            class="absolute inset-0 border-4 sm:border-8 border-rose-500/20 rounded-full animate-ping"
           ></div>
           <i
             data-lucide="alert-triangle"
-            class="w-16 h-16 text-rose-600 stroke-[2.5]"
+            class="w-12 h-12 sm:w-16 sm:h-16 text-rose-600 stroke-[2.5]"
           ></i>
         </div>
 
-        <h2 class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4">
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4"
+        >
           Deseja realmente <br />
           <span class="text-rose-600">apagar a conta?</span>
         </h2>
 
-        <p class="text-slate-500 font-medium text-sm mb-10 leading-relaxed">
+        <p class="text-slate-500 font-medium text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed">
           Esta ação é irreversível. Todos os seus ingressos, histórico de
           eventos e conexões na comunidade serão removidos permanentemente.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <button
             id="close-modal"
-            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all"
+            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 sm:py-5 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs transition-all"
           >
             Cancelar
           </button>
           <button
             id="confirm-delete"
-            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
+            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-4 sm:py-5 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
           >
             Deletar conta
           </button>
@@ -503,33 +515,33 @@
       id="success-screen"
       class="fixed inset-0 z-[210] bg-white flex flex-col items-center justify-center hidden"
     >
-      <div class="text-center p-10">
+      <div class="text-center p-6 sm:p-10">
         <div
-          class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+          class="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
         >
-          <i data-lucide="check" class="w-12 h-12 text-green-600"></i>
+          <i data-lucide="check" class="w-10 h-10 sm:w-12 sm:h-12 text-green-600"></i>
         </div>
         <h1
-          class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
+          class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
         >
           Conta Excluída
         </h1>
-        <p class="text-slate-500 font-medium mb-8">
+        <p class="text-slate-500 font-medium text-sm mb-8">
           Sua conta e seus dados foram removidos do Belo Eventos.
         </p>
         <button
           onclick="window.location.reload()"
-          class="bg-[#0056e0] text-white font-black px-12 py-4 rounded-2xl uppercase tracking-widest text-xs"
+          class="bg-[#0056e0] text-white font-black px-10 sm:px-12 py-4 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs"
         >
           Voltar ao Início
         </button>
       </div>
     </div>
 
-    <footer class="py-12 border-t border-slate-200 mt-auto">
+    <footer class="py-8 sm:py-12 border-t border-slate-200 mt-auto">
       <div class="container mx-auto px-6 text-center">
         <p
-          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]"
+          class="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em]"
         >
           © 2026 Belo Eventos · Privacidade e Segurança
         </p>
