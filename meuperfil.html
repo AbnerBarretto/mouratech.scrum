@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -9,14 +9,11 @@
       type="image/svg+xml"
       href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
     />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       body {
@@ -89,7 +86,6 @@
     </style>
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col relative">
-    <!-- HEADER -->
     <header
       id="main-header"
       class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
@@ -143,7 +139,7 @@
             >COMUNIDADE</a
           >
           <a
-            href="contato.html"
+            href="#contato-section"
             class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
@@ -173,6 +169,7 @@
               class="text-white text-[10px] font-black uppercase tracking-widest"
             ></span>
             <button
+              data-auth-btn
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
@@ -221,7 +218,7 @@
       >
         <a href="categorias.html">Programação</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="contato.html">Contato</a>
+        <a href="#contato-section">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
@@ -234,9 +231,7 @@
 
     <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
       <div class="max-w-4xl mx-auto">
-        <!-- HEADER DO PERFIL (BIG TECH STYLE) -->
         <div class="relative mb-24">
-          <!-- Cover Image -->
           <div
             class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
           >
@@ -247,7 +242,6 @@
             />
           </div>
 
-          <!-- Avatar and Info Overlay -->
           <div class="absolute -bottom-16 left-12 flex items-end gap-6">
             <div class="relative group">
               <div
@@ -283,9 +277,7 @@
           </div>
         </div>
 
-        <!-- GRID DE INFORMAÇÕES -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- SIDEBAR DE NAVEGAÇÃO -->
           <aside class="lg:col-span-1 space-y-4">
             <div class="profile-card p-6">
               <nav class="space-y-1">
@@ -305,13 +297,11 @@
                   data-tab="gerenciamento"
                   class="tab-btn tab-danger w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
-                  <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de
-                  Conta
+                  <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de Conta
                 </button>
               </nav>
             </div>
 
-            <!-- CTA PRESTADOR DE SERVIÇOS -->
             <div
               class="bg-[#0056e0] p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
             >
@@ -319,20 +309,18 @@
                 Oferecer Serviços
               </h4>
               <p class="text-blue-100 text-xs font-medium mb-6 leading-relaxed">
-                Divulgue seu trabalho para a comunidade Belo Eventos.
+                Divulgue seu trabalho para a comunidade Belo Eventos ou contrate os melhores profissionais.
               </p>
-              <a
-                href="contato.html"
+              <button
+                onclick="window.location.href='profissionais.html'"
                 class="w-full bg-yellow-400 text-blue-900 font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95 block text-center"
               >
-                Começar agora
-              </a>
+                Acessar Profissionais
+              </button>
             </div>
           </aside>
 
-          <!-- CONTEÚDO PRINCIPAL -->
           <div class="lg:col-span-2 space-y-8">
-            <!-- ABA: DADOS PESSOAIS -->
             <section id="dados-pessoais" data-panel="dados-pessoais" class="tab-panel">
               <div class="profile-card p-8 md:p-10">
                 <div class="flex items-center justify-between mb-8">
@@ -378,7 +366,6 @@
               </div>
             </section>
 
-            <!-- ABA: INGRESSOS -->
             <section id="ingressos" data-panel="ingressos" class="tab-panel hidden">
               <div class="profile-card p-8 md:p-10">
                 <div class="flex items-center justify-between mb-8 gap-4">
@@ -436,7 +423,6 @@
               </div>
             </section>
 
-            <!-- ABA: GERENCIAMENTO -->
             <section id="gerenciamento" data-panel="gerenciamento" class="tab-panel hidden">
               <div class="profile-card p-8 md:p-10 border-rose-100">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -445,8 +431,7 @@
                       Gerenciamento de Conta
                     </h3>
                     <p class="text-slate-500 text-xs font-medium">
-                      A exclusão da conta é permanente e removerá todos os seus
-                      dados.
+                      A exclusão da conta é permanente e removerá todos os seus dados.
                     </p>
                   </div>
                   <button
@@ -463,22 +448,18 @@
       </div>
     </main>
 
-    <!-- MODAL DE EXCLUSÃO (ESTILO BIG TECH) -->
     <div
       id="delete-modal"
       class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden"
     >
-      <!-- Backdrop (Fundo Escuro com Blur) -->
       <div
         id="modal-overlay"
         class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
       ></div>
 
-      <!-- Conteúdo do Modal -->
       <div
         class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
       >
-        <!-- Ícone de Alerta Crítico -->
         <div
           class="w-32 h-32 mx-auto mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
         >
@@ -491,9 +472,7 @@
           ></i>
         </div>
 
-        <h2
-          class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4"
-        >
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4">
           Deseja realmente <br />
           <span class="text-rose-600">apagar a conta?</span>
         </h2>
@@ -520,7 +499,6 @@
       </div>
     </div>
 
-    <!-- TELA DE SUCESSO PÓS-EXCLUSÃO -->
     <div
       id="success-screen"
       class="fixed inset-0 z-[210] bg-white flex flex-col items-center justify-center hidden"
@@ -585,6 +563,7 @@
         mobileMenu.classList.add("hidden");
       });
 
+      // Lógica de Abas
       const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
       const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
       const validTabs = new Set(["dados-pessoais", "ingressos", "gerenciamento"]);
@@ -621,6 +600,7 @@
 
       activateTab(window.location.hash.replace("#", "") || "dados-pessoais");
 
+      // Lógica de Modal de Exclusão
       const deleteModal = document.getElementById("delete-modal");
       const openModalBtn = document.getElementById("open-modal");
       const closeModalBtn = document.getElementById("close-modal");
@@ -658,4 +638,3 @@
     </script>
   </body>
 </html>
-
