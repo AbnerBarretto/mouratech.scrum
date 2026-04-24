@@ -1,9 +1,14 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Belo Eventos | Categorias</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -52,21 +57,38 @@
       class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
-        <div class="flex items-center gap-2 group cursor-pointer">
-          <div
-            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
+        <div
+          class="logo-container flex items-center gap-4 cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
           >
-            <i
-              data-lucide="star"
-              class="w-6 h-6 text-blue-700 fill-current"
-            ></i>
-          </div>
-          <a href="index.html">
+            <path
+              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+              fill="#6366F1"
+            />
+            <path
+              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+              fill="#10B981"
+            />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
             <span
-              class="text-white font-black text-xl tracking-tighter uppercase"
-              >Belo Eventos</span
-            ></a
-          >
+              class="text-white text-2xl font-black tracking-tighter leading-none"
+              >Belo<span class="text-indigo-300">Eventos</span></span
+            >
+            <span
+              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              >Cultura e Conexão</span
+            >
+          </div>
         </div>
 
         <nav
@@ -179,63 +201,8 @@
     </div>
 
     <main class="min-h-screen pt-16 md:pt-16">
-      <section class="bg-white border-b border-slate-200">
-        <div class="container mx-auto px-6 py-4">
-          <div class="flex flex-wrap gap-3" id="topic-filter-bar">
-            <button
-              data-topic="all"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-blue-600 text-white"
-            >
-              Todos
-            </button>
-            <button
-              data-topic="musica"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Música
-            </button>
-            <button
-              data-topic="oficina"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Oficina
-            </button>
-            <button
-              data-topic="religioso"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Religioso
-            </button>
-            <button
-              data-topic="teatro"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Teatro
-            </button>
-            <button
-              data-topic="gastronomia"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Gastronomia
-            </button>
-            <button
-              data-topic="standup"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Stand-up
-            </button>
-            <button
-              data-topic="exposicao"
-              class="topic-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200"
-            >
-              Exposições
-            </button>
-          </div>
-        </div>
-      </section>
-
       <!-- HEADER DA SEÇÃO -->
-      <section class="bg-white border-b border-slate-200 py-12">
+      <section class="bg-white border-b border-slate-200 py-8 md:py-10">
         <div class="container mx-auto px-6">
           <div
             class="flex flex-col md:flex-row md:items-end justify-between gap-6"
@@ -263,7 +230,7 @@
                 Escolha um gênero para filtrar os eventos.
               </p>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="relative flex items-center gap-4">
               <div class="text-right hidden md:block">
                 <p
                   class="text-xs font-bold text-slate-400 uppercase tracking-widest"
@@ -273,14 +240,90 @@
                 <p class="text-sm font-black text-slate-900">Belo Jardim, PE</p>
               </div>
               <button
+                id="subtopic-toggle"
                 class="p-3 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
+                aria-label="Abrir filtros detalhados"
               >
                 <i
                   data-lucide="sliders-horizontal"
                   class="w-5 h-5 text-slate-600"
                 ></i>
               </button>
+
+              <div
+                id="subtopic-panel"
+                class="hidden absolute right-0 top-full mt-3 w-[min(90vw,26rem)] bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 z-20"
+              >
+                <p
+                  class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3"
+                >
+                  Filtro detalhado
+                </p>
+                <div
+                  id="subtopic-filter-bar"
+                  class="flex flex-wrap gap-2.5"
+                  aria-label="Filtros detalhados"
+                ></div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white border-b border-slate-200">
+        <div class="container mx-auto px-6 py-5">
+          <div
+            class="flex flex-nowrap gap-3 overflow-x-auto no-scrollbar"
+            id="topic-filter-bar"
+          >
+            <button
+              data-topic="all"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-blue-600 text-white shadow-sm shadow-blue-600/20"
+            >
+              Todos
+            </button>
+            <button
+              data-topic="musica"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Música
+            </button>
+            <button
+              data-topic="oficina"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Oficina
+            </button>
+            <button
+              data-topic="religioso"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Religioso
+            </button>
+            <button
+              data-topic="teatro"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Teatro
+            </button>
+            <button
+              data-topic="gastronomia"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Gastronomia
+            </button>
+            <button
+              data-topic="standup"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Stand-up
+            </button>
+            <button
+              data-topic="exposicao"
+              class="topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              Exposições
+            </button>
           </div>
         </div>
       </section>
@@ -295,6 +338,7 @@
             <!-- Card 1 -->
             <div
               data-topic="musica"
+              data-subtopic="rock"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
               <div class="relative h-80 overflow-hidden">
@@ -345,6 +389,7 @@
             <!-- Card 2 -->
             <div
               data-topic="musica"
+              data-subtopic="rock"
               onclick="window.location.href = 'evento.html'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -397,6 +442,7 @@
             <!-- Card 3 -->
             <div
               data-topic="oficina"
+              data-subtopic="tecnica-vocal"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
               <div class="relative h-80 overflow-hidden">
@@ -433,6 +479,261 @@
                   <span
                     class="font-black text-xl text-slate-900 tracking-tighter"
                     >R$ 85,00</span
+                  >
+                  <button
+                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              data-topic="musica"
+              data-subtopic="reggae"
+              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              <div class="relative h-80 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&q=80&w=1000"
+                  class="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-6 left-6 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                >
+                  REGGAE VIBES
+                </div>
+              </div>
+              <div class="p-8">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
+                >
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 27 Set ·
+                  20:00
+                </div>
+                <h3
+                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
+                >
+                  Noite Reggae Roots
+                </h3>
+                <p
+                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i> Arena Verde,
+                  Belo Jardim
+                </p>
+                <div
+                  class="flex items-center justify-between pt-6 border-t border-slate-50"
+                >
+                  <span
+                    class="font-black text-xl text-slate-900 tracking-tighter"
+                    >R$ 90,00</span
+                  >
+                  <button
+                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div
+              data-topic="musica"
+              data-subtopic="gospel"
+              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              <div class="relative h-80 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=1000"
+                  class="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-6 left-6 bg-indigo-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                >
+                  GOSPEL LIVE
+                </div>
+              </div>
+              <div class="p-8">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
+                >
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 08 Nov ·
+                  19:30
+                </div>
+                <h3
+                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
+                >
+                  Festival Gospel da Paz
+                </h3>
+                <p
+                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i> Praça da Matriz,
+                  Belo Jardim
+                </p>
+                <div
+                  class="flex items-center justify-between pt-6 border-t border-slate-50"
+                >
+                  <span
+                    class="font-black text-xl text-slate-900 tracking-tighter"
+                    >R$ 65,00</span
+                  >
+                  <button
+                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div
+              data-topic="musica"
+              data-subtopic="catolica"
+              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              <div class="relative h-80 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1464375117522-1311dd7d8b64?auto=format&fit=crop&q=80&w=1000"
+                  class="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-6 left-6 bg-cyan-700 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                >
+                  CANTO CATÓLICO
+                </div>
+              </div>
+              <div class="p-8">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
+                >
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 15 Dez ·
+                  18:00
+                </div>
+                <h3
+                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
+                >
+                  Louvor na Catedral
+                </h3>
+                <p
+                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i> Catedral
+                  Central, Belo Jardim
+                </p>
+                <div
+                  class="flex items-center justify-between pt-6 border-t border-slate-50"
+                >
+                  <span
+                    class="font-black text-xl text-slate-900 tracking-tighter"
+                    >R$ 45,00</span
+                  >
+                  <button
+                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div
+              data-topic="musica"
+              data-subtopic="mpb"
+              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              <div class="relative h-80 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=1000"
+                  class="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-6 left-6 bg-amber-500 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                >
+                  NOITE MPB
+                </div>
+              </div>
+              <div class="p-8">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
+                >
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 22 Nov ·
+                  21:30
+                </div>
+                <h3
+                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
+                >
+                  Sessão MPB Autoral
+                </h3>
+                <p
+                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i> Teatro Popular,
+                  Belo Jardim
+                </p>
+                <div
+                  class="flex items-center justify-between pt-6 border-t border-slate-50"
+                >
+                  <span
+                    class="font-black text-xl text-slate-900 tracking-tighter"
+                    >R$ 110,00</span
+                  >
+                  <button
+                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
+                  >
+                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div
+              data-topic="musica"
+              data-subtopic="forro"
+              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              <div class="relative h-80 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1000"
+                  class="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div
+                  class="absolute top-6 left-6 bg-rose-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                >
+                  FORRÓ RAIZ
+                </div>
+              </div>
+              <div class="p-8">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
+                >
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 13 Jul ·
+                  22:00
+                </div>
+                <h3
+                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
+                >
+                  Arraiá de Forró Pé de Serra
+                </h3>
+                <p
+                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i> Pátio de
+                  Eventos, Belo Jardim
+                </p>
+                <div
+                  class="flex items-center justify-between pt-6 border-t border-slate-50"
+                >
+                  <span
+                    class="font-black text-xl text-slate-900 tracking-tighter"
+                    >R$ 75,00</span
                   >
                   <button
                     class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
@@ -572,7 +873,7 @@
         <div
           class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs font-bold uppercase"
         >
-          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <p>© 2026 Belo Eventos. Todos os direitos reservados.</p>
           <div class="flex gap-8">
             <a href="#" class="hover:text-white">Instagram</a>
             <a href="#" class="hover:text-white">LinkedIn</a>
@@ -611,6 +912,10 @@
         mobileMenu.classList.add("hidden");
       });
 
+      const topicBar = document.getElementById("topic-filter-bar");
+      const subtopicBar = document.getElementById("subtopic-filter-bar");
+      const subtopicToggle = document.getElementById("subtopic-toggle");
+      const subtopicPanel = document.getElementById("subtopic-panel");
       const topicButtons = document.querySelectorAll(".topic-filter-btn");
       const eventCards = document.querySelectorAll("#events-grid .event-card");
       const noEventsMessage = document.getElementById("no-events-message");
@@ -618,19 +923,132 @@
       const sectionSubtitle = document.getElementById("section-subtitle");
       const currentBreadcrumb = document.getElementById("current-breadcrumb");
 
-      const topicLabels = {
-        all: "Todas",
-        musica: "Música",
-        oficina: "Oficina",
-        religioso: "Religioso",
-        teatro: "Teatro",
-        gastronomia: "Gastronomia",
-        standup: "Stand-up",
-        exposicao: "Exposições",
+      const topicConfig = {
+        all: {
+          label: "Todas",
+          subtitle: "Escolha um gênero para filtrar os eventos.",
+          subtopics: [{ id: "all", label: "Todos os estilos" }],
+        },
+        musica: {
+          label: "Música",
+          subtitle: "Refine por estilo musical para encontrar o evento ideal.",
+          subtopics: [
+            { id: "all", label: "Todos" },
+            { id: "rock", label: "Rock" },
+            { id: "reggae", label: "Reggae" },
+            { id: "gospel", label: "Gospel" },
+            { id: "catolica", label: "Católica" },
+            { id: "mpb", label: "MPB" },
+            { id: "forro", label: "Forró" },
+          ],
+        },
+        oficina: {
+          label: "Oficina",
+          subtitle: "Aprenda e pratique com experiências criativas.",
+          subtopics: [
+            { id: "all", label: "Todas" },
+            { id: "tecnica-vocal", label: "Técnica Vocal" },
+            { id: "instrumentos", label: "Instrumentos" },
+          ],
+        },
+        religioso: {
+          label: "Religioso",
+          subtitle: "Momentos de fé e espiritualidade para toda a comunidade.",
+          subtopics: [{ id: "all", label: "Todos" }],
+        },
+        teatro: {
+          label: "Teatro",
+          subtitle: "Espetáculos e performances em destaque na cidade.",
+          subtopics: [{ id: "all", label: "Todos" }],
+        },
+        gastronomia: {
+          label: "Gastronomia",
+          subtitle: "Sabores locais e experiências gastronômicas exclusivas.",
+          subtopics: [{ id: "all", label: "Todos" }],
+        },
+        standup: {
+          label: "Stand-up",
+          subtitle: "Humor ao vivo com talentos regionais e nacionais.",
+          subtopics: [{ id: "all", label: "Todos" }],
+        },
+        exposicao: {
+          label: "Exposições",
+          subtitle: "Arte, cultura visual e experiências imersivas.",
+          subtopics: [{ id: "all", label: "Todas" }],
+        },
+      };
+
+      let activeTopic = "all";
+      let activeSubtopic = "all";
+
+      const renderSubtopicFilters = (topic) => {
+        const config = topicConfig[topic] || topicConfig.all;
+        const items = config.subtopics || [{ id: "all", label: "Todos" }];
+
+        subtopicBar.innerHTML = items
+          .map(
+            (item) => `
+              <button
+                data-subtopic="${item.id}"
+                class="subtopic-filter-btn px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all ${
+                  item.id === activeSubtopic
+                    ? "bg-blue-600 text-white shadow-sm shadow-blue-600/20"
+                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                }"
+              >
+                ${item.label}
+              </button>
+            `,
+          )
+          .join("");
+      };
+
+      const applyFilters = () => {
+        const topicLabel = topicConfig[activeTopic]?.label || "Todas";
+        let visibleCards = 0;
+
+        eventCards.forEach((card) => {
+          const cardTopic = card.dataset.topic;
+          const cardSubtopic = card.dataset.subtopic || "all";
+          const topicMatch = activeTopic === "all" || cardTopic === activeTopic;
+          const subtopicMatch =
+            activeTopic === "all" ||
+            activeSubtopic === "all" ||
+            cardSubtopic === activeSubtopic;
+
+          const shouldShow = topicMatch && subtopicMatch;
+          card.classList.toggle("hidden", !shouldShow);
+          if (shouldShow) visibleCards += 1;
+        });
+
+        const subtopicLabel =
+          activeSubtopic !== "all"
+            ? (topicConfig[activeTopic]?.subtopics || []).find(
+                (item) => item.id === activeSubtopic,
+              )?.label
+            : null;
+
+        currentBreadcrumb.textContent = subtopicLabel
+          ? `${topicLabel} · ${subtopicLabel}`
+          : topicLabel;
+
+        sectionTitle.innerHTML =
+          activeTopic === "all"
+            ? 'CATEGORIAS <span class="text-blue-600">EM DESTAQUE</span>'
+            : `${topicLabel.toUpperCase()} <span class="text-blue-600">EM ALTA</span>`;
+
+        sectionSubtitle.textContent =
+          subtopicLabel && activeTopic !== "all"
+            ? `Mostrando eventos de ${topicLabel} no estilo ${subtopicLabel}.`
+            : topicConfig[activeTopic]?.subtitle ||
+              "Escolha um gênero para filtrar os eventos.";
+
+        noEventsMessage.classList.toggle("hidden", visibleCards > 0);
       };
 
       const activateTopic = (topic) => {
-        const currentLabel = topicLabels[topic] || "Todas";
+        activeTopic = topic;
+        activeSubtopic = "all";
 
         topicButtons.forEach((button) => {
           const isActive = button.dataset.topic === topic;
@@ -640,32 +1058,56 @@
           button.classList.toggle("text-slate-600", !isActive);
         });
 
-        let visibleCards = 0;
-
-        eventCards.forEach((card) => {
-          const shouldShow = topic === "all" || card.dataset.topic === topic;
-          card.classList.toggle("hidden", !shouldShow);
-          if (shouldShow) visibleCards += 1;
-        });
-
-        currentBreadcrumb.textContent = currentLabel;
-        sectionTitle.innerHTML =
-          topic === "all"
-            ? 'CATEGORIAS <span class="text-blue-600">EM DESTAQUE</span>'
-            : `${currentLabel.toUpperCase()} <span class="text-blue-600">EM ALTA</span>`;
-        sectionSubtitle.textContent =
-          topic === "all"
-            ? "Escolha um gênero para filtrar os eventos."
-            : `Mostrando eventos da categoria ${currentLabel}.`;
-
-        noEventsMessage.classList.toggle("hidden", visibleCards > 0);
+        renderSubtopicFilters(topic);
+        applyFilters();
       };
 
-      topicButtons.forEach((button) => {
-        button.addEventListener("click", () =>
-          activateTopic(button.dataset.topic),
-        );
+      topicBar.addEventListener("click", (event) => {
+        const button = event.target.closest(".topic-filter-btn");
+        if (!button) return;
+        activateTopic(button.dataset.topic);
       });
+
+      const closeSubtopicPanel = () => {
+        subtopicPanel.classList.add("hidden");
+      };
+
+      const toggleSubtopicPanel = () => {
+        subtopicPanel.classList.toggle("hidden");
+      };
+
+      subtopicToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleSubtopicPanel();
+      });
+
+      subtopicBar.addEventListener("click", (event) => {
+        const button = event.target.closest(".subtopic-filter-btn");
+        if (!button) return;
+
+        activeSubtopic = button.dataset.subtopic;
+        renderSubtopicFilters(activeTopic);
+        applyFilters();
+        closeSubtopicPanel();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !subtopicPanel.classList.contains("hidden") &&
+          !subtopicPanel.contains(event.target) &&
+          !subtopicToggle.contains(event.target)
+        ) {
+          closeSubtopicPanel();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeSubtopicPanel();
+        }
+      });
+
+      activateTopic("all");
     </script>
   </body>
 </html>

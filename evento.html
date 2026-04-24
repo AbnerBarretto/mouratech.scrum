@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guns N' Roses | Belo Eventos</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -91,21 +96,38 @@
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
         <!-- Logo -->
-        <div class="flex items-center gap-2 group cursor-pointer">
-          <div
-            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
+        <div
+          class="logo-container flex items-center gap-4 cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
           >
-            <i
-              data-lucide="star"
-              class="w-6 h-6 text-blue-700 fill-current"
-            ></i>
-          </div>
-          <a href="index.html">
+            <path
+              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+              fill="#6366F1"
+            />
+            <path
+              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+              fill="#10B981"
+            />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
             <span
-              class="text-white font-black text-xl tracking-tighter uppercase"
-              >Belo Eventos</span
-            ></a
-          >
+              class="text-white text-2xl font-black tracking-tighter leading-none"
+              >Belo<span class="text-indigo-300">Eventos</span></span
+            >
+            <span
+              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              >Cultura e Conexão</span
+            >
+          </div>
         </div>
 
         <!-- Desktop Nav -->
