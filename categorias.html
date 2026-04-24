@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -337,6 +337,7 @@
             <div
               data-topic="musica"
               data-subtopic="rock"
+              data-event-id="capital-inicial"
               onclick="window.location.href = 'evento.html?id=capital-inicial'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -389,6 +390,7 @@
             <div
               data-topic="musica"
               data-subtopic="rock"
+              data-event-id="guns-n-roses"
               onclick="window.location.href = 'evento.html?id=guns-n-roses'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -442,6 +444,7 @@
             <div
               data-topic="oficina"
               data-subtopic="tecnica-vocal"
+              data-event-id="oficina-voz-palco"
               onclick="
                 window.location.href = 'evento.html?id=oficina-voz-palco'
               "
@@ -495,6 +498,7 @@
             <div
               data-topic="musica"
               data-subtopic="reggae"
+              data-event-id="reggae-roots"
               onclick="window.location.href = 'evento.html?id=reggae-roots'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -547,6 +551,7 @@
             <div
               data-topic="musica"
               data-subtopic="gospel"
+              data-event-id="festival-gospel"
               onclick="window.location.href = 'evento.html?id=festival-gospel'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -599,6 +604,7 @@
             <div
               data-topic="musica"
               data-subtopic="catolica"
+              data-event-id="louvor-catedral"
               onclick="window.location.href = 'evento.html?id=louvor-catedral'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -651,6 +657,7 @@
             <div
               data-topic="musica"
               data-subtopic="mpb"
+              data-event-id="djavan-turne-d"
               onclick="window.location.href = 'evento.html?id=djavan-turne-d'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -703,6 +710,7 @@
             <div
               data-topic="musica"
               data-subtopic="forro"
+              data-event-id="arraia-forro"
               onclick="window.location.href = 'evento.html?id=arraia-forro'"
               class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
             >
@@ -889,6 +897,7 @@
       </div>
     </footer>
 
+    <script src="events-data.js"></script>
     <script src="auth-mock.js"></script>
     <script>
       // Inicializa Lucide
@@ -1115,6 +1124,47 @@
       });
 
       activateTopic("all");
+
+      // ──── Sincronizar cards com edições do admin (localStorage) ────
+      (function syncCategoriasWithAdmin() {
+        const EVENTS_KEY = "beloEventosAdminEvents";
+        try {
+          const stored = localStorage.getItem(EVENTS_KEY);
+          if (!stored) return;
+
+          const adminEvents = JSON.parse(stored);
+          if (!Array.isArray(adminEvents)) return;
+
+          const adminMap = {};
+          adminEvents.forEach(function (ev) {
+            adminMap[ev.id] = ev;
+          });
+
+          const adminIds = adminEvents.map(function (ev) { return ev.id; });
+
+          document.querySelectorAll("#events-grid .event-card[data-event-id]").forEach(function (card) {
+            const eventId = card.dataset.eventId;
+
+            // Se o evento foi excluído pelo admin, ocultar o card
+            if (adminIds.indexOf(eventId) === -1) {
+              card.style.display = "none";
+              card.classList.add("admin-removed");
+              return;
+            }
+
+            // Se o título foi editado, atualizar no card
+            const edited = adminMap[eventId];
+            if (edited) {
+              const titleEl = card.querySelector("h3");
+              if (titleEl) {
+                titleEl.textContent = edited.title;
+              }
+            }
+          });
+        } catch (e) {
+          // Fallback silencioso
+        }
+      })();
     </script>
   </body>
 </html>
