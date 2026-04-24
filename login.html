@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -336,7 +336,29 @@
         mobileMenu.classList.add("hidden");
       });
 
-      // LÃ³gica de submissÃ£o (Mock)
+      // Usuários Mock
+      const MOCK_USERS = {
+        "fulano@gmail.com": {
+          id: "usr_mock_001",
+          name: "Fulano Ciclano",
+          email: "fulano@gmail.com",
+          password: "123456",
+          role: "cliente",
+          memberSince: "2024",
+          redirect: "meuperfil.html",
+        },
+        "admin@gmail.com": {
+          id: "usr_mock_002",
+          name: "Admin",
+          email: "admin@gmail.com",
+          password: "admin123",
+          role: "admin",
+          memberSince: "2023",
+          redirect: "adminperfil.html",
+        },
+      };
+
+      // Lógica de submissão (Mock)
       document
         .getElementById("login-form")
         .addEventListener("submit", function (e) {
@@ -344,32 +366,46 @@
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalContent = submitBtn.innerHTML;
 
+          // Remove erro anterior
+          const oldError = document.getElementById("login-error");
+          if (oldError) oldError.remove();
+
           submitBtn.disabled = true;
           submitBtn.innerHTML =
             '<span class="animate-pulse">Autenticando...</span>';
 
+          const emailValue = this.querySelector("#email").value.trim().toLowerCase();
+          const passwordValue = this.querySelector("#password").value;
+
           // Simulação de delay de rede
           setTimeout(() => {
-            const emailValue = this.querySelector("#email").value.trim();
-            const mockUser = {
-              id: "usr_mock_001",
-              name: "Fulano Mock",
-              email: emailValue || "fulano.mock@beloeventos.local",
-              role: "cliente",
-              memberSince: "2024",
-            };
+            const foundUser = MOCK_USERS[emailValue];
 
+            if (!foundUser || foundUser.password !== passwordValue) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalContent;
+              lucide.createIcons();
+
+              const errorDiv = document.createElement("div");
+              errorDiv.id = "login-error";
+              errorDiv.className =
+                "bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl text-sm font-semibold text-center mt-4";
+              errorDiv.textContent = "E-mail ou senha inválidos. Tente novamente.";
+              this.appendChild(errorDiv);
+              return;
+            }
+
+            const { password, redirect, ...userData } = foundUser;
             localStorage.setItem(
               "beloEventosMockUser",
-              JSON.stringify(mockUser),
+              JSON.stringify(userData),
             );
 
             if (window.BeloEventosAuth?.applyAuthUI) {
               window.BeloEventosAuth.applyAuthUI();
             }
 
-            alert("Login mockado realizado! Redirecionando...");
-            window.location.href = "meuperfil.html";
+            window.location.href = redirect;
           }, 1500);
         });
     </script>
