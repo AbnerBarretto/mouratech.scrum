@@ -9,14 +9,11 @@
       type="image/svg+xml"
       href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
     />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       body {
@@ -52,7 +49,7 @@
           0 4px 20px rgba(0, 0, 0, 0.1);
       }
 
-      /* EstilizaÃ§Ã£o do Modal de ExclusÃ£o */
+      /* Estilização do Modal de Exclusão */
       #delete-modal {
         transition:
           opacity 0.3s ease,
@@ -79,7 +76,6 @@
     </style>
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col relative">
-    <!-- HEADER -->
     <header
       id="main-header"
       class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
@@ -114,7 +110,7 @@
             >
             <span
               class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
-              >Cultura e ConexÃ£o</span
+              >Cultura e Conexão</span
             >
           </div>
         </div>
@@ -125,7 +121,7 @@
           <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÃ‡ÃƒO</a
+            >PROGRAMAÇÃO</a
           >
           <a
             href="comunidade.html"
@@ -178,11 +174,6 @@
                 >Dados Pessoais</a
               >
               <a
-                href="#seguranca"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >SeguranÃ§a</a
-              >
-              <a
                 href="#ingressos"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
                 >Meus Ingressos</a
@@ -214,7 +205,7 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="categorias.html">ProgramaÃ§Ã£o</a>
+        <a href="categorias.html">Programação</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="#contato-section">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
@@ -227,13 +218,11 @@
       </nav>
     </div>
 
-    <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
+    <main class="flex-grow container mx-auto px-4 sm:px-6 py-8 sm:py-12 pt-28 md:pt-36">
       <div class="max-w-4xl mx-auto">
-        <!-- HEADER DO PERFIL (BIG TECH STYLE) -->
-        <div class="relative mb-24">
-          <!-- Cover Image -->
+        <div class="relative mb-20 sm:mb-24">
           <div
-            class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
+            class="h-32 sm:h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
           >
             <img
               src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
@@ -242,32 +231,35 @@
             />
           </div>
 
-          <!-- Avatar and Info Overlay -->
-          <div class="absolute -bottom-16 left-12 flex items-end gap-6">
-            <div class="relative group">
+          <div class="absolute -bottom-12 sm:-bottom-16 left-6 sm:left-12 flex items-end gap-4 sm:gap-6">
+            <div class="relative group inline-block">
               <div
-                class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden"
+                class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden relative"
               >
                 <img
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200"
                   alt="Profile"
                   class="w-full h-full object-cover"
                 />
+                <button
+                  class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest"
+                >
+                  Alterar Foto
+                </button>
               </div>
-              <button
-                class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold uppercase tracking-widest"
-              >
-                Alterar Foto
-              </button>
+              <div class="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 md:bottom-2 md:right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full border-2 sm:border-4 border-slate-50 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform cursor-pointer" title="Insígnia Ativa: Festeiro Ouro">
+                <i data-lucide="award" class="text-blue-700 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current"></i>
+              </div>
             </div>
-            <div class="mb-4">
+            
+            <div class="mb-2 sm:mb-4">
               <h1
-                class="text-3xl font-black text-slate-900 uppercase tracking-tighter"
+                class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter"
               >
                 Fulano Ciclano
               </h1>
               <p
-                class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2"
+                class="text-slate-500 font-bold uppercase text-[9px] sm:text-[10px] tracking-widest flex items-center gap-2"
               >
                 <span
                   class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
@@ -278,11 +270,9 @@
           </div>
         </div>
 
-        <!-- GRID DE INFORMAÃ‡Ã•ES -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- SIDEBAR DE NAVEGAÃ‡ÃƒO -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           <aside class="lg:col-span-1 space-y-4">
-            <div class="profile-card p-6">
+            <div class="profile-card p-5 sm:p-6">
               <nav class="space-y-1">
                 <button
                   id="dados-pessoais"
@@ -291,16 +281,16 @@
                   <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
                 </button>
                 <button
-                  id="seguranca"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
-                >
-                  <i data-lucide="shield-check" class="w-4 h-4"></i> SeguranÃ§a
-                </button>
-                <button
                   id="ingressos"
                   class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
+                </button>
+                <button
+                  id="nav-insignias"
+                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                >
+                  <i data-lucide="award" class="w-4 h-4"></i> Minhas Insígnias
                 </button>
                 <button
                   id="gerenciamento"
@@ -312,12 +302,11 @@
               </nav>
             </div>
 
-            <!-- CTA PRESTADOR DE SERVIÃ‡OS -->
             <div
-              class="bg-[#0056e0] p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
+              class="bg-[#0056e0] p-5 sm:p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
             >
               <h4 class="font-black text-lg uppercase tracking-tighter mb-2">
-                Oferecer ServiÃ§os
+                Oferecer Serviços
               </h4>
               <p class="text-blue-100 text-xs font-medium mb-6 leading-relaxed">
                 Divulgue seu trabalho para a comunidade Belo Eventos.
@@ -325,20 +314,18 @@
               <button
                 class="w-full bg-yellow-400 text-blue-900 font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95"
               >
-                ComeÃ§ar agora
+                Começar agora
               </button>
             </div>
           </aside>
 
-          <!-- CONTEÃšDO PRINCIPAL -->
-          <div class="lg:col-span-2 space-y-8">
-            <!-- FORMULÃRIO DE DADOS -->
-            <div class="profile-card p-8 md:p-10">
-              <div class="flex items-center justify-between mb-8">
+          <div class="lg:col-span-2 space-y-6 sm:space-y-8">
+            <div class="profile-card p-5 sm:p-8 md:p-10">
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
                 <h2
-                  class="text-xl font-black text-slate-900 uppercase tracking-tight"
+                  class="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tight"
                 >
-                  InformaÃ§Ãµes BÃ¡sicas
+                  Informações Básicas
                 </h2>
                 <button
                   class="text-blue-600 font-bold text-xs uppercase hover:underline"
@@ -347,7 +334,7 @@
                 </button>
               </div>
 
-              <form class="space-y-6">
+              <form class="space-y-5 sm:space-y-6">
                 <div class="space-y-2">
                   <label
                     class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
@@ -357,7 +344,7 @@
                     type="text"
                     readonly
                     value="Fulano Ciclano"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    class="input-readonly w-full px-5 py-4 sm:px-6 rounded-2xl font-semibold text-slate-900 outline-none"
                   />
                 </div>
 
@@ -370,7 +357,7 @@
                     type="email"
                     readonly
                     value="fulaciclano@gmail.com"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    class="input-readonly w-full px-5 py-4 sm:px-6 rounded-2xl font-semibold text-slate-900 outline-none"
                   />
                 </div>
 
@@ -383,32 +370,125 @@
                     type="text"
                     readonly
                     value="03/12/2081"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
+                    class="input-readonly w-full px-5 py-4 sm:px-6 rounded-2xl font-semibold text-slate-900 outline-none"
                   />
                 </div>
               </form>
             </div>
 
-            <!-- ZONA DE PERIGO (GERENCIAMENTO DE CONTA) -->
-            <div class="profile-card p-8 md:p-10 border-rose-100">
+            <div class="profile-card p-5 sm:p-8 md:p-10" id="section-insignias">
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <h2 class="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tight">
+                  Insígnias e Conquistas
+                </h2>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8">
+                
+                <div class="md:col-span-3 flex flex-col justify-center">
+                  <div class="flex justify-center mb-6">
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 bg-slate-800 rounded-full flex items-center justify-center relative shadow-inner">
+                      <i data-lucide="user" class="text-slate-600 w-10 h-10 sm:w-12 sm:h-12"></i>
+                      <div class="absolute bottom-1 right-1 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-full border-2 sm:border-4 border-slate-800 flex items-center justify-center shadow-md">
+                        <i data-lucide="award" class="text-white w-4 h-4 sm:w-5 sm:h-5 fill-current"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p class="text-center text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest mb-6">
+                    Escolha sua Insígnia
+                  </p>
+
+                  <div class="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
+                    <div class="flex flex-col items-center gap-3">
+                      <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white transform hover:scale-110 transition-transform cursor-pointer">
+                        <i data-lucide="award" class="text-white w-6 h-6 sm:w-8 sm:h-8 fill-current"></i>
+                      </div>
+                      <button class="bg-blue-600 hover:bg-blue-700 text-white font-black text-[9px] sm:text-[10px] px-4 py-2 sm:px-5 rounded-xl uppercase tracking-widest transition-colors shadow-sm active:scale-95">Exibir</button>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-3">
+                      <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-red-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white transform hover:scale-110 transition-transform cursor-pointer">
+                        <i data-lucide="party-popper" class="text-white w-6 h-6 sm:w-8 sm:h-8 fill-current"></i>
+                      </div>
+                      <button class="bg-blue-600 hover:bg-blue-700 text-white font-black text-[9px] sm:text-[10px] px-4 py-2 sm:px-5 rounded-xl uppercase tracking-widest transition-colors shadow-sm active:scale-95">Exibir</button>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-3">
+                      <div class="w-14 h-14 sm:w-16 sm:h-16 bg-slate-800 rounded-full flex items-center justify-center shadow-inner border-2 border-white relative">
+                        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full top-2"></div>
+                        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full top-3 sm:top-4 right-2"></div>
+                        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full top-3 sm:top-4 left-2"></div>
+                        <i data-lucide="triangle" class="text-slate-600 w-5 h-5 sm:w-6 sm:h-6 fill-current"></i>
+                      </div>
+                      <button class="bg-blue-600 hover:bg-blue-700 text-white font-black text-[9px] sm:text-[10px] px-4 py-2 sm:px-5 rounded-xl uppercase tracking-widest transition-colors shadow-sm active:scale-95">Exibir</button>
+                    </div>
+                  </div>
+
+                  <div class="mt-auto pt-8 flex justify-center">
+                    <button class="bg-blue-700 hover:bg-blue-600 text-white font-black px-10 sm:px-12 py-3 rounded-xl text-[9px] sm:text-[10px] uppercase tracking-widest transition-all shadow-md active:scale-95">
+                      Salvar
+                    </button>
+                  </div>
+                </div>
+
+                <div class="md:col-span-2 bg-blue-50/50 rounded-[2rem] p-4 sm:p-5 lg:p-6 flex flex-col border border-blue-100 w-full min-w-0 overflow-hidden">
+                  <h3 class="text-xs sm:text-sm font-black text-slate-600 uppercase tracking-widest mb-4 sm:mb-6 text-center">Tarefas</h3>
+
+                  <div class="w-full space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                    <div class="flex items-center gap-3 bg-white p-3 lg:px-4 lg:py-4 rounded-xl shadow-sm border border-slate-100 w-full min-w-0">
+                      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="text-green-600 w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]"></i>
+                      </div>
+                      <span class="flex-1 text-[10px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-wide leading-tight break-words min-w-0">Criar um Post</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 bg-white p-3 lg:px-4 lg:py-4 rounded-xl shadow-sm border border-slate-100 w-full min-w-0">
+                      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                        <i data-lucide="refresh-cw" class="text-yellow-500 w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]"></i>
+                      </div>
+                      <span class="flex-1 text-[10px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-wide leading-tight break-words min-w-0">Comente um post</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 bg-white p-3 lg:px-4 lg:py-4 rounded-xl shadow-sm border border-slate-100 w-full min-w-0">
+                      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                        <i data-lucide="refresh-cw" class="text-yellow-500 w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]"></i>
+                      </div>
+                      <span class="flex-1 text-[10px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-wide leading-tight break-words min-w-0">Compartilhe uma insígnia</span>
+                    </div>
+                  </div>
+
+                  <div class="mt-auto w-full">
+                    <button class="w-full bg-slate-400 text-white font-black py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-[9px] sm:text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 cursor-not-allowed shadow-inner transition-colors">
+                      <span class="truncate">Coletar Insígnia</span>
+                      <div class="w-5 h-5 sm:w-6 sm:h-6 bg-white/40 rounded-full flex items-center justify-center shadow-sm shrink-0">
+                        <span class="text-[9px] sm:text-[10px]">💀</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="profile-card p-5 sm:p-8 md:p-10 border-rose-100">
               <div
-                class="flex flex-col md:flex-row items-center justify-between gap-6"
+                class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 sm:gap-6"
               >
-                <div class="text-center md:text-left">
+                <div class="text-center sm:text-left">
                   <h3
                     class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1"
                   >
                     Gerenciamento de Conta
                   </h3>
                   <p class="text-slate-500 text-xs font-medium">
-                    A exclusÃ£o da conta Ã© permanente e removerÃ¡ todos os seus
+                    A exclusão da conta é permanente e removerá todos os seus
                     dados.
                   </p>
                 </div>
-                <!-- Trigger do Modal -->
                 <button
                   id="open-modal"
-                  class="btn-danger px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95"
+                  class="btn-danger w-full sm:w-auto px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95"
                 >
                   Deletar conta
                 </button>
@@ -419,56 +499,52 @@
       </div>
     </main>
 
-    <!-- MODAL DE EXCLUSÃƒO (ESTILO BIG TECH) -->
     <div
       id="delete-modal"
-      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden"
+      class="fixed inset-0 z-[200] flex items-center justify-center px-4 sm:px-6 modal-hidden"
     >
-      <!-- Backdrop (Fundo Escuro com Blur) -->
       <div
         id="modal-overlay"
         class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
       ></div>
 
-      <!-- ConteÃºdo do Modal -->
       <div
-        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
+        class="modal-content relative bg-white w-full max-w-lg rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden p-6 sm:p-10 text-center"
       >
-        <!-- Ãcone de Alerta CrÃ­tico -->
         <div
-          class="w-32 h-32 mx-auto mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
+          class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 sm:mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
         >
           <div
-            class="absolute inset-0 border-8 border-rose-500/20 rounded-full animate-ping"
+            class="absolute inset-0 border-4 sm:border-8 border-rose-500/20 rounded-full animate-ping"
           ></div>
           <i
             data-lucide="alert-triangle"
-            class="w-16 h-16 text-rose-600 stroke-[2.5]"
+            class="w-12 h-12 sm:w-16 sm:h-16 text-rose-600 stroke-[2.5]"
           ></i>
         </div>
 
         <h2
-          class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4"
+          class="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4"
         >
           Deseja realmente <br />
           <span class="text-rose-600">apagar a conta?</span>
         </h2>
 
-        <p class="text-slate-500 font-medium text-sm mb-10 leading-relaxed">
-          Esta aÃ§Ã£o Ã© irreversÃ­vel. Todos os seus ingressos, histÃ³rico de
-          eventos e conexÃµes na comunidade serÃ£o removidos permanentemente.
+        <p class="text-slate-500 font-medium text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed">
+          Esta ação é irreversível. Todos os seus ingressos, histórico de
+          eventos e conexões na comunidade serão removidos permanentemente.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <button
             id="close-modal"
-            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all"
+            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 sm:py-5 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs transition-all"
           >
             Cancelar
           </button>
           <button
             id="confirm-delete"
-            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
+            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-4 sm:py-5 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
           >
             Deletar conta
           </button>
@@ -476,40 +552,39 @@
       </div>
     </div>
 
-    <!-- TELA DE SUCESSO PÃ“S-EXCLUSÃƒO -->
     <div
       id="success-screen"
       class="fixed inset-0 z-[210] bg-white flex flex-col items-center justify-center hidden"
     >
-      <div class="text-center p-10">
+      <div class="text-center p-6 sm:p-10">
         <div
-          class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+          class="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
         >
-          <i data-lucide="check" class="w-12 h-12 text-green-600"></i>
+          <i data-lucide="check" class="w-10 h-10 sm:w-12 sm:h-12 text-green-600"></i>
         </div>
         <h1
-          class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
+          class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
         >
-          Conta ExcluÃ­da
+          Conta Excluída
         </h1>
-        <p class="text-slate-500 font-medium mb-8">
+        <p class="text-slate-500 font-medium text-sm mb-8">
           Sua conta e seus dados foram removidos do Belo Eventos.
         </p>
         <button
-          onclick="window.location.href = 'index.html'"
-          class="bg-[#0056e0] text-white font-black px-12 py-4 rounded-2xl uppercase tracking-widest text-xs"
+          onclick="window.location.reload()"
+          class="bg-[#0056e0] text-white font-black px-10 sm:px-12 py-4 rounded-xl sm:rounded-2xl uppercase tracking-widest text-[10px] sm:text-xs"
         >
-          Voltar ao InÃ­cio
+          Voltar ao Início
         </button>
       </div>
     </div>
 
-    <footer class="py-12 border-t border-slate-200 mt-auto">
+    <footer class="py-8 sm:py-12 border-t border-slate-200 mt-auto">
       <div class="container mx-auto px-6 text-center">
         <p
-          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]"
+          class="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em]"
         >
-          Â© 2026 Belo Eventos Â· Privacidade e SeguranÃ§a
+          © 2026 Belo Eventos · Privacidade e Segurança
         </p>
       </div>
     </footer>
@@ -548,12 +623,12 @@
       const confirmDeleteBtn = document.getElementById("confirm-delete");
       const successScreen = document.getElementById("success-screen");
 
-      // FunÃ§Ã£o para abrir modal
+      // Função para abrir modal
       openModalBtn.addEventListener("click", () => {
         deleteModal.classList.remove("modal-hidden");
       });
 
-      // FunÃ§Ã£o para fechar modal
+      // Função para fechar modal
       const closeModal = () => {
         deleteModal.classList.add("modal-hidden");
       };
@@ -561,27 +636,22 @@
       closeModalBtn.addEventListener("click", closeModal);
       overlay.addEventListener("click", closeModal);
 
-      // AÃ§Ã£o de Deletar
+      // Ação de Deletar
       confirmDeleteBtn.addEventListener("click", () => {
-        // Feedback de carregamento no botÃ£o
+        // Feedback de carregamento no botão
         confirmDeleteBtn.innerHTML =
           '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Processando...';
         confirmDeleteBtn.disabled = true;
         lucide.createIcons();
 
-        // SimulaÃ§Ã£o de processo de backend (2 segundos)
+        // Simulação de processo de backend (2 segundos)
         setTimeout(() => {
           successScreen.classList.remove("hidden");
           closeModal();
-
-          localStorage.removeItem(window.BeloEventosAuth.storageKey);
-
-          setTimeout(() => {
-            window.location.href = "index.html";
-          }, 1200);
         }, 2000);
       });
     </script>
   </body>
 </html>
 
+}
