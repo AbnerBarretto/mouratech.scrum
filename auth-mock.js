@@ -36,6 +36,27 @@
     }
   };
 
+  const renderProfileButton = (profileContainer, user) => {
+    if (!user) return;
+
+    const btn = profileContainer.querySelector("[data-auth-btn]");
+    if (!btn) return;
+
+    if (user.role === "admin") {
+      btn.className =
+        "bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95 cursor-pointer";
+      btn.innerHTML = "Admin";
+    } else {
+      btn.className =
+        "w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer";
+      btn.innerHTML = '<i data-lucide="user" class="text-white w-5 h-5"></i>';
+      // Re-render lucide icons for the new button
+      if (window.lucide) {
+        window.lucide.createIcons({ nodes: [btn] });
+      }
+    }
+  };
+
   const applyAuthUI = () => {
     const user = getUser();
 
@@ -45,6 +66,9 @@
 
     document.querySelectorAll("[data-auth-profile]").forEach((element) => {
       element.classList.toggle("hidden", !user);
+      if (user) {
+        renderProfileButton(element, user);
+      }
     });
 
     document.querySelectorAll("[data-auth-user-name]").forEach((element) => {

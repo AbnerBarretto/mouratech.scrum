@@ -285,26 +285,16 @@
         </nav>
 
         <div class="hidden md:flex items-center gap-4">
-          <a
-            href="#"
-            class="text-white/80 hover:text-rose-300 transition-colors"
-            ><i data-lucide="heart" class="w-5 h-5"></i
-          ></a>
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
-            <button
-              class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95 cursor-pointer"
-              aria-label="Menu do perfil"
-            >
-              Admin
-            </button>
-            <div
-              data-auth-dropdown
-              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-            ></div>
+          <div class="relative">
+            <i
+              data-lucide="search"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"
+            ></i>
+            <input
+              type="text"
+              placeholder="Buscar eventos..."
+              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
+            />
           </div>
           <a
             href="login.html"
@@ -312,6 +302,23 @@
             class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
             >ENTRAR</a
           >
+          <div data-auth-profile class="relative group hidden">
+            <span
+              data-auth-user-name
+              class="text-white text-[10px] font-black uppercase tracking-widest"
+            ></span>
+            <button
+              data-auth-btn
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
+              aria-label="Menu do perfil"
+            >
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
+            </button>
+            <div
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            ></div>
+          </div>
         </div>
 
         <button class="md:hidden text-white" id="menu-toggle">
