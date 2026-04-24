@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -84,7 +84,7 @@
             >
             <span
               class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
-              >Cultura e ConexÃ£o</span
+              >Cultura e Conexão</span
             >
           </div>
         </div>
@@ -95,7 +95,7 @@
           <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÃ‡ÃƒO</a
+            >PROGRAMAÇÃO</a
           >
           <a
             href="comunidade.html"
@@ -103,7 +103,7 @@
             >COMUNIDADE</a
           >
           <a
-            href="#contato-section"
+            href="contato.html"
             class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
@@ -132,7 +132,8 @@
               class="text-white text-[10px] font-black uppercase tracking-widest"
             ></span>
             <button
-              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              data-auth-btn
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
@@ -149,7 +150,7 @@
               <a
                 href="meuperfil.html#seguranca"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >SeguranÃ§a</a
+                >Segurança</a
               >
               <a
                 href="meuperfil.html#ingressos"
@@ -183,9 +184,9 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="categorias.html">ProgramaÃ§Ã£o</a>
+        <a href="categorias.html">Programação</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="#contato-section">Contato</a>
+        <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="cadastro.html"
@@ -195,7 +196,7 @@
       </nav>
     </div>
 
-    <!-- ÃREA DE LOGIN -->
+    <!-- ÁREA DE LOGIN -->
     <main class="flex-grow flex items-center justify-center p-6 pt-28 md:pt-36">
       <div class="w-full max-w-lg login-card overflow-hidden">
         <div class="p-8 md:p-12">
@@ -259,12 +260,12 @@
                   name="password"
                   required
                   class="form-input w-full pl-14 pr-6 py-4 rounded-2xl font-semibold text-slate-700"
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  placeholder="••••••••"
                 />
               </div>
             </div>
 
-            <!-- BotÃ£o Logar -->
+            <!-- Botão Logar -->
             <div class="pt-4">
               <button
                 type="submit"
@@ -278,7 +279,7 @@
           <!-- Footer do Form -->
           <div class="mt-10 text-center">
             <p class="text-sm font-semibold text-slate-500">
-              NÃ£o tem uma conta?
+              Não tem uma conta?
               <a
                 href="cadastro.html"
                 class="text-blue-600 hover:underline font-black uppercase text-xs tracking-widest ml-1"
@@ -288,29 +289,29 @@
           </div>
         </div>
 
-        <!-- Detalhe Visual de RodapÃ© -->
+        <!-- Detalhe Visual de Rodapé -->
         <div class="bg-slate-50 py-4 text-center border-t border-slate-100">
           <p
             class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]"
           >
-            AutenticaÃ§Ã£o Segura
+            Autenticação Segura
           </p>
         </div>
       </div>
     </main>
 
-    <!-- RODAPÃ‰ DA PÃGINA -->
+    <!-- RODAPÉ DA PÁGINA -->
     <footer id="contato-section" class="p-8 text-center">
       <p
         class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]"
       >
-        Â© 2026 Belo Eventos Â· Belo Jardim, PE
+        © 2026 Belo Eventos · Belo Jardim, PE
       </p>
     </footer>
 
     <script src="auth-mock.js"></script>
     <script>
-      // Inicializa os Ã­cones Lucide
+      // Inicializa os ícones Lucide
       lucide.createIcons();
 
       const header = document.getElementById("main-header");
@@ -336,7 +337,29 @@
         mobileMenu.classList.add("hidden");
       });
 
-      // LÃ³gica de submissÃ£o (Mock)
+      // Usuários Mock
+      const MOCK_USERS = {
+        "fulano@gmail.com": {
+          id: "usr_mock_001",
+          name: "Fulano Ciclano",
+          email: "fulano@gmail.com",
+          password: "123456",
+          role: "cliente",
+          memberSince: "2024",
+          redirect: "meuperfil.html",
+        },
+        "admin@gmail.com": {
+          id: "usr_mock_002",
+          name: "Admin",
+          email: "admin@gmail.com",
+          password: "admin123",
+          role: "admin",
+          memberSince: "2023",
+          redirect: "adminperfil.html",
+        },
+      };
+
+      // Lógica de submissão (Mock)
       document
         .getElementById("login-form")
         .addEventListener("submit", function (e) {
@@ -344,32 +367,48 @@
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalContent = submitBtn.innerHTML;
 
+          // Remove erro anterior
+          const oldError = document.getElementById("login-error");
+          if (oldError) oldError.remove();
+
           submitBtn.disabled = true;
           submitBtn.innerHTML =
             '<span class="animate-pulse">Autenticando...</span>';
 
-          // SimulaÃ§Ã£o de delay de rede
-          setTimeout(() => {
-            const emailValue = this.querySelector("#email").value.trim();
-            const mockUser = {
-              id: "usr_mock_001",
-              name: "Fulano Mock",
-              email: emailValue || "fulano.mock@beloeventos.local",
-              role: "cliente",
-              memberSince: "2024",
-            };
+          const emailValue = this.querySelector("#email").value.trim().toLowerCase();
+          const passwordValue = this.querySelector("#password").value;
 
+          // Simulação de delay de rede
+          setTimeout(() => {
+            const foundUser = MOCK_USERS[emailValue];
+
+            if (!foundUser || foundUser.password !== passwordValue) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalContent;
+              lucide.createIcons();
+
+              const errorDiv = document.createElement("div");
+              errorDiv.id = "login-error";
+              errorDiv.className =
+                "bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl text-sm font-semibold text-center mt-4";
+              errorDiv.textContent = "E-mail ou senha inválidos. Tente novamente.";
+              this.appendChild(errorDiv);
+              return;
+            }
+
+            const { password, redirect, ...userData } = foundUser;
             localStorage.setItem(
               "beloEventosMockUser",
-              JSON.stringify(mockUser),
+              JSON.stringify(userData),
             );
 
             if (window.BeloEventosAuth?.applyAuthUI) {
               window.BeloEventosAuth.applyAuthUI();
             }
 
-            alert("Login mockado realizado! Redirecionando...");
-            window.location.href = "meuperfil.html";
+            const loginParams = new URLSearchParams(window.location.search);
+            const nextUrl = loginParams.get("next");
+            window.location.href = nextUrl || redirect;
           }, 1500);
         });
     </script>

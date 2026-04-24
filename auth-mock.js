@@ -21,9 +21,10 @@
       return;
     }
 
+    const profilePage = user.role === "admin" ? "adminperfil.html" : "meuperfil.html";
+
     dropdown.innerHTML = `
-      <a href="meuperfil.html#dados-pessoais" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Alterar dados</a>
-      <a href="meuperfil.html" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meu perfil</a>
+      <a href="${profilePage}" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meu perfil</a>
       <a href="comunidade.html" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Minhas comunidades</a>
       <button type="button" data-auth-logout class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button>
     `;
@@ -31,6 +32,27 @@
     const logoutButton = dropdown.querySelector("[data-auth-logout]");
     if (logoutButton) {
       logoutButton.addEventListener("click", logout);
+    }
+  };
+
+  const renderProfileButton = (profileContainer, user) => {
+    if (!user) return;
+
+    const btn = profileContainer.querySelector("[data-auth-btn]");
+    if (!btn) return;
+
+    if (user.role === "admin") {
+      btn.className =
+        "bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95 cursor-pointer";
+      btn.innerHTML = "Admin";
+    } else {
+      btn.className =
+        "w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer";
+      btn.innerHTML = '<i data-lucide="user" class="text-white w-5 h-5"></i>';
+      // Re-render lucide icons for the new button
+      if (window.lucide) {
+        window.lucide.createIcons({ nodes: [btn] });
+      }
     }
   };
 
@@ -43,6 +65,9 @@
 
     document.querySelectorAll("[data-auth-profile]").forEach((element) => {
       element.classList.toggle("hidden", !user);
+      if (user) {
+        renderProfileButton(element, user);
+      }
     });
 
     document.querySelectorAll("[data-auth-user-name]").forEach((element) => {
