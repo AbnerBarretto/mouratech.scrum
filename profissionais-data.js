@@ -39,7 +39,7 @@ window.PROFISSIONAIS_DATA = {
       "Cardápio personalizado mediante consulta"
     ],
     portfolioUrl: "#",
-    imagem: "https://images.unsplash.com/photo-1607631568010-a87245c0daf8?auto=format&fit=crop&q=80&w=800",
+    imagem: "https://plus.unsplash.com/premium_photo-1661778091956-15dbe6e47442?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     badge: "VERIFICADO",
     destaque: true
   },
@@ -105,7 +105,7 @@ window.PROFISSIONAIS_DATA = {
       "Repertório: Forró, Funk, Eletrônico, Sertanejo e Pop"
     ],
     portfolioUrl: "#",
-    imagem: "https://images.unsplash.com/photo-1571266028243-d220c6cd6c47?auto=format&fit=crop&q=80&w=800",
+    imagem: "https://plus.unsplash.com/premium_photo-1708194039348-364b423598a5?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     badge: "EM ALTA",
     destaque: false
   },
