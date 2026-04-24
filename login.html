@@ -405,7 +405,9 @@
               window.BeloEventosAuth.applyAuthUI();
             }
 
-            window.location.href = redirect;
+            const loginParams = new URLSearchParams(window.location.search);
+            const nextUrl = loginParams.get("next");
+            window.location.href = nextUrl || redirect;
           }, 1500);
         });
     </script>

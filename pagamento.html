@@ -231,6 +231,15 @@
     <script src="events-data.js"></script>
     <script src="auth-mock.js"></script>
     <script>
+      // Regra de negócio: acesso à página de pagamento exige login
+      (function () {
+        const user = window.BeloEventosAuth?.getUser?.();
+        if (!user) {
+          const next = encodeURIComponent(window.location.pathname.split("/").pop() + window.location.search);
+          window.location.replace("login.html?next=" + next);
+        }
+      })();
+
       lucide.createIcons();
 
       const eventCatalog = window.BELO_EVENTS || {};

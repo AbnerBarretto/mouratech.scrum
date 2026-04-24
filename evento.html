@@ -672,6 +672,18 @@
         }
       }
 
+      // Regra de negócio: compra exige login
+      if (buyTicketBtn) {
+        buyTicketBtn.addEventListener("click", (e) => {
+          const user = window.BeloEventosAuth?.getUser?.();
+          if (!user) {
+            e.preventDefault();
+            window.location.href = `login.html?next=${encodeURIComponent(buyTicketBtn.href)}`;
+          }
+        });
+      }
+      }
+
       // Header Scroll Effect
       const header = document.getElementById("main-header");
       window.addEventListener("scroll", () => {
