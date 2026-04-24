@@ -387,43 +387,6 @@
           </div>
         </div>
 
-        <!-- SEÇÃO NOVO EVENTO -->
-        <div class="new-event-banner p-6 md:p-8 mb-8">
-          <h2 class="text-xl font-black text-slate-800 uppercase tracking-tight text-center mb-5">
-            Novo Evento
-          </h2>
-          <form id="new-event-form" class="flex flex-col md:flex-row items-center justify-center gap-4 flex-wrap">
-            <div class="flex items-center gap-2">
-              <span class="text-2xl">📅</span>
-              <input
-                type="text"
-                id="new-event-title"
-                placeholder="Nome do evento"
-                required
-                class="new-event-input w-48"
-              />
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-2xl">📅</span>
-              <input
-                type="date"
-                id="new-event-date"
-                required
-                class="new-event-input w-44"
-              />
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-2xl">🕐</span>
-              <input
-                type="time"
-                id="new-event-time"
-                required
-                class="new-event-input w-32"
-              />
-            </div>
-            <button type="submit" class="btn-cadastrar">Cadastrar</button>
-          </form>
-        </div>
 
         <!-- TABELA DE EVENTOS -->
         <div class="profile-card overflow-hidden">
@@ -746,33 +709,6 @@
           .join("");
       }
 
-      // ──────────────── Cadastro de Novo Evento ────────────────
-      document
-        .getElementById("new-event-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const title = document.getElementById("new-event-title").value.trim();
-          const date = document.getElementById("new-event-date").value;
-          const time = document.getElementById("new-event-time").value;
-
-          if (!title || !date || !time) return;
-
-          const events = loadEvents();
-          const newId = "evt-" + Date.now();
-          events.push({
-            id: newId,
-            title: title,
-            date: date,
-            time: time,
-            status: "em_andamento",
-          });
-
-          saveEvents(events);
-          renderEvents();
-          this.reset();
-          showToast("Evento cadastrado com sucesso!");
-        });
 
       // ──────────────── Modal de Edição ────────────────
       const editModal = document.getElementById("edit-modal");
