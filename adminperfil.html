@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Admin | Belo Eventos</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .profile-card {
+        background: white;
+        border-radius: 2.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+      }
+
+      .avatar-shadow {
+        box-shadow:
+          0 0 0 8px white,
+          0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .transition-header {
+        transition: all 0.3s ease;
+      }
+
+      /* Banner Novo Evento */
+      .new-event-banner {
+        background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 50%, #e0f2fe 100%);
+        border-radius: 2rem;
+        border: 1px solid #93c5fd;
+      }
+
+      /* Tabela de Eventos */
+      .event-row {
+        transition: all 0.2s ease;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .event-row:hover {
+        background: #f8fafc;
+      }
+
+      .event-row:last-child {
+        border-bottom: none;
+      }
+
+      .badge-event {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        border: 2px solid;
+      }
+
+      .btn-edit {
+        background: #2563eb;
+        color: white;
+        font-weight: 800;
+        font-size: 0.7rem;
+        padding: 8px 18px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-edit:hover {
+        background: #1d4ed8;
+        transform: scale(1.05);
+      }
+
+      .btn-delete {
+        background: #f43f5e;
+        color: white;
+        font-weight: 800;
+        font-size: 0.7rem;
+        padding: 8px 18px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-delete:hover {
+        background: #e11d48;
+        transform: scale(1.05);
+      }
+
+      .btn-cadastrar {
+        background: #1e3a5f;
+        color: white;
+        font-weight: 800;
+        font-size: 0.8rem;
+        padding: 10px 28px;
+        border-radius: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-cadastrar:hover {
+        background: #0f2a4a;
+        transform: scale(1.02);
+      }
+
+      /* Status Badges */
+      .status-confirmed {
+        color: #16a34a;
+      }
+
+      .status-ongoing {
+        color: #ca8a04;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .modal-content {
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .modal-hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .modal-hidden .modal-content {
+        transform: scale(0.9) translateY(20px);
+      }
+
+      /* Form inputs */
+      .form-input-admin {
+        background: #f1f5f9;
+        border: 2px solid transparent;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 1rem;
+        font-weight: 600;
+        color: #1e293b;
+        outline: none;
+      }
+
+      .form-input-admin:focus {
+        background: white;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 300;
+        padding: 16px 28px;
+        border-radius: 1rem;
+        font-weight: 700;
+        font-size: 0.85rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(120%);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .toast-success {
+        background: #16a34a;
+        color: white;
+      }
+
+      .toast-error {
+        background: #e11d48;
+        color: white;
+      }
+
+      /* New event form inputs */
+      .new-event-input {
+        background: white;
+        border: 2px solid #93c5fd;
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #1e293b;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .new-event-input:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 min-h-screen flex flex-col relative">
+    <!-- HEADER -->
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+    >
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div
+          class="logo-container flex items-center gap-4 cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
+          >
+            <path
+              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+              fill="#6366F1"
+            />
+            <path
+              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+              fill="#10B981"
+            />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
+            <span
+              class="text-white text-2xl font-black tracking-tighter leading-none"
+              >Belo<span class="text-indigo-300">Eventos</span></span
+            >
+            <span
+              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              >Cultura e Conexão</span
+            >
+          </div>
+        </div>
+
+        <nav
+          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
+        >
+          <a
+            href="categorias.html"
+            class="hover:text-yellow-400 transition-colors"
+            >PROGRAMAÇÃO</a
+          >
+          <a
+            href="comunidade.html"
+            class="hover:text-yellow-400 transition-colors"
+            >COMUNIDADE</a
+          >
+          <a
+            href="contato.html"
+            class="hover:text-yellow-400 transition-colors"
+            >CONTATO</a
+          >
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <a
+            href="#"
+            class="text-white/80 hover:text-rose-300 transition-colors"
+            ><i data-lucide="heart" class="w-5 h-5"></i
+          ></a>
+          <div data-auth-profile class="relative group hidden">
+            <span
+              data-auth-user-name
+              class="text-white text-[10px] font-black uppercase tracking-widest"
+            ></span>
+            <button
+              class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95 cursor-pointer"
+              aria-label="Menu do perfil"
+            >
+              Admin
+            </button>
+            <div
+              data-auth-dropdown
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            ></div>
+          </div>
+          <a
+            href="login.html"
+            data-auth-enter
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            >ENTRAR</a
+          >
+        </div>
+
+        <button class="md:hidden text-white" id="menu-toggle">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
+    >
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+      </div>
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
+        <a href="categorias.html">Programação</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="contato.html">Contato</a>
+        <div class="h-px bg-white/20 my-4"></div>
+        <a
+          href="login.html"
+          data-auth-enter
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          >Entrar</a
+        >
+      </nav>
+    </div>
+
+    <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
+      <div class="max-w-5xl mx-auto">
+        <!-- HEADER DO PERFIL ADMIN -->
+        <div class="relative mb-24">
+          <!-- Cover Image -->
+          <div
+            class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
+              alt="Cover"
+              class="w-full h-full object-cover opacity-40"
+            />
+          </div>
+
+          <!-- Avatar and Info Overlay -->
+          <div class="absolute -bottom-16 left-12 flex items-end gap-6">
+            <div class="relative group">
+              <div
+                class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-700 avatar-shadow overflow-hidden flex items-center justify-center"
+              >
+                <i data-lucide="shield-check" class="w-16 h-16 text-white"></i>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h1
+                class="text-3xl font-black text-slate-900 uppercase tracking-tighter"
+              >
+                Admin
+              </h1>
+              <p
+                class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2"
+              >
+                <span
+                  class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"
+                ></span>
+                Administrador · Painel de Eventos
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- TABELA DE EVENTOS -->
+        <div class="profile-card overflow-hidden">
+          <!-- Cabeçalho da Tabela -->
+          <div class="grid grid-cols-12 gap-4 px-8 py-5 bg-slate-50 border-b border-slate-200">
+            <div class="col-span-3">
+              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Status</span>
+            </div>
+            <div class="col-span-3">
+              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Evento</span>
+            </div>
+            <div class="col-span-3">
+              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Data</span>
+            </div>
+            <div class="col-span-3 text-right">
+              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Ações</span>
+            </div>
+          </div>
+
+          <!-- Linhas de Eventos (renderizadas via JS) -->
+          <div id="events-table-body" class="divide-y divide-slate-100">
+            <!-- Preenchido via JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div id="events-empty" class="hidden text-center py-16">
+            <i data-lucide="calendar-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+            <p class="text-slate-400 font-bold uppercase text-xs tracking-widest">Nenhum evento cadastrado</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- MODAL DE EDIÇÃO -->
+    <div
+      id="edit-modal"
+      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden modal-overlay"
+    >
+      <div
+        id="edit-modal-overlay"
+        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+      ></div>
+      <div
+        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10"
+      >
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <i data-lucide="pencil" class="w-6 h-6 text-blue-600"></i>
+          </div>
+          <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight">
+            Editar Evento
+          </h2>
+        </div>
+
+        <form id="edit-event-form" class="space-y-5">
+          <input type="hidden" id="edit-event-id" />
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nome do Evento</label>
+            <input
+              type="text"
+              id="edit-event-title"
+              required
+              class="form-input-admin"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Data</label>
+            <input
+              type="date"
+              id="edit-event-date"
+              required
+              class="form-input-admin"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Horário</label>
+            <input
+              type="time"
+              id="edit-event-time"
+              required
+              class="form-input-admin"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Status</label>
+            <select id="edit-event-status" class="form-input-admin cursor-pointer">
+              <option value="confirmado">✅ Confirmado</option>
+              <option value="em_andamento">⏳ Em andamento</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4 pt-4">
+            <button
+              type="button"
+              id="edit-cancel"
+              class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-blue-600/20"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL DE EXCLUSÃO -->
+    <div
+      id="delete-modal"
+      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden modal-overlay"
+    >
+      <div
+        id="delete-modal-overlay"
+        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+      ></div>
+      <div
+        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
+      >
+        <div
+          class="w-24 h-24 mx-auto mb-6 bg-rose-50 rounded-full flex items-center justify-center relative"
+        >
+          <div
+            class="absolute inset-0 border-4 border-rose-500/20 rounded-full animate-ping"
+          ></div>
+          <i
+            data-lucide="alert-triangle"
+            class="w-12 h-12 text-rose-600 stroke-[2.5]"
+          ></i>
+        </div>
+
+        <h2
+          class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-3"
+        >
+          Excluir Evento?
+        </h2>
+        <p id="delete-event-name" class="text-slate-500 font-semibold text-sm mb-8">
+          Deseja realmente excluir este evento? Esta ação não pode ser desfeita.
+        </p>
+
+        <input type="hidden" id="delete-event-id" />
+
+        <div class="grid grid-cols-2 gap-4">
+          <button
+            id="delete-cancel"
+            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all"
+          >
+            Cancelar
+          </button>
+          <button
+            id="delete-confirm"
+            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
+          >
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast"></div>
+
+    <footer class="py-12 border-t border-slate-200 mt-auto">
+      <div class="container mx-auto px-6 text-center">
+        <p
+          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]"
+        >
+          © 2026 Belo Eventos · Privacidade e Segurança
+        </p>
+      </div>
+    </footer>
+
+    <script src="events-data.js"></script>
+    <script src="auth-mock.js"></script>
+    <script>
+      lucide.createIcons();
+
+      // ──────────────── Header Scroll ────────────────
+      const header = document.getElementById("main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.remove("bg-blue-700", "py-4");
+        } else {
+          header.classList.add("bg-blue-700", "py-4");
+          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        }
+      });
+
+      // ──────────────── Mobile Menu ────────────────
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+
+      // ──────────────── Toast ────────────────
+      function showToast(message, type = "success") {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.className = `toast toast-${type}`;
+        requestAnimationFrame(() => {
+          toast.classList.add("show");
+        });
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      // ──────────────── LocalStorage para Eventos ────────────────
+      const EVENTS_KEY = "beloEventosAdminEvents";
+
+      function loadEvents() {
+        const stored = localStorage.getItem(EVENTS_KEY);
+        if (stored) {
+          return JSON.parse(stored);
+        }
+        // Primeira carga: importar de events-data.js
+        const initial = [];
+        if (window.BELO_EVENTS) {
+          Object.values(window.BELO_EVENTS).forEach((ev, i) => {
+            initial.push({
+              id: ev.id,
+              title: ev.title,
+              date: generateMockDate(i),
+              time: generateMockTime(i),
+              status: i % 2 === 0 ? "confirmado" : "em_andamento",
+            });
+          });
+        }
+        saveEvents(initial);
+        return initial;
+      }
+
+      function saveEvents(events) {
+        localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+      }
+
+      function generateMockDate(index) {
+        const month = String(((index * 2) % 12) + 1).padStart(2, "0");
+        const day = String(((index * 3) % 28) + 1).padStart(2, "0");
+        return `2027-${month}-${day}`;
+      }
+
+      function generateMockTime(index) {
+        const hours = String(((index * 3 + 14) % 24)).padStart(2, "0");
+        return `${hours}:00`;
+      }
+
+      // ──────────────── Renderizar Tabela ────────────────
+      const badgeColors = [
+        { bg: "#fef9c3", border: "#facc15", text: "#854d0e" },
+        { bg: "#dcfce7", border: "#4ade80", text: "#166534" },
+        { bg: "#dbeafe", border: "#60a5fa", text: "#1e40af" },
+        { bg: "#fce7f3", border: "#f472b6", text: "#9d174d" },
+        { bg: "#f3e8ff", border: "#c084fc", text: "#6b21a8" },
+        { bg: "#ffedd5", border: "#fb923c", text: "#9a3412" },
+        { bg: "#e0f2fe", border: "#38bdf8", text: "#0c4a6e" },
+        { bg: "#fef2f2", border: "#f87171", text: "#991b1b" },
+        { bg: "#ecfdf5", border: "#34d399", text: "#065f46" },
+      ];
+
+      function formatDateBR(dateStr) {
+        if (!dateStr) return "—";
+        const [y, m, d] = dateStr.split("-");
+        return `${d}/${m}/${y}`;
+      }
+
+      function renderEvents() {
+        const events = loadEvents();
+        const tbody = document.getElementById("events-table-body");
+        const emptyState = document.getElementById("events-empty");
+
+        if (events.length === 0) {
+          tbody.innerHTML = "";
+          emptyState.classList.remove("hidden");
+          return;
+        }
+
+        emptyState.classList.add("hidden");
+
+        tbody.innerHTML = events
+          .map((ev, i) => {
+            const color = badgeColors[i % badgeColors.length];
+            const isConfirmed = ev.status === "confirmado";
+            const statusIcon = isConfirmed ? "✅" : "⏳";
+            const statusText = isConfirmed ? "Confirmado" : "Em andamento";
+            const statusClass = isConfirmed ? "status-confirmed" : "status-ongoing";
+
+            return `
+            <div class="event-row grid grid-cols-12 gap-4 px-8 py-5 items-center">
+              <div class="col-span-3 flex items-center gap-3">
+                <span class="text-xl">${statusIcon}</span>
+                <span class="font-bold text-sm ${statusClass}">${statusText}</span>
+              </div>
+              <div class="col-span-3">
+                <span class="badge-event" style="background:${color.bg}; border-color:${color.border}; color:${color.text};">
+                  ${ev.title}
+                </span>
+              </div>
+              <div class="col-span-3">
+                <span class="text-sm font-semibold text-slate-600">
+                  DATA ${formatDateBR(ev.date)} - ${ev.time || "00:00"}
+                </span>
+              </div>
+              <div class="col-span-3 flex items-center justify-end gap-3">
+                <button class="btn-edit" onclick="openEditModal('${ev.id}')">EDITAR</button>
+                <button class="btn-delete" onclick="openDeleteModal('${ev.id}')">EXCLUIR</button>
+              </div>
+            </div>`;
+          })
+          .join("");
+      }
+
+
+      // ──────────────── Modal de Edição ────────────────
+      const editModal = document.getElementById("edit-modal");
+      const editOverlay = document.getElementById("edit-modal-overlay");
+      const editCancel = document.getElementById("edit-cancel");
+
+      function openEditModal(eventId) {
+        const events = loadEvents();
+        const ev = events.find((e) => e.id === eventId);
+        if (!ev) return;
+
+        document.getElementById("edit-event-id").value = ev.id;
+        document.getElementById("edit-event-title").value = ev.title;
+        document.getElementById("edit-event-date").value = ev.date;
+        document.getElementById("edit-event-time").value = ev.time || "";
+        document.getElementById("edit-event-status").value = ev.status;
+
+        editModal.classList.remove("modal-hidden");
+      }
+
+      function closeEditModal() {
+        editModal.classList.add("modal-hidden");
+      }
+
+      editCancel.addEventListener("click", closeEditModal);
+      editOverlay.addEventListener("click", closeEditModal);
+
+      document
+        .getElementById("edit-event-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const id = document.getElementById("edit-event-id").value;
+          const title = document.getElementById("edit-event-title").value.trim();
+          const date = document.getElementById("edit-event-date").value;
+          const time = document.getElementById("edit-event-time").value;
+          const status = document.getElementById("edit-event-status").value;
+
+          const events = loadEvents();
+          const idx = events.findIndex((e) => e.id === id);
+          if (idx === -1) return;
+
+          events[idx] = { ...events[idx], title, date, time, status };
+          saveEvents(events);
+          renderEvents();
+          closeEditModal();
+          showToast("Evento atualizado com sucesso!");
+        });
+
+      // ──────────────── Modal de Exclusão ────────────────
+      const deleteModal = document.getElementById("delete-modal");
+      const deleteOverlay = document.getElementById("delete-modal-overlay");
+      const deleteCancel = document.getElementById("delete-cancel");
+      const deleteConfirm = document.getElementById("delete-confirm");
+
+      function openDeleteModal(eventId) {
+        const events = loadEvents();
+        const ev = events.find((e) => e.id === eventId);
+        if (!ev) return;
+
+        document.getElementById("delete-event-id").value = ev.id;
+        document.getElementById("delete-event-name").textContent =
+          `Deseja realmente excluir "${ev.title}"? Esta ação não pode ser desfeita.`;
+        deleteModal.classList.remove("modal-hidden");
+      }
+
+      function closeDeleteModal() {
+        deleteModal.classList.add("modal-hidden");
+      }
+
+      deleteCancel.addEventListener("click", closeDeleteModal);
+      deleteOverlay.addEventListener("click", closeDeleteModal);
+
+      deleteConfirm.addEventListener("click", () => {
+        const id = document.getElementById("delete-event-id").value;
+        let events = loadEvents();
+        events = events.filter((e) => e.id !== id);
+        saveEvents(events);
+        renderEvents();
+        closeDeleteModal();
+        showToast("Evento excluído com sucesso!", "success");
+      });
+
+      // ──────────────── Init ────────────────
+      renderEvents();
+    </script>
+  </body>
+</html>

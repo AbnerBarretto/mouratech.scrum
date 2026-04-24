@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guns N' Roses | Belo Eventos</title>
+    <title>Evento | Belo Eventos</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -54,29 +54,34 @@
 
       .sponsor-marquee-track {
         display: flex;
+        align-items: center;
         width: max-content;
         animation: sponsorMarqueeRight 24s linear infinite;
+        will-change: transform;
       }
 
       .sponsor-marquee-group {
         display: flex;
         align-items: center;
-        gap: 3.5rem;
-        padding-inline: 2rem;
+        justify-content: space-evenly;
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        min-width: 100vw;
+        padding-inline: clamp(1rem, 4vw, 3rem);
       }
 
       .sponsor-marquee-item {
         color: #0f172a;
         font-weight: 900;
         letter-spacing: -0.02em;
-        font-size: 1.75rem;
+        font-size: clamp(1.05rem, 2.4vw, 1.75rem);
         white-space: nowrap;
         line-height: 1;
+        text-align: center;
       }
 
       @keyframes sponsorMarqueeRight {
         0% {
-          transform: translateX(-50%);
+          transform: translateX(-100vw);
         }
         100% {
           transform: translateX(0);
@@ -92,21 +97,38 @@
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
         <!-- Logo -->
-        <div class="flex items-center gap-2 group cursor-pointer">
-          <div
-            class="relative w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden"
+        <div
+          class="logo-container flex items-center gap-4 cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-mark transition-transform duration-300 hover:scale-105"
           >
-            <i
-              data-lucide="star"
-              class="w-6 h-6 text-blue-700 fill-current"
-            ></i>
-          </div>
-          <a href="index.html">
+            <path
+              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+              fill="#6366F1"
+            />
+            <path
+              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+              fill="#10B981"
+            />
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+          </svg>
+          <div class="flex flex-col text-left">
             <span
-              class="text-white font-black text-xl tracking-tighter uppercase"
-              >Belo Eventos</span
-            ></a
-          >
+              class="text-white text-2xl font-black tracking-tighter leading-none"
+              >Belo<span class="text-indigo-300">Eventos</span></span
+            >
+            <span
+              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              >Cultura e Conexão</span
+            >
+          </div>
         </div>
 
         <!-- Desktop Nav -->
@@ -116,7 +138,7 @@
           <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÃ‡ÃƒO</a
+            >PROGRAMAÇÃO</a
           >
           <a
             href="comunidade.html"
@@ -124,7 +146,7 @@
             >COMUNIDADE</a
           >
           <a
-            href="#contato-section"
+            href="contato.html"
             class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
@@ -173,7 +195,7 @@
               <a
                 href="meuperfil.html#seguranca"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >SeguranÃ§a</a
+                >Segurança</a
               >
               <a
                 href="meuperfil.html#ingressos"
@@ -209,9 +231,9 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="categorias.html">ProgramaÃ§Ã£o</a>
+        <a href="categorias.html">Programação</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="#contato-section">Contato</a>
+        <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
@@ -252,6 +274,7 @@
         class="relative h-[600px] flex items-center overflow-hidden bg-slate-900"
       >
         <img
+          id="event-hero-image"
           src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=2000"
           alt="Guns N' Roses Turner"
           class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105"
@@ -264,8 +287,9 @@
           <div class="max-w-4xl">
             <div class="flex items-center gap-4 mb-6">
               <span
+                id="event-badge"
                 class="bg-yellow-400 text-blue-900 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
-                >TURNÃŠ 2025</span
+                >TURNÊ 2025</span
               >
               <div class="flex gap-2">
                 <i
@@ -291,19 +315,22 @@
               </div>
             </div>
             <h1
+              id="event-title"
               class="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4"
             >
               GUNS N' ROSES <br />
               <span
+                id="event-city"
                 class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500"
                 >BELO JARDIM, PE</span
               >
             </h1>
             <p
+              id="event-hero-description"
               class="text-xl text-slate-300 font-medium mb-8 max-w-2xl leading-relaxed"
             >
               A maior banda de hard rock do mundo desembarca em Pernambuco para
-              uma apresentaÃ§Ã£o histÃ³rica no IFPE - CAMPUS BELO JARDIM
+              uma apresentação histórica no IFPE - CAMPUS BELO JARDIM
             </p>
 
             <!-- Logos de Patrocinadores (Estilo Djavan) -->
@@ -322,21 +349,23 @@
             </div>
 
             <div class="flex flex-wrap gap-4">
-              <button
+              <a
+                id="buy-ticket-btn"
+                href="pagamento.html"
                 class="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-4 rounded-2xl shadow-2xl transition-all uppercase tracking-widest flex items-center gap-2"
               >
                 Comprar Ingressos <i data-lucide="ticket" class="w-5 h-5"></i>
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CONTEÃšDO EM GRID (CONFORME SOLICITADO) -->
+      <!-- CONTEÚDO EM GRID (CONFORME SOLICITADO) -->
       <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <!-- COLUNA ESQUERDA: DESCRIÃ‡ÃƒO E FEEDBACKS -->
+            <!-- COLUNA ESQUERDA: DESCRIÇÃO E FEEDBACKS -->
             <div class="lg:col-span-2 space-y-12">
               <!-- SOBRE O EVENTO -->
               <div
@@ -351,28 +380,28 @@
                 <div
                   class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-medium"
                 >
-                  <p class="mb-4">
-                    Prepare-se para uma noite inesquecÃ­vel com Axl Rose, Slash e
-                    Duff McKagan. A turnÃª mundial 2025 chega a Belo Jardim
-                    trazendo todos os clÃ¡ssicos que definiram geraÃ§Ãµes, desde
-                    "Sweet Child O' Mine" atÃ© "November Rain".
+                  <p id="event-about-1" class="mb-4">
+                    Prepare-se para uma noite inesquecível com Axl Rose, Slash e
+                    Duff McKagan. A turnê mundial 2025 chega a Belo Jardim
+                    trazendo todos os clássicos que definiram gerações, desde
+                    "Sweet Child O' Mine" até "November Rain".
                   </p>
-                  <p>
-                    O evento contarÃ¡ com estrutura de padrÃ£o internacional,
-                    praÃ§a de alimentaÃ§Ã£o temÃ¡tica, ativaÃ§Ãµes de patrocinadores e
-                    acessibilidade total para todos os fÃ£s. Os portÃµes abrem Ã s
-                    17h para que vocÃª aproveite a experiÃªncia completa do
+                  <p id="event-about-2">
+                    O evento contará com estrutura de padrão internacional,
+                    praça de alimentação temática, ativações de patrocinadores e
+                    acessibilidade total para todos os fãs. Os portões abrem às
+                    17h para que você aproveite a experiência completa do
                     festival.
                   </p>
                 </div>
               </div>
 
-              <!-- FEEDBACKS (EXPERIÃŠNCIA DO POVO) -->
+              <!-- FEEDBACKS (EXPERIÊNCIA DO POVO) -->
               <div>
                 <h2
                   class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-8"
                 >
-                  ExperiÃªncia do Povo
+                  Experiência do Povo
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Card Feedback 1 -->
@@ -455,7 +484,7 @@
               </div>
             </div>
 
-            <!-- COLUNA DIREITA: MAPA E VÃDEO ANTERIOR -->
+            <!-- COLUNA DIREITA: MAPA E VÍDEO ANTERIOR -->
             <div class="space-y-12">
               <!-- MAPA -->
               <div>
@@ -468,6 +497,7 @@
                   class="rounded-[2rem] overflow-hidden shadow-xl border-4 border-white aspect-video relative group"
                 >
                   <img
+                    id="event-map-image"
                     src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
                     alt="Mapa Local"
                     class="w-full h-full object-cover"
@@ -481,16 +511,17 @@
                     <p
                       class="text-[10px] font-black text-blue-600 uppercase mb-1"
                     >
-                      LocalizaÃ§Ã£o
+                      Localização
                     </p>
-                    <p class="text-sm font-bold">IFPE - Belo Jardim, PE</p>
+                    <p id="event-map-location" class="text-sm font-bold">IFPE - Belo Jardim, PE</p>
                   </div>
                 </div>
               </div>
 
-              <!-- VÃDEO DO ANO ANTERIOR -->
+              <!-- VÍDEO DO ANO ANTERIOR -->
               <div>
                 <h2
+                  id="event-video-heading"
                   class="text-xl font-black text-slate-900 uppercase tracking-widest mb-6"
                 >
                   Evento 2024
@@ -499,6 +530,7 @@
                   class="relative rounded-[2rem] overflow-hidden aspect-video group cursor-pointer shadow-2xl"
                 >
                   <img
+                    id="event-video-image"
                     src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=800"
                     alt="Show Anterior"
                     class="w-full h-full object-cover transition-transform group-hover:scale-110"
@@ -516,14 +548,14 @@
                     </div>
                   </div>
                   <div class="absolute bottom-4 left-6">
-                    <p class="text-white font-black uppercase text-sm italic">
+                    <p id="event-video-caption" class="text-white font-black uppercase text-sm italic">
                       Flashback: Tour 2024
                     </p>
                   </div>
                 </div>
               </div>
 
-              <!-- PATROCINADORES (SUBSTITUINDO O AD SIDEBAR POLUÃDO) -->
+              <!-- PATROCINADORES (SUBSTITUINDO O AD SIDEBAR POLUÍDO) -->
               <div class="pt-8 border-t border-slate-100">
                 <p
                   class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6 text-center"
@@ -567,7 +599,7 @@
             >
           </div>
           <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">
-            Â© 2026 Todos os direitos reservados
+            © 2026 Todos os direitos reservados
           </p>
           <div class="flex gap-8">
             <i
@@ -583,10 +615,62 @@
       </div>
     </footer>
 
+    <script src="events-data.js"></script>
     <script src="auth-mock.js"></script>
     <script>
       // Initialize Icons
       lucide.createIcons();
+
+      const eventCatalog = window.BELO_EVENTS || {};
+      const eventIds = Object.keys(eventCatalog);
+
+      const params = new URLSearchParams(window.location.search);
+      const requestedId = params.get("id");
+      const fallbackId = "guns-n-roses";
+      const resolvedId = eventCatalog[requestedId] ? requestedId : fallbackId;
+      const eventData = eventCatalog[resolvedId] || eventCatalog[eventIds[0]];
+
+      const heroImage = document.getElementById("event-hero-image");
+      const badge = document.getElementById("event-badge");
+      const title = document.getElementById("event-title");
+      const heroDescription = document.getElementById("event-hero-description");
+      const about1 = document.getElementById("event-about-1");
+      const about2 = document.getElementById("event-about-2");
+      const mapImage = document.getElementById("event-map-image");
+      const mapLocation = document.getElementById("event-map-location");
+      const videoHeading = document.getElementById("event-video-heading");
+      const videoImage = document.getElementById("event-video-image");
+      const videoCaption = document.getElementById("event-video-caption");
+      const buyTicketBtn = document.getElementById("buy-ticket-btn");
+
+      if (eventData) {
+        document.title = `${eventData.title} | Belo Eventos`;
+
+        heroImage.src = eventData.heroImage;
+        heroImage.alt = eventData.heroAlt || eventData.title;
+        badge.textContent = eventData.badge || eventData.classification || "Evento";
+
+        title.innerHTML = `${eventData.title} <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">${eventData.city || "Belo Jardim, PE"}</span>`;
+        heroDescription.textContent = eventData.heroDescription || "Confira os detalhes deste evento.";
+
+        if (Array.isArray(eventData.about) && eventData.about.length) {
+          about1.textContent = eventData.about[0] || "";
+          about2.textContent = eventData.about[1] || "";
+        }
+
+        mapImage.src = eventData.mapImage || mapImage.src;
+        mapImage.alt = `Mapa do evento ${eventData.title}`;
+        mapLocation.textContent = eventData.mapLocation || mapLocation.textContent;
+
+        videoHeading.textContent = eventData.videoHeading || "Evento Anterior";
+        videoImage.src = eventData.videoImage || videoImage.src;
+        videoImage.alt = eventData.videoAlt || `Evento anterior de ${eventData.title}`;
+        videoCaption.textContent = eventData.videoCaption || "Flashback";
+
+        if (buyTicketBtn && eventData.id) {
+          buyTicketBtn.href = `pagamento.html?id=${eventData.id}`;
+        }
+      }
 
       // Header Scroll Effect
       const header = document.getElementById("main-header");
