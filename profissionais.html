@@ -1,395 +1,421 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profissionais | Belo Eventos</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-      .prof-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .prof-card:hover {
-        transform: translateY(-6px);
-      }
-      .filter-btn {
-        transition: all 0.2s ease;
-      }
-      .filter-btn.active {
-        background-color: #1d4ed8;
-        color: #ffffff;
-        box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
-      }
-      .hero-gradient {
-        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3730a3 100%);
-      }
-      .badge-verificado {
-        background: linear-gradient(135deg, #10b981, #059669);
-      }
-      .badge-emalta {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-      }
-    </style>
-  </head>
-  <body class="bg-slate-100 min-h-screen flex flex-col">
 
-    <!-- HEADER -->
-    <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
-          <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-mark transition-transform duration-300 hover:scale-105">
-            <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#6366F1"/>
-            <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10B981"/>
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8"/>
-          </svg>
-          <div class="flex flex-col text-left">
-            <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span class="text-indigo-300">Eventos</span></span>
-            <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e Conexão</span>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profissionais | Belo Eventos</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .transition-header {
+      transition: all 0.3s ease;
+    }
+
+    .prof-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .prof-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .filter-btn {
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active {
+      background-color: #1d4ed8;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3730a3 100%);
+    }
+
+    .badge-verificado {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .badge-emalta {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="logo-mark transition-transform duration-300 hover:scale-105">
+          <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+            fill="#6366F1" />
+          <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+            fill="#10B981" />
+          <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+        </svg>
+        <div class="flex flex-col text-left">
+          <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span
+              class="text-indigo-300">Eventos</span></span>
+          <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e Conexão</span>
         </div>
-
-        <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
-          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
-          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
-          <a href="profissionais.html" class="text-yellow-400 font-black transition-colors">PROFISSIONAIS</a>
-          <a href="#contato-section" class="hover:text-yellow-400 transition-colors">CONTATO</a>
-        </nav>
-
-        <div class="hidden md:flex items-center gap-4">
-          <div class="relative">
-            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"></i>
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Buscar profissionais..."
-              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
-            />
-          </div>
-          <a href="login.html" data-auth-enter class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
-          <div data-auth-profile class="relative group hidden">
-            <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
-            <button class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden" aria-label="Menu do perfil">
-              <i data-lucide="user" class="text-white w-5 h-5"></i>
-            </button>
-            <div data-auth-dropdown class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"></div>
-          </div>
-        </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
-    </header>
 
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
-      <div class="flex justify-end">
-        <button id="menu-close" class="text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
-      </div>
-      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
-        <a href="categorias.html">Programação</a>
-        <a href="comunidade.html">Comunidade</a>
-        <a href="profissionais.html" class="text-yellow-400">Profissionais</a>
-        <a href="#contato-section">Contato</a>
-        <div class="h-px bg-white/20 my-4"></div>
-        <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+      <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
+        <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
+        <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
+        <a href="#contato-section" class="hover:text-yellow-400 transition-colors">CONTATO</a>
       </nav>
-    </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-gradient pt-32 pb-20 px-4 relative overflow-hidden">
-      <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white"></div>
-        <div class="absolute bottom-0 right-20 w-96 h-96 rounded-full bg-indigo-300"></div>
-      </div>
-      <div class="container mx-auto relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 mb-6">
-          <i data-lucide="briefcase" class="text-yellow-400 w-4 h-4"></i>
-          <span class="text-white/80 text-xs font-black uppercase tracking-widest">Marketplace de Serviços</span>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"></i>
+          <input type="text" id="search-input" placeholder="Buscar profissionais..."
+            class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64" />
         </div>
-        <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none mb-4">
-          Profissionais<br /><span class="text-yellow-400">de Eventos</span>
-        </h1>
-        <p class="text-white/70 text-lg font-medium max-w-xl mx-auto mt-4">
-          Encontre os melhores prestadores de serviços para tornar o seu evento perfeito do início ao fim.
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-6 text-white/60 text-sm font-semibold">
-          <div class="flex items-center gap-2"><i data-lucide="shield-check" class="text-emerald-400 w-4 h-4"></i>Todos verificados</div>
-          <div class="flex items-center gap-2"><i data-lucide="star" class="text-yellow-400 w-4 h-4"></i>Avaliados pela comunidade</div>
-          <div class="flex items-center gap-2"><i data-lucide="zap" class="text-indigo-300 w-4 h-4"></i>Contratação rápida</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FILTROS -->
-    <section class="bg-white border-b border-slate-200 sticky top-[72px] z-40 shadow-sm">
-      <div class="container mx-auto px-4 py-4 overflow-x-auto">
-        <div class="flex items-center gap-3 min-w-max">
-          <span class="text-slate-400 text-xs font-black uppercase tracking-widest mr-2 shrink-0">Filtrar:</span>
-          <button class="filter-btn active rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-blue-700 text-blue-700 bg-white" data-filter="todos" onclick="aplicarFiltro(this, 'todos')">
-            Todos
+        <a href="login.html" data-auth-enter
+          class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
+        <div data-auth-profile class="relative group hidden">
+          <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
+          <button
+            class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+            aria-label="Menu do perfil">
+            <i data-lucide="user" class="text-white w-5 h-5"></i>
           </button>
-          <button class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700" data-filter="melhores" onclick="aplicarFiltro(this, 'melhores')">
-            <i data-lucide="star" class="inline w-3 h-3 mr-1"></i>Melhores
-          </button>
-          <button class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700" data-filter="preco-menor" onclick="aplicarFiltro(this, 'preco-menor')">
-            <i data-lucide="arrow-down" class="inline w-3 h-3 mr-1"></i>Menor Preço
-          </button>
-          <button class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700" data-filter="preco-maior" onclick="aplicarFiltro(this, 'preco-maior')">
-            <i data-lucide="arrow-up" class="inline w-3 h-3 mr-1"></i>Maior Preço
-          </button>
-          <button class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700" data-filter="emalta" onclick="aplicarFiltro(this, 'emalta')">
-            <i data-lucide="trending-up" class="inline w-3 h-3 mr-1"></i>Em Ascensão
-          </button>
-          <button class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700" data-filter="chamar" onclick="aplicarFiltro(this, 'chamar')">
-            <i data-lucide="repeat" class="inline w-3 h-3 mr-1"></i>Chamar Novamente
-          </button>
-
-          <div class="ml-auto shrink-0 flex items-center gap-2">
-            <span id="resultado-count" class="text-slate-400 text-xs font-bold"></span>
+          <div data-auth-dropdown
+            class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- GRID DE PROFISSIONAIS -->
-    <main class="container mx-auto px-4 py-16 flex-grow">
-      <div id="profissionais-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        <!-- Cards injetados via JS -->
-      </div>
-      <div id="empty-state" class="hidden text-center py-24">
-        <div class="w-20 h-20 bg-slate-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-          <i data-lucide="search-x" class="text-slate-400 w-10 h-10"></i>
-        </div>
-        <h3 class="text-2xl font-black text-slate-700 uppercase tracking-tight mb-2">Nenhum resultado</h3>
-        <p class="text-slate-400 font-medium">Tente outro filtro ou termo de busca.</p>
-      </div>
-    </main>
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
+    </div>
+  </header>
 
-    <!-- CTA BANNER -->
-    <section class="bg-blue-700 py-16 px-4">
-      <div class="container mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-4">
-          É prestador de serviços?
-        </h2>
-        <p class="text-white/70 font-medium mb-8 max-w-md mx-auto">
-          Cadastre-se no nosso marketplace e conecte-se a centenas de produtores de eventos em Pernambuco.
-        </p>
-        <a href="cadastro.html" class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black px-10 py-4 rounded-full uppercase tracking-widest text-sm transition-all shadow-xl active:scale-95 inline-block">
-          Quero me cadastrar
-        </a>
-      </div>
-    </section>
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
+    <div class="flex justify-end">
+      <button id="menu-close" class="text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
+    </div>
+    <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+      <a href="categorias.html">Programação</a>
+      <a href="comunidade.html">Comunidade</a>
+      <a href="profissionais.html" class="text-yellow-400">Profissionais</a>
+      <a href="#contato-section">Contato</a>
+      <div class="h-px bg-white/20 my-4"></div>
+      <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+    </nav>
+  </div>
 
-    <!-- FOOTER -->
-    <footer id="contato-section" class="p-8 text-center bg-slate-900">
-      <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
-        © 2026 Belo Eventos S.A. · Belo Jardim, PE
+  <!-- HERO SECTION -->
+  <section class="hero-gradient pt-32 pb-20 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white"></div>
+      <div class="absolute bottom-0 right-20 w-96 h-96 rounded-full bg-indigo-300"></div>
+    </div>
+    <div class="container mx-auto relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 mb-6">
+        <i data-lucide="briefcase" class="text-yellow-400 w-4 h-4"></i>
+        <span class="text-white/80 text-xs font-black uppercase tracking-widest">Marketplace de Serviços</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none mb-4">
+        Profissionais<br /><span class="text-yellow-400">de Eventos</span>
+      </h1>
+      <p class="text-white/70 text-lg font-medium max-w-xl mx-auto mt-4">
+        Encontre os melhores prestadores de serviços para tornar o seu evento perfeito do início ao fim.
       </p>
-    </footer>
+      <div class="mt-8 flex flex-wrap justify-center gap-6 text-white/60 text-sm font-semibold">
+        <div class="flex items-center gap-2"><i data-lucide="shield-check" class="text-emerald-400 w-4 h-4"></i>Todos
+          verificados</div>
+        <div class="flex items-center gap-2"><i data-lucide="star" class="text-yellow-400 w-4 h-4"></i>Avaliados pela
+          comunidade</div>
+        <div class="flex items-center gap-2"><i data-lucide="zap" class="text-indigo-300 w-4 h-4"></i>Contratação rápida
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="auth-mock.js"></script>
-    <script src="profissionais-data.js"></script>
-    <script>
-      lucide.createIcons();
+  <!-- FILTROS -->
+  <section class="bg-white border-b border-slate-200 sticky top-[72px] z-40 shadow-sm">
+    <div class="container mx-auto px-4 py-4 overflow-x-auto">
+      <div class="flex items-center gap-3 min-w-max">
+        <span class="text-slate-400 text-xs font-black uppercase tracking-widest mr-2 shrink-0">Filtrar:</span>
+        <button
+          class="filter-btn active rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-blue-700 text-blue-700 bg-white"
+          data-filter="todos" onclick="aplicarFiltro(this, 'todos')">
+          Todos
+        </button>
+        <button
+          class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700"
+          data-filter="melhores" onclick="aplicarFiltro(this, 'melhores')">
+          <i data-lucide="star" class="inline w-3 h-3 mr-1"></i>Melhores
+        </button>
+        <button
+          class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700"
+          data-filter="preco-menor" onclick="aplicarFiltro(this, 'preco-menor')">
+          <i data-lucide="arrow-down" class="inline w-3 h-3 mr-1"></i>Menor Preço
+        </button>
+        <button
+          class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700"
+          data-filter="preco-maior" onclick="aplicarFiltro(this, 'preco-maior')">
+          <i data-lucide="arrow-up" class="inline w-3 h-3 mr-1"></i>Maior Preço
+        </button>
+        <button
+          class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700"
+          data-filter="emalta" onclick="aplicarFiltro(this, 'emalta')">
+          <i data-lucide="trending-up" class="inline w-3 h-3 mr-1"></i>Em Ascensão
+        </button>
+        <button
+          class="filter-btn rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-widest border-2 border-slate-200 text-slate-500 bg-white hover:border-blue-700 hover:text-blue-700"
+          data-filter="chamar" onclick="aplicarFiltro(this, 'chamar')">
+          <i data-lucide="repeat" class="inline w-3 h-3 mr-1"></i>Chamar Novamente
+        </button>
 
-      // Header scroll
-      var header = document.getElementById("main-header");
-      window.addEventListener("scroll", function() {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
+        <div class="ml-auto shrink-0 flex items-center gap-2">
+          <span id="resultado-count" class="text-slate-400 text-xs font-bold"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE PROFISSIONAIS -->
+  <main class="container mx-auto px-4 py-16 flex-grow">
+    <div id="profissionais-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Cards injetados via JS -->
+    </div>
+    <div id="empty-state" class="hidden text-center py-24">
+      <div class="w-20 h-20 bg-slate-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="search-x" class="text-slate-400 w-10 h-10"></i>
+      </div>
+      <h3 class="text-2xl font-black text-slate-700 uppercase tracking-tight mb-2">Nenhum resultado</h3>
+      <p class="text-slate-400 font-medium">Tente outro filtro ou termo de busca.</p>
+    </div>
+  </main>
+
+  <!-- CTA BANNER -->
+  <section class="bg-blue-700 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-4">
+        É prestador de serviços?
+      </h2>
+      <p class="text-white/70 font-medium mb-8 max-w-md mx-auto">
+        Cadastre-se no nosso marketplace e conecte-se a centenas de produtores de eventos em Pernambuco.
+      </p>
+      <a href="cadastro.html"
+        class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black px-10 py-4 rounded-full uppercase tracking-widest text-sm transition-all shadow-xl active:scale-95 inline-block">
+        Quero me cadastrar
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contato-section" class="p-8 text-center bg-slate-900">
+    <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
+      © 2026 Belo Eventos S.A. · Belo Jardim, PE
+    </p>
+  </footer>
+
+  <script src="auth-mock.js"></script>
+  <script src="profissionais-data.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Header scroll
+    var header = document.getElementById("main-header");
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+        header.classList.remove("bg-blue-700", "py-4");
+      } else {
+        header.classList.add("bg-blue-700", "py-4");
+        header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+      }
+    });
+
+    // Mobile Menu
+    var menuToggle = document.getElementById("menu-toggle");
+    var menuClose = document.getElementById("menu-close");
+    var mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", function () {
+      mobileMenu.classList.remove("hidden");
+    });
+
+    menuClose.addEventListener("click", function () {
+      mobileMenu.classList.add("hidden");
+    });
+
+    // Estado de filtros e busca
+    var filtroAtivo = "todos";
+    var termoBusca = "";
+
+    function renderStars(rating) {
+      var html = "";
+      var ratingFloor = Math.floor(rating);
+      var temMeio = (rating - ratingFloor) >= 0.5;
+      for (var i = 1; i <= 5; i++) {
+        if (i <= ratingFloor) {
+          html += '<i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
+        } else if (i === ratingFloor + 1 && temMeio) {
+          html += '<i data-lucide="star-half" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
         } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+          html += '<i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>';
         }
+      }
+      return html;
+    }
+
+    function renderBadge(badge) {
+      if (badge === "VERIFICADO") {
+        return '<span class="badge-verificado text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">✓ ' + badge + '</span>';
+      }
+      return '<span class="badge-emalta text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">↑ ' + badge + '</span>';
+    }
+
+    function criarCardProfissional(prof) {
+      var card = document.createElement("div");
+      card.className = "prof-card bg-white rounded-[2rem] shadow-sm hover:shadow-2xl overflow-hidden border border-slate-100 cursor-pointer group";
+      card.setAttribute("data-id", prof.id);
+      card.setAttribute("data-avaliacao", prof.avaliacao);
+      card.setAttribute("data-preco", prof.precioDiaria);
+      card.setAttribute("data-badge", prof.badge);
+
+      card.innerHTML =
+        '<div class="relative overflow-hidden" style="height: 220px;">' +
+        '<img src="' + prof.imagem + '" alt="' + prof.nome + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />' +
+        '<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>' +
+        '<div class="absolute top-4 left-4">' + renderBadge(prof.badge) + '</div>' +
+        '<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">' +
+        '<span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/30">' + prof.categoria + '</span>' +
+        '<span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1.5 rounded-full">R$ ' + prof.precioDiaria.toFixed(0) + '/dia</span>' +
+        '</div>' +
+        '</div>' +
+        '<div class="p-6">' +
+        '<h3 class="text-lg font-black text-slate-900 uppercase tracking-tight leading-tight mb-1">' + prof.nome + '</h3>' +
+        '<p class="text-slate-500 text-sm font-medium leading-snug mb-4 line-clamp-2">' + prof.descricaoCurta + '</p>' +
+        '<div class="flex items-center justify-between">' +
+        '<div class="flex items-center gap-1.5">' +
+        '<div class="flex items-center gap-0.5">' + renderStars(prof.avaliacao) + '</div>' +
+        '<span class="text-xs font-black text-slate-700 ml-1">' + prof.avaliacao.toFixed(1) + '</span>' +
+        '<span class="text-xs text-slate-400 font-medium">(' + prof.totalAvaliacoes + ')</span>' +
+        '</div>' +
+        '<button class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-all active:scale-95">Ver perfil</button>' +
+        '</div>' +
+        '</div>';
+
+      card.addEventListener("click", function () {
+        var id = this.getAttribute("data-id");
+        window.location.href = "perfil-profissional.html?id=" + id;
       });
 
-      // Mobile Menu
-      var menuToggle = document.getElementById("menu-toggle");
-      var menuClose = document.getElementById("menu-close");
-      var mobileMenu = document.getElementById("mobile-menu");
+      return card;
+    }
 
-      menuToggle.addEventListener("click", function() {
-        mobileMenu.classList.remove("hidden");
-      });
+    function obterProfissionaisFiltrados() {
+      var todos = [];
+      for (var chave in window.PROFISSIONAIS_DATA) {
+        todos.push(window.PROFISSIONAIS_DATA[chave]);
+      }
 
-      menuClose.addEventListener("click", function() {
-        mobileMenu.classList.add("hidden");
-      });
-
-      // Estado de filtros e busca
-      var filtroAtivo = "todos";
-      var termoBusca = "";
-
-      function renderStars(rating) {
-        var html = "";
-        var ratingFloor = Math.floor(rating);
-        var temMeio = (rating - ratingFloor) >= 0.5;
-        for (var i = 1; i <= 5; i++) {
-          if (i <= ratingFloor) {
-            html += '<i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
-          } else if (i === ratingFloor + 1 && temMeio) {
-            html += '<i data-lucide="star-half" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
-          } else {
-            html += '<i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>';
+      // Aplicar busca por texto
+      if (termoBusca.length > 1) {
+        var termo = termoBusca.toLowerCase();
+        var filtrado = [];
+        for (var i = 0; i < todos.length; i++) {
+          var p = todos[i];
+          var textoCompleto = (p.nome + " " + p.categoria + " " + p.descricaoCurta).toLowerCase();
+          if (textoCompleto.indexOf(termo) !== -1) {
+            filtrado.push(p);
           }
         }
-        return html;
+        todos = filtrado;
       }
 
-      function renderBadge(badge) {
-        if (badge === "VERIFICADO") {
-          return '<span class="badge-verificado text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">✓ ' + badge + '</span>';
+      // Aplicar filtro de ordenação
+      if (filtroAtivo === "melhores") {
+        todos.sort(function (a, b) { return b.avaliacao - a.avaliacao; });
+      } else if (filtroAtivo === "preco-menor") {
+        todos.sort(function (a, b) { return a.precioDiaria - b.precioDiaria; });
+      } else if (filtroAtivo === "preco-maior") {
+        todos.sort(function (a, b) { return b.precioDiaria - a.precioDiaria; });
+      } else if (filtroAtivo === "emalta") {
+        var resultado = [];
+        for (var j = 0; j < todos.length; j++) {
+          if (todos[j].badge === "EM ALTA") resultado.push(todos[j]);
         }
-        return '<span class="badge-emalta text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">↑ ' + badge + '</span>';
+        todos = resultado;
+      } else if (filtroAtivo === "chamar") {
+        todos.sort(function (a, b) { return b.totalAvaliacoes - a.totalAvaliacoes; });
       }
 
-      function criarCardProfissional(prof) {
-        var card = document.createElement("div");
-        card.className = "prof-card bg-white rounded-[2rem] shadow-sm hover:shadow-2xl overflow-hidden border border-slate-100 cursor-pointer group";
-        card.setAttribute("data-id", prof.id);
-        card.setAttribute("data-avaliacao", prof.avaliacao);
-        card.setAttribute("data-preco", prof.precioDiaria);
-        card.setAttribute("data-badge", prof.badge);
+      return todos;
+    }
 
-        card.innerHTML =
-          '<div class="relative overflow-hidden" style="height: 220px;">' +
-            '<img src="' + prof.imagem + '" alt="' + prof.nome + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />' +
-            '<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>' +
-            '<div class="absolute top-4 left-4">' + renderBadge(prof.badge) + '</div>' +
-            '<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">' +
-              '<span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/30">' + prof.categoria + '</span>' +
-              '<span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1.5 rounded-full">R$ ' + prof.precioDiaria.toFixed(0) + '/dia</span>' +
-            '</div>' +
-          '</div>' +
-          '<div class="p-6">' +
-            '<h3 class="text-lg font-black text-slate-900 uppercase tracking-tight leading-tight mb-1">' + prof.nome + '</h3>' +
-            '<p class="text-slate-500 text-sm font-medium leading-snug mb-4 line-clamp-2">' + prof.descricaoCurta + '</p>' +
-            '<div class="flex items-center justify-between">' +
-              '<div class="flex items-center gap-1.5">' +
-                '<div class="flex items-center gap-0.5">' + renderStars(prof.avaliacao) + '</div>' +
-                '<span class="text-xs font-black text-slate-700 ml-1">' + prof.avaliacao.toFixed(1) + '</span>' +
-                '<span class="text-xs text-slate-400 font-medium">(' + prof.totalAvaliacoes + ')</span>' +
-              '</div>' +
-              '<button class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-all active:scale-95">Ver perfil</button>' +
-            '</div>' +
-          '</div>';
+    function renderizarGrid() {
+      var grid = document.getElementById("profissionais-grid");
+      var emptyState = document.getElementById("empty-state");
+      var contador = document.getElementById("resultado-count");
 
-        card.addEventListener("click", function() {
-          var id = this.getAttribute("data-id");
-          window.location.href = "perfil-profissional.html?id=" + id;
-        });
+      grid.innerHTML = "";
 
-        return card;
-      }
+      var profissionais = obterProfissionaisFiltrados();
 
-      function obterProfissionaisFiltrados() {
-        var todos = [];
-        for (var chave in window.PROFISSIONAIS_DATA) {
-          todos.push(window.PROFISSIONAIS_DATA[chave]);
-        }
-
-        // Aplicar busca por texto
-        if (termoBusca.length > 1) {
-          var termo = termoBusca.toLowerCase();
-          var filtrado = [];
-          for (var i = 0; i < todos.length; i++) {
-            var p = todos[i];
-            var textoCompleto = (p.nome + " " + p.categoria + " " + p.descricaoCurta).toLowerCase();
-            if (textoCompleto.indexOf(termo) !== -1) {
-              filtrado.push(p);
-            }
-          }
-          todos = filtrado;
-        }
-
-        // Aplicar filtro de ordenação
-        if (filtroAtivo === "melhores") {
-          todos.sort(function(a, b) { return b.avaliacao - a.avaliacao; });
-        } else if (filtroAtivo === "preco-menor") {
-          todos.sort(function(a, b) { return a.precioDiaria - b.precioDiaria; });
-        } else if (filtroAtivo === "preco-maior") {
-          todos.sort(function(a, b) { return b.precioDiaria - a.precioDiaria; });
-        } else if (filtroAtivo === "emalta") {
-          var resultado = [];
-          for (var j = 0; j < todos.length; j++) {
-            if (todos[j].badge === "EM ALTA") resultado.push(todos[j]);
-          }
-          todos = resultado;
-        } else if (filtroAtivo === "chamar") {
-          todos.sort(function(a, b) { return b.totalAvaliacoes - a.totalAvaliacoes; });
-        }
-
-        return todos;
-      }
-
-      function renderizarGrid() {
-        var grid = document.getElementById("profissionais-grid");
-        var emptyState = document.getElementById("empty-state");
-        var contador = document.getElementById("resultado-count");
-
-        grid.innerHTML = "";
-
-        var profissionais = obterProfissionaisFiltrados();
-
-        if (profissionais.length === 0) {
-          grid.classList.add("hidden");
-          emptyState.classList.remove("hidden");
-          contador.textContent = "0 resultados";
-          lucide.createIcons();
-          return;
-        }
-
-        grid.classList.remove("hidden");
-        emptyState.classList.add("hidden");
-        contador.textContent = profissionais.length + " profissional" + (profissionais.length > 1 ? "is" : "");
-
-        for (var i = 0; i < profissionais.length; i++) {
-          grid.appendChild(criarCardProfissional(profissionais[i]));
-        }
-
+      if (profissionais.length === 0) {
+        grid.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+        contador.textContent = "0 resultados";
         lucide.createIcons();
+        return;
       }
 
-      function aplicarFiltro(botao, filtro) {
-        filtroAtivo = filtro;
-        var botoes = document.querySelectorAll(".filter-btn");
-        for (var i = 0; i < botoes.length; i++) {
-          botoes[i].classList.remove("active");
-          botoes[i].classList.add("border-slate-200", "text-slate-500");
-          botoes[i].classList.remove("border-blue-700", "text-blue-700", "bg-blue-50");
-        }
-        botao.classList.add("active");
-        botao.classList.remove("border-slate-200", "text-slate-500");
-        renderizarGrid();
+      grid.classList.remove("hidden");
+      emptyState.classList.add("hidden");
+      contador.textContent = profissionais.length + " profissional" + (profissionais.length > 1 ? "is" : "");
+
+      for (var i = 0; i < profissionais.length; i++) {
+        grid.appendChild(criarCardProfissional(profissionais[i]));
       }
 
-      // Busca no header
-      var searchInput = document.getElementById("search-input");
-      searchInput.addEventListener("input", function() {
-        termoBusca = this.value.trim();
-        renderizarGrid();
-      });
+      lucide.createIcons();
+    }
 
-      // Inicializar
+    function aplicarFiltro(botao, filtro) {
+      filtroAtivo = filtro;
+      var botoes = document.querySelectorAll(".filter-btn");
+      for (var i = 0; i < botoes.length; i++) {
+        botoes[i].classList.remove("active");
+        botoes[i].classList.add("border-slate-200", "text-slate-500");
+        botoes[i].classList.remove("border-blue-700", "text-blue-700", "bg-blue-50");
+      }
+      botao.classList.add("active");
+      botao.classList.remove("border-slate-200", "text-slate-500");
       renderizarGrid();
-    </script>
-  </body>
+    }
+
+    // Busca no header
+    var searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("input", function () {
+      termoBusca = this.value.trim();
+      renderizarGrid();
+    });
+
+    // Inicializar
+    renderizarGrid();
+  </script>
+</body>
+
 </html>

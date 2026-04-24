@@ -1,581 +1,423 @@
 ﻿<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meu Perfil | Belo Eventos</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
-    />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
 
-      .profile-card {
-        background: white;
-        border-radius: 2.5rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e2e8f0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil | Belo Eventos</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
 
-      .input-readonly {
-        background: #f8fafc;
-        border: 2px solid #f1f5f9;
-      }
+    .profile-card {
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
 
-      .btn-danger {
-        background: #fff1f2;
-        color: #e11d48;
-        transition: all 0.2s;
-      }
+    .input-readonly {
+      background: #f8fafc;
+      border: 2px solid #f1f5f9;
+    }
 
-      .btn-danger:hover {
-        background: #fb7185;
-        color: white;
-      }
+    .btn-danger {
+      background: #fff1f2;
+      color: #e11d48;
+      transition: all 0.2s;
+    }
 
-      .avatar-shadow {
-        box-shadow:
-          0 0 0 8px white,
-          0 4px 20px rgba(0, 0, 0, 0.1);
-      }
+    .btn-danger:hover {
+      background: #fb7185;
+      color: white;
+    }
 
-      /* EstilizaÃ§Ã£o do Modal de ExclusÃ£o */
-      #delete-modal {
-        transition:
-          opacity 0.3s ease,
-          visibility 0.3s ease;
-      }
+    .avatar-shadow {
+      box-shadow:
+        0 0 0 8px white,
+        0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-      .modal-content {
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
+    /* EstilizaÃ§Ã£o do Modal de ExclusÃ£o */
+    #delete-modal {
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
 
-      /* Estado Escondido do Modal */
-      .modal-hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
+    .modal-content {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-      .modal-hidden .modal-content {
-        transform: scale(0.9) translateY(20px);
-      }
+    /* Estado Escondido do Modal */
+    .modal-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-    </style>
-  </head>
-  <body class="bg-slate-50 min-h-screen flex flex-col relative">
-    <!-- HEADER -->
-    <header
-      id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
-    >
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
-          onclick="window.location.href = 'index.html'"
-        >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
-          <div class="flex flex-col text-left">
-            <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
-            >
-            <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
-              >Cultura e ConexÃ£o</span
-            >
-          </div>
+    .modal-hidden .modal-content {
+      transform: scale(0.9) translateY(20px);
+    }
+
+    .transition-header {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex flex-col relative">
+  <!-- HEADER -->
+  <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href = 'index.html'">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="logo-mark transition-transform duration-300 hover:scale-105">
+          <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+            fill="#6366F1" />
+          <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+            fill="#10B981" />
+          <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+        </svg>
+        <div class="flex flex-col text-left">
+          <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span
+              class="text-indigo-300">Eventos</span></span>
+          <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e
+            ConexÃ£o</span>
         </div>
-
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a
-            href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÃ‡ÃƒO</a
-          >
-          <a
-            href="comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
-          >
-          <a
-            href="#contato-section"
-            class="hover:text-yellow-400 transition-colors"
-            >CONTATO</a
-          >
-        </nav>
-
-        <div class="hidden md:flex items-center gap-4">
-          <div class="relative">
-            <i
-              data-lucide="search"
-              class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"
-            ></i>
-            <input
-              type="text"
-              placeholder="Buscar eventos..."
-              class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64"
-            />
-          </div>
-          <a
-            href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
-            >ENTRAR</a
-          >
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
-            <button
-              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
-              aria-label="Menu do perfil"
-            >
-              <i data-lucide="user" class="text-white w-6 h-6"></i>
-            </button>
-            <div
-              data-auth-dropdown
-              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-            >
-              <a
-                href="#dados-pessoais"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
-              >
-              <a
-                href="#seguranca"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >SeguranÃ§a</a
-              >
-              <a
-                href="#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
-    </header>
 
-    <div
-      id="mobile-menu"
-      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
-    >
-      <div class="flex justify-end">
-        <button id="menu-close" class="text-white">
-          <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-      </div>
-      <nav
-        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
-      >
-        <a href="categorias.html">ProgramaÃ§Ã£o</a>
-        <a href="comunidade.html">Comunidade</a>
-        <a href="#contato-section">Contato</a>
-        <div class="h-px bg-white/20 my-4"></div>
-        <a
-          href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
-          >Entrar</a
-        >
+      <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
+        <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÃ‡ÃƒO</a>
+        <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
+        <a href="#contato-section" class="hover:text-yellow-400 transition-colors">CONTATO</a>
       </nav>
-    </div>
 
-    <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
-      <div class="max-w-4xl mx-auto">
-        <!-- HEADER DO PERFIL (BIG TECH STYLE) -->
-        <div class="relative mb-24">
-          <!-- Cover Image -->
-          <div
-            class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
-              alt="Cover"
-              class="w-full h-full object-cover opacity-40"
-            />
-          </div>
-
-          <!-- Avatar and Info Overlay -->
-          <div class="absolute -bottom-16 left-12 flex items-end gap-6">
-            <div class="relative group">
-              <div
-                class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200"
-                  alt="Profile"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <button
-                class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold uppercase tracking-widest"
-              >
-                Alterar Foto
-              </button>
-            </div>
-            <div class="mb-4">
-              <h1
-                class="text-3xl font-black text-slate-900 uppercase tracking-tighter"
-              >
-                Fulano Ciclano
-              </h1>
-              <p
-                class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2"
-              >
-                <span
-                  class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
-                ></span>
-                Membro desde 2024
-              </p>
-            </div>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 w-4 h-4"></i>
+          <input type="text" placeholder="Buscar eventos..."
+            class="bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-48 transition-all focus:w-64" />
+        </div>
+        <a href="login.html" data-auth-enter
+          class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
+        <div data-auth-profile class="relative group hidden">
+          <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
+          <button
+            class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
+            aria-label="Menu do perfil">
+            <i data-lucide="user" class="text-white w-6 h-6"></i>
+          </button>
+          <div data-auth-dropdown
+            class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+            <a href="#dados-pessoais"
+              class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Dados
+              Pessoais</a>
+            <a href="#seguranca"
+              class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">SeguranÃ§a</a>
+            <a href="#ingressos"
+              class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meus
+              Ingressos</a>
+            <a href="#gerenciamento"
+              class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Gerenciamento
+              de Conta</a>
           </div>
         </div>
+      </div>
 
-        <!-- GRID DE INFORMAÃ‡Ã•ES -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- SIDEBAR DE NAVEGAÃ‡ÃƒO -->
-          <aside class="lg:col-span-1 space-y-4">
-            <div class="profile-card p-6">
-              <nav class="space-y-1">
-                <button
-                  id="dados-pessoais"
-                  class="w-full text-left px-4 py-3 bg-blue-50 text-blue-700 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3"
-                >
-                  <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
-                </button>
-                <button
-                  id="seguranca"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
-                >
-                  <i data-lucide="shield-check" class="w-4 h-4"></i> SeguranÃ§a
-                </button>
-                <button
-                  id="ingressos"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
-                >
-                  <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
-                </button>
-                <button
-                  id="gerenciamento"
-                  class="w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
-                >
-                  <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de
-                  Conta
-                </button>
-              </nav>
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-menu"
+    class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300">
+    <div class="flex justify-end">
+      <button id="menu-close" class="text-white">
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+      <a href="categorias.html">ProgramaÃ§Ã£o</a>
+      <a href="comunidade.html">Comunidade</a>
+      <a href="#contato-section">Contato</a>
+      <div class="h-px bg-white/20 my-4"></div>
+      <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+    </nav>
+  </div>
+
+  <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
+    <div class="max-w-4xl mx-auto">
+      <!-- HEADER DO PERFIL (BIG TECH STYLE) -->
+      <div class="relative mb-24">
+        <!-- Cover Image -->
+        <div class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
+            alt="Cover" class="w-full h-full object-cover opacity-40" />
+        </div>
+
+        <!-- Avatar and Info Overlay -->
+        <div class="absolute -bottom-16 left-12 flex items-end gap-6">
+          <div class="relative group">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200"
+                alt="Profile" class="w-full h-full object-cover" />
             </div>
+            <button
+              class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold uppercase tracking-widest">
+              Alterar Foto
+            </button>
+          </div>
+          <div class="mb-4">
+            <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">
+              Fulano Ciclano
+            </h1>
+            <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+              <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Membro desde 2024
+            </p>
+          </div>
+        </div>
+      </div>
 
-            <!-- CTA PRESTADOR DE SERVIÃ‡OS -->
-            <div
-              class="bg-[#0056e0] p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20"
-            >
-              <h4 class="font-black text-lg uppercase tracking-tighter mb-2">
-                Oferecer ServiÃ§os
-              </h4>
-              <p class="text-blue-100 text-xs font-medium mb-6 leading-relaxed">
-                Divulgue seu trabalho para a comunidade Belo Eventos.
-              </p>
-              <button
-                class="w-full bg-yellow-400 text-blue-900 font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95"
-              >
-                ComeÃ§ar agora
+      <!-- GRID DE INFORMAÃ‡Ã•ES -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- SIDEBAR DE NAVEGAÃ‡ÃƒO -->
+        <aside class="lg:col-span-1 space-y-4">
+          <div class="profile-card p-6">
+            <nav class="space-y-1">
+              <button id="dados-pessoais"
+                class="w-full text-left px-4 py-3 bg-blue-50 text-blue-700 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3">
+                <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
+              </button>
+              <button id="seguranca"
+                class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors">
+                <i data-lucide="shield-check" class="w-4 h-4"></i> SeguranÃ§a
+              </button>
+              <button id="ingressos"
+                class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors">
+                <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
+              </button>
+              <button id="gerenciamento"
+                class="w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors">
+                <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de
+                Conta
+              </button>
+            </nav>
+          </div>
+
+          <!-- CTA PRESTADOR DE SERVIÃ‡OS -->
+          <div class="bg-[#0056e0] p-6 rounded-[2rem] text-white shadow-xl shadow-blue-600/20">
+            <h4 class="font-black text-lg uppercase tracking-tighter mb-2">
+              Oferecer Serviços
+            </h4>
+            <p class="text-blue-100 text-xs font-medium mb-6 leading-relaxed">
+              Divulgue seu trabalho para a comunidade Belo Eventos ou contrate os melhores profissionais.
+            </p>
+            <button onclick="window.location.href='profissionais.html'"
+              class="w-full bg-yellow-400 text-blue-900 font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95">
+              Acessar Profissionais
+            </button>
+          </div>
+        </aside>
+
+        <!-- CONTEÃšDO PRINCIPAL -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- FORMULÃRIO DE DADOS -->
+          <div class="profile-card p-8 md:p-10">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+                InformaÃ§Ãµes BÃ¡sicas
+              </h2>
+              <button class="text-blue-600 font-bold text-xs uppercase hover:underline">
+                Editar
               </button>
             </div>
-          </aside>
 
-          <!-- CONTEÃšDO PRINCIPAL -->
-          <div class="lg:col-span-2 space-y-8">
-            <!-- FORMULÃRIO DE DADOS -->
-            <div class="profile-card p-8 md:p-10">
-              <div class="flex items-center justify-between mb-8">
-                <h2
-                  class="text-xl font-black text-slate-900 uppercase tracking-tight"
-                >
-                  InformaÃ§Ãµes BÃ¡sicas
-                </h2>
-                <button
-                  class="text-blue-600 font-bold text-xs uppercase hover:underline"
-                >
-                  Editar
-                </button>
+            <form class="space-y-6">
+              <div class="space-y-2">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nome
+                  completo</label>
+                <input type="text" readonly value="Fulano Ciclano"
+                  class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none" />
               </div>
 
-              <form class="space-y-6">
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >Nome completo</label
-                  >
-                  <input
-                    type="text"
-                    readonly
-                    value="Fulano Ciclano"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >E-mail de acesso</label
-                  >
-                  <input
-                    type="email"
-                    readonly
-                    value="fulaciclano@gmail.com"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
-                </div>
-
-                <div class="space-y-2">
-                  <label
-                    class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
-                    >Data de nascimento</label
-                  >
-                  <input
-                    type="text"
-                    readonly
-                    value="03/12/2081"
-                    class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
-                  />
-                </div>
-              </form>
-            </div>
-
-            <!-- ZONA DE PERIGO (GERENCIAMENTO DE CONTA) -->
-            <div class="profile-card p-8 md:p-10 border-rose-100">
-              <div
-                class="flex flex-col md:flex-row items-center justify-between gap-6"
-              >
-                <div class="text-center md:text-left">
-                  <h3
-                    class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1"
-                  >
-                    Gerenciamento de Conta
-                  </h3>
-                  <p class="text-slate-500 text-xs font-medium">
-                    A exclusÃ£o da conta Ã© permanente e removerÃ¡ todos os seus
-                    dados.
-                  </p>
-                </div>
-                <!-- Trigger do Modal -->
-                <button
-                  id="open-modal"
-                  class="btn-danger px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95"
-                >
-                  Deletar conta
-                </button>
+              <div class="space-y-2">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">E-mail de
+                  acesso</label>
+                <input type="email" readonly value="fulaciclano@gmail.com"
+                  class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none" />
               </div>
+
+              <div class="space-y-2">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Data de
+                  nascimento</label>
+                <input type="text" readonly value="03/12/2081"
+                  class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none" />
+              </div>
+            </form>
+          </div>
+
+          <!-- ZONA DE PERIGO (GERENCIAMENTO DE CONTA) -->
+          <div class="profile-card p-8 md:p-10 border-rose-100">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="text-center md:text-left">
+                <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1">
+                  Gerenciamento de Conta
+                </h3>
+                <p class="text-slate-500 text-xs font-medium">
+                  A exclusÃ£o da conta Ã© permanente e removerÃ¡ todos os seus
+                  dados.
+                </p>
+              </div>
+              <!-- Trigger do Modal -->
+              <button id="open-modal"
+                class="btn-danger px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm active:scale-95">
+                Deletar conta
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </main>
-
-    <!-- MODAL DE EXCLUSÃƒO (ESTILO BIG TECH) -->
-    <div
-      id="delete-modal"
-      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden"
-    >
-      <!-- Backdrop (Fundo Escuro com Blur) -->
-      <div
-        id="modal-overlay"
-        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
-      ></div>
-
-      <!-- ConteÃºdo do Modal -->
-      <div
-        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
-      >
-        <!-- Ãcone de Alerta CrÃ­tico -->
-        <div
-          class="w-32 h-32 mx-auto mb-8 bg-rose-50 rounded-full flex items-center justify-center relative"
-        >
-          <div
-            class="absolute inset-0 border-8 border-rose-500/20 rounded-full animate-ping"
-          ></div>
-          <i
-            data-lucide="alert-triangle"
-            class="w-16 h-16 text-rose-600 stroke-[2.5]"
-          ></i>
-        </div>
-
-        <h2
-          class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4"
-        >
-          Deseja realmente <br />
-          <span class="text-rose-600">apagar a conta?</span>
-        </h2>
-
-        <p class="text-slate-500 font-medium text-sm mb-10 leading-relaxed">
-          Esta aÃ§Ã£o Ã© irreversÃ­vel. Todos os seus ingressos, histÃ³rico de
-          eventos e conexÃµes na comunidade serÃ£o removidos permanentemente.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <button
-            id="close-modal"
-            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all"
-          >
-            Cancelar
-          </button>
-          <button
-            id="confirm-delete"
-            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
-          >
-            Deletar conta
-          </button>
-        </div>
-      </div>
     </div>
+  </main>
 
-    <!-- TELA DE SUCESSO PÃ“S-EXCLUSÃƒO -->
+  <!-- MODAL DE EXCLUSÃƒO (ESTILO BIG TECH) -->
+  <div id="delete-modal" class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden">
+    <!-- Backdrop (Fundo Escuro com Blur) -->
+    <div id="modal-overlay" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- ConteÃºdo do Modal -->
     <div
-      id="success-screen"
-      class="fixed inset-0 z-[210] bg-white flex flex-col items-center justify-center hidden"
-    >
-      <div class="text-center p-10">
-        <div
-          class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
-        >
-          <i data-lucide="check" class="w-12 h-12 text-green-600"></i>
-        </div>
-        <h1
-          class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
-        >
-          Conta ExcluÃ­da
-        </h1>
-        <p class="text-slate-500 font-medium mb-8">
-          Sua conta e seus dados foram removidos do Belo Eventos.
-        </p>
-        <button
-          onclick="window.location.reload()"
-          class="bg-[#0056e0] text-white font-black px-12 py-4 rounded-2xl uppercase tracking-widest text-xs"
-        >
-          Voltar ao InÃ­cio
+      class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center">
+      <!-- Ãcone de Alerta CrÃ­tico -->
+      <div class="w-32 h-32 mx-auto mb-8 bg-rose-50 rounded-full flex items-center justify-center relative">
+        <div class="absolute inset-0 border-8 border-rose-500/20 rounded-full animate-ping"></div>
+        <i data-lucide="alert-triangle" class="w-16 h-16 text-rose-600 stroke-[2.5]"></i>
+      </div>
+
+      <h2 class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight mb-4">
+        Deseja realmente <br />
+        <span class="text-rose-600">apagar a conta?</span>
+      </h2>
+
+      <p class="text-slate-500 font-medium text-sm mb-10 leading-relaxed">
+        Esta aÃ§Ã£o Ã© irreversÃ­vel. Todos os seus ingressos, histÃ³rico de
+        eventos e conexÃµes na comunidade serÃ£o removidos permanentemente.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button id="close-modal"
+          class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all">
+          Cancelar
+        </button>
+        <button id="confirm-delete"
+          class="bg-rose-600 hover:bg-rose-700 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2">
+          Deletar conta
         </button>
       </div>
     </div>
+  </div>
 
-    <footer class="py-12 border-t border-slate-200 mt-auto">
-      <div class="container mx-auto px-6 text-center">
-        <p
-          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]"
-        >
-          Â© 2026 Belo Eventos Â· Privacidade e SeguranÃ§a
-        </p>
+  <!-- TELA DE SUCESSO PÃ“S-EXCLUSÃƒO -->
+  <div id="success-screen" class="fixed inset-0 z-[210] bg-white flex flex-col items-center justify-center hidden">
+    <div class="text-center p-10">
+      <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="check" class="w-12 h-12 text-green-600"></i>
       </div>
-    </footer>
+      <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4">
+        Conta ExcluÃ­da
+      </h1>
+      <p class="text-slate-500 font-medium mb-8">
+        Sua conta e seus dados foram removidos do Belo Eventos.
+      </p>
+      <button onclick="window.location.reload()"
+        class="bg-[#0056e0] text-white font-black px-12 py-4 rounded-2xl uppercase tracking-widest text-xs">
+        Voltar ao InÃ­cio
+      </button>
+    </div>
+  </div>
 
-    <script src="auth-mock.js"></script>
-    <script>
+  <footer class="py-12 border-t border-slate-200 mt-auto">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]">
+        Â© 2026 Belo Eventos Â· Privacidade e SeguranÃ§a
+      </p>
+    </div>
+  </footer>
+
+  <script src="auth-mock.js"></script>
+  <script>
+    lucide.createIcons();
+
+    const header = document.getElementById("main-header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("bg-blue-600", "shadow-xl", "py-2");
+        header.classList.remove("bg-blue-700", "py-4");
+      } else {
+        header.classList.add("bg-blue-700", "py-4");
+        header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+      }
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden");
+    });
+
+    menuClose.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+
+    const deleteModal = document.getElementById("delete-modal");
+    const openModalBtn = document.getElementById("open-modal");
+    const closeModalBtn = document.getElementById("close-modal");
+    const overlay = document.getElementById("modal-overlay");
+    const confirmDeleteBtn = document.getElementById("confirm-delete");
+    const successScreen = document.getElementById("success-screen");
+
+    // FunÃ§Ã£o para abrir modal
+    openModalBtn.addEventListener("click", () => {
+      deleteModal.classList.remove("modal-hidden");
+    });
+
+    // FunÃ§Ã£o para fechar modal
+    const closeModal = () => {
+      deleteModal.classList.add("modal-hidden");
+    };
+
+    closeModalBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+
+    // AÃ§Ã£o de Deletar
+    confirmDeleteBtn.addEventListener("click", () => {
+      // Feedback de carregamento no botÃ£o
+      confirmDeleteBtn.innerHTML =
+        '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Processando...';
+      confirmDeleteBtn.disabled = true;
       lucide.createIcons();
 
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
-        } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
-        }
-      });
+      // SimulaÃ§Ã£o de processo de backend (2 segundos)
+      setTimeout(() => {
+        successScreen.classList.remove("hidden");
+        closeModal();
+      }, 2000);
+    });
+  </script>
+</body>
 
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
-
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-
-      const deleteModal = document.getElementById("delete-modal");
-      const openModalBtn = document.getElementById("open-modal");
-      const closeModalBtn = document.getElementById("close-modal");
-      const overlay = document.getElementById("modal-overlay");
-      const confirmDeleteBtn = document.getElementById("confirm-delete");
-      const successScreen = document.getElementById("success-screen");
-
-      // FunÃ§Ã£o para abrir modal
-      openModalBtn.addEventListener("click", () => {
-        deleteModal.classList.remove("modal-hidden");
-      });
-
-      // FunÃ§Ã£o para fechar modal
-      const closeModal = () => {
-        deleteModal.classList.add("modal-hidden");
-      };
-
-      closeModalBtn.addEventListener("click", closeModal);
-      overlay.addEventListener("click", closeModal);
-
-      // AÃ§Ã£o de Deletar
-      confirmDeleteBtn.addEventListener("click", () => {
-        // Feedback de carregamento no botÃ£o
-        confirmDeleteBtn.innerHTML =
-          '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Processando...';
-        confirmDeleteBtn.disabled = true;
-        lucide.createIcons();
-
-        // SimulaÃ§Ã£o de processo de backend (2 segundos)
-        setTimeout(() => {
-          successScreen.classList.remove("hidden");
-          closeModal();
-        }, 2000);
-      });
-    </script>
-  </body>
 </html>
-
