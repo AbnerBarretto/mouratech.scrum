@@ -33,6 +33,22 @@
     if (logoutButton) {
       logoutButton.addEventListener("click", logout);
     }
+
+    // Clique no botão abre/fecha o dropdown
+    const profileContainer = dropdown.closest("[data-auth-profile]");
+    const btn = profileContainer?.querySelector("[data-auth-btn]");
+    if (btn && !btn.dataset.dropdownBound) {
+      btn.dataset.dropdownBound = "1";
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isVisible = !dropdown.classList.contains("invisible");
+        dropdown.classList.toggle("opacity-0", isVisible);
+        dropdown.classList.toggle("invisible", isVisible);
+      });
+      document.addEventListener("click", () => {
+        dropdown.classList.add("opacity-0", "invisible");
+      });
+    }
   };
 
   const renderProfileButton = (profileContainer, user) => {

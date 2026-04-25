@@ -348,6 +348,7 @@
                 </button>
               </div>
               <button
+                id="publish-btn"
                 class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black px-10 py-3 rounded-xl text-xs uppercase tracking-widest transition-all shadow-md active:scale-95"
               >
                 Publicar
@@ -455,6 +456,15 @@
 
     <script src="auth-mock.js"></script>
     <script>
+      // Regra de negócio: acesso à comunidade exige login
+      (function () {
+        const user = window.BeloEventosAuth?.getUser?.();
+        if (!user) {
+          const next = encodeURIComponent("comunidade.html");
+          window.location.replace("login.html?next=" + next);
+        }
+      })();
+
       lucide.createIcons();
 
       const header = document.getElementById("main-header");
@@ -481,15 +491,16 @@
       });
 
       // Feedback simples para o botão publicar
-      document
-        .querySelector("button.bg-yellow-400")
-        .addEventListener("click", function () {
-          const input = this.closest(".card-premium").querySelector("input");
-          if (input.value.trim() !== "") {
+      const publishBtn = document.getElementById("publish-btn");
+      if (publishBtn) {
+        publishBtn.addEventListener("click", function () {
+          const input = this.closest(".card-premium") ? this.closest(".card-premium").querySelector("input") : null;
+          if (input && input.value.trim() !== "") {
             input.value = "";
             alert("Postagem enviada para moderação da comunidade!");
           }
         });
+      }
     </script>
   </body>
 </html>

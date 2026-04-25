@@ -281,14 +281,14 @@
                   <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
                 </button>
                 <button
-                  id="ingressos"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                  data-tab="ingressos"
+                  class="tab-btn w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="ticket" class="w-4 h-4"></i> Meus Ingressos
                 </button>
                 <button
-                  id="nav-insignias"
-                  class="w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
+                  data-tab="insignias"
+                  class="tab-btn w-full text-left px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
                   <i data-lucide="award" class="w-4 h-4"></i> Minhas Insígnias
                 </button>
@@ -378,7 +378,7 @@
                   <article class="border border-slate-200 rounded-[1.5rem] overflow-hidden bg-white">
                     <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5">
                       <img
-                        src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=640"
+                        src="https://djavan.com.br/content/uploads/2025/10/djavan_improviso_0389-1920x0-c-default.jpg"
                         alt="Show Djavan"
                         class="w-full md:w-40 h-28 rounded-xl object-cover"
                       />
@@ -418,6 +418,59 @@
                       </a>
                     </div>
                   </article>
+                </div>
+              </div>
+            </section>
+
+            <section id="insignias" data-panel="insignias" class="tab-panel hidden">
+              <div class="profile-card p-8 md:p-10">
+                <div class="flex items-center justify-between mb-8 gap-4">
+                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">Minhas Insígnias</h2>
+                  <span class="text-[10px] font-black text-yellow-600 uppercase tracking-widest bg-yellow-50 px-3 py-2 rounded-full">3 conquistadas</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-yellow-300 bg-yellow-50">
+                    <div class="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg">
+                      <i data-lucide="award" class="text-blue-700 w-7 h-7 fill-current"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Festeiro Ouro</p>
+                    <p class="text-[10px] text-slate-500 font-medium text-center">Participou de 10+ eventos</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50">
+                    <div class="w-14 h-14 rounded-full bg-indigo-500 flex items-center justify-center shadow-lg">
+                      <i data-lucide="music" class="text-white w-7 h-7"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Fã de MPB</p>
+                    <p class="text-[10px] text-slate-500 font-medium text-center">Comprou ingresso de MPB</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
+                    <div class="w-14 h-14 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg">
+                      <i data-lucide="ticket" class="text-white w-7 h-7"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Primeiro Ingresso</p>
+                    <p class="text-[10px] text-slate-500 font-medium text-center">Comprou o 1º ingresso</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
+                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                      <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">Rockeiro NATO</p>
+                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
+                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                      <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">VIP Club</p>
+                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
+                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                      <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
+                    </div>
+                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">Madrugador</p>
+                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -567,7 +620,7 @@
       // Lógica de Abas
       const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
       const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
-      const validTabs = new Set(["dados-pessoais", "ingressos", "gerenciamento"]);
+      const validTabs = new Set(["dados-pessoais", "ingressos", "insignias", "gerenciamento"]);
 
       const activateTab = (tabId) => {
         const safeTabId = validTabs.has(tabId) ? tabId : "dados-pessoais";

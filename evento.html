@@ -323,18 +323,14 @@
               uma apresentação histórica no IFPE - CAMPUS BELO JARDIM
             </p>
 
-            <!-- Logos de Patrocinadores (Estilo Djavan) -->
             <div class="flex items-center gap-8 mb-10 opacity-80">
               <div
                 class="font-black text-white tracking-tighter text-xl italic"
               >
-                Mastercard
+                <i data-lucide="calendar" class="w-5 h-5 inline mr-2"></i><span id="event-date-label">Data</span>
               </div>
               <div class="font-black text-white tracking-tighter text-xl">
-                VIVO
-              </div>
-              <div class="font-black text-white tracking-tighter text-xl">
-                BANCO DO BRASIL
+                <i data-lucide="map-pin" class="w-5 h-5 inline mr-2"></i><span id="event-location-label">Local</span>
               </div>
             </div>
 
@@ -632,6 +628,8 @@
       const videoImage = document.getElementById("event-video-image");
       const videoCaption = document.getElementById("event-video-caption");
       const buyTicketBtn = document.getElementById("buy-ticket-btn");
+      const dateLabel = document.getElementById("event-date-label");
+      const locationLabel = document.getElementById("event-location-label");
 
       if (eventData) {
         document.title = `${eventData.title} | Belo Eventos`;
@@ -657,6 +655,9 @@
         videoImage.alt = eventData.videoAlt || `Evento anterior de ${eventData.title}`;
         videoCaption.textContent = eventData.videoCaption || "Flashback";
 
+        if (dateLabel) dateLabel.textContent = eventData.dateLabel || "Data em breve";
+        if (locationLabel) locationLabel.textContent = eventData.homeLocation || eventData.mapLocation || "Local a confirmar";
+
         if (buyTicketBtn && eventData.id) {
           buyTicketBtn.href = `pagamento.html?id=${eventData.id}`;
         }
@@ -671,7 +672,6 @@
             window.location.href = `login.html?next=${encodeURIComponent(buyTicketBtn.href)}`;
           }
         });
-      }
       }
 
       // Header Scroll Effect
