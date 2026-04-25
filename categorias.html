@@ -57,6 +57,7 @@
       class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
+        <!-- Logo -->
         <div
           class="logo-container flex items-center gap-4 cursor-pointer"
           onclick="window.location.href = 'index.html'"
@@ -91,24 +92,18 @@
           </div>
         </div>
 
+        <!-- Desktop Nav -->
         <nav
           class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
         >
-          <a
-            href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
-          >
-          <a
-            href="convite-comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
-          >
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors"
-            >CONTATO</a
-          >
+          <a href="index.html" class="hover:text-yellow-400 transition-colors">INÍCIO</a>
+          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
+          <a href="profissionais.html" class="hover:text-yellow-400 transition-colors">PROFISSIONAIS</a>
+          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
+          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
         </nav>
 
+        <!-- Actions -->
         <div class="hidden md:flex items-center gap-4">
           <a
             href="login.html"
@@ -157,12 +152,14 @@
           </div>
         </div>
 
+        <!-- Mobile Toggle -->
         <button class="md:hidden text-white" id="menu-toggle">
           <i data-lucide="menu" class="w-7 h-7"></i>
         </button>
       </div>
     </header>
 
+    <!-- MOBILE MENU -->
     <div
       id="mobile-menu"
       class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
@@ -175,16 +172,19 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
+        <a href="index.html">Início</a>
         <a href="categorias.html">Programação</a>
+        <a href="profissionais.html">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="#contato-section">Contato</a>
+        <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
           data-auth-enter
           class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
-          >Entrar</a
         >
+          Entrar
+        </a>
       </nav>
     </div>
 
@@ -804,84 +804,82 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-white pt-20 pb-10">
-      <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+    <footer
+      id="contato-section"
+      class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div class="col-span-1 md:col-span-2">
-            <div class="flex items-center gap-3 mb-8">
+            <div class="flex items-center gap-2 mb-6">
               <div
-                class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center"
+                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
               >
                 <i
                   data-lucide="star"
-                  class="text-blue-700 w-6 h-6 fill-current"
+                  class="w-5 h-5 text-blue-700 fill-current"
                 ></i>
               </div>
               <span
-                class="text-white font-black text-2xl tracking-tighter uppercase italic"
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
                 >Belo Eventos</span
               >
             </div>
-            <p class="text-slate-400 text-lg max-w-sm leading-relaxed">
-              Sua conexão direta com os melhores momentos da cultura regional.
+            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
             </p>
           </div>
           <div>
-            <h5
-              class="font-black uppercase tracking-widest mb-8 text-sm text-yellow-400"
+            <h4
+              class="font-black text-slate-900 uppercase tracking-widest mb-6"
             >
-              Navegação
-            </h5>
-            <ul class="space-y-4 text-slate-400 font-bold text-sm">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Sobre Nós</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Categorias</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Anunciar</a
-                >
-              </li>
-            </ul>
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="index.html" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
           </div>
           <div>
-            <h5
-              class="font-black uppercase tracking-widest mb-8 text-sm text-yellow-400"
+            <h4
+              class="font-black text-slate-900 uppercase tracking-widest mb-6"
             >
-              Suporte
-            </h5>
-            <ul class="space-y-4 text-slate-400 font-bold text-sm">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Central de Ajuda</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Termos de Uso</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Contato</a
-                >
-              </li>
-            </ul>
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+              <a href="contato.html" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="profissionais.html" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
           </div>
         </div>
         <div
-          class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs font-bold uppercase"
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
         >
-          <p>© 2026 Belo Eventos. Todos os direitos reservados.</p>
-          <div class="flex gap-8">
-            <a href="#" class="hover:text-white">Instagram</a>
-            <a href="#" class="hover:text-white">LinkedIn</a>
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
           </div>
         </div>
       </div>
