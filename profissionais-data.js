@@ -132,3 +132,20 @@ window.PROFISSIONAIS_DATA = {
     destaque: true
   }
 };
+
+// Carregar profissionais customizados do localStorage
+(function () {
+  try {
+    var customizados = localStorage.getItem("profissionais_customizados");
+    if (customizados) {
+      var dados = JSON.parse(customizados);
+      for (var chave in dados) {
+        if (dados.hasOwnProperty(chave)) {
+          window.PROFISSIONAIS_DATA[chave] = dados[chave];
+        }
+      }
+    }
+  } catch (e) {
+    console.log("Não foi possível carregar profissionais customizados");
+  }
+})();
