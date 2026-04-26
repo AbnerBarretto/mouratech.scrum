@@ -3,805 +3,919 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel Admin | Belo Eventos</title>
+    <title>Belo Admin | Gestão Orgânica</title>
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%231d4ed8'/></svg>"
     />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
     <style>
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #fcfcfd;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-blend-mode: overlay;
+        background-attachment: fixed;
       }
-
-      .profile-card {
-        background: white;
-        border-radius: 2.5rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e2e8f0;
+      .organic-shape {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
       }
-
-      .avatar-shadow {
-        box-shadow:
-          0 0 0 8px white,
-          0 4px 20px rgba(0, 0, 0, 0.1);
+      .sidebar-organic {
+        border-radius: 0;
+        background: #0f172a; /* Deep Slate 900 to match Revenue Card exactly */
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        border: none;
       }
-
-      .transition-header {
+      .nav-item-active {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-left: 4px solid #3b82f6;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+      .event-row-organic {
         transition: all 0.3s ease;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.4);
+        margin-bottom: 8px;
       }
-
-      /* Banner Novo Evento */
-      .new-event-banner {
-        background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 50%, #e0f2fe 100%);
-        border-radius: 2rem;
-        border: 1px solid #93c5fd;
-      }
-
-      /* Tabela de Eventos */
-      .event-row {
-        transition: all 0.2s ease;
-        border-bottom: 1px solid #f1f5f9;
-      }
-
-      .event-row:hover {
-        background: #f8fafc;
-      }
-
-      .event-row:last-child {
-        border-bottom: none;
-      }
-
-      .badge-event {
-        display: inline-block;
-        padding: 6px 18px;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 0.85rem;
-        border: 2px solid;
-      }
-
-      .btn-edit {
-        background: #2563eb;
-        color: white;
-        font-weight: 800;
-        font-size: 0.7rem;
-        padding: 8px 18px;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        transition: all 0.2s;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-edit:hover {
-        background: #1d4ed8;
-        transform: scale(1.05);
-      }
-
-      .btn-delete {
-        background: #f43f5e;
-        color: white;
-        font-weight: 800;
-        font-size: 0.7rem;
-        padding: 8px 18px;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        transition: all 0.2s;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-delete:hover {
-        background: #e11d48;
-        transform: scale(1.05);
-      }
-
-      .btn-cadastrar {
-        background: #1e3a5f;
-        color: white;
-        font-weight: 800;
-        font-size: 0.8rem;
-        padding: 10px 28px;
-        border-radius: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        transition: all 0.2s;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-cadastrar:hover {
-        background: #0f2a4a;
-        transform: scale(1.02);
-      }
-
-      /* Status Badges */
-      .status-confirmed {
-        color: #16a34a;
-      }
-
-      .status-ongoing {
-        color: #ca8a04;
-      }
-
-      /* Modal */
-      .modal-overlay {
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-      }
-
-      .modal-content {
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-
-      .modal-hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .modal-hidden .modal-content {
-        transform: scale(0.9) translateY(20px);
-      }
-
-      /* Form inputs */
-      .form-input-admin {
-        background: #f1f5f9;
-        border: 2px solid transparent;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        width: 100%;
-        padding: 12px 20px;
-        border-radius: 1rem;
-        font-weight: 600;
-        color: #1e293b;
-        outline: none;
-      }
-
-      .form-input-admin:focus {
+      .event-row-organic:hover {
         background: white;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        transform: translateX(4px);
+        box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.05);
       }
-
-      /* Toast */
-      .toast {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        z-index: 300;
-        padding: 16px 28px;
-        border-radius: 1rem;
-        font-weight: 700;
-        font-size: 0.85rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        transform: translateY(120%);
-        opacity: 0;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
       }
-
-      .toast.show {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .toast-success {
-        background: #16a34a;
-        color: white;
-      }
-
-      .toast-error {
-        background: #e11d48;
-        color: white;
-      }
-
-      /* New event form inputs */
-      .new-event-input {
-        background: white;
-        border: 2px solid #93c5fd;
-        border-radius: 10px;
-        padding: 8px 14px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: #1e293b;
-        outline: none;
-        transition: border-color 0.2s;
-      }
-
-      .new-event-input:focus {
-        border-color: #2563eb;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
     </style>
   </head>
-  <body class="bg-slate-50 min-h-screen flex flex-col relative">
-    <!-- HEADER -->
-    <header
-      id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+  <body class="min-h-screen flex">
+    <!-- SIDEBAR -->
+    <aside
+      class="w-80 sidebar-organic hidden lg:flex flex-col sticky top-0 h-screen z-50 p-8 shadow-xl shadow-slate-200/20"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
-          onclick="window.location.href = 'index.html'"
-        >
+      <!-- LOGO PROMINENTE -->
+      <div
+        class="flex items-center gap-4 mb-16 cursor-pointer group"
+        onclick="window.location.href = 'index.html'"
+      >
+        <div class="relative">
           <svg
-            width="40"
-            height="40"
+            width="52"
+            height="52"
             viewBox="0 0 64 64"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
+            class="transition-transform duration-500 group-hover:rotate-12"
           >
             <path
               d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
+              fill="#4f46e5"
+            ></path>
             <path
               d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+              fill="#10b981"
+            ></path>
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
           </svg>
-          <div class="flex flex-col text-left">
-            <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
-            >
-            <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
-              >Cultura e Conexão</span
-            >
-          </div>
         </div>
-
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
+        <div>
+          <span
+            class="text-white text-2xl font-black tracking-tighter uppercase block leading-none"
+            >Belo</span
           >
-          <a
-            href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
+          <span
+            class="text-blue-400 text-[10px] font-black uppercase tracking-[0.4em]"
+            >ADMINISTRAÇÃO</span
           >
-          <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
-          >
-          <a
-            href="comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
-          >
-          <a
-            href="contato.html"
-            class="hover:text-yellow-400 transition-colors"
-            >CONTATO</a
-          >
-        </nav>
-
-        <div class="hidden md:flex items-center gap-4">
-          <a
-            href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
-            >ENTRAR</a
-          >
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
-            <button
-              data-auth-btn
-              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
-              aria-label="Menu do perfil"
-            >
-              <i data-lucide="user" class="text-white w-5 h-5"></i>
-            </button>
-            <div
-              data-auth-dropdown
-              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-            ></div>
-          </div>
         </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
-    </header>
 
-    <div
-      id="mobile-menu"
-      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
-    >
-      <div class="flex justify-end">
-        <button id="menu-close" class="text-white">
-          <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-      </div>
-      <nav
-        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
-      >
-        <a href="index.html">Início</a>
-        <a href="categorias.html">Programação</a>
-        <a href="profissionais.html">Profissionais</a>
-        <a href="comunidade.html">Comunidade</a>
-        <a href="contato.html">Contato</a>
-        <div class="h-px bg-white/20 my-4"></div>
+      <nav class="flex-1 space-y-3 w-full">
         <a
-          href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
-          >Entrar</a
+          href="#"
+          class="nav-item-active flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all group"
         >
+          <i data-lucide="layout-grid" class="w-5 h-5"></i> Dashboard
+        </a>
+        <a
+          href="categorias.html"
+          class="text-slate-400 hover:text-white hover:bg-white flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-blue-50"
+        >
+          <i data-lucide="calendar" class="w-5 h-5"></i> Gestão de Eventos
+        </a>
+        <a
+          href="profissionais.html"
+          class="text-slate-400 hover:text-white hover:bg-white flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-blue-50"
+        >
+          <i data-lucide="users" class="w-5 h-5"></i> Profissionais
+        </a>
+        <div class="h-px bg-slate-100 my-6 mx-4"></div>
+        <a
+          href="#"
+          class="text-slate-400 hover:text-blue-700 hover:bg-white flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all"
+        >
+          <i data-lucide="bar-chart-3" class="w-5 h-5"></i> Relatórios
+        </a>
       </nav>
-    </div>
 
-    <main class="flex-grow container mx-auto px-6 py-12 pt-28 md:pt-36">
-      <div class="max-w-5xl mx-auto">
-        <!-- HEADER DO PERFIL ADMIN -->
-        <div class="relative mb-24">
-          <!-- Cover Image -->
-          <div
-            class="h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
-              alt="Cover"
-              class="w-full h-full object-cover opacity-40"
+      <div class="mt-auto">
+        <button
+          onclick="window.BeloEventosAuth.logout()"
+          class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm text-rose-600 hover:bg-rose-50 transition-all border-none cursor-pointer"
+        >
+          <i data-lucide="power" class="w-5 h-5"></i> Sair do Sistema
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <!-- TOPBAR -->
+      <header
+        class="h-24 px-10 flex items-center justify-between sticky top-0 z-40 bg-white/50 backdrop-blur-md"
+      >
+        <div class="flex-1 max-w-xl">
+          <div class="relative group">
+            <i
+              data-lucide="search"
+              class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 w-5 h-5 group-focus-within:text-blue-600 transition-colors"
+            ></i>
+            <input
+              type="text"
+              id="admin-search-input"
+              placeholder="Pesquisar atração ou data..."
+              class="w-full bg-white border border-slate-100 rounded-2xl py-4 pl-14 pr-6 text-sm font-medium focus:ring-4 focus:ring-blue-600/5 focus:border-blue-600 transition-all outline-none shadow-sm"
             />
           </div>
+        </div>
 
-          <!-- Avatar and Info Overlay -->
-          <div class="absolute -bottom-16 left-12 flex items-end gap-6">
-            <div class="relative group">
-              <div
-                class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-700 avatar-shadow overflow-hidden flex items-center justify-center"
-              >
-                <i data-lucide="shield-check" class="w-16 h-16 text-white"></i>
-              </div>
-            </div>
-            <div class="mb-4">
-              <h1
-                class="text-3xl font-black text-slate-900 uppercase tracking-tighter"
-              >
-                Admin
-              </h1>
+        <div class="flex items-center gap-6 ml-8">
+          <div class="flex items-center gap-4">
+            <div class="text-right">
               <p
-                class="text-slate-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2"
+                id="admin-name-header"
+                class="text-sm font-black text-slate-900 leading-none"
               >
-                <span
-                  class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"
-                ></span>
-                Administrador · Painel de Eventos
+                ...
+              </p>
+              <p
+                class="text-[10px] text-blue-600 font-black uppercase tracking-widest mt-1"
+              >
+                Master Admin
               </p>
             </div>
+            <div
+              class="w-12 h-12 organic-shape bg-slate-100 border-2 border-white shadow-lg overflow-hidden"
+            >
+              <img
+                id="admin-avatar-header"
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Admin"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- DASHBOARD BODY -->
+      <div class="px-10 pb-10 space-y-10 max-w-7xl mx-auto w-full">
+        <div class="flex items-end justify-between">
+          <div>
+            <h2
+              class="text-4xl font-black text-slate-900 tracking-tighter uppercase"
+            >
+              Painel <span class="text-blue-600">Executivo</span>
+            </h2>
+            <p
+              class="text-slate-400 font-medium mt-2 uppercase text-[11px] tracking-widest font-black"
+            >
+              Curadoria Belo Eventos
+            </p>
+          </div>
+          <button
+            id="btn-new-event"
+            class="bg-blue-700 hover:bg-blue-800 text-white font-black px-8 py-5 rounded-2xl flex items-center gap-3 shadow-2xl shadow-blue-700/20 transition-all active:scale-95 border-none cursor-pointer tracking-widest text-xs"
+          >
+            <i data-lucide="plus" class="w-5 h-5"></i> NOVO EVENTO
+          </button>
+        </div>
+
+        <!-- STATS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="glass-card p-10 rounded-[32px] relative overflow-hidden group"
+          >
+            <div
+              class="absolute -right-8 -top-8 w-32 h-32 organic-shape bg-blue-50 transition-transform group-hover:scale-110"
+            ></div>
+            <div class="relative z-10">
+              <p
+                class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2"
+              >
+                Total de Atrações
+              </p>
+              <h3
+                id="stat-total-events"
+                class="text-5xl font-black text-slate-900 tracking-tighter"
+              >
+                ...
+              </h3>
+            </div>
+          </div>
+          <div
+            class="glass-card p-10 rounded-[32px] relative overflow-hidden group"
+          >
+            <div
+              class="absolute -right-8 -top-8 w-32 h-32 organic-shape bg-emerald-50 transition-transform group-hover:scale-110"
+            ></div>
+            <div class="relative z-10">
+              <p
+                class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2"
+              >
+                Confirmados
+              </p>
+              <h3
+                id="stat-confirmed-events"
+                class="text-5xl font-black text-slate-900 tracking-tighter"
+              >
+                ...
+              </h3>
+            </div>
+          </div>
+          <div
+            class="glass-card p-10 rounded-[32px] bg-slate-900 text-white border-none shadow-2xl"
+          >
+            <div class="relative z-10">
+              <p
+                class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2"
+              >
+                Receita de Vendas
+              </p>
+              <h3
+                id="stat-revenue"
+                class="text-5xl font-black tracking-tighter"
+              >
+                ...
+              </h3>
+            </div>
           </div>
         </div>
 
+        <!-- EVENT LIST -->
+        <div class="space-y-6">
+          <h3
+            class="text-xl font-black text-slate-900 uppercase tracking-tight ml-4"
+          >
+            Controle Operacional
+          </h3>
 
-        <!-- TABELA DE EVENTOS -->
-        <div class="profile-card overflow-hidden">
-          <!-- Cabeçalho da Tabela -->
-          <div class="grid grid-cols-12 gap-4 px-8 py-5 bg-slate-50 border-b border-slate-200">
-            <div class="col-span-3">
-              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Status</span>
+          <div class="bg-white/40 rounded-[32px] p-6 border border-slate-100">
+            <!-- HEADER -->
+            <div
+              class="grid grid-cols-12 gap-4 px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+            >
+              <div class="col-span-2">Status</div>
+              <div class="col-span-4">Atração</div>
+              <div class="col-span-2">Valor</div>
+              <div class="col-span-2">Agenda</div>
+              <div class="col-span-2 text-right">Ações</div>
             </div>
-            <div class="col-span-3">
-              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Evento</span>
-            </div>
-            <div class="col-span-3">
-              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Data</span>
-            </div>
-            <div class="col-span-3 text-right">
-              <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Ações</span>
-            </div>
-          </div>
 
-          <!-- Linhas de Eventos (renderizadas via JS) -->
-          <div id="events-table-body" class="divide-y divide-slate-100">
-            <!-- Preenchido via JavaScript -->
-          </div>
+            <div id="events-table-body" class="mt-4 space-y-2">
+              <!-- Event Rows -->
+            </div>
 
-          <!-- Empty State -->
-          <div id="events-empty" class="hidden text-center py-16">
-            <i data-lucide="calendar-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
-            <p class="text-slate-400 font-bold uppercase text-xs tracking-widest">Nenhum evento cadastrado</p>
+            <div id="events-empty" class="hidden py-32 text-center">
+              <i
+                data-lucide="cloud-off"
+                class="w-12 h-12 text-slate-200 mx-auto mb-4"
+              ></i>
+              <p
+                class="text-slate-400 font-bold uppercase tracking-widest text-xs"
+              >
+                Nenhum evento encontrado
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- MODAL DE EDIÇÃO -->
+    <!-- TOAST -->
+    <div
+      id="toast"
+      class="fixed top-8 right-8 px-8 py-5 rounded-2xl text-white font-black text-xs uppercase tracking-widest shadow-2xl transition-all transform -translate-y-20 opacity-0 z-[300]"
+    ></div>
+
+    <!-- MODAL -->
     <div
       id="edit-modal"
-      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden modal-overlay"
+      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden bg-slate-900/90 backdrop-blur-xl transition-all"
     >
+      <div id="edit-modal-overlay" class="absolute inset-0"></div>
       <div
-        id="edit-modal-overlay"
-        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-      ></div>
-      <div
-        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10"
+        class="modal-content relative w-full max-w-2xl rounded-[40px] bg-white p-10 sm:p-16 shadow-2xl transform transition-all duration-500"
       >
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <i data-lucide="pencil" class="w-6 h-6 text-blue-600"></i>
+        <div class="flex items-center gap-6 mb-12">
+          <div
+            class="w-16 h-16 organic-shape bg-blue-50 flex items-center justify-center text-blue-700"
+          >
+            <i data-lucide="edit-3" class="w-8 h-8"></i>
           </div>
-          <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight">
-            Editar Evento
-          </h2>
+          <div>
+            <h2
+              id="modal-title"
+              class="text-3xl font-black text-slate-900 tracking-tighter uppercase"
+            >
+              Editar Evento
+            </h2>
+            <p
+              class="text-slate-400 text-sm font-bold uppercase tracking-widest mt-1"
+            >
+              Configurações Gerais
+            </p>
+          </div>
         </div>
 
-        <form id="edit-event-form" class="space-y-5">
+        <form
+          id="edit-event-form"
+          class="space-y-6 max-h-[60vh] overflow-y-auto pr-4 no-scrollbar"
+        >
           <input type="hidden" id="edit-event-id" />
-          <div class="space-y-2">
-            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nome do Evento</label>
-            <input
-              type="text"
-              id="edit-event-title"
-              required
-              class="form-input-admin"
-            />
+
+          <!-- SEÇÃO: INFORMAÇÕES BÁSICAS -->
+          <div class="space-y-4">
+            <p class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em]">01. Informações Básicas</p>
+            <div class="space-y-2">
+              <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Título da Atração</label>
+              <input type="text" id="edit-event-title" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none" placeholder="Nome do artista ou show" />
+            </div>
+            
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Categoria</label>
+                <select id="edit-event-topic" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none">
+                  <option value="musica">Música</option>
+                  <option value="teatro">Teatro</option>
+                  <option value="oficina">Oficina</option>
+                  <option value="gastronomia">Gastronomia</option>
+                  <option value="standup">Stand-up</option>
+                  <option value="exposicao">Exposição</option>
+                  <option value="religioso">Religioso</option>
+                </select>
+              </div>
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Cidade</label>
+                <input type="text" id="edit-event-city" placeholder="Belo Jardim, PE" class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none" />
+              </div>
+            </div>
           </div>
-          <div class="space-y-2">
-            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Data</label>
-            <input
-              type="date"
-              id="edit-event-date"
-              required
-              class="form-input-admin"
-            />
+
+          <!-- SEÇÃO: AGENDAMENTO E VALORES -->
+          <div class="space-y-4">
+            <p class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em]">02. Agendamento e Valores</p>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Data</label>
+                <input type="date" id="edit-event-date" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none" />
+              </div>
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Preço de Venda</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-6 text-sm font-black text-slate-400">R$</span>
+                  <input type="text" id="edit-event-price" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl pl-14 pr-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none" placeholder="0,00" />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Horário</label>
+                <input type="time" id="edit-event-time" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none" />
+              </div>
+              <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Status</label>
+                <select id="edit-event-status" class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-black focus:bg-white focus:border-blue-600 transition-all outline-none">
+                  <option value="confirmado">Ativo (Confirmado)</option>
+                  <option value="em_andamento">Pendente</option>
+                  <option value="cheio">Esgotado (Cheio)</option>
+                  <option value="cancelado">Cancelado</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="space-y-2">
-            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Horário</label>
-            <input
-              type="time"
-              id="edit-event-time"
-              required
-              class="form-input-admin"
-            />
+
+          <!-- SEÇÃO: IDENTIDADE VISUAL -->
+          <div class="space-y-4">
+            <p class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em]">03. Identidade Visual</p>
+            <div class="space-y-2">
+              <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">URL da Imagem (Banner)</label>
+              <input type="url" id="edit-event-hero" required class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-8 py-5 text-sm font-bold focus:bg-white focus:border-blue-600 transition-all outline-none" placeholder="https://exemplo.com/imagem.jpg" />
+            </div>
           </div>
-          <div class="space-y-2">
-            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Status</label>
-            <select id="edit-event-status" class="form-input-admin cursor-pointer">
-              <option value="confirmado">✅ Confirmado</option>
-              <option value="em_andamento">⏳ Em andamento</option>
-            </select>
-          </div>
-          <div class="grid grid-cols-2 gap-4 pt-4">
+
+          <div class="flex gap-4 pt-8 sticky bottom-0 bg-white">
             <button
               type="button"
               id="edit-cancel"
-              class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all"
+              class="flex-1 bg-slate-100 text-slate-500 font-black py-5 rounded-2xl uppercase tracking-widest text-[11px] transition-all border-none cursor-pointer"
             >
-              Cancelar
+              Descartar
             </button>
             <button
               type="submit"
-              class="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-blue-600/20"
+              class="flex-1 bg-blue-700 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-[11px] shadow-2xl transition-all border-none cursor-pointer"
             >
-              Salvar
+              Salvar Atração
             </button>
           </div>
         </form>
       </div>
     </div>
 
-    <!-- MODAL DE EXCLUSÃO -->
+    <!-- DELETE MODAL -->
     <div
       id="delete-modal"
-      class="fixed inset-0 z-[200] flex items-center justify-center px-6 modal-hidden modal-overlay"
+      class="fixed inset-0 z-[210] flex items-center justify-center px-6 modal-hidden bg-slate-900/90 backdrop-blur-md transition-all"
     >
+      <div id="delete-modal-overlay" class="absolute inset-0"></div>
       <div
-        id="delete-modal-overlay"
-        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-      ></div>
-      <div
-        class="modal-content relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 text-center"
+        class="modal-content relative w-full max-w-sm rounded-[40px] bg-white p-12 text-center shadow-2xl transform transition-all duration-300"
       >
         <div
-          class="w-24 h-24 mx-auto mb-6 bg-rose-50 rounded-full flex items-center justify-center relative"
+          class="w-20 h-20 organic-shape bg-rose-50 flex items-center justify-center text-rose-600 mx-auto mb-8"
         >
-          <div
-            class="absolute inset-0 border-4 border-rose-500/20 rounded-full animate-ping"
-          ></div>
-          <i
-            data-lucide="alert-triangle"
-            class="w-12 h-12 text-rose-600 stroke-[2.5]"
-          ></i>
+          <i data-lucide="trash-2" class="w-10 h-10"></i>
         </div>
-
         <h2
-          class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-3"
+          class="text-2xl font-black text-slate-900 uppercase tracking-tighter"
         >
-          Excluir Evento?
+          Remover?
         </h2>
-        <p id="delete-event-name" class="text-slate-500 font-semibold text-sm mb-8">
-          Deseja realmente excluir este evento? Esta ação não pode ser desfeita.
+        <p
+          id="delete-event-name"
+          class="text-slate-400 text-sm mt-4 font-medium px-4"
+        >
+          Esta ação apagará os dados do sistema permanentemente.
         </p>
-
         <input type="hidden" id="delete-event-id" />
-
-        <div class="grid grid-cols-2 gap-4">
-          <button
-            id="delete-cancel"
-            class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all"
-          >
-            Cancelar
-          </button>
+        <div class="flex flex-col gap-3 mt-12">
           <button
             id="delete-confirm"
-            class="bg-rose-600 hover:bg-rose-700 text-white font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-2"
+            class="w-full bg-rose-600 text-white font-black py-4 rounded-2xl text-xs uppercase tracking-widest shadow-xl transition-all border-none cursor-pointer"
           >
-            Excluir
+            Sim, Excluir
+          </button>
+          <button
+            id="delete-cancel"
+            class="w-full bg-slate-50 text-slate-400 font-bold py-4 rounded-2xl text-[10px] uppercase tracking-widest transition-all border-none cursor-pointer"
+          >
+            Manter
           </button>
         </div>
       </div>
     </div>
 
-    <!-- TOAST -->
-    <div id="toast" class="toast"></div>
-
-    <footer class="py-12 border-t border-slate-200 mt-auto">
-      <div class="container mx-auto px-6 text-center">
-        <p
-          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]"
-        >
-          © 2026 Belo Eventos · Privacidade e Segurança
-        </p>
-      </div>
-    </footer>
-
     <script src="events-data.js"></script>
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
-      lucide.createIcons();
+      let allEvents = [];
 
-      // ──────────────── Header Scroll ────────────────
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
-        } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+      // --- LOCAL DATA PERSISTENCE ---
+      const getStoredEvents = () => {
+        try {
+          const stored = localStorage.getItem("beloEventosEventsFallback");
+          return stored ? JSON.parse(stored) : window.eventsData || [];
+        } catch {
+          return window.eventsData || [];
         }
-      });
+      };
 
-      // ──────────────── Mobile Menu ────────────────
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
+      const saveStoredEvents = (events) => {
+        localStorage.setItem(
+          "beloEventosEventsFallback",
+          JSON.stringify(events),
+        );
+        localStorage.setItem("beloEventosCachedEvents", JSON.stringify(events));
+        window.eventsData = events; // Update in-memory for other parts of the app
+        window.dispatchEvent(new CustomEvent("beloEventosDataUpdated"));
+      };
 
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
+      const getPurchaseTotal = (purchase) => {
+        const amount = parseFloat(purchase?.amount) || 0;
+        const quantity = Math.max(1, parseInt(purchase?.quantity, 10) || 1);
+        const unitPrice = parseFloat(purchase?.unitPrice) || 0;
+        const serviceFee = parseFloat(purchase?.serviceFee) || 0;
+        const interestAmount =
+          parseFloat(purchase?.interestAmount ?? purchase?.interest) || 0;
 
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
+        if (unitPrice > 0) {
+          return unitPrice * quantity + serviceFee + interestAmount;
+        }
 
-      // ──────────────── Toast ────────────────
-      function showToast(message, type = "success") {
-        const toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.className = `toast toast-${type}`;
-        requestAnimationFrame(() => {
-          toast.classList.add("show");
-        });
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
+        return amount;
+      };
+
+      async function loadDashboardData() {
+        console.log("Iniciando carregamento de dados do dashboard...");
+        try {
+          if (!window.BeloEventosAuth) {
+            throw new Error("Sistema de autenticação não carregado.");
+          }
+
+          // Busca dados da API
+          let apiEvents = [];
+          let apiPurchases = [];
+
+          try {
+            apiEvents = await window.BeloEventosAuth.fetchEvents();
+          } catch (e) {
+            console.warn("Erro fetchEvents:", e);
+          }
+
+          try {
+            apiPurchases = await window.BeloEventosAuth.fetchPurchases();
+          } catch (e) {
+            console.warn("Erro fetchPurchases:", e);
+          }
+
+          // Combina com dados em memória/fallback para garantir que NUNCA fique vazio se houver dados nos arquivos .js
+          const fallbackEvents = Array.isArray(window.eventsData)
+            ? window.eventsData
+            : [];
+          const fallbackPurchases = Array.isArray(window.purchasesData)
+            ? window.purchasesData
+            : [];
+
+          // Merge por ID para evitar duplicados
+          const mergeById = (listA, listB) => {
+            const map = new Map();
+            [...listB, ...listA].forEach((item) => {
+              if (item && item.id) map.set(item.id, item);
+            });
+            return Array.from(map.values());
+          };
+
+          allEvents = mergeById(
+            Array.isArray(apiEvents) ? apiEvents : [],
+            fallbackEvents,
+          );
+          const allPurchases = mergeById(
+            Array.isArray(apiPurchases) ? apiPurchases : [],
+            fallbackPurchases,
+          );
+
+          // Calcular receita total
+          const totalRevenue = allPurchases.reduce(
+            (acc, p) => acc + getPurchaseTotal(p),
+            0,
+          );
+
+          console.log("Dashboard consolidado:", {
+            events: allEvents.length,
+            purchases: allPurchases.length,
+            revenue: totalRevenue,
+          });
+
+          updateStats(allEvents, totalRevenue);
+          renderEvents();
+          return allEvents;
+        } catch (err) {
+          console.error("Erro crítico no dashboard:", err);
+          allEvents = Array.isArray(window.eventsData) ? window.eventsData : [];
+          const purchases = Array.isArray(window.purchasesData)
+            ? window.purchasesData
+            : [];
+          const rev = purchases.reduce(
+            (acc, p) => acc + getPurchaseTotal(p),
+            0,
+          );
+          updateStats(allEvents, rev);
+          renderEvents();
+          return allEvents;
+        }
       }
 
-      // ──────────────── LocalStorage para Eventos ────────────────
-      const EVENTS_KEY = "beloEventosAdminEvents";
+      function updateStats(events, totalRevenue) {
+        const total = events.length;
+        const confirmed = events.filter(
+          (e) => e.status === "confirmado",
+        ).length;
 
-      function loadEvents() {
-        const stored = localStorage.getItem(EVENTS_KEY);
-        if (stored) {
-          return JSON.parse(stored);
-        }
-        // Primeira carga: importar de events-data.js
-        const initial = [];
-        if (window.BELO_EVENTS) {
-          Object.values(window.BELO_EVENTS).forEach((ev, i) => {
-            initial.push({
-              id: ev.id,
-              title: ev.title,
-              date: generateMockDate(i),
-              time: generateMockTime(i),
-              status: i % 2 === 0 ? "confirmado" : "em_andamento",
-            });
+        const elTotal = document.getElementById("stat-total-events");
+        const elConf = document.getElementById("stat-confirmed-events");
+        const elRev = document.getElementById("stat-revenue");
+
+        if (elTotal) elTotal.textContent = total.toString().padStart(2, "0");
+        if (elConf) elConf.textContent = confirmed.toString().padStart(2, "0");
+
+        if (elRev) {
+          const revenue = parseFloat(totalRevenue) || 0;
+          elRev.textContent = revenue.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
           });
         }
-        saveEvents(initial);
-        return initial;
       }
-
-      function saveEvents(events) {
-        localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
-      }
-
-      function generateMockDate(index) {
-        const month = String(((index * 2) % 12) + 1).padStart(2, "0");
-        const day = String(((index * 3) % 28) + 1).padStart(2, "0");
-        return `2027-${month}-${day}`;
-      }
-
-      function generateMockTime(index) {
-        const hours = String(((index * 3 + 14) % 24)).padStart(2, "0");
-        return `${hours}:00`;
-      }
-
-      // ──────────────── Renderizar Tabela ────────────────
-      const badgeColors = [
-        { bg: "#fef9c3", border: "#facc15", text: "#854d0e" },
-        { bg: "#dcfce7", border: "#4ade80", text: "#166534" },
-        { bg: "#dbeafe", border: "#60a5fa", text: "#1e40af" },
-        { bg: "#fce7f3", border: "#f472b6", text: "#9d174d" },
-        { bg: "#f3e8ff", border: "#c084fc", text: "#6b21a8" },
-        { bg: "#ffedd5", border: "#fb923c", text: "#9a3412" },
-        { bg: "#e0f2fe", border: "#38bdf8", text: "#0c4a6e" },
-        { bg: "#fef2f2", border: "#f87171", text: "#991b1b" },
-        { bg: "#ecfdf5", border: "#34d399", text: "#065f46" },
-      ];
 
       function formatDateBR(dateStr) {
         if (!dateStr) return "—";
-        const [y, m, d] = dateStr.split("-");
-        return `${d}/${m}/${y}`;
+        const parts = dateStr.split("-");
+        return parts.length === 3 ? `${parts[2]}/${parts[1]}` : dateStr;
       }
 
-      function renderEvents() {
-        const events = loadEvents();
+      function renderEvents(filterText = "") {
         const tbody = document.getElementById("events-table-body");
         const emptyState = document.getElementById("events-empty");
+        if (!tbody) return;
 
-        if (events.length === 0) {
+        const filtered = allEvents.filter((ev) =>
+          (ev.title || "").toLowerCase().includes(filterText.toLowerCase()),
+        );
+
+        if (filtered.length === 0) {
           tbody.innerHTML = "";
           emptyState.classList.remove("hidden");
           return;
         }
 
         emptyState.classList.add("hidden");
-
-        tbody.innerHTML = events
-          .map((ev, i) => {
-            const color = badgeColors[i % badgeColors.length];
-            const isConfirmed = ev.status === "confirmado";
-            const statusIcon = isConfirmed ? "✅" : "⏳";
-            const statusText = isConfirmed ? "Confirmado" : "Em andamento";
-            const statusClass = isConfirmed ? "status-confirmed" : "status-ongoing";
+        tbody.innerHTML = filtered
+          .map((ev) => {
+            const statusMap = {
+              confirmado: { text: "ATIVO", class: "text-emerald-600" },
+              em_andamento: { text: "PENDENTE", class: "text-amber-600" },
+              cheio: { text: "ESGOTADO", class: "text-indigo-600" },
+              cancelado: { text: "CANCELADO", class: "text-rose-600" },
+            };
+            const status = statusMap[ev.status] || statusMap["em_andamento"];
+            const price = parseFloat(ev.price || 0).toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            });
 
             return `
-            <div class="event-row grid grid-cols-12 gap-4 px-8 py-5 items-center">
-              <div class="col-span-3 flex items-center gap-3">
-                <span class="text-xl">${statusIcon}</span>
-                <span class="font-bold text-sm ${statusClass}">${statusText}</span>
-              </div>
-              <div class="col-span-3">
-                <span class="badge-event" style="background:${color.bg}; border-color:${color.border}; color:${color.text};">
-                  ${ev.title}
+            <div class="event-row-organic px-8 py-6 grid grid-cols-12 gap-4 items-center bg-white shadow-sm mb-3">
+              <div class="col-span-2">
+                <span class="text-[10px] font-black tracking-[0.1em] ${status.class}">
+                  ${status.text}
                 </span>
               </div>
-              <div class="col-span-3">
-                <span class="text-sm font-semibold text-slate-600">
-                  DATA ${formatDateBR(ev.date)} - ${ev.time || "00:00"}
-                </span>
+              <div class="col-span-4 flex items-center gap-4 min-w-0">
+                <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-md flex-shrink-0">
+                  <img src="${ev.heroImage}" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm font-black text-slate-900 leading-tight truncate uppercase">${ev.title}</p>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-widest">${ev.city || "Belo Jardim"}</p>
+                </div>
               </div>
-              <div class="col-span-3 flex items-center justify-end gap-3">
-                <button class="btn-edit" onclick="openEditModal('${ev.id}')">EDITAR</button>
-                <button class="btn-delete" onclick="openDeleteModal('${ev.id}')">EXCLUIR</button>
+              <div class="col-span-2">
+                <p class="text-sm font-black text-blue-600 tracking-tighter">${price}</p>
+              </div>
+              <div class="col-span-2">
+                <p class="text-xs font-black text-slate-900 tracking-tighter">${formatDateBR(ev.date)}</p>
+                <p class="text-[9px] text-slate-400 font-bold uppercase mt-0.5">${ev.time || "20:00"}</p>
+              </div>
+              <div class="col-span-2 flex items-center justify-end gap-2">
+                <button class="w-10 h-10 rounded-xl bg-white border border-slate-100 text-slate-400 hover:text-blue-600 transition-all flex items-center justify-center shadow-sm" onclick="openEditModal('${ev.id}')" title="Editar"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                <button class="w-10 h-10 rounded-xl bg-white border border-slate-100 text-slate-400 hover:text-rose-600 transition-all flex items-center justify-center shadow-sm" onclick="openDeleteModal('${ev.id}')" title="Excluir"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
               </div>
             </div>`;
           })
           .join("");
+        lucide.createIcons();
       }
 
+      // --- AUTH ---
+      const user = window.BeloEventosAuth.getUser();
+      if (user && user.role === "admin") {
+        document.getElementById("admin-name-header").textContent = user.name;
+        document.getElementById("admin-avatar-header").src =
+          user.profileImage ||
+          "https://api.dicebear.com/7.x/pixel-art/svg?seed=" +
+            encodeURIComponent(user.name);
+      } else {
+        window.location.href = "login.html";
+      }
 
-      // ──────────────── Modal de Edição ────────────────
+      document
+        .getElementById("admin-search-input")
+        .addEventListener("input", (e) => renderEvents(e.target.value));
+
+      // --- MASK FOR CURRENCY (NUBANK STYLE) ---
+      const priceInput = document.getElementById("edit-event-price");
+      
+      function formatCurrencyNubank(value) {
+        // Remove tudo que não é número
+        let cleanValue = String(value).replace(/\D/g, "");
+        if (!cleanValue) cleanValue = "0";
+        
+        // Converte para float (ex: 123 -> 1.23)
+        const amount = parseFloat(cleanValue) / 100;
+        
+        // Formata para o padrão brasileiro
+        return amount.toLocaleString("pt-BR", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      }
+
+      if (priceInput) {
+        priceInput.addEventListener("input", (e) => {
+          e.target.value = formatCurrencyNubank(e.target.value);
+        });
+      }
+
+      // --- MODALS ---
       const editModal = document.getElementById("edit-modal");
       const editOverlay = document.getElementById("edit-modal-overlay");
       const editCancel = document.getElementById("edit-cancel");
+      const btnNewEvent = document.getElementById("btn-new-event");
 
-      function openEditModal(eventId) {
-        const events = loadEvents();
-        const ev = events.find((e) => e.id === eventId);
-        if (!ev) return;
-
-        document.getElementById("edit-event-id").value = ev.id;
-        document.getElementById("edit-event-title").value = ev.title;
-        document.getElementById("edit-event-date").value = ev.date;
-        document.getElementById("edit-event-time").value = ev.time || "";
-        document.getElementById("edit-event-status").value = ev.status;
-
+      function openNewEventModal() {
+        document.getElementById("modal-title").textContent = "CRIAR ATRAÇÃO";
+        document.getElementById("edit-event-id").value = "";
+        document.getElementById("edit-event-form").reset();
+        if (priceInput) priceInput.value = "0,00"; // Initial state
         editModal.classList.remove("modal-hidden");
       }
 
-      function closeEditModal() {
-        editModal.classList.add("modal-hidden");
+      function openEditModal(eventId) {
+        const ev = allEvents.find((e) => e.id === eventId);
+        if (!ev) return;
+        document.getElementById("modal-title").textContent = "EDITAR ATRAÇÃO";
+        document.getElementById("edit-event-id").value = ev.id;
+        document.getElementById("edit-event-title").value = ev.title;
+        document.getElementById("edit-event-topic").value = ev.topic || "musica";
+        document.getElementById("edit-event-city").value = ev.city || "";
+        document.getElementById("edit-event-date").value = ev.date || "";
+        document.getElementById("edit-event-time").value = ev.time || "";
+        document.getElementById("edit-event-hero").value = ev.heroImage || "";
+        document.getElementById("edit-event-status").value =
+          ev.status || "confirmado";
+        
+        // Formata o preço vindo do banco para a máscara
+        if (priceInput) {
+          const val = parseFloat(ev.price || 0) * 100;
+          priceInput.value = formatCurrencyNubank(val.toFixed(0));
+        }
+        
+        editModal.classList.remove("modal-hidden");
       }
 
-      editCancel.addEventListener("click", closeEditModal);
-      editOverlay.addEventListener("click", closeEditModal);
+      const closeEditModal = () => editModal.classList.add("modal-hidden");
+      if (btnNewEvent) btnNewEvent.onclick = openNewEventModal;
+      if (editCancel) editCancel.onclick = closeEditModal;
+      if (editOverlay) editOverlay.onclick = closeEditModal;
 
-      document
-        .getElementById("edit-event-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+      document.getElementById("edit-event-form").onsubmit = async function (e) {
+        e.preventDefault();
+        const id = document.getElementById("edit-event-id").value;
+        const priceRaw = document.getElementById("edit-event-price").value;
+        const priceClean = parseFloat(priceRaw.replace(/\./g, "").replace(",", ".")) || 0;
 
-          const id = document.getElementById("edit-event-id").value;
-          const title = document.getElementById("edit-event-title").value.trim();
-          const date = document.getElementById("edit-event-date").value;
-          const time = document.getElementById("edit-event-time").value;
-          const status = document.getElementById("edit-event-status").value;
+        const eventData = {
+          title: document.getElementById("edit-event-title").value.trim(),
+          topic: document.getElementById("edit-event-topic").value,
+          city: document.getElementById("edit-event-city").value.trim() || "Belo Jardim, PE",
+          date: document.getElementById("edit-event-date").value,
+          time: document.getElementById("edit-event-time").value,
+          heroImage: document.getElementById("edit-event-hero").value,
+          status: document.getElementById("edit-event-status").value,
+          price: priceClean,
+        };
 
-          const events = loadEvents();
-          const idx = events.findIndex((e) => e.id === id);
-          if (idx === -1) return;
+        let success = false;
+        try {
+          const url = id ? "/events/" + id : "/events";
+          const payload = id ? eventData : { ...eventData, id: "event-" + Date.now() };
+          const result = await window.BeloEventosAuth.apiFetch(url, {
+            method: id ? "PUT" : "POST",
+            body: JSON.stringify(payload),
+          });
+          success = !!result;
+        } catch (fetchErr) {
+          console.warn("Salvando evento localmente (Offline)");
+          const events = getStoredEvents();
+          if (id) {
+            const idx = events.findIndex((e) => e.id === id);
+            if (idx !== -1)
+              events[idx] = { ...events[idx], ...eventData, id: id };
+          } else {
+            events.push({ ...eventData, id: "event-" + Date.now() });
+          }
+          saveStoredEvents(events);
+          success = true;
+        }
 
-          events[idx] = { ...events[idx], title, date, time, status };
-          saveEvents(events);
+        if (success) {
+          await loadDashboardData();
           renderEvents();
           closeEditModal();
-          showToast("Evento atualizado com sucesso!");
-        });
+          showToast(id ? "Atração atualizada" : "Nova atração publicada");
+        } else {
+          showToast("Erro ao salvar", "error");
+        }
+      };
 
-      // ──────────────── Modal de Exclusão ────────────────
       const deleteModal = document.getElementById("delete-modal");
       const deleteOverlay = document.getElementById("delete-modal-overlay");
       const deleteCancel = document.getElementById("delete-cancel");
       const deleteConfirm = document.getElementById("delete-confirm");
 
-      function openDeleteModal(eventId) {
-        const events = loadEvents();
-        const ev = events.find((e) => e.id === eventId);
+      window.openDeleteModal = function (eventId) {
+        const ev = allEvents.find((e) => e.id === eventId);
         if (!ev) return;
-
         document.getElementById("delete-event-id").value = ev.id;
-        document.getElementById("delete-event-name").textContent =
-          `Deseja realmente excluir "${ev.title}"? Esta ação não pode ser desfeita.`;
         deleteModal.classList.remove("modal-hidden");
+      };
+      const closeDeleteModal = () => deleteModal.classList.add("modal-hidden");
+      if (deleteCancel) deleteCancel.onclick = closeDeleteModal;
+      if (deleteOverlay) deleteOverlay.onclick = closeDeleteModal;
+
+      if (deleteConfirm) {
+        deleteConfirm.onclick = async () => {
+          const id = document.getElementById("delete-event-id").value;
+          let success = false;
+          try {
+            const result = await window.BeloEventosAuth.apiFetch("/events/" + id, {
+              method: "DELETE",
+            });
+            success = !!result;
+          } catch (fetchErr) {
+            console.warn("Removendo evento localmente (Offline)");
+            const events = getStoredEvents();
+            const filtered = events.filter((e) => e.id !== id);
+            saveStoredEvents(filtered);
+            success = true;
+          }
+
+          if (success) {
+            await loadDashboardData();
+            renderEvents();
+            closeDeleteModal();
+            showToast("Atração removida", "error");
+          } else {
+            showToast("Erro ao remover", "error");
+          }
+        };
       }
 
-      function closeDeleteModal() {
-        deleteModal.classList.add("modal-hidden");
+      function showToast(msg, type = "success") {
+        const toast = document.getElementById("toast");
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.className =
+          "fixed top-8 right-8 px-8 py-5 rounded-[24px] text-white font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all z-[300] opacity-100 translate-y-0 " +
+          (type === "error"
+            ? "bg-rose-600 shadow-rose-600/20"
+            : "bg-slate-900 shadow-slate-900/20");
+        setTimeout(() => {
+          toast.classList.add("opacity-0", "-translate-y-10");
+        }, 3000);
       }
 
-      deleteCancel.addEventListener("click", closeDeleteModal);
-      deleteOverlay.addEventListener("click", closeDeleteModal);
-
-      deleteConfirm.addEventListener("click", () => {
-        const id = document.getElementById("delete-event-id").value;
-        let events = loadEvents();
-        events = events.filter((e) => e.id !== id);
-        saveEvents(events);
-        renderEvents();
-        closeDeleteModal();
-        showToast("Evento excluído com sucesso!", "success");
+      // --- REAL-TIME SYNC LISTENER ---
+      window.addEventListener("beloEventosDataUpdated", () => {
+        console.log("Dados atualizados (local), recarregando dashboard...");
+        loadDashboardData().then(() => renderEvents());
       });
 
-      // ──────────────── Init ────────────────
-      renderEvents();
+      // Sync across tabs
+      window.addEventListener("storage", (e) => {
+        if (
+          e.key === "beloEventosCachedPurchases" ||
+          e.key === "beloEventosCachedEvents"
+        ) {
+          console.log(
+            "Dados atualizados (outra aba), recarregando dashboard...",
+          );
+          loadDashboardData().then(() => renderEvents());
+        }
+      });
+      loadDashboardData().then(() => renderEvents());
     </script>
   </body>
 </html>

@@ -11,148 +11,113 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        scroll-behavior: smooth;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-
-      /* Custom Scrollbar for the menu tabs */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
-      .event-card:hover img {
-        transform: scale(1.08);
-      }
-
-      /* Sponsor Logo Hover */
-      .sponsor-logo {
-        filter: grayscale(100%);
-        opacity: 0.5;
-        transition: all 0.3s ease;
-      }
-      .sponsor-logo:hover {
-        filter: grayscale(0%);
-        opacity: 1;
-      }
-    </style>
+      <link rel="stylesheet" href="src/style.css">
   </head>
-  <body class="bg-slate-50 text-slate-900">
+  <body class="bg-slate-50 text-black">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 py-4"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="container mx-auto px-6 flex items-center justify-between">
         <!-- Logo -->
         <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
+          class="logo-container flex items-center gap-3 group cursor-pointer"
           onclick="window.location.href = 'index.html'"
         >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+          </div>
           <div class="flex flex-col text-left">
             <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
             >
             <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
               >Cultura e Conexão</span
             >
           </div>
         </div>
 
         <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a href="index.html" class="hover:text-yellow-400 transition-colors">INÍCIO</a>
-          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
-          <a href="profissionais.html" class="hover:text-yellow-400 transition-colors">PROFISSIONAIS</a>
-          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        <nav class="hidden md:flex items-center gap-10">
+          <a
+            href="categorias.html"
+            class="text-white font-black text-xs uppercase tracking-widest underline decoration-yellow-400 decoration-2 underline-offset-8"
+            >Programação</a
+          >
+          <a
+            href="comunidade.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105"
+            >Comunidade</a
+          >
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105"
+            >Contato</a
+          >
         </nav>
 
         <!-- Actions -->
-        <div class="hidden md:flex items-center gap-4">
-          <a
-            href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
-          >
-            ENTRAR
-          </a>
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+        <div class="hidden md:flex items-center gap-3">
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
+      </div>
 
-        <!-- Mobile Toggle -->
+      <!-- Mobile Toggle -->
         <button class="md:hidden text-white" id="menu-toggle">
           <i data-lucide="menu" class="w-7 h-7"></i>
         </button>
@@ -172,16 +137,15 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
-        <a href="index.html">Início</a>
-        <a href="categorias.html">Programação</a>
+        <a href="categorias.html" class="text-yellow-400">Programação</a>
         <a href="profissionais.html">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
         >
           Entrar
         </a>
@@ -207,7 +171,7 @@
               </nav>
               <h1
                 id="section-title"
-                class="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none"
+                class="text-4xl md:text-6xl font-black text-black uppercase tracking-tighter leading-none"
               >
                 CATEGORIAS <span class="text-blue-600">EM DESTAQUE</span>
               </h1>
@@ -218,45 +182,65 @@
                 Escolha um gênero para filtrar os eventos.
               </p>
             </div>
-            <div class="relative flex items-center gap-4">
-              <div class="text-right hidden md:block">
-                <p
-                  class="text-xs font-bold text-slate-400 uppercase tracking-widest"
-                >
-                  Filtrar por
-                </p>
-                <p class="text-sm font-black text-slate-900">Belo Jardim, PE</p>
-              </div>
-              <button
-                id="subtopic-toggle"
-                class="p-3 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
-                aria-label="Abrir filtros detalhados"
-              >
+            <div
+              class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto"
+            >
+              <!-- Search Input -->
+              <div class="relative w-full md:w-80 group">
                 <i
-                  data-lucide="sliders-horizontal"
-                  class="w-5 h-5 text-slate-600"
+                  data-lucide="search"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4 group-focus-within:text-blue-600 transition-colors"
                 ></i>
-              </button>
-
-              <div
-                id="subtopic-panel"
-                class="hidden absolute right-0 top-full mt-3 w-[min(90vw,26rem)] bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 z-20"
-              >
-                <p
-                  class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3"
+                <input
+                  type="text"
+                  id="event-search-input"
+                  placeholder="Pesquisar por evento ou artista..."
+                  class="w-full bg-slate-100 border-2 border-transparent rounded-xl py-2 pl-10 pr-4 text-sm font-semibold text-black placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 transition-all"
+                />
+              </div>
+              <div class="relative flex items-center gap-4">
+                <div class="text-right hidden md:block">
+                  <p
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+                  >
+                    Filtrar por
+                  </p>
+                  <p class="text-sm font-black text-black">
+                    Belo Jardim, PE
+                  </p>
+                </div>
+                <button
+                  id="subtopic-toggle"
+                  class="p-3 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
+                  aria-label="Abrir filtros detalhados"
                 >
-                  Filtro detalhado
-                </p>
+                  <i
+                    data-lucide="sliders-horizontal"
+                    class="w-5 h-5 text-slate-600"
+                  ></i>
+                </button>
+
                 <div
-                  id="subtopic-filter-bar"
-                  class="flex flex-wrap gap-2.5"
-                  aria-label="Filtros detalhados"
-                ></div>
+                  id="subtopic-panel"
+                  class="hidden absolute right-0 top-full mt-3 w-[min(90vw,26rem)] bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 z-20"
+                >
+                  <p
+                    class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3"
+                  >
+                    Filtro detalhado
+                  </p>
+                  <div
+                    id="subtopic-filter-bar"
+                    class="flex flex-wrap gap-2.5"
+                    aria-label="Filtros detalhados"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <section class="bg-white border-b border-slate-200">
         <div class="container mx-auto px-6 py-5">
@@ -323,430 +307,16 @@
             id="events-grid"
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
           >
-            <!-- Card 1 -->
+            <!-- Renderizado dinamicamente via JS -->
             <div
-              data-topic="musica"
-              data-subtopic="rock"
-              data-event-id="capital-inicial"
-              onclick="window.location.href = 'evento.html?id=capital-inicial'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+              class="col-span-full py-20 flex flex-col items-center justify-center text-slate-400"
             >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://s2-g1.glbimg.com/3PHOW-V63BYBFuu43XAJS3n0lrg=/2048x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/b/8/lWkNIWQmeeagU30WMQcA/capital-inicial-1.jpg"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-yellow-400 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  DATA ÚNICA
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 18 Out ·
-                  21:00
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Show Capital Inicial
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Belo Jardim,
-                  Centro
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 120,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              data-topic="musica"
-              data-subtopic="rock"
-              data-event-id="guns-n-roses"
-              onclick="window.location.href = 'evento.html?id=guns-n-roses'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-blue-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  TURNÊ NACIONAL
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Múltiplas
-                  Datas
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Turnê Guns N Roses
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> IFPE - CAMPUS
-                  BELO JARDIM
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >A partir R$ 250</span
-                  >
-                  <a
-                    href="evento.html?id=guns-n-roses"
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              data-topic="oficina"
-              data-subtopic="tecnica-vocal"
-              data-event-id="oficina-voz-palco"
-              onclick="
-                window.location.href = 'evento.html?id=oficina-voz-palco'
-              "
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  ESGOTANDO
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 05 Ago ·
-                  22:30
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Oficina de Voz e Palco
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Teatro Municipal
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 85,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div
-              data-topic="musica"
-              data-subtopic="reggae"
-              data-event-id="reggae-roots"
-              onclick="window.location.href = 'evento.html?id=reggae-roots'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&q=80&w=1000"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  REGGAE VIBES
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 27 Set ·
-                  20:00
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Noite Reggae Roots
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Arena Verde,
-                  Belo Jardim
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 90,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div
-              data-topic="musica"
-              data-subtopic="gospel"
-              data-event-id="festival-gospel"
-              onclick="window.location.href = 'evento.html?id=festival-gospel'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=1000"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-indigo-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  GOSPEL LIVE
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 08 Nov ·
-                  19:30
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Festival Gospel da Paz
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Praça da Matriz,
-                  Belo Jardim
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 65,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div
-              data-topic="musica"
-              data-subtopic="catolica"
-              data-event-id="louvor-catedral"
-              onclick="window.location.href = 'evento.html?id=louvor-catedral'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://cdn.jornaldaparaiba.com.br/img/inline/210000/Frei-Gilson-em-Joao-Pessoa-reveja-o-show-completo0021527500202512272122.jpg?xid=1185711"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-cyan-700 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  CANTO CATÓLICO
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 15 Dez ·
-                  18:00
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Louvor na Catedral
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Catedral
-                  Central, Belo Jardim
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 45,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 7 -->
-            <div
-              data-topic="musica"
-              data-subtopic="mpb"
-              data-event-id="djavan-turne-d"
-              onclick="window.location.href = 'evento.html?id=djavan-turne-d'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://djavan.com.br/content/uploads/2025/10/djavan_improviso_0389-1920x0-c-default.jpg"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-amber-500 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  MPB PREMIUM
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 15 Jun ·
-                  21:00
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Djavan - Turnê D
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Marocas, Belo
-                  Jardim
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 170,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 8 -->
-            <div
-              data-topic="musica"
-              data-subtopic="forro"
-              data-event-id="arraia-forro"
-              onclick="window.location.href = 'evento.html?id=arraia-forro'"
-              class="event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-            >
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1000"
-                  class="w-full h-full object-cover transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-6 left-6 bg-rose-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
-                >
-                  FORRÓ RAIZ
-                </div>
-              </div>
-              <div class="p-8">
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3"
-                >
-                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 13 Jul ·
-                  22:00
-                </div>
-                <h3
-                  class="text-2xl font-black text-slate-900 uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors"
-                >
-                  Arraiá de Forró Pé de Serra
-                </h3>
-                <p
-                  class="text-slate-500 font-medium flex items-center gap-1 text-sm mb-6"
-                >
-                  <i data-lucide="map-pin" class="w-4 h-4"></i> Pátio de
-                  Eventos, Belo Jardim
-                </p>
-                <div
-                  class="flex items-center justify-between pt-6 border-t border-slate-50"
-                >
-                  <span
-                    class="font-black text-xl text-slate-900 tracking-tighter"
-                    >R$ 75,00</span
-                  >
-                  <button
-                    class="bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all"
-                  >
-                    <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                  </button>
-                </div>
-              </div>
+              <div
+                class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"
+              ></div>
+              <p class="font-black uppercase tracking-widest text-xs">
+                Carregando eventos...
+              </p>
             </div>
           </div>
           <p
@@ -758,110 +328,89 @@
         </div>
       </section>
 
-      <!-- SEÇÃO DE PATROCINADORES (CLEAN) -->
-      <section class="py-20 bg-white border-t border-slate-100">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12">
-            <h4
-              class="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-4"
-            >
+      <!-- SEÇÃO DE PATROCINADORES -->
+      <section class='py-20 bg-white border-t border-slate-100'>
+        <div class='container mx-auto px-6'>
+          <div class='text-center mb-16'>
+            <h4 class='text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-4'>
               Patrocinadores & Parceiros
             </h4>
-            <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full"></div>
+            <div class='h-1 w-12 bg-blue-600 mx-auto rounded-full'></div>
           </div>
-          <div
-            class="flex flex-wrap items-center justify-center gap-12 md:gap-24"
-          >
-            <!-- Mock de logos de patrocinadores -->
-            <div
-              class="sponsor-logo font-black text-2xl text-slate-900 tracking-tighter uppercase italic"
-            >
-              RedBull
-            </div>
-            <div
-              class="sponsor-logo font-black text-2xl text-slate-900 tracking-tighter uppercase"
-            >
-              Heineken
-            </div>
-            <div
-              class="sponsor-logo font-black text-2xl text-slate-900 tracking-tighter uppercase"
-            >
-              Coca-Cola
-            </div>
-            <div
-              class="sponsor-logo font-black text-2xl text-slate-900 tracking-tighter uppercase"
-            >
-              TicketMaster
-            </div>
-            <div
-              class="sponsor-logo font-black text-2xl text-slate-900 tracking-tighter uppercase"
-            >
-              Itaú
-            </div>
+          <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-100'>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase italic'>BeloPass</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>AlôBelo</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>VALE BANK</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase italic'>UP ENERGY</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>BeloSom</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>FEST BEER</div>
           </div>
         </div>
       </section>
-    </main>
-
-    <!-- FOOTER -->
+      <!-- FOOTER -->
     <footer
       id="contato-section"
-      class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
     >
       <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div class="col-span-1 md:col-span-2">
             <div class="flex items-center gap-2 mb-6">
-              <div
-                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
-                <i
-                  data-lucide="star"
-                  class="w-5 h-5 text-blue-700 fill-current"
-                ></i>
-              </div>
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
               <span
                 class="text-blue-700 font-black text-xl tracking-tighter uppercase"
                 >Belo Eventos</span
               >
             </div>
-            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
               A maior plataforma de cultura e entretenimento de Belo Jardim e
               região.
             </p>
           </div>
           <div>
-            <h4
-              class="font-black text-slate-900 uppercase tracking-widest mb-6"
-            >
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
               Explore
             </h4>
-            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
-              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Shows</a
               >
-              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Teatro</a
               >
-              <a href="categorias.html" class="hover:text-blue-600 transition-colors"
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Gastronomia</a
               >
-              <a href="index.html" class="hover:text-blue-600 transition-colors"
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Sobre Nós</a
               >
             </nav>
           </div>
           <div>
-            <h4
-              class="font-black text-slate-900 uppercase tracking-widest mb-6"
-            >
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
               Contato
             </h4>
-            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
-              <a href="contato.html" class="hover:text-blue-600 transition-colors"
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Ajuda</a
               >
-              <a href="profissionais.html" class="hover:text-blue-600 transition-colors"
+              <a href="#" class="hover:text-blue-600 transition-colors"
                 >Anunciar</a
               >
               <a href="#" class="hover:text-blue-600 transition-colors"
@@ -885,274 +434,264 @@
       </div>
     </footer>
 
+
     <script src="events-data.js"></script>
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
-      // Inicializa Lucide
+      // Initialize Lucide
       lucide.createIcons();
 
-      // Header Scroll Effect
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
-        } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+      // --- HEADER SCROLL ---
+      const header = document.getElementById('main-header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            header.classList.add('bg-blue-600', 'shadow-xl', 'py-2');
+            header.classList.remove('bg-blue-700', 'py-4');
+          } else {
+            header.classList.add('bg-blue-700', 'py-4');
+            header.classList.remove('bg-blue-600', 'shadow-xl', 'py-2');
+          }
+        });
+      }
+
+      // --- MOBILE MENU ---
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuToggle && mobileMenu) menuToggle.onclick = () => mobileMenu.classList.remove('hidden');
+      if (menuClose && mobileMenu) menuClose.onclick = () => mobileMenu.classList.add('hidden');
+
+      // --- BACKEND INTEGRATION & FILTERS ---
+      let allEvents = [];
+      let activeTopic = 'all';
+
+      let activeSubtopic = 'all';
+
+      function getLocalCachedEvents() {
+        const keys = ['beloEventosCachedEvents', 'beloEventosEventsFallback'];
+        const collected = [];
+
+        keys.forEach((key) => {
+          try {
+            const raw = localStorage.getItem(key);
+            if (!raw) return;
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              collected.push(...parsed);
+            }
+          } catch {}
+        });
+
+        if (Array.isArray(window.eventsData)) {
+          collected.push(...window.eventsData);
         }
-      });
 
-      // Mobile Menu Toggle
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
+        const byId = new Map();
+        collected.forEach((eventItem) => {
+          if (!eventItem) return;
+          const key = eventItem.id || `${eventItem.title || 'evento'}-${eventItem.date || ''}-${eventItem.time || ''}`;
+          byId.set(key, eventItem);
+        });
 
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
+        return Array.from(byId.values());
+      }
 
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-
-      const topicBar = document.getElementById("topic-filter-bar");
-      const subtopicBar = document.getElementById("subtopic-filter-bar");
-      const subtopicToggle = document.getElementById("subtopic-toggle");
-      const subtopicPanel = document.getElementById("subtopic-panel");
-      const topicButtons = document.querySelectorAll(".topic-filter-btn");
-      const eventCards = document.querySelectorAll("#events-grid .event-card");
-      const noEventsMessage = document.getElementById("no-events-message");
-      const sectionTitle = document.getElementById("section-title");
-      const sectionSubtitle = document.getElementById("section-subtitle");
-      const currentBreadcrumb = document.getElementById("current-breadcrumb");
+      const topicBar = document.getElementById('topic-filter-bar');
+      const subtopicBar = document.getElementById('subtopic-filter-bar');
+      const subtopicToggle = document.getElementById('subtopic-toggle');
+      const subtopicPanel = document.getElementById('subtopic-panel');
+      const noEventsMessage = document.getElementById('no-events-message');
+      const sectionTitle = document.getElementById('section-title');
+      const sectionSubtitle = document.getElementById('section-subtitle');
+      const currentBreadcrumb = document.getElementById('current-breadcrumb');
+      const eventsGrid = document.getElementById('events-grid');
+      const searchInput = document.getElementById('event-search-input');
 
       const topicConfig = {
-        all: {
-          label: "Todas",
-          subtitle: "Escolha um gênero para filtrar os eventos.",
-          subtopics: [{ id: "all", label: "Todos os estilos" }],
-        },
+        all: { label: 'Todas', subtitle: 'Explore todas as categorias de eventos em Belo Jardim.' },
         musica: {
-          label: "Música",
-          subtitle: "Refine por estilo musical para encontrar o evento ideal.",
+          label: 'Música',
+          subtitle: 'Os melhores shows e apresentações musicais da região.',
           subtopics: [
-            { id: "all", label: "Todos" },
-            { id: "rock", label: "Rock" },
-            { id: "reggae", label: "Reggae" },
-            { id: "gospel", label: "Gospel" },
-            { id: "catolica", label: "Católica" },
-            { id: "mpb", label: "MPB" },
-            { id: "forro", label: "Forró" },
-          ],
+            { id: 'rock', label: 'Rock' }, { id: 'mpb', label: 'MPB' }, { id: 'pop', label: 'Pop' }, { id: 'gospel', label: 'Gospel' }, { id: 'reggae', label: 'Reggae' }
+          ]
         },
-        oficina: {
-          label: "Oficina",
-          subtitle: "Aprenda e pratique com experiências criativas.",
-          subtopics: [
-            { id: "all", label: "Todas" },
-            { id: "tecnica-vocal", label: "Técnica Vocal" },
-            { id: "instrumentos", label: "Instrumentos" },
-          ],
-        },
-        religioso: {
-          label: "Religioso",
-          subtitle: "Momentos de fé e espiritualidade para toda a comunidade.",
-          subtopics: [{ id: "all", label: "Todos" }],
-        },
-        teatro: {
-          label: "Teatro",
-          subtitle: "Espetáculos e performances em destaque na cidade.",
-          subtopics: [{ id: "all", label: "Todos" }],
-        },
-        gastronomia: {
-          label: "Gastronomia",
-          subtitle: "Sabores locais e experiências gastronômicas exclusivas.",
-          subtopics: [{ id: "all", label: "Todos" }],
-        },
-        standup: {
-          label: "Stand-up",
-          subtitle: "Humor ao vivo com talentos regionais e nacionais.",
-          subtopics: [{ id: "all", label: "Todos" }],
-        },
-        exposicao: {
-          label: "Exposições",
-          subtitle: "Arte, cultura visual e experiências imersivas.",
-          subtopics: [{ id: "all", label: "Todas" }],
-        },
+        oficina: { label: 'Oficina', subtitle: 'Workshops, cursos e imersões criativas.', subtopics: [{id: 'tecnica-vocal', label: 'Técnica Vocal'}, {id: 'artes', label: 'Artes'}] },
+        religioso: { label: 'Religioso', subtitle: 'Cultos, missas e eventos de fé.', subtopics: [{id: 'canto', label: 'Canto'}, {id: 'celebracao', label: 'Celebração'}] },
+        teatro: { label: 'Teatro', subtitle: 'Peças, musicais e apresentações cênicas.', subtopics: [{id: 'comedia', label: 'Comédia'}, {id: 'drama', label: 'Drama'}] },
+        gastronomia: { label: 'Gastronomia', subtitle: 'Festivais, feiras e experiências culinárias.', subtopics: [{id: 'regional', label: 'Regional'}, {id: 'festival', label: 'Festival'}] },
+        standup: { label: 'Stand-up', subtitle: 'Show de humor e comédia ao vivo.', subtopics: [{id: 'solo', label: 'Solo'}, {id: 'grupo', label: 'Grupo'}] },
+        exposicao: { label: 'Exposições', subtitle: 'Arte, cultura e história em exibição.', subtopics: [{id: 'politica', label: 'Política'}, {id: 'arte', label: 'Arte'}] }
       };
 
-      let activeTopic = "all";
-      let activeSubtopic = "all";
-
-      const renderSubtopicFilters = (topic) => {
-        const config = topicConfig[topic] || topicConfig.all;
-        const items = config.subtopics || [{ id: "all", label: "Todos" }];
-
-        subtopicBar.innerHTML = items
-          .map(
-            (item) => `
-              <button
-                data-subtopic="${item.id}"
-                class="subtopic-filter-btn px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all ${
-                  item.id === activeSubtopic
-                    ? "bg-blue-600 text-white shadow-sm shadow-blue-600/20"
-                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-                }"
-              >
-                ${item.label}
-              </button>
-            `,
-          )
-          .join("");
-      };
-
-      const applyFilters = () => {
-        const topicLabel = topicConfig[activeTopic]?.label || "Todas";
-        let visibleCards = 0;
-
-        eventCards.forEach((card) => {
-          const cardTopic = card.dataset.topic;
-          const cardSubtopic = card.dataset.subtopic || "all";
-          const topicMatch = activeTopic === "all" || cardTopic === activeTopic;
-          const subtopicMatch =
-            activeTopic === "all" ||
-            activeSubtopic === "all" ||
-            cardSubtopic === activeSubtopic;
-
-          const shouldShow = topicMatch && subtopicMatch;
-          card.classList.toggle("hidden", !shouldShow);
-          if (shouldShow) visibleCards += 1;
-        });
-
-        const subtopicLabel =
-          activeSubtopic !== "all"
-            ? (topicConfig[activeTopic]?.subtopics || []).find(
-                (item) => item.id === activeSubtopic,
-              )?.label
-            : null;
-
-        currentBreadcrumb.textContent = subtopicLabel
-          ? `${topicLabel} · ${subtopicLabel}`
-          : topicLabel;
-
-        sectionTitle.innerHTML =
-          activeTopic === "all"
-            ? 'CATEGORIAS <span class="text-blue-600">EM DESTAQUE</span>'
-            : `${topicLabel.toUpperCase()} <span class="text-blue-600">EM ALTA</span>`;
-
-        sectionSubtitle.textContent =
-          subtopicLabel && activeTopic !== "all"
-            ? `Mostrando eventos de ${topicLabel} no estilo ${subtopicLabel}.`
-            : topicConfig[activeTopic]?.subtitle ||
-              "Escolha um gênero para filtrar os eventos.";
-
-        noEventsMessage.classList.toggle("hidden", visibleCards > 0);
-      };
-
-      const activateTopic = (topic) => {
-        activeTopic = topic;
-        activeSubtopic = "all";
-
-        topicButtons.forEach((button) => {
-          const isActive = button.dataset.topic === topic;
-          button.classList.toggle("bg-blue-600", isActive);
-          button.classList.toggle("text-white", isActive);
-          button.classList.toggle("bg-slate-100", !isActive);
-          button.classList.toggle("text-slate-600", !isActive);
-        });
-
-        renderSubtopicFilters(topic);
-        applyFilters();
-      };
-
-      topicBar.addEventListener("click", (event) => {
-        const button = event.target.closest(".topic-filter-btn");
-        if (!button) return;
-        activateTopic(button.dataset.topic);
-      });
-
-      const closeSubtopicPanel = () => {
-        subtopicPanel.classList.add("hidden");
-      };
-
-      const toggleSubtopicPanel = () => {
-        subtopicPanel.classList.toggle("hidden");
-      };
-
-      subtopicToggle.addEventListener("click", (event) => {
-        event.stopPropagation();
-        toggleSubtopicPanel();
-      });
-
-      subtopicBar.addEventListener("click", (event) => {
-        const button = event.target.closest(".subtopic-filter-btn");
-        if (!button) return;
-
-        activeSubtopic = button.dataset.subtopic;
-        renderSubtopicFilters(activeTopic);
-        applyFilters();
-        closeSubtopicPanel();
-      });
-
-      document.addEventListener("click", (event) => {
-        if (
-          !subtopicPanel.classList.contains("hidden") &&
-          !subtopicPanel.contains(event.target) &&
-          !subtopicToggle.contains(event.target)
-        ) {
-          closeSubtopicPanel();
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeSubtopicPanel();
-        }
-      });
-
-      activateTopic("all");
-
-      // ──── Sincronizar cards com edições do admin (localStorage) ────
-      (function syncCategoriasWithAdmin() {
-        const EVENTS_KEY = "beloEventosAdminEvents";
+      async function fetchEvents() {
         try {
-          const stored = localStorage.getItem(EVENTS_KEY);
-          if (!stored) return;
-
-          const adminEvents = JSON.parse(stored);
-          if (!Array.isArray(adminEvents)) return;
-
-          const adminMap = {};
-          adminEvents.forEach(function (ev) {
-            adminMap[ev.id] = ev;
-          });
-
-          const adminIds = adminEvents.map(function (ev) { return ev.id; });
-
-          document.querySelectorAll("#events-grid .event-card[data-event-id]").forEach(function (card) {
-            const eventId = card.dataset.eventId;
-
-            // Se o evento foi excluído pelo admin, ocultar o card
-            if (adminIds.indexOf(eventId) === -1) {
-              card.style.display = "none";
-              card.classList.add("admin-removed");
-              return;
-            }
-
-            // Se o título foi editado, atualizar no card
-            const edited = adminMap[eventId];
-            if (edited) {
-              const titleEl = card.querySelector("h3");
-              if (titleEl) {
-                titleEl.textContent = edited.title;
-              }
-            }
-          });
-        } catch (e) {
-          // Fallback silencioso
+          allEvents = await window.BeloEventosAuth.fetchEvents();
+          renderEventsGrid();
+        } catch (err) {
+          console.error('Erro ao buscar eventos:', err);
+          if (eventsGrid) eventsGrid.innerHTML = `
+            <div class="col-span-full text-center py-12">
+              <p class="text-rose-500 font-black uppercase tracking-widest">Erro de conexão</p>
+              <p class="text-slate-500 text-sm mt-2">Certifique-se de que o servidor (node server.js) está rodando na porta 3000.</p>
+              <button onclick="fetchEvents()" class="mt-6 bg-slate-900 text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-blue-600 transition-all">TENTAR NOVAMENTE</button>
+            </div>
+          `;
         }
-      })();
-    </script>
-  </body>
+      }
+
+      function renderEventsGrid() {
+        const searchTerm = (searchInput && searchInput.value) ? searchInput.value.toLowerCase().trim() : '';
+
+        const filtered = allEvents.filter(ev => {
+          const topicMatch = activeTopic === 'all' || (ev.topic === activeTopic);
+          const subtopicMatch = activeSubtopic === 'all' || (ev.subtopic === activeSubtopic);
+          const searchMatch = !searchTerm || (ev.title && ev.title.toLowerCase().includes(searchTerm));
+          return topicMatch && subtopicMatch && searchMatch;
+        });
+
+        if (!eventsGrid) return;
+
+        if (filtered.length === 0) {
+          eventsGrid.innerHTML = '';
+          if (noEventsMessage) noEventsMessage.classList.remove('hidden');
+        } else {
+          if (noEventsMessage) noEventsMessage.classList.add('hidden');
+          eventsGrid.innerHTML = filtered.map(ev => {
+            const dateParts = (ev.date || '').split('-');
+            const dateDisplay = dateParts.length === 3 ? `${dateParts[2]}/${dateParts[1]}` : 'Data em breve';
+            const heroImg = ev.heroImage || 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200';
+            const statusMap = {
+              'confirmado': { label: 'CONFIRMADO', class: 'bg-emerald-500' },
+              'em_andamento': { label: 'EM ANDAMENTO', class: 'bg-yellow-400' },
+              'cheio': { label: 'ESGOTADO', class: 'bg-indigo-600' },
+              'cancelado': { label: 'CANCELADO', class: 'bg-rose-600' }
+            };
+            const statusInfo = statusMap[ev.status] || statusMap['em_andamento'];
+            const statusClass = statusInfo.class;
+            const statusLabel = statusInfo.label;
+
+            return `
+                <div onclick="window.location.href = 'evento.html?id=${ev.id}'" class='event-card group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100'>
+                  <div class='relative h-80 overflow-hidden'>
+                    <img src='${heroImg}' class='w-full h-full object-cover transition-transform duration-700' />
+                    <div class='absolute top-6 left-6 ${statusClass} text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest'>
+                      ${statusLabel}
+                    </div>
+                  </div>
+                  <div class='p-8'>
+                    <div class='flex items-center gap-2 text-blue-600 font-bold text-xs uppercase mb-3'>
+                      <i data-lucide='calendar' class='w-3.5 h-3.5'></i> ${dateDisplay} · ${ev.time || '20:00'}</div>
+                    <h3 class='text-2xl font-black text-black uppercase leading-none mb-2 group-hover:text-blue-600 transition-colors'>
+                      ${ev.title}
+                    </h3>
+                    <p class='text-slate-500 font-medium flex items-center gap-1 text-sm mb-6'>
+                      <i data-lucide='map-pin' class='w-4 h-4'></i> ${ev.city || 'Belo Jardim, PE'}</p>
+                    <div class='flex items-center justify-between pt-6 border-t border-slate-50'>
+                      <span class='font-black text-xl text-black tracking-tighter'>${ev.price ? parseFloat(ev.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Gratuito'}</span>
+                      <button class='bg-slate-900 text-white p-3 rounded-2xl group-hover:bg-blue-600 transition-all'>
+                        <i data-lucide='arrow-up-right' class='w-6 h-6'></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>`;
+          }).join('');
+          lucide.createIcons();
+        }
+        updateBreadcrumbs();
+      }
+
+      function updateBreadcrumbs() {
+        const config = topicConfig[activeTopic] || topicConfig.all;
+        const topicLabel = config.label;
+        const subtopicLabel = activeSubtopic !== 'all' ? (config.subtopics || []).find(i => i.id === activeSubtopic)?.label : null;
+        if (currentBreadcrumb) currentBreadcrumb.textContent = subtopicLabel ? `${topicLabel} · ${subtopicLabel}` : topicLabel;
+        if (sectionTitle) sectionTitle.innerHTML = activeTopic === 'all' ? 'CATEGORIAS <span class="text-blue-600">EM DESTAQUE</span>' : `${topicLabel.toUpperCase()} <span class="text-blue-600">EM ALTA</span>`;
+        if (sectionSubtitle) sectionSubtitle.textContent = subtopicLabel ? 'Mostrando eventos de ' + topicLabel + ' no estilo ' + subtopicLabel + '.' : config.subtitle;
+      }
+
+      function activateTopic(topicId) {
+        activeTopic = topicId;
+        activeSubtopic = 'all';
+
+        document.querySelectorAll('.topic-filter-btn').forEach(btn => {
+          if (btn.getAttribute('data-topic') === topicId) {
+            btn.className = 'topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-blue-600 text-white shadow-lg shadow-blue-600/20 transition-all';
+          } else {
+            btn.className = 'topic-filter-btn shrink-0 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all';
+          }
+        });
+
+        renderSubtopics();
+        renderEventsGrid();
+      }
+
+      function renderSubtopics() {
+        if (!subtopicBar) return;
+        const config = topicConfig[activeTopic] || topicConfig.all;
+        if (subtopicToggle) subtopicToggle.classList.remove('hidden');
+
+        if (!config.subtopics) {
+          subtopicBar.innerHTML = '<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest p-2">Selecione uma categoria para filtros detalhados.</p>';
+          return;
+        }
+
+        const allBtnClass = activeSubtopic === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200';
+        subtopicBar.innerHTML = `<button data-subtopic='all' class='subtopic-filter-btn px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all ${allBtnClass}'>Todos de ${config.label}</button>` +
+          config.subtopics.map(item => {
+            const btnClass = activeSubtopic === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200';
+            return `<button data-subtopic='${item.id}' class='subtopic-filter-btn px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all ${btnClass}'>${item.label}</button>`;
+          }).join('');
+      }
+
+      if (topicBar) {
+        topicBar.onclick = (e) => {
+          const btn = e.target.closest('.topic-filter-btn');
+          if (btn) activateTopic(btn.getAttribute('data-topic'));
+        };
+      }
+
+      if (subtopicBar) {
+        subtopicBar.onclick = (e) => {
+          const btn = e.target.closest('.subtopic-filter-btn');
+          if (btn) {
+            activeSubtopic = btn.getAttribute('data-subtopic');
+            renderSubtopics();
+            renderEventsGrid();
+          }
+        };
+      }
+
+      if (subtopicToggle) {
+        subtopicToggle.onclick = (e) => {
+          e.stopPropagation();
+          if (subtopicPanel) subtopicPanel.classList.toggle('hidden');
+        };
+      }
+
+      if (searchInput) {
+        if (searchInput) { searchInput.addEventListener('input', () => renderEventsGrid()); }
+      }
+
+      document.addEventListener('click', (e) => {
+        if (subtopicPanel && !subtopicPanel.contains(e.target) && !subtopicToggle.contains(e.target)) {
+          subtopicPanel.classList.add('hidden');
+        }
+      });
+
+      // Start fetching
+      window.addEventListener('beloEventosDataUpdated', fetchEvents);
+      window.addEventListener('storage', (event) => {
+        if (event.key === 'beloEventosCachedEvents' || event.key === 'beloEventosEventsFallback') {
+          fetchEvents();
+        }
+      });
+
+      fetchEvents().then(() => activateTopic('all'));
+    </script></body>
 </html>

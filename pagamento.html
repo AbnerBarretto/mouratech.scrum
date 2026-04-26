@@ -4,425 +4,796 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pagamento | Belo Eventos</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        scroll-behavior: smooth;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-
-      .checkout-panel {
-        background: linear-gradient(130deg, #1d4ed8 0%, #1e40af 55%, #0f172a 100%);
-      }
-
-      .field {
-        border: 2px solid #e2e8f0;
-        transition: border-color 0.2s ease;
-      }
-
-      .field:focus {
-        border-color: #2563eb;
-        outline: none;
-      }
-
-      .form-error {
-        min-height: 1rem;
-      }
-    </style>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
-    <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href = 'index.html'">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#6366F1" />
-            <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10B981" />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
+    >
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
+        <div
+          class="logo-container flex items-center gap-3 group cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
-            <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span class="text-indigo-300">Eventos</span></span>
-            <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e Conexão</span>
+            <span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
+            >
+            <span
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
+              >Cultura e Conexão</span
+            >
           </div>
         </div>
 
-        <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
-          <a href="index.html" class="hover:text-yellow-400 transition-colors">INÍCIO</a>
-          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
-          <a href="profissionais.html" class="hover:text-yellow-400 transition-colors">PROFISSIONAIS</a>
-          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
+          <a
+            href="categorias.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
+          >
+          <a
+            href="comunidade.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
+          >
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
+          >
         </nav>
 
-        <div class="hidden md:flex items-center gap-4">
+        <!-- Actions -->
+        <div class="hidden md:flex items-center gap-3">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
           >
-            ENTRAR
+            <span class="relative z-10">ENTRAR</span>
           </a>
-          <div data-auth-profile class="relative group hidden">
-            <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
+          <!-- ... (Rest of auth profile) ... -->
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
+              data-auth-btn=""
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
-              <a href="meuperfil.html#dados-pessoais" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Dados Pessoais</a>
-              <a href="meuperfil.html#seguranca" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Segurança</a>
-              <a href="meuperfil.html#ingressos" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meus Ingressos</a>
-              <a href="meuperfil.html#gerenciamento" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Gerenciamento de Conta</a>
+              <a
+                href="meuperfil.html#dados-pessoais"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Meu Perfil</a
+              >
+              <a
+                href="comunidade.html"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Minhas Comunidades</a
+              >
+              <button
+                type="button"
+                data-auth-logout-btn
+                class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
+              >
+                Sair
+              </button>
             </div>
           </div>
         </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden"
+    >
       <div class="flex justify-end">
         <button id="menu-close" class="text-white">
           <i data-lucide="x" class="w-8 h-8"></i>
         </button>
       </div>
-      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
         <a href="index.html">Início</a>
         <a href="categorias.html">Programação</a>
         <a href="profissionais.html">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
-        <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+        <a
+          href="login.html"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
+          >Entrar</a
+        >
       </nav>
     </div>
 
     <main class="pt-24 md:pt-28 pb-14 px-4">
       <section class="container mx-auto max-w-6xl">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          <aside class="checkout-panel rounded-[2rem] p-6 lg:p-8 text-white lg:col-span-2 shadow-2xl">
-            <a id="back-link" href="evento.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-100 hover:text-yellow-300 transition-colors">
+          <aside
+            class="bg-[#0f172a] rounded-none p-6 lg:p-8 text-white lg:col-span-2 shadow-2xl"
+          >
+            <a
+              id="back-link"
+              href="evento.html"
+              class="inline-flex items-center gap-2 text-sm font-bold text-blue-100 hover:text-yellow-400 transition-colors"
+            >
               <i data-lucide="arrow-left" class="w-4 h-4"></i>
               Voltar para o evento
             </a>
 
-            <div class="mt-6 inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-black uppercase text-[10px] tracking-widest px-3 py-1 rounded-full">
+            <div
+              class="mt-6 inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-black uppercase text-[10px] tracking-widest px-3 py-1 rounded-full"
+            >
               <i data-lucide="shield-check" class="w-3 h-3"></i>
               Pagamento Seguro
             </div>
 
-            <h1 id="event-title" class="mt-5 text-3xl font-black uppercase leading-tight">Guns N' Roses</h1>
-            <p id="event-city" class="mt-2 text-xl font-bold text-yellow-300">Belo Jardim, PE</p>
+            <h1
+              id="event-title"
+              class="mt-5 text-3xl font-black uppercase leading-tight"
+            >
+              ...
+            </h1>
+            <p id="event-city" class="mt-2 text-xl font-bold text-yellow-400">
+              Belo Jardim, PE
+            </p>
 
             <div class="mt-8 space-y-4">
               <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
-                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Data e Local</p>
-                <p id="event-datetime" class="mt-2 font-bold text-sm">25 de Novembro · IFPE Campus</p>
+                <p
+                  class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100"
+                >
+                  Data e Local
+                </p>
+                <p id="event-datetime" class="mt-2 font-bold text-sm">
+                  25 de Novembro · IFPE Campus
+                </p>
               </div>
               <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
-                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Classificação</p>
-                <p id="event-badge" class="mt-2 font-bold text-sm">Turne Internacional</p>
+                <p
+                  class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100"
+                >
+                  Classificação
+                </p>
+                <p id="event-badge" class="mt-2 font-bold text-sm">
+                  Turne Internacional
+                </p>
               </div>
               <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
-                <p class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100">Resumo da Compra</p>
-                <p class="mt-2 text-sm">1 ingresso inteira</p>
-                <p id="event-total" class="mt-2 text-xl text-yellow-300 font-black">Total: R$ 450,00</p>
+                <p
+                  class="text-[10px] uppercase font-black tracking-[0.25em] text-blue-100"
+                >
+                  Quantidade
+                </p>
+                <div class="flex items-center gap-4 mt-2">
+                  <button
+                    id="qty-minus"
+                    type="button"
+                    class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold"
+                  >
+                    -
+                  </button>
+                  <span id="qty-display" class="font-black text-lg">1</span>
+                  <button
+                    id="qty-plus"
+                    type="button"
+                    class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <p
+                  class="text-[10px] uppercase font-black tracking-[0.3em] text-blue-400 mb-6"
+                >
+                  Resumo Financeiro
+                </p>
+                <div class="space-y-3">
+                  <div class="flex justify-between text-xs font-bold">
+                    <span class="text-blue-100/60 uppercase tracking-widest"
+                      >Valor Ingresso</span
+                    >
+                    <span
+                      id="summary-base-price"
+                      class="text-white tracking-tighter text-sm"
+                      >...</span
+                    >
+                  </div>
+                  <div class="flex justify-between text-xs font-bold">
+                    <span class="text-blue-100/60 uppercase tracking-widest"
+                      >Taxa Administrativa</span
+                    >
+                    <span class="text-white tracking-tighter text-sm"
+                      >R$ 10,00</span
+                    >
+                  </div>
+                  <div
+                    class="flex justify-between text-xs font-bold text-yellow-400 hidden"
+                    id="summary-interest-row"
+                  >
+                    <span class="uppercase tracking-widest"
+                      >Juros de Parcelamento</span
+                    >
+                    <span
+                      id="summary-interest-value"
+                      class="tracking-tighter text-sm"
+                      >R$ 0,00</span
+                    >
+                  </div>
+                  <div class="h-px bg-white/10 my-4"></div>
+                  <div class="flex justify-between items-end">
+                    <span
+                      class="text-[10px] font-black text-blue-400 uppercase tracking-widest"
+                      >Total a Pagar</span
+                    >
+                    <span
+                      id="event-total"
+                      class="text-2xl font-black text-yellow-400 tracking-tighter leading-none"
+                      >...</span
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </aside>
 
-          <div class="bg-white rounded-[2rem] border border-slate-200 shadow-xl p-6 lg:p-8 lg:col-span-3">
+          <div
+            class="bg-white rounded-none border border-slate-200 shadow-xl p-6 lg:p-8 lg:col-span-3"
+          >
             <div class="flex items-start justify-between gap-4 mb-6">
               <div>
-                <p class="text-xs uppercase tracking-[0.25em] font-black text-blue-600">Checkout</p>
-                <h2 class="text-2xl font-black uppercase tracking-tight text-slate-900">Dados de Pagamento</h2>
-                <p class="text-slate-500 text-sm mt-2">Preencha os dados para concluir a compra do seu ingresso.</p>
+                <p
+                  class="text-xs uppercase tracking-[0.25em] font-black text-blue-600"
+                >
+                  Checkout
+                </p>
+                <h2
+                  class="text-2xl font-black uppercase tracking-tight text-slate-900"
+                >
+                  Dados de Pagamento
+                </h2>
+                <p class="text-slate-500 text-sm mt-2">
+                  Preencha os dados para concluir a compra do seu ingresso.
+                </p>
               </div>
-              <div class="hidden sm:flex w-11 h-11 rounded-full bg-blue-50 items-center justify-center text-blue-700">
+              <div
+                class="hidden sm:flex w-11 h-11 rounded-full bg-blue-50 items-center justify-center text-blue-700"
+              >
                 <i data-lucide="credit-card" class="w-5 h-5"></i>
               </div>
             </div>
 
-            <form id="payment-form" novalidate>
+            <form id="payment-form" novalidate="">
               <div>
-                <label for="card-name" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Nome Completo no Cartão</label>
-                <input id="card-name" type="text" class="field w-full rounded-xl px-4 py-3" placeholder="JOAO SILVA" required />
-                <p id="err-card-name" class="form-error text-rose-500 text-xs mt-1"></p>
+                <label
+                  for="card-name"
+                  class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2"
+                  >Nome Completo no Cartão</label
+                >
+                <input
+                  id="card-name"
+                  type="text"
+                  class="field w-full rounded-xl px-4 py-3"
+                  placeholder="JOAO SILVA"
+                  required=""
+                />
+                <p
+                  id="err-card-name"
+                  class="form-error text-rose-500 text-xs mt-1"
+                ></p>
               </div>
 
               <div class="mt-4">
-                <label for="card-number" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Número do Cartão</label>
-                <input id="card-number" type="text" inputmode="numeric" maxlength="19" class="field w-full rounded-xl px-4 py-3" placeholder="0000 0000 0000 0000" required />
-                <p id="err-card-number" class="form-error text-rose-500 text-xs mt-1"></p>
+                <label
+                  for="card-number"
+                  class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2"
+                  >Número do Cartão</label
+                >
+                <input
+                  id="card-number"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="19"
+                  class="field w-full rounded-xl px-4 py-3"
+                  placeholder="0000 0000 0000 0000"
+                  required=""
+                />
+                <p
+                  id="err-card-number"
+                  class="form-error text-rose-500 text-xs mt-1"
+                ></p>
               </div>
 
               <div class="grid sm:grid-cols-3 gap-4 mt-4">
                 <div>
-                  <label for="expiry" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Validade</label>
-                  <input id="expiry" type="text" inputmode="numeric" maxlength="5" class="field w-full rounded-xl px-4 py-3" placeholder="MM/AA" required />
-                  <p id="err-expiry" class="form-error text-rose-500 text-xs mt-1"></p>
+                  <label
+                    for="expiry"
+                    class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2"
+                    >Validade</label
+                  >
+                  <input
+                    id="expiry"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="5"
+                    class="field w-full rounded-xl px-4 py-3"
+                    placeholder="MM/AA"
+                    required=""
+                  />
+                  <p
+                    id="err-expiry"
+                    class="form-error text-rose-500 text-xs mt-1"
+                  ></p>
                 </div>
                 <div>
-                  <label for="cvv" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">CVV</label>
-                  <input id="cvv" type="text" inputmode="numeric" maxlength="4" class="field w-full rounded-xl px-4 py-3" placeholder="123" required />
-                  <p id="err-cvv" class="form-error text-rose-500 text-xs mt-1"></p>
+                  <label
+                    for="cvv"
+                    class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2"
+                    >CVV</label
+                  >
+                  <input
+                    id="cvv"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="4"
+                    class="field w-full rounded-xl px-4 py-3"
+                    placeholder="123"
+                    required=""
+                  />
+                  <p
+                    id="err-cvv"
+                    class="form-error text-rose-500 text-xs mt-1"
+                  ></p>
                 </div>
                 <div>
-                  <label for="installments" class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2">Parcelamento</label>
-                  <select id="installments" class="field w-full rounded-xl px-4 py-3 bg-white"></select>
+                  <label
+                    for="installments"
+                    class="block text-xs uppercase tracking-[0.2em] font-black text-slate-500 mb-2"
+                    >Parcelamento</label
+                  >
+                  <select
+                    id="installments"
+                    class="field w-full rounded-xl px-4 py-3 bg-white"
+                  ></select>
                 </div>
               </div>
 
-              <button id="pay-btn" type="submit" class="mt-6 w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl uppercase tracking-[0.2em] transition-all shadow-lg">
+              <button
+                id="pay-btn"
+                type="submit"
+                class="mt-6 w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl uppercase tracking-[0.2em] transition-all shadow-lg"
+              >
                 Finalizar Pagamento
               </button>
 
-              <p class="mt-4 text-center text-[11px] uppercase tracking-[0.2em] text-slate-500 font-bold">
+              <p
+                class="mt-4 text-center text-[11px] uppercase tracking-[0.2em] text-slate-500 font-bold"
+              >
                 Ambiente criptografado · Belo Eventos 2026
               </p>
-
-              <div id="success-box" class="hidden mt-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm font-semibold p-3">
-                Pagamento confirmado com sucesso! Redirecionando para meus ingressos...
-              </div>
             </form>
+
+            <section
+              id="payment-success-screen"
+              class="hidden border border-emerald-100 bg-emerald-50 rounded-2xl p-8 text-center"
+            >
+              <div
+                class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center"
+              >
+                <i data-lucide="check" class="w-8 h-8"></i>
+              </div>
+              <h3
+                class="mt-5 text-2xl font-black uppercase tracking-tight text-emerald-800"
+              >
+                Compra Confirmada
+              </h3>
+              <p class="mt-2 text-emerald-700 font-medium">
+                Seu ingresso foi adicionado em "Meus Ingressos".
+              </p>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="index.html"
+                  id="success-home-btn"
+                  class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-xs"
+                >
+                  Voltar ao Início
+                </a>
+                <a
+                  href="meuperfil.html#ingressos"
+                  id="success-profile-btn"
+                  class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white border border-emerald-200 text-emerald-700 font-black uppercase tracking-widest text-xs hover:bg-emerald-100"
+                >
+                  Ver Meus Ingressos
+                </a>
+              </div>
+            </section>
           </div>
         </div>
       </section>
     </main>
 
-    <footer id="contato-section" class="bg-slate-900 text-white pt-20 pb-12">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-10 border-t border-white/10">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-              <i data-lucide="star" class="text-blue-700 w-5 h-5 fill-current"></i>
+    <footer
+      id="contato-section"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
+              <span
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
+                >Belo Eventos</span
+              >
             </div>
-            <span class="font-black text-xl tracking-tighter uppercase italic">Belo Eventos</span>
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
+            </p>
           </div>
-          <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">© 2026 Todos os direitos reservados</p>
-          <div class="flex gap-8">
-            <i data-lucide="instagram" class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"></i>
-            <i data-lucide="twitter" class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"></i>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
+        >
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
           </div>
         </div>
       </div>
     </footer>
 
     <script src="events-data.js"></script>
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
-      // Regra de negócio: acesso à página de pagamento exige login
-      (function () {
+      let currentPrice = 0;
+      let currentEventId = "";
+      let quantity = 1;
+      let unitPrice = 0;
+      let currentServiceFee = 10;
+      let currentInterestAmount = 0;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+
         const user = window.BeloEventosAuth?.getUser?.();
         if (!user) {
-          const next = encodeURIComponent(window.location.pathname.split("/").pop() + window.location.search);
+          const next = encodeURIComponent(
+            window.location.pathname.split("/").pop() + window.location.search,
+          );
           window.location.replace("login.html?next=" + next);
-        }
-      })();
-
-      lucide.createIcons();
-
-      const eventCatalog = window.BELO_EVENTS || {};
-      const params = new URLSearchParams(window.location.search);
-      const requestedId = params.get("id");
-      const fallbackId = "guns-n-roses";
-      const resolvedId = eventCatalog[requestedId] ? requestedId : fallbackId;
-      const eventData = eventCatalog[resolvedId] || eventCatalog[Object.keys(eventCatalog)[0]];
-
-      const basePrices = {
-        "guns-n-roses": 450,
-        "capital-inicial": 280,
-        "djavan-turne-d": 220,
-      };
-
-      const formatCurrency = (value) =>
-        value.toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        });
-
-      const price = basePrices[resolvedId] || 190;
-      const eventTitle = document.getElementById("event-title");
-      const eventCity = document.getElementById("event-city");
-      const eventDateTime = document.getElementById("event-datetime");
-      const eventBadge = document.getElementById("event-badge");
-      const eventTotal = document.getElementById("event-total");
-      const installments = document.getElementById("installments");
-      const backLink = document.getElementById("back-link");
-
-      if (eventData) {
-        document.title = `Pagamento | ${eventData.title} | Belo Eventos`;
-        eventTitle.textContent = eventData.title;
-        eventCity.textContent = eventData.city || "Belo Jardim, PE";
-        eventDateTime.textContent = `${eventData.dateLabel || "Data a confirmar"} · ${eventData.homeLocation || "Centro de Eventos"}`;
-        eventBadge.textContent = eventData.classification || eventData.badge || "Evento";
-        eventTotal.textContent = `Total: ${formatCurrency(price)}`;
-        backLink.href = `evento.html?id=${eventData.id}`;
-      }
-
-      const buildInstallments = (value) => {
-        const options = [];
-        for (let count = 1; count <= 3; count += 1) {
-          options.push({
-            count,
-            amount: formatCurrency(value / count),
-          });
-        }
-        return options;
-      };
-
-      buildInstallments(price).forEach((item) => {
-        const option = document.createElement("option");
-        option.value = `${item.count}`;
-        option.textContent = `${item.count}x de ${item.amount} sem juros`;
-        installments.appendChild(option);
-      });
-
-      const cardName = document.getElementById("card-name");
-      const cardNumber = document.getElementById("card-number");
-      const expiry = document.getElementById("expiry");
-      const cvv = document.getElementById("cvv");
-      const paymentForm = document.getElementById("payment-form");
-      const payBtn = document.getElementById("pay-btn");
-      const successBox = document.getElementById("success-box");
-
-      const user = window.BeloEventosAuth?.getUser?.();
-      if (user?.name) {
-        cardName.value = user.name.toUpperCase();
-      }
-
-      const err = {
-        cardName: document.getElementById("err-card-name"),
-        cardNumber: document.getElementById("err-card-number"),
-        expiry: document.getElementById("err-expiry"),
-        cvv: document.getElementById("err-cvv"),
-      };
-
-      cardNumber.addEventListener("input", (e) => {
-        const digits = e.target.value.replace(/\D/g, "").slice(0, 16);
-        e.target.value = digits.replace(/(\d{4})(?=\d)/g, "$1 ");
-      });
-
-      expiry.addEventListener("input", (e) => {
-        const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
-        if (digits.length >= 3) {
-          e.target.value = `${digits.slice(0, 2)}/${digits.slice(2)}`;
           return;
         }
-        e.target.value = digits;
-      });
 
-      cvv.addEventListener("input", (e) => {
-        e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4);
-      });
-
-      const isValidExpiry = (value) => {
-        if (!/^\d{2}\/\d{2}$/.test(value)) return false;
-
-        const [monthStr, yearStr] = value.split("/");
-        const month = Number(monthStr);
-        if (month < 1 || month > 12) return false;
-
-        const now = new Date();
-        const currentYear = now.getFullYear() % 100;
-        const currentMonth = now.getMonth() + 1;
-        const year = Number(yearStr);
-
-        if (year < currentYear) return false;
-        if (year === currentYear && month < currentMonth) return false;
-
-        return true;
-      };
-
-      paymentForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        Object.values(err).forEach((node) => {
-          node.textContent = "";
-        });
-
-        let hasError = false;
-
-        if (!cardName.value.trim() || cardName.value.trim().length < 5) {
-          err.cardName.textContent = "Informe o nome completo como está no cartão.";
-          hasError = true;
+        if (user.name) {
+          const cardName = document.getElementById("card-name");
+          if (cardName) cardName.value = user.name.toUpperCase();
         }
 
-        const cardDigits = cardNumber.value.replace(/\s/g, "");
-        if (!/^\d{16}$/.test(cardDigits)) {
-          err.cardNumber.textContent = "Digite um cartão com 16 dígitos.";
-          hasError = true;
+        initPayment();
+
+        const paymentForm = document.getElementById("payment-form");
+        const payBtn = document.getElementById("pay-btn");
+        const successScreen = document.getElementById("payment-success-screen");
+
+        if (paymentForm) {
+          paymentForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (!currentEventId) {
+              alert("Evento inválido para compra.");
+              return;
+            }
+
+            payBtn.disabled = true;
+            payBtn.textContent = "Processando...";
+
+            const purchaseData = {
+              userId: user.id,
+              eventId: currentEventId,
+              amount: currentPrice,
+              quantity: quantity,
+              unitPrice: unitPrice,
+              serviceFee: currentServiceFee,
+              interestAmount: currentInterestAmount,
+              cardName: document.getElementById("card-name").value,
+              installments: document.getElementById("installments").value,
+            };
+
+            console.log("Enviando compra:", purchaseData);
+
+            try {
+              const result =
+                await window.BeloEventosAuth.savePurchase(purchaseData);
+              if (!result || !result.success)
+                throw new Error("Falha ao salvar compra");
+              paymentForm.classList.add("hidden");
+              if (successScreen) successScreen.classList.remove("hidden");
+              lucide.createIcons();
+            } catch (err) {
+              console.error("Erro ao concluir pagamento:", err);
+              alert("Não foi possível concluir a compra. Tente novamente.");
+              payBtn.disabled = false;
+              payBtn.textContent = "Finalizar Pagamento";
+            }
+          });
         }
 
-        if (!isValidExpiry(expiry.value.trim())) {
-          err.expiry.textContent = "Informe uma validade válida no formato MM/AA.";
-          hasError = true;
+        const qtyMinus = document.getElementById("qty-minus");
+        const qtyPlus = document.getElementById("qty-plus");
+        const qtyDisplay = document.getElementById("qty-display");
+
+        if (qtyMinus && qtyPlus && qtyDisplay) {
+          qtyMinus.onclick = () => {
+            if (quantity > 1) {
+              quantity--;
+              qtyDisplay.textContent = quantity;
+              updateFinancials();
+            }
+          };
+          qtyPlus.onclick = () => {
+            if (quantity < 10) {
+              quantity++;
+              qtyDisplay.textContent = quantity;
+              updateFinancials();
+            }
+          };
         }
 
-        if (!/^\d{3,4}$/.test(cvv.value.trim())) {
-          err.cvv.textContent = "CVV inválido.";
-          hasError = true;
+        const cardInput = document.getElementById("card-number");
+        if (cardInput) {
+          cardInput.oninput = (e) => {
+            let value = e.target.value.replace(/[^0-9]/g, "").slice(0, 16);
+            let result = "";
+            for (let i = 0; i < value.length; i += 4) {
+              result += value.slice(i, i + 4) + " ";
+            }
+            e.target.value = result.trim();
+          };
         }
-
-        if (hasError) return;
-
-        payBtn.disabled = true;
-        payBtn.textContent = "Processando...";
-
-        setTimeout(() => {
-          successBox.classList.remove("hidden");
-          setTimeout(() => {
-            window.location.href = "meuperfil.html#ingressos";
-          }, 1600);
-        }, 1100);
-      });
-
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
-        } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+        const expiryInput = document.getElementById("expiry");
+        if (expiryInput) {
+          expiryInput.oninput = (e) => {
+            let value = e.target.value.replace(/[^0-9]/g, "").slice(0, 4);
+            e.target.value =
+              value.length >= 3
+                ? value.slice(0, 2) + "/" + value.slice(2)
+                : value;
+          };
         }
       });
 
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
+      async function initPayment() {
+        const params = new URLSearchParams(window.location.search);
+        const requestedId = params.get("id");
+        if (!requestedId) {
+          window.location.href = "index.html";
+          return;
+        }
 
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
+        try {
+          const events = await window.BeloEventosAuth.fetchEvents();
+          const eventData = events.find((ev) => ev.id === requestedId);
+          if (!eventData) {
+            alert("Evento não encontrado!");
+            window.location.href = "index.html";
+            return;
+          }
 
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
+          currentEventId = eventData.id;
+          unitPrice = parseFloat(eventData.price) || 0;
+          document.getElementById("event-title").textContent = eventData.title;
+          document.getElementById("event-city").textContent =
+            eventData.city || "Belo Jardim, PE";
+
+          const dateLabel = eventData.date
+            ? eventData.date.split("-").reverse().join("/")
+            : "Data a confirmar";
+          document.getElementById("event-datetime").textContent =
+            dateLabel + " · " + (eventData.homeLocation || "Centro de Eventos");
+          document.getElementById("event-badge").textContent =
+            eventData.classification || eventData.badge || "Evento";
+
+          document.getElementById("back-link").href =
+            "evento.html?id=" + eventData.id;
+
+          updateFinancials();
+          lucide.createIcons();
+        } catch (err) {
+          console.error("Erro ao inicializar página de pagamento:", err);
+          document.body.innerHTML = `
+            <div class="min-h-screen flex flex-col items-center justify-center bg-blue-900 p-8 text-center text-white">
+              <p class="text-rose-400 font-black uppercase tracking-widest text-lg">Servidor Offline</p>
+              <p class="text-blue-100 mt-2">Não foi possível processar o pagamento pois o banco de dados está inacessível.</p>
+              <button onclick="window.location.reload()" class="mt-8 bg-white text-blue-900 px-8 py-3 rounded-full text-xs font-black tracking-widest hover:bg-yellow-400 transition-all">TENTAR NOVAMENTE</button>
+            </div>
+          `;
+        }
+      }
+
+      function updateFinancials() {
+        const serviceFee = 10.0;
+        const totalBase = unitPrice * quantity;
+        const formatCurrency = (val) =>
+          val.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+        const summaryBasePriceEl =
+          document.getElementById("summary-base-price");
+        if (summaryBasePriceEl)
+          summaryBasePriceEl.textContent = formatCurrency(totalBase);
+
+        const installmentsSelect = document.getElementById("installments");
+        const totalEl = document.getElementById("event-total");
+        const interestRow = document.getElementById("summary-interest-row");
+        const interestValueEl = document.getElementById(
+          "summary-interest-value",
+        );
+
+        if (installmentsSelect && totalEl) {
+          const count = parseInt(installmentsSelect.value) || 1;
+
+          const updateTotal = (selectedCount) => {
+            let finalTotal = totalBase + serviceFee;
+            let interest = 0;
+            if (selectedCount > 1) {
+              const interestRate = 0.015 * (selectedCount - 1);
+              interest = (totalBase + serviceFee) * interestRate;
+              finalTotal += interest;
+            }
+            currentServiceFee = serviceFee;
+            currentInterestAmount = interest;
+            currentPrice = finalTotal;
+            totalEl.textContent = formatCurrency(finalTotal);
+
+            if (interest > 0 && interestRow && interestValueEl) {
+              interestRow.classList.remove("hidden");
+              interestValueEl.textContent = formatCurrency(interest);
+            } else if (interestRow) {
+              interestRow.classList.add("hidden");
+            }
+          };
+
+          const previousValue = installmentsSelect.value;
+          installmentsSelect.innerHTML = "";
+          for (let i = 1; i <= 12; i++) {
+            const opt = document.createElement("option");
+            opt.value = i;
+            let totalWithInterest = totalBase + serviceFee;
+            if (i > 1) {
+              totalWithInterest = totalWithInterest * (1 + 0.015 * (i - 1));
+            }
+            opt.textContent =
+              i + "x de " + formatCurrency(totalWithInterest / i);
+            installmentsSelect.appendChild(opt);
+          }
+          if (previousValue) installmentsSelect.value = previousValue;
+
+          installmentsSelect.onchange = (e) =>
+            updateTotal(parseInt(e.target.value));
+          updateTotal(parseInt(installmentsSelect.value) || 1);
+        }
+      }
     </script>
   </body>
 </html>

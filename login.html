@@ -13,46 +13,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-
-      .form-input {
-        background: #f1f5f9;
-        border: 2px solid transparent;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .form-input:focus {
-        background: white;
-        border-color: #0056e0;
-        box-shadow: 0 0 0 4px rgba(0, 86, 224, 0.1);
-        outline: none;
-      }
-
-      .login-card {
-        background: white;
-        border-radius: 2.5rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e2e8f0;
-      }
-    </style>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-header py-4"
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
         <div
@@ -70,12 +43,12 @@
             <path
               d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
               fill="#6366F1"
-            />
+            ></path>
             <path
               d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
               fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+            ></path>
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
           </svg>
           <div class="flex flex-col text-left">
             <span
@@ -94,19 +67,9 @@
           class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
         >
           <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
-          >
-          <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
             >PROGRAMAÇÃO</a
-          >
-          <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
           >
           <a
             href="comunidade.html"
@@ -114,8 +77,11 @@
             >COMUNIDADE</a
           >
           <a
-            href="contato.html"
+            href="profissionais.html"
             class="hover:text-yellow-400 transition-colors"
+            >PROFISSIONAIS</a
+          >
+          <a href="contato.html" class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
           >
         </nav>
@@ -126,43 +92,29 @@
             class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
             >CADASTRAR</a
           >
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
 
@@ -199,105 +151,130 @@
     </div>
 
     <!-- ÁREA DE LOGIN -->
-    <main class="flex-grow flex items-center justify-center p-6 pt-28 md:pt-36">
-      <div class="w-full max-w-lg login-card overflow-hidden">
-        <div class="p-8 md:p-12">
-          <div class="text-center mb-10">
-            <h1
-              class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2"
+    <main class="flex-grow pt-28 md:pt-32 pb-10 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-lg mx-auto flex flex-col items-center gap-6">
+          <section class="brand-panel">
+            <div class="logo-container flex items-center justify-center">
+              <svg
+                width="92"
+                height="92"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="logo-mark"
+              >
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#6366F1"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10B981"
+                ></path>
+                <circle cx="24" cy="32" r="5" fill="white"></circle>
+              </svg>
+            </div>
+          </section>
+
+          <section class="login-card overflow-hidden flex flex-col">
+            <div class="p-8 md:p-10">
+              <div class="mb-8">
+                <h1
+                  class="form-title text-3xl md:text-[2rem] font-black text-slate-900 uppercase mb-2 text-center"
+                >
+                  Acesse sua conta
+                </h1>
+                <p class="text-slate-500 font-medium text-sm">
+                  Entre para acompanhar ingressos, eventos salvos e seu perfil.
+                </p>
+              </div>
+
+              <form id="login-form" class="space-y-5">
+                <div class="space-y-2">
+                  <label
+                    for="email"
+                    class="text-[11px] font-black text-slate-500 uppercase tracking-widest ml-1"
+                    >E-mail</label
+                  >
+                  <div class="relative">
+                    <i
+                      data-lucide="mail"
+                      class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
+                    ></i>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required=""
+                      class="form-input w-full pl-14 pr-6 py-3.5 rounded-2xl font-semibold text-slate-700"
+                      placeholder="exemplo@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center ml-1">
+                    <label
+                      for="password"
+                      class="text-[11px] font-black text-slate-500 uppercase tracking-widest"
+                      >Senha</label
+                    >
+                    <a
+                      href="#"
+                      class="text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline"
+                      >Esqueci minha senha</a
+                    >
+                  </div>
+                  <div class="relative">
+                    <i
+                      data-lucide="lock"
+                      class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
+                    ></i>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      required=""
+                      class="form-input w-full pl-14 pr-6 py-3.5 rounded-2xl font-semibold text-slate-700"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <button
+                    type="submit"
+                    class="w-full bg-[#111827] hover:bg-[#0f172a] text-white font-black py-4 rounded-2xl shadow-xl shadow-slate-900/20 uppercase tracking-[0.18em] transition-all active:scale-[0.99] flex items-center justify-center gap-2"
+                  >
+                    Entrar agora
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </form>
+
+              <div class="mt-8 text-center">
+                <p class="text-sm font-medium text-slate-500">
+                  Não tem uma conta?
+                  <a
+                    href="cadastro.html"
+                    class="text-indigo-600 hover:underline font-black uppercase text-xs tracking-widest ml-1"
+                    >Cadastre-se</a
+                  >
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-slate-50 py-4 text-center border-t border-slate-100 mt-auto"
             >
-              Bem-vindo de volta
-            </h1>
-            <p class="text-slate-500 font-medium text-sm">
-              Acesse sua conta para gerenciar seus eventos.
-            </p>
-          </div>
-
-          <form id="login-form" class="space-y-6">
-            <!-- E-mail -->
-            <div class="space-y-2">
-              <label
-                for="email"
-                class="text-xs font-black text-slate-400 uppercase tracking-widest ml-1"
-                >E-mail</label
+              <p
+                class="text-[10px] font-black text-slate-400 uppercase tracking-[0.35em]"
               >
-              <div class="relative">
-                <i
-                  data-lucide="mail"
-                  class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
-                ></i>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="form-input w-full pl-14 pr-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
-                  placeholder="exemplo@email.com"
-                />
-              </div>
+                Autenticação segura
+              </p>
             </div>
-
-            <!-- Senha -->
-            <div class="space-y-2">
-              <div class="flex justify-between items-center ml-1">
-                <label
-                  for="password"
-                  class="text-xs font-black text-slate-400 uppercase tracking-widest"
-                  >Senha</label
-                >
-                <a
-                  href="#"
-                  class="text-xs font-bold text-blue-600 hover:underline"
-                  >Esqueci minha senha</a
-                >
-              </div>
-              <div class="relative">
-                <i
-                  data-lucide="lock"
-                  class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"
-                ></i>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                  class="form-input w-full pl-14 pr-6 py-4 rounded-2xl font-semibold text-slate-700"
-                  placeholder="••••••••"
-                />
-              </div>
-            </div>
-
-            <!-- Botão Logar -->
-            <div class="pt-4">
-              <button
-                type="submit"
-                class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black py-5 rounded-2xl shadow-xl shadow-yellow-400/20 uppercase tracking-[0.2em] transition-all active:scale-95 flex items-center justify-center gap-2"
-              >
-                Entrar agora <i data-lucide="arrow-right" class="w-5 h-5"></i>
-              </button>
-            </div>
-          </form>
-
-          <!-- Footer do Form -->
-          <div class="mt-10 text-center">
-            <p class="text-sm font-semibold text-slate-500">
-              Não tem uma conta?
-              <a
-                href="cadastro.html"
-                class="text-blue-600 hover:underline font-black uppercase text-xs tracking-widest ml-1"
-                >Cadastre-se</a
-              >
-            </p>
-          </div>
-        </div>
-
-        <!-- Detalhe Visual de Rodapé -->
-        <div class="bg-slate-50 py-4 text-center border-t border-slate-100">
-          <p
-            class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]"
-          >
-            Autenticação Segura
-          </p>
+          </section>
         </div>
       </div>
     </main>
@@ -311,7 +288,9 @@
       </p>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
       // Inicializa os ícones Lucide
       lucide.createIcons();
@@ -339,32 +318,10 @@
         mobileMenu.classList.add("hidden");
       });
 
-      // Usuários Mock
-      const MOCK_USERS = {
-        "fulano@gmail.com": {
-          id: "usr_mock_001",
-          name: "Fulano Ciclano",
-          email: "fulano@gmail.com",
-          password: "123456",
-          role: "cliente",
-          memberSince: "2024",
-          redirect: "meuperfil.html",
-        },
-        "admin@gmail.com": {
-          id: "usr_mock_002",
-          name: "Admin",
-          email: "admin@gmail.com",
-          password: "admin123",
-          role: "admin",
-          memberSince: "2023",
-          redirect: "adminperfil.html",
-        },
-      };
-
-      // Lógica de submissão (Mock)
+      // Lógica de submissão (API)
       document
         .getElementById("login-form")
-        .addEventListener("submit", function (e) {
+        .addEventListener("submit", async function (e) {
           e.preventDefault();
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalContent = submitBtn.innerHTML;
@@ -377,14 +334,19 @@
           submitBtn.innerHTML =
             '<span class="animate-pulse">Autenticando...</span>';
 
-          const emailValue = this.querySelector("#email").value.trim().toLowerCase();
+          const emailValue = this.querySelector("#email")
+            .value.trim()
+            .toLowerCase();
           const passwordValue = this.querySelector("#password").value;
 
-          // Simulação de delay de rede
-          setTimeout(() => {
-            const foundUser = MOCK_USERS[emailValue];
+          let result;
+          try {
+            result = await window.BeloEventosAuth.login(
+              emailValue,
+              passwordValue,
+            );
 
-            if (!foundUser || foundUser.password !== passwordValue) {
+            if (!result.success) {
               submitBtn.disabled = false;
               submitBtn.innerHTML = originalContent;
               lucide.createIcons();
@@ -393,27 +355,37 @@
               errorDiv.id = "login-error";
               errorDiv.className =
                 "bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl text-sm font-semibold text-center mt-4";
-              errorDiv.textContent = "E-mail ou senha inválidos. Tente novamente.";
+              errorDiv.textContent =
+                result.message || "E-mail ou senha inválidos. Tente novamente.";
               this.appendChild(errorDiv);
               return;
             }
-
-            const { password, redirect, ...userData } = foundUser;
-            localStorage.setItem(
-              "beloEventosMockUser",
-              JSON.stringify(userData),
-            );
 
             if (window.BeloEventosAuth?.applyAuthUI) {
               window.BeloEventosAuth.applyAuthUI();
             }
 
+            const redirect =
+              result.user.role === "admin"
+                ? "adminperfil.html"
+                : "meuperfil.html";
             const loginParams = new URLSearchParams(window.location.search);
             const nextUrl = loginParams.get("next");
             window.location.href = nextUrl || redirect;
-          }, 1500);
+          } catch (err) {
+            console.error("Erro no login:", err);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+            lucide.createIcons();
+
+            const errorDiv = document.createElement("div");
+            errorDiv.id = "login-error";
+            errorDiv.className =
+              "bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl text-sm font-semibold text-center mt-4";
+            errorDiv.textContent = "Erro inesperado no login.";
+            this.appendChild(errorDiv);
+          }
         });
     </script>
   </body>
 </html>
-

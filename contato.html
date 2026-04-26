@@ -10,179 +10,133 @@
       type="image/svg+xml"
       href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
 
-
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .contact-card {
-        background: white;
-        border-radius: 2.5rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e2e8f0;
-      }
-
-      .form-input {
-        background: #f8fafc;
-        border: 2px solid #f1f5f9;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .form-input:focus {
-        background: white;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-        outline: none;
-      }
-
-      .map-container {
-        border-radius: 2rem;
-        overflow: hidden;
-        filter: grayscale(100%) invert(5%) contrast(90%);
-        transition: filter 0.5s ease;
-      }
-
-      .map-container:hover {
-        filter: grayscale(0%) invert(0%) contrast(100%);
-      }
-    </style>
+      <link rel="stylesheet" href="src/style.css">
   </head>
   <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
         <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
+          class="logo-container flex items-center gap-3 group cursor-pointer"
           onclick="window.location.href = 'index.html'"
         >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
             <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
             >
             <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
               >Cultura e Conexão</span
             >
           </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
-          >
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
           <a
             href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
-          >
-          <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
           >
           <a
             href="comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
           >
-          <a href="contato.html" class="text-yellow-300 transition-colors underline decoration-2 underline-offset-8"
-            >CONTATO</a
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
           >
         </nav>
 
-        <div class="hidden md:flex items-center gap-4">
+        <!-- Actions -->
+        <div class="hidden md:flex items-center gap-3">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
           >
-            ENTRAR
+            <span class="relative z-10">ENTRAR</span>
           </a>
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+          <!-- ... (Rest of auth profile) ... -->
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
     <div
@@ -198,13 +152,14 @@
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
         <a href="categorias.html">Programação</a>
+        <a href="profissionais.html">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="contato.html">Contato</a>
+        <a href="contato.html" class="text-yellow-400">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
           >Entrar</a
         >
       </nav>
@@ -289,7 +244,7 @@
             <!-- MAPA ESTILIZADO -->
             <div class="map-container h-64 bg-slate-200 relative group">
               <img
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
                 alt="Mapa Belo Jardim"
                 class="w-full h-full object-cover"
               />
@@ -319,7 +274,7 @@
                       type="text"
                       id="contact-name"
                       name="name"
-                      required
+                      required=""
                       class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
                       placeholder="Ex: João Silva"
                     />
@@ -333,7 +288,7 @@
                       type="email"
                       id="contact-email"
                       name="email"
-                      required
+                      required=""
                       class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
                       placeholder="seu@email.com"
                     />
@@ -363,7 +318,7 @@
                   >
                   <textarea
                     rows="5"
-                    required
+                    required=""
                     class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700 resize-none"
                     placeholder="Como podemos ajudar?"
                   ></textarea>
@@ -413,36 +368,99 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-12 border-t border-slate-200 mt-auto">
-      <div
-        class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
-      >
-        <p
-          class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]"
+    <footer
+      id="contato-section"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
+              <span
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
+                >Belo Eventos</span
+              >
+            </div>
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
         >
-          © 2026 Belo Eventos · Digital Assets
-        </p>
-        <div class="flex gap-8">
-          <a
-            href="#"
-            class="text-slate-400 hover:text-indigo-600 transition-colors"
-            ><i data-lucide="instagram" class="w-5 h-5"></i
-          ></a>
-          <a
-            href="#"
-            class="text-slate-400 hover:text-indigo-600 transition-colors"
-            ><i data-lucide="twitter" class="w-5 h-5"></i
-          ></a>
-          <a
-            href="#"
-            class="text-slate-400 hover:text-indigo-600 transition-colors"
-            ><i data-lucide="linkedin" class="w-5 h-5"></i
-          ></a>
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+          </div>
         </div>
       </div>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    
+    <script src="events-data.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
       lucide.createIcons();
 
@@ -481,5 +499,18 @@
         }
       }
     </script>
-  </body>
+
+    <script>
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-blue-600', 'shadow-xl', 'py-2');
+          header.classList.remove('bg-blue-700', 'py-4');
+        } else {
+          header.classList.add('bg-blue-700', 'py-4');
+          header.classList.remove('bg-blue-600', 'shadow-xl', 'py-2');
+        }
+      });
+    </script>
+    </body>
 </html>

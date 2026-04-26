@@ -1,0 +1,244 @@
+/* Standard CSS for Belo Eventos */
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #f8fafc; /* bg-slate-50 */
+    color: #0f172a; /* text-slate-900 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.btn-primary {
+    background-color: #1d4ed8; /* brand-primary */
+    color: white;
+    font-weight: 900;
+    padding: 1rem 2rem;
+    border-radius: 2rem; /* rounded-organic */
+    transition: all 0.2s;
+    box-shadow: 0 10px 15px -3px rgba(29, 78, 216, 0.3);
+}
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(29, 78, 216, 0.3);
+}
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: all 0.2s;
+    position: relative;
+}
+.nav-link:hover {
+    color: white;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    width: 0;
+    height: 0.125rem;
+    background-color: #facc15; /* brand-accent */
+    transition: all 0.3s;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Custom non-AI organic touches */
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
+              radial-gradient(circle at bottom left, rgba(29, 78, 216, 0.1), transparent);
+}
+
+.organic-border {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+}
+
+#hero-image, #hero-content {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    will-change: transform, opacity;
+}
+
+.hero-shift-out-next { transform: scale(1.05) translateX(-10px); opacity: 0; }
+.hero-shift-out-prev { transform: scale(1.05) translateX(10px); opacity: 0; }
+.hero-shift-in-next { transform: scale(0.95) translateX(10px); opacity: 1; }
+.hero-shift-in-prev { transform: scale(0.95) translateX(-10px); opacity: 1; }
+
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prof-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.prof-card:hover { transform: translateY(-6px); }
+
+.filter-btn { transition: all 0.2s ease; }
+.filter-btn.active {
+    background-color: #1d4ed8;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+}
+
+.badge-verificado { background: linear-gradient(135deg, #10b981, #059669); }
+.badge-emalta { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.sponsor-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: sponsorMarqueeLoop 24s linear infinite;
+    will-change: transform;
+}
+.sponsor-marquee-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    flex: 0 0 100%;
+    min-width: 100vw;
+    padding-inline: 0;
+}
+.sponsor-marquee-item {
+    color: #0f172a;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.05rem, 2.4vw, 1.75rem);
+    white-space: nowrap;
+    line-height: 1;
+}
+@keyframes sponsorMarqueeLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* MODAL & BUTTON STYLES (RESTORED) */
+.modal-hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal-hidden .modal-content {
+    transform: scale(0.95) translateY(10px);
+}
+
+.modal-content {
+    background: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay {
+    transition: opacity 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #e11d48;
+    color: #ffffff;
+    transition: all 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #be123c;
+}
+
+.btn-admin {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn-admin-primary { background: #4f46e5; color: white; }
+.btn-admin-primary:hover { background: #4338ca; }
+
+.btn-admin-outline { background: white; border-color: #e2e8f0; color: #64748b; }
+.btn-admin-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+.btn-admin-danger { background: #fee2e2; color: #b91c1c; }
+.btn-admin-danger:hover { background: #fecaca; }
+
+/* CHECKOUT & PROFILE CARD STYLES */
+.checkout-panel {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.input-readonly {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    cursor: default;
+}
+
+.tab-btn {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tab-btn.active {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.avatar-shadow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.field {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.field:focus {
+    background: white;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-error {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}

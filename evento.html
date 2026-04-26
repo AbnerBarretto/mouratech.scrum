@@ -4,216 +4,134 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evento | Belo Eventos</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        scroll-behavior: smooth;
-      }
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .mega-menu-content {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(8px);
-      }
-      .mega-menu-trigger:hover .mega-menu-content {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .glass-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .sponsor-logo {
-        filter: grayscale(100%);
-        opacity: 0.6;
-        transition: all 0.3s ease;
-      }
-      .sponsor-logo:hover {
-        filter: grayscale(0%);
-        opacity: 1;
-      }
-
-      .sponsor-marquee-track {
-        display: flex;
-        align-items: center;
-        width: max-content;
-        animation: sponsorMarqueeRight 24s linear infinite;
-        will-change: transform;
-      }
-
-      .sponsor-marquee-group {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: clamp(1.5rem, 4vw, 3.5rem);
-        min-width: 100vw;
-        padding-inline: clamp(1rem, 4vw, 3rem);
-      }
-
-      .sponsor-marquee-item {
-        color: #0f172a;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        font-size: clamp(1.05rem, 2.4vw, 1.75rem);
-        white-space: nowrap;
-        line-height: 1;
-        text-align: center;
-      }
-
-      @keyframes sponsorMarqueeRight {
-        0% {
-          transform: translateX(-100vw);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="bg-slate-50 text-slate-900">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-all duration-300"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <!-- Logo -->
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
         <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
+          class="logo-container flex items-center gap-3 group cursor-pointer"
           onclick="window.location.href = 'index.html'"
         >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
             <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
             >
             <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
               >Cultura e Conexão</span
             >
           </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
-          >
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
           <a
             href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
-          >
-          <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
           >
           <a
             href="comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
           >
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors"
-            >CONTATO</a
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
           >
         </nav>
 
         <!-- Actions -->
-        <div class="hidden md:flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-3">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
           >
-            ENTRAR
+            <span class="relative z-10">ENTRAR</span>
           </a>
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+          <!-- ... (Rest of auth profile) ... -->
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
-
-        <!-- Mobile Toggle -->
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
     <!-- MOBILE MENU -->
@@ -237,8 +155,8 @@
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
         >
           Entrar
         </a>
@@ -250,20 +168,20 @@
         <div class="overflow-hidden py-5">
           <div class="sponsor-marquee-track">
             <div class="sponsor-marquee-group">
-              <span class="sponsor-marquee-item italic">Mastercard</span>
-              <span class="sponsor-marquee-item">VIVO</span>
-              <span class="sponsor-marquee-item">BANCO DO BRASIL</span>
-              <span class="sponsor-marquee-item">RedBull</span>
-              <span class="sponsor-marquee-item">Spotify</span>
-              <span class="sponsor-marquee-item">Budweiser</span>
+              <span class="sponsor-marquee-item italic">BeloPass</span>
+              <span class="sponsor-marquee-item">AlôBelo</span>
+              <span class="sponsor-marquee-item">VALE BANK</span>
+              <span class="sponsor-marquee-item">UP ENERGY</span>
+              <span class="sponsor-marquee-item">BeloSom</span>
+              <span class="sponsor-marquee-item">FEST BEER</span>
             </div>
             <div class="sponsor-marquee-group" aria-hidden="true">
-              <span class="sponsor-marquee-item italic">Mastercard</span>
-              <span class="sponsor-marquee-item">VIVO</span>
-              <span class="sponsor-marquee-item">BANCO DO BRASIL</span>
-              <span class="sponsor-marquee-item">RedBull</span>
-              <span class="sponsor-marquee-item">Spotify</span>
-              <span class="sponsor-marquee-item">Budweiser</span>
+              <span class="sponsor-marquee-item italic">BeloPass</span>
+              <span class="sponsor-marquee-item">AlôBelo</span>
+              <span class="sponsor-marquee-item">VALE BANK</span>
+              <span class="sponsor-marquee-item">UP ENERGY</span>
+              <span class="sponsor-marquee-item">BeloSom</span>
+              <span class="sponsor-marquee-item">FEST BEER</span>
             </div>
           </div>
         </div>
@@ -275,8 +193,7 @@
       >
         <img
           id="event-hero-image"
-          src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=2000"
-          alt="Guns N' Roses Turner"
+          alt="Evento"
           class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105"
         />
         <div
@@ -289,8 +206,7 @@
               <span
                 id="event-badge"
                 class="bg-yellow-400 text-blue-900 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
-                >TURNÊ 2025</span
-              >
+              ></span>
               <div class="flex gap-2">
                 <i
                   data-lucide="star"
@@ -318,29 +234,27 @@
               id="event-title"
               class="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4"
             >
-              GUNS N' ROSES <br />
+              <br />
               <span
                 id="event-city"
                 class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500"
-                >BELO JARDIM, PE</span
-              >
+              ></span>
             </h1>
             <p
               id="event-hero-description"
               class="text-xl text-slate-300 font-medium mb-8 max-w-2xl leading-relaxed"
-            >
-              A maior banda de hard rock do mundo desembarca em Pernambuco para
-              uma apresentação histórica no IFPE - CAMPUS BELO JARDIM
-            </p>
+            ></p>
 
             <div class="flex items-center gap-8 mb-10 opacity-80">
               <div
                 class="font-black text-white tracking-tighter text-xl italic"
               >
-                <i data-lucide="calendar" class="w-5 h-5 inline mr-2"></i><span id="event-date-label">Data</span>
+                <i data-lucide="calendar" class="w-5 h-5 inline mr-2"></i
+                ><span id="event-date-label">...</span>
               </div>
               <div class="font-black text-white tracking-tighter text-xl">
-                <i data-lucide="map-pin" class="w-5 h-5 inline mr-2"></i><span id="event-location-label">Local</span>
+                <i data-lucide="map-pin" class="w-5 h-5 inline mr-2"></i
+                ><span id="event-location-label">...</span>
               </div>
             </div>
 
@@ -376,19 +290,8 @@
                 <div
                   class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-medium"
                 >
-                  <p id="event-about-1" class="mb-4">
-                    Prepare-se para uma noite inesquecível com Axl Rose, Slash e
-                    Duff McKagan. A turnê mundial 2025 chega a Belo Jardim
-                    trazendo todos os clássicos que definiram gerações, desde
-                    "Sweet Child O' Mine" até "November Rain".
-                  </p>
-                  <p id="event-about-2">
-                    O evento contará com estrutura de padrão internacional,
-                    praça de alimentação temática, ativações de patrocinadores e
-                    acessibilidade total para todos os fãs. Os portões abrem às
-                    17h para que você aproveite a experiência completa do
-                    festival.
-                  </p>
+                  <p id="event-about-1" class="mb-4"></p>
+                  <p id="event-about-2"></p>
                 </div>
               </div>
 
@@ -494,7 +397,7 @@
                 >
                   <img
                     id="event-map-image"
-                    src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+                    src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
                     alt="Mapa Local"
                     class="w-full h-full object-cover"
                   />
@@ -509,7 +412,9 @@
                     >
                       Localização
                     </p>
-                    <p id="event-map-location" class="text-sm font-bold">IFPE - Belo Jardim, PE</p>
+                    <p id="event-map-location" class="text-sm font-bold">
+                      IFPE - Belo Jardim, PE
+                    </p>
                   </div>
                 </div>
               </div>
@@ -527,7 +432,7 @@
                 >
                   <img
                     id="event-video-image"
-                    src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=800"
+                    src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
                     alt="Show Anterior"
                     class="w-full h-full object-cover transition-transform group-hover:scale-110"
                   />
@@ -544,7 +449,10 @@
                     </div>
                   </div>
                   <div class="absolute bottom-4 left-6">
-                    <p id="event-video-caption" class="text-white font-black uppercase text-sm italic">
+                    <p
+                      id="event-video-caption"
+                      class="text-white font-black uppercase text-sm italic"
+                    >
                       Flashback: Tour 2024
                     </p>
                   </div>
@@ -562,11 +470,11 @@
                   class="grid grid-cols-2 gap-8 items-center justify-items-center opacity-40"
                 >
                   <div class="font-black text-slate-900 text-lg italic">
-                    RedBull
+                    UP ENERGY
                   </div>
-                  <div class="font-black text-slate-900 text-lg">Spotify</div>
-                  <div class="font-black text-slate-900 text-lg">LATAM</div>
-                  <div class="font-black text-slate-900 text-lg">Budweiser</div>
+                  <div class="font-black text-slate-900 text-lg">BeloSom</div>
+                  <div class="font-black text-slate-900 text-lg">BeloAir</div>
+                  <div class="font-black text-slate-900 text-lg">FEST BEER</div>
                 </div>
               </div>
             </div>
@@ -576,114 +484,219 @@
     </main>
 
     <!-- FOOTER -->
-    <footer id="contato-section" class="bg-slate-900 text-white pt-20 pb-12">
-      <div class="container mx-auto px-6">
-        <div
-          class="flex flex-col md:flex-row justify-between items-center gap-8 pt-10 border-t border-white/10"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
-            >
-              <i
-                data-lucide="star"
-                class="text-blue-700 w-5 h-5 fill-current"
-              ></i>
+    <footer
+      id="contato-section"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
+              <span
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
+                >Belo Eventos</span
+              >
             </div>
-            <span class="font-black text-xl tracking-tighter uppercase italic"
-              >Belo Eventos</span
-            >
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
+            </p>
           </div>
-          <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">
-            © 2026 Todos os direitos reservados
-          </p>
-          <div class="flex gap-8">
-            <i
-              data-lucide="instagram"
-              class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"
-            ></i>
-            <i
-              data-lucide="twitter"
-              class="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors"
-            ></i>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
+        >
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
           </div>
         </div>
       </div>
     </footer>
 
+    
     <script src="events-data.js"></script>
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
+    
     <script>
       // Initialize Icons
       lucide.createIcons();
 
-      const eventCatalog = window.BELO_EVENTS || {};
-      const eventIds = Object.keys(eventCatalog);
+      async function fetchEventDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const requestedId = params.get("id");
 
-      const params = new URLSearchParams(window.location.search);
-      const requestedId = params.get("id");
-      const fallbackId = "guns-n-roses";
-      const resolvedId = eventCatalog[requestedId] ? requestedId : fallbackId;
-      const eventData = eventCatalog[resolvedId] || eventCatalog[eventIds[0]];
+        if (!requestedId) {
+          window.location.href = "index.html";
+          return;
+        }
 
-      const heroImage = document.getElementById("event-hero-image");
-      const badge = document.getElementById("event-badge");
-      const title = document.getElementById("event-title");
-      const heroDescription = document.getElementById("event-hero-description");
-      const about1 = document.getElementById("event-about-1");
-      const about2 = document.getElementById("event-about-2");
-      const mapImage = document.getElementById("event-map-image");
-      const mapLocation = document.getElementById("event-map-location");
-      const videoHeading = document.getElementById("event-video-heading");
-      const videoImage = document.getElementById("event-video-image");
-      const videoCaption = document.getElementById("event-video-caption");
-      const buyTicketBtn = document.getElementById("buy-ticket-btn");
-      const dateLabel = document.getElementById("event-date-label");
-      const locationLabel = document.getElementById("event-location-label");
+        try {
+          const events = await window.BeloEventosAuth.fetchEvents();
+          const eventData = events.find((ev) => ev.id === requestedId);
 
-      if (eventData) {
-        document.title = `${eventData.title} | Belo Eventos`;
+          if (!eventData) {
+            console.error("Evento não encontrado");
+            return;
+          }
 
+          renderPage(eventData);
+        } catch (err) {
+          console.error("Erro ao buscar detalhes do evento:", err);
+          document.body.innerHTML = `
+            <div class="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-8 text-center">
+              <p class="text-rose-500 font-black uppercase tracking-widest text-lg">Servidor Offline</p>
+              <p class="text-slate-500 mt-2">Não foi possível conectar ao banco de dados.</p>
+              <p class="text-slate-400 text-xs mt-1">Certifique-se de que o comando 'node server.js' está rodando.</p>
+              <button onclick="window.location.reload()" class="mt-8 bg-blue-700 text-white px-8 py-3 rounded-full text-xs font-black tracking-widest hover:bg-slate-900 transition-all">TENTAR NOVAMENTE</button>
+            </div>
+          `;
+        }
+      }
+
+      function renderPage(eventData) {
+        const heroImage = document.getElementById("event-hero-image");
+        const badge = document.getElementById("event-badge");
+        const title = document.getElementById("event-title");
+        const heroDescription = document.getElementById(
+          "event-hero-description",
+        );
+        const about1 = document.getElementById("event-about-1");
+        const about2 = document.getElementById("event-about-2");
+        const mapImage = document.getElementById("event-map-image");
+        const mapLocation = document.getElementById("event-map-location");
+        const videoHeading = document.getElementById("event-video-heading");
+        const videoImage = document.getElementById("event-video-image");
+        const videoCaption = document.getElementById("event-video-caption");
+        const buyTicketBtn = document.getElementById("buy-ticket-btn");
+        const dateLabel = document.getElementById("event-date-label");
+        const locationLabel = document.getElementById("event-location-label");
+
+        document.title = eventData.title + " | Belo Eventos";
         heroImage.src = eventData.heroImage;
         heroImage.alt = eventData.heroAlt || eventData.title;
-        badge.textContent = eventData.badge || eventData.classification || "Evento";
+        badge.textContent =
+          eventData.badge ||
+          eventData.classification ||
+          (eventData.status === "confirmado" ? "CONFIRMADO" : "EVENTO");
 
-        title.innerHTML = `${eventData.title} <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">${eventData.city || "Belo Jardim, PE"}</span>`;
-        heroDescription.textContent = eventData.heroDescription || "Confira os detalhes deste evento.";
+        title.innerHTML =
+          eventData.title +
+          ' <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">' +
+          (eventData.city || "Belo Jardim, PE") +
+          "</span>";
+        heroDescription.textContent =
+          eventData.heroDescription || "Confira os detalhes deste evento.";
 
         if (Array.isArray(eventData.about) && eventData.about.length) {
           about1.textContent = eventData.about[0] || "";
           about2.textContent = eventData.about[1] || "";
+        } else {
+          about1.textContent = eventData.heroDescription || "";
+          about2.textContent =
+            "Informações sobre ingressos e horários em breve.";
         }
 
-        mapImage.src = eventData.mapImage || mapImage.src;
-        mapImage.alt = `Mapa do evento ${eventData.title}`;
-        mapLocation.textContent = eventData.mapLocation || mapLocation.textContent;
+        mapImage.src =
+          eventData.mapImage ||
+          "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800";
+        mapLocation.textContent =
+          eventData.mapLocation || eventData.city || "Belo Jardim, PE";
 
         videoHeading.textContent = eventData.videoHeading || "Evento Anterior";
-        videoImage.src = eventData.videoImage || videoImage.src;
-        videoImage.alt = eventData.videoAlt || `Evento anterior de ${eventData.title}`;
+        videoImage.src =
+          eventData.videoImage ||
+          "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=800";
         videoCaption.textContent = eventData.videoCaption || "Flashback";
 
-        if (dateLabel) dateLabel.textContent = eventData.dateLabel || "Data em breve";
-        if (locationLabel) locationLabel.textContent = eventData.homeLocation || eventData.mapLocation || "Local a confirmar";
-
-        if (buyTicketBtn && eventData.id) {
-          buyTicketBtn.href = `pagamento.html?id=${eventData.id}`;
-        }
-      }
-
-      // Regra de negócio: compra exige login
-      if (buyTicketBtn) {
-        buyTicketBtn.addEventListener("click", (e) => {
-          const user = window.BeloEventosAuth?.getUser?.();
-          if (!user) {
-            e.preventDefault();
-            window.location.href = `login.html?next=${encodeURIComponent(buyTicketBtn.href)}`;
+        if (dateLabel) {
+          if (eventData.date) {
+            const parts = eventData.date.split("-");
+            dateLabel.textContent =
+              parts[2] + "/" + parts[1] + " · " + (eventData.time || "20:00");
+          } else {
+            dateLabel.textContent = "Data em breve";
           }
-        });
+        }
+        if (locationLabel)
+          locationLabel.textContent =
+            eventData.homeLocation || eventData.city || "Belo Jardim";
+
+        if (buyTicketBtn) {
+          buyTicketBtn.href = "pagamento.html?id=" + eventData.id;
+          buyTicketBtn.addEventListener("click", (e) => {
+            const user = window.BeloEventosAuth?.getUser?.();
+            if (!user) {
+              e.preventDefault();
+              window.location.href =
+                "login.html?next=" + encodeURIComponent(buyTicketBtn.href);
+            }
+          });
+        }
+        lucide.createIcons();
       }
 
+      fetchEventDetails();
       // Header Scroll Effect
       const header = document.getElementById("main-header");
       window.addEventListener("scroll", () => {
@@ -711,5 +724,3 @@
     </script>
   </body>
 </html>
-
-

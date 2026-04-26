@@ -13,161 +13,129 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
     <!--s,asldf,ld,slf-->
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .transition-header {
-        transition: all 0.3s ease;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      #hero-image,
-      #hero-content {
-        transition:
-          transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 0.45s ease;
-        will-change: transform, opacity;
-      }
-
-      .hero-shift-out-next {
-        transform: translateX(-48px) scale(1.05);
-        opacity: 0.15;
-      }
-
-      .hero-shift-out-prev {
-        transform: translateX(48px) scale(1.05);
-        opacity: 0.15;
-      }
-
-      .hero-shift-in-next {
-        transform: translateX(48px) scale(1.02);
-        opacity: 0;
-      }
-
-      .hero-shift-in-prev {
-        transform: translateX(-48px) scale(1.02);
-        opacity: 0;
-      }
-    </style>
+      <link rel="stylesheet" href="src/style.css">
   </head>
-  <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+  <body class="bg-slate-50 text-black overflow-x-hidden">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <!-- Logo -->
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
         <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
+          class="logo-container flex items-center gap-3 group cursor-pointer"
           onclick="window.location.href = 'index.html'"
         >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
             <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
             >
             <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
               >Cultura e Conexão</span
             >
           </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a href="index.html" class="hover:text-yellow-400 transition-colors">INÍCIO</a>
-          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
-          <a href="profissionais.html" class="hover:text-yellow-400 transition-colors">PROFISSIONAIS</a>
-          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
+          <a
+            href="categorias.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
+          >
+          <a
+            href="comunidade.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
+          >
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
+          >
         </nav>
 
         <!-- Actions -->
-        <div class="hidden md:flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-3">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
           >
-            ENTRAR
+            <span class="relative z-10">ENTRAR</span>
           </a>
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+          <!-- ... (Rest of auth profile) ... -->
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
-
-        <!-- Mobile Toggle -->
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
     <!-- MOBILE MENU -->
@@ -191,8 +159,8 @@
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
         >
           Entrar
         </a>
@@ -218,47 +186,48 @@
 
             <div
               id="hero-content"
-              class="absolute inset-0 flex flex-col justify-center px-6 md:px-16"
+              class="absolute inset-0 flex flex-col justify-center px-6 md:px-16 py-8"
             >
               <span
                 id="hero-classification"
-                class="bg-yellow-400 text-blue-900 font-bold text-xs px-3 py-1 rounded-full w-fit mb-4 tracking-widest uppercase"
+                class="bg-yellow-400 text-blue-900 font-bold text-[10px] md:text-xs px-3 py-1 rounded-full w-fit mb-4 tracking-widest uppercase"
                 >EM ALTA</span
               >
               <h1
                 id="hero-title"
-                class="text-4xl md:text-7xl font-black text-white leading-none mb-6 drop-shadow-lg uppercase"
+                class="text-3xl md:text-7xl font-black text-white leading-[1.1] mb-6 drop-shadow-lg uppercase max-w-2xl"
               >
-                DJAVAN <br />
-                <span class="text-yellow-400">TURNÊ D</span>
+                ... <br />
+                <span class="text-yellow-400">...</span>
               </h1>
+
               <div
-                class="flex flex-col md:flex-row gap-4 md:gap-8 text-white/90 text-lg font-medium mb-8"
+                class="flex flex-col md:flex-row gap-3 md:gap-8 text-white/90 text-base md:text-lg font-medium mb-8"
               >
                 <span class="flex items-center gap-2"
                   ><i
                     data-lucide="calendar"
-                    class="w-5 h-5 text-yellow-400"
+                    class="w-4 h-4 md:w-5 md:h-5 text-yellow-400"
                   ></i>
-                  <span id="hero-date">15 de Junho · 21h</span></span
+                  <span id="hero-date">...</span></span
                 >
                 <span class="flex items-center gap-2"
-                  ><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i>
-                  <span id="hero-location">Marocas</span></span
+                  ><i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 text-yellow-400"></i>
+                  <span id="hero-location">...</span></span
                 >
               </div>
-              <div class="flex flex-wrap gap-4">
+              <div class="flex flex-wrap gap-3 md:gap-4">
                 <a
                   id="hero-cta-ticket"
-                  href="evento.html?id=djavan-turne-d"
-                  class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-xl"
+                  href="#"
+                  class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl transition-all shadow-xl text-xs md:text-base"
                 >
                   GARANTIR INGRESSO
                 </a>
                 <a
                   id="hero-cta-more"
-                  href="evento.html?id=djavan-turne-d"
-                  class="glass text-white font-bold px-8 py-4 rounded-2xl transition-all"
+                  href="#"
+                  class="glass text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl transition-all text-xs md:text-base"
                 >
                   SAIBA MAIS
                 </a>
@@ -268,263 +237,105 @@
             <!-- Carousel Nav Icons (Mock) -->
             <button
               id="hero-prev"
-              class="absolute left-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
             >
-              <i data-lucide="chevron-left" class="w-8 h-8"></i>
+              <i data-lucide="chevron-left" class="w-6 h-6 md:w-8 md:h-8"></i>
             </button>
             <button
               id="hero-next"
-              class="absolute right-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
             >
-              <i data-lucide="chevron-right" class="w-8 h-8"></i>
+              <i data-lucide="chevron-right" class="w-6 h-6 md:w-8 md:h-8"></i>
             </button>
           </div>
         </div>
       </section>
 
-      <!-- CATEGORIES -->
-      <section class="py-8 px-4 bg-white border-y border-slate-200">
-        <div class="container mx-auto">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <button
-              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
-            >
-              <div
-                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
-              >
-                <i data-lucide="music" class="w-5 h-5"></i>
-              </div>
-              <span
-                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
-                >Shows</span
-              >
-            </button>
-            <button
-              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
-            >
-              <div
-                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
-              >
-                <i data-lucide="theater" class="w-5 h-5"></i>
-              </div>
-              <span
-                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
-                >Teatro</span
-              >
-            </button>
-            <button
-              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
-            >
-              <div
-                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
-              >
-                <i data-lucide="mic-2" class="w-5 h-5"></i>
-              </div>
-              <span
-                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
-                >Stand-up</span
-              >
-            </button>
-            <button
-              class="group flex items-center justify-center gap-3 py-6 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all"
-            >
-              <div
-                class="p-3 rounded-full bg-slate-50 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
-              >
-                <i data-lucide="party-popper" class="w-5 h-5"></i>
-              </div>
-              <span
-                class="font-bold text-slate-700 uppercase tracking-widest text-sm"
-                >Festas</span
-              >
-            </button>
+      <!-- MISSION STATEMENT (RESPIRO) -->
+      <section class='py-16 md:py-32 bg-white border-y border-slate-100 overflow-hidden relative'>
+        <div class='absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50'></div>
+        <div class='absolute -right-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-50 rounded-full blur-3xl opacity-50'></div>
+
+        <div class='container mx-auto px-6 relative z-10'>
+          <div class='max-w-4xl mx-auto text-center'>
+            <div class='h-1.5 w-12 bg-blue-600 mx-auto mb-10 rounded-full'></div>
+            <h2 class='text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.1] uppercase tracking-tighter'>
+              Conectando você às melhores <span class='text-blue-600'>experiências</span> de Belo Jardim e região.
+            </h2>
+            <p class='mt-8 text-slate-400 font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs'>
+              Cultura &bull; Conexão &bull; Entretenimento
+            </p>
           </div>
         </div>
       </section>
 
       <!-- EVENT GRID -->
-      <section class="py-16 px-4">
+      <!-- UPCOMING EVENTS -->
+      <section id="programacao-section" class="py-20 px-4 bg-slate-50">
         <div class="container mx-auto">
-          <div class="flex items-center justify-between mb-10">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+          >
             <div>
               <h2
-                class="text-3xl font-black text-slate-900 tracking-tight uppercase"
+                class="text-3xl md:text-5xl font-black text-black uppercase tracking-tight"
               >
-                Próximos Eventos
+                Próximos <span class="text-blue-600">Eventos</span>
               </h2>
-              <div class="h-1.5 w-16 bg-yellow-400 mt-2 rounded-full"></div>
+              <p class="text-slate-500 font-medium mt-4 text-lg">
+                Acompanhe o que há de melhor acontecendo em Belo Jardim e
+                região.
+              </p>
             </div>
             <a
-              href="#"
-              class="text-blue-600 font-bold hover:underline flex items-center gap-1 uppercase tracking-tighter text-sm"
-              >Ver todos <i data-lucide="chevron-right" class="w-4 h-4"></i
-            ></a>
+              href="categorias.html"
+              class="group flex items-center gap-3 text-blue-600 font-black uppercase tracking-widest text-xs"
+            >
+              Ver Programação Completa
+              <i
+                data-lucide="arrow-right"
+                class="w-5 h-5 group-hover:translate-x-2 transition-transform"
+              ></i>
+            </a>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Card Template -->
+          <div
+            id="index-events-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             <div
-              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+              class="col-span-full py-20 flex flex-col items-center justify-center text-slate-400"
             >
-              <div class="relative h-52 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
-                >
-                  ESGOTANDO
-                </div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <span
-                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 05 Ago ·
-                  20:30</span
-                >
-                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
-                  Noite do Jazz
-                </h3>
-                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
-                  <i data-lucide="map-pin" class="w-3 h-3"></i> Teatro Municipal
-                </p>
-                <div
-                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
-                >
-                  <span class="font-black text-slate-900 text-lg">R$ 80</span>
-                  <button
-                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
-                  >
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Repeat Cards (Simulated) -->
-            <div
-              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
-            >
-              <div class="relative h-52 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
-                >
-                  GRATUITO
-                </div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <span
-                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 22 Jul ·
-                  14:00</span
-                >
-                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
-                  Festival de Inverno
-                </h3>
-                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
-                  <i data-lucide="map-pin" class="w-3 h-3"></i> Parque Central
-                </p>
-                <div
-                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
-                >
-                  <span class="font-black text-slate-900 text-lg"
-                    >Entrada Livre</span
-                  >
-                  <button
-                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
-                  >
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
-            >
-              <div class="relative h-52 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
-                >
-                  CULTURA
-                </div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <span
-                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 10 Ago ·
-                  09:00</span
-                >
-                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
-                  Masterclass Gastronomia
-                </h3>
-                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
-                  <i data-lucide="map-pin" class="w-3 h-3"></i> Centro Cultural
-                </p>
-                <div
-                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
-                >
-                  <span class="font-black text-slate-900 text-lg">R$ 150</span>
-                  <button
-                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
-                  >
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
-            >
-              <div class="relative h-52 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=800"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-blue-700 uppercase tracking-tighter"
-                >
-                  SHOW ADIADO
-                </div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <span
-                  class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"
-                  ><i data-lucide="calendar" class="w-3 h-3"></i> 12 Set ·
-                  22:00</span
-                >
-                <h3 class="text-xl font-bold text-slate-900 mb-2 line-clamp-1">
-                  Noite Eletrônica
-                </h3>
-                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1">
-                  <i data-lucide="map-pin" class="w-3 h-3"></i> Club 12
-                </p>
-                <div
-                  class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between"
-                >
-                  <span class="font-black text-slate-900 text-lg">R$ 45</span>
-                  <button
-                    class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"
-                  >
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                  </button>
-                </div>
-              </div>
+              <div
+                class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"
+              ></div>
+              <p class="font-black uppercase tracking-widest text-xs">
+                Carregando eventos...
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- SEÇÃO DE PATROCINADORES -->
+      <section class='py-20 bg-white border-t border-slate-100'>
+        <div class='container mx-auto px-6'>
+          <div class='text-center mb-16'>
+            <h4 class='text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-4'>
+              Patrocinadores & Parceiros
+            </h4>
+            <div class='h-1 w-12 bg-blue-600 mx-auto rounded-full'></div>
+          </div>
+          <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-100'>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase italic'>BeloPass</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>AlôBelo</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>VALE BANK</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase italic'>UP ENERGY</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>BeloSom</div>
+             <div class='text-xl md:text-2xl font-black text-black tracking-tighter uppercase'>FEST BEER</div>
+          </div>
+        </div>
+      </section>
       <!-- NEWSLETTER -->
       <section class="py-20 px-4 bg-slate-900 relative overflow-hidden">
         <div
@@ -582,7 +393,7 @@
             class="relative rounded-[3rem] overflow-hidden bg-blue-700 h-[450px] flex items-center shadow-2xl"
           >
             <img
-              src="https://images.unsplash.com/photo-1514525253361-bee8718a74a2?auto=format&fit=crop&q=80&w=1500"
+              src="https://images.unsplash.com/photo-1514525253361-bee8718a74a2?auto=format&amp;fit=crop&amp;q=80&amp;w=1500"
               class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30"
             />
             <div class="relative z-10 px-8 md:px-20 max-w-2xl">
@@ -601,7 +412,8 @@
               <button
                 class="bg-yellow-400 hover:bg-white text-blue-900 font-black px-12 py-4 rounded-full uppercase tracking-widest shadow-xl flex items-center gap-3 transition-all"
               >
-                <a href="profissionais.html">SAIBA MAIS</a> <i data-lucide="arrow-right"></i>
+                <a href="profissionais.html">SAIBA MAIS</a>
+                <i data-lucide="arrow-right"></i>
               </button>
             </div>
           </div>
@@ -612,37 +424,44 @@
     <!-- FOOTER -->
     <footer
       id="contato-section"
-      class="bg-slate-50 border-t border-slate-200 pt-20 pb-12 px-4"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
     >
       <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div class="col-span-1 md:col-span-2">
             <div class="flex items-center gap-2 mb-6">
-              <div
-                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
-                <i
-                  data-lucide="star"
-                  class="w-5 h-5 text-blue-700 fill-current"
-                ></i>
-              </div>
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
               <span
                 class="text-blue-700 font-black text-xl tracking-tighter uppercase"
                 >Belo Eventos</span
               >
             </div>
-            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
               A maior plataforma de cultura e entretenimento de Belo Jardim e
               região.
             </p>
           </div>
           <div>
-            <h4
-              class="font-black text-slate-900 uppercase tracking-widest mb-6"
-            >
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
               Explore
             </h4>
-            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
               <a href="#" class="hover:text-blue-600 transition-colors"
                 >Shows</a
               >
@@ -658,12 +477,10 @@
             </nav>
           </div>
           <div>
-            <h4
-              class="font-black text-slate-900 uppercase tracking-widest mb-6"
-            >
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
               Contato
             </h4>
-            <nav class="flex flex-col gap-4 text-slate-500 font-medium">
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
               <a href="#" class="hover:text-blue-600 transition-colors"
                 >Ajuda</a
               >
@@ -691,145 +508,206 @@
       </div>
     </footer>
 
+    
     <script src="events-data.js"></script>
-    <script src="auth-mock.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
+    
     <script>
-      // Initialize Icons
       lucide.createIcons();
 
-      const eventCatalog = window.BELO_EVENTS || {};
-      const homeCarouselIds = [
-        "djavan-turne-d",
-        "guns-n-roses",
-        "capital-inicial",
-        "arraia-forro",
-      ];
-      const homeSlides = homeCarouselIds
-        .map((id) => eventCatalog[id])
-        .filter(Boolean)
-        .slice(0, 4);
-
-      const heroImage = document.getElementById("hero-image");
-      const heroClassification = document.getElementById("hero-classification");
-      const heroTitle = document.getElementById("hero-title");
-      const heroDate = document.getElementById("hero-date");
-      const heroLocation = document.getElementById("hero-location");
-      const heroContent = document.getElementById("hero-content");
-      const heroTicketLink = document.getElementById("hero-cta-ticket");
-      const heroMoreLink = document.getElementById("hero-cta-more");
-      const heroPrev = document.getElementById("hero-prev");
-      const heroNext = document.getElementById("hero-next");
-
-      let currentSlideIndex = 0;
-      let carouselTimer;
-      let isAnimating = false;
-
-      const renderHomeSlide = (index) => {
-        if (!homeSlides.length) return;
-        const slide = homeSlides[index];
-        if (!slide) return;
-
-        heroImage.src = slide.heroImage;
-        heroImage.alt = slide.heroAlt || slide.title;
-        heroClassification.textContent = slide.classification || slide.badge;
-        heroTitle.innerHTML = `${slide.title} <br /><span class="text-yellow-400">${slide.city.toUpperCase()}</span>`;
-        heroDate.textContent = slide.dateLabel || "Data em breve";
-        heroLocation.textContent = slide.homeLocation || slide.mapLocation;
-
-        const detailUrl = `evento.html?id=${slide.id}`;
-        heroTicketLink.href = detailUrl;
-        heroMoreLink.href = detailUrl;
-      };
-
-      const animateToSlide = (nextIndex, direction = 1) => {
-        if (!homeSlides.length || isAnimating) return;
-
-        isAnimating = true;
-        const outClass =
-          direction >= 0 ? "hero-shift-out-next" : "hero-shift-out-prev";
-        const inClass =
-          direction >= 0 ? "hero-shift-in-next" : "hero-shift-in-prev";
-
-        heroImage.classList.add(outClass);
-        heroContent.classList.add(outClass);
-
-        setTimeout(() => {
-          currentSlideIndex =
-            (nextIndex + homeSlides.length) % homeSlides.length;
-          renderHomeSlide(currentSlideIndex);
-
-          heroImage.classList.remove(outClass);
-          heroContent.classList.remove(outClass);
-
-          heroImage.classList.add(inClass);
-          heroContent.classList.add(inClass);
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              heroImage.classList.remove(inClass);
-              heroContent.classList.remove(inClass);
-            });
-          });
-
-          setTimeout(() => {
-            isAnimating = false;
-          }, 560);
-        }, 220);
-      };
-
-      const goToSlideInstant = (nextIndex) => {
-        if (!homeSlides.length) return;
-        currentSlideIndex = (nextIndex + homeSlides.length) % homeSlides.length;
-        renderHomeSlide(currentSlideIndex);
-      };
-
-      const startCarousel = () => {
-        if (carouselTimer) clearInterval(carouselTimer);
-        carouselTimer = setInterval(() => {
-          animateToSlide(currentSlideIndex + 1, 1);
-        }, 5000);
-      };
-
-      heroPrev.addEventListener("click", () => {
-        animateToSlide(currentSlideIndex - 1, -1);
-        startCarousel();
-      });
-
-      heroNext.addEventListener("click", () => {
-        animateToSlide(currentSlideIndex + 1, 1);
-        startCarousel();
-      });
-
-      if (homeSlides.length) {
-        goToSlideInstant(0);
-        startCarousel();
-      }
-
-      // Header Scroll Effect
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
+          header.classList.add('bg-blue-600', 'shadow-xl', 'py-2');
+          header.classList.remove('bg-blue-700', 'py-4');
         } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
+          header.classList.add('bg-blue-700', 'py-4');
+          header.classList.remove('bg-blue-600', 'shadow-xl', 'py-2');
         }
       });
 
-      // Mobile Menu Toggle
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
+      // Mobile Menu
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
+      if (menuToggle) menuToggle.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+      if (menuClose) menuClose.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-    </script>
+      // --- BACKEND INTEGRATION ---
+      let allEvents = [];
+      let homeSlides = [];
+      let currentSlideIndex = 0;
+
+      async function initPage() {
+        console.log('Iniciando carregamento da página principal...');
+        try {
+          allEvents = await window.BeloEventosAuth.fetchEvents();
+          console.log('Eventos carregados:', allEvents.length);
+          
+          if (allEvents.length > 0) {
+            renderHeroCarousel();
+            renderIndexEvents();
+          } else {
+            console.warn('Nenhum evento retornado pelo backend ou fallback.');
+            const grid = document.getElementById('index-events-grid');
+            if (grid) grid.innerHTML = '<p class="col-span-full text-center text-slate-500 font-bold uppercase tracking-widest text-xs">Nenhum evento disponível no momento.</p>';
+          }
+          lucide.createIcons();
+        } catch (err) {
+          console.error('Erro ao inicializar página:', err);
+          const grid = document.getElementById('index-events-grid');
+          if (grid) grid.innerHTML = `
+            <div class="col-span-full text-center py-12">
+              <p class="text-rose-500 font-black uppercase tracking-widest text-sm">Servidor Offline</p>
+              <p class="text-slate-500 text-xs mt-2">Execute 'node server.js' para ativar a conexão.</p>
+              <button onclick="initPage()" class="mt-6 bg-blue-700 text-white px-8 py-2 rounded-full text-[10px] font-black tracking-widest hover:bg-slate-900 transition-all">TENTAR NOVAMENTE</button>
+            </div>
+          `;
+        }
+      }
+
+      let carouselTimer = null;
+      let isAnimating = false;
+
+      function renderHeroCarousel() {
+        if (!allEvents.length) return;
+        homeSlides = allEvents.slice(0, 4);
+
+        const heroImage = document.getElementById('hero-image');
+        const heroContent = document.getElementById('hero-content');
+        const heroTitle = document.getElementById('hero-title');
+        const heroDate = document.getElementById('hero-date');
+        const heroLocation = document.getElementById('hero-location');
+        const heroClassification = document.getElementById('hero-classification');
+        const heroTicketLink = document.getElementById('hero-cta-ticket');
+        const heroMoreLink = document.getElementById('hero-cta-more');
+        const heroPrev = document.getElementById('hero-prev');
+        const heroNext = document.getElementById('hero-next');
+
+        if (!heroImage || !heroContent) return;
+
+        function updateSlide(index) {
+          const slide = homeSlides[index];
+          if (!slide) return;
+
+          if (heroImage) heroImage.src = slide.heroImage || '';
+          if (heroTitle) {
+            const cityName = (slide.city || 'BELO JARDIM').toUpperCase();
+            heroTitle.innerHTML = (slide.title || 'Evento') + ' <br /><span class="text-yellow-400">' + cityName + '</span>';
+          }
+          if (heroDate) {
+            const parts = (slide.date || '').split('-');
+            const dateDisplay = parts.length === 3 ? parts[2] + '/' + parts[1] : 'Data em breve';
+            heroDate.textContent = dateDisplay + ' · ' + (slide.time || '20:00');
+          }
+          if (heroLocation) heroLocation.textContent = slide.homeLocation || slide.city || 'Belo Jardim';
+          if (heroClassification) heroClassification.textContent = slide.classification || slide.badge || 'DESTAQUE';
+
+          const detailUrl = 'evento.html?id=' + slide.id;
+          if (heroTicketLink) heroTicketLink.href = detailUrl;
+          if (heroMoreLink) heroMoreLink.href = detailUrl;
+        }
+
+        function animateToSlide(nextIndex, direction) {
+          if (isAnimating || homeSlides.length < 2) return;
+          isAnimating = true;
+
+          const outClass = direction >= 0 ? 'hero-shift-out-next' : 'hero-shift-out-prev';
+          const inClass = direction >= 0 ? 'hero-shift-in-next' : 'hero-shift-in-prev';
+
+          heroImage.classList.add(outClass);
+          heroContent.classList.add(outClass);
+
+          setTimeout(() => {
+            currentSlideIndex = (nextIndex + homeSlides.length) % homeSlides.length;
+            updateSlide(currentSlideIndex);
+
+            heroImage.classList.remove(outClass);
+            heroImage.classList.add(inClass);
+            heroContent.classList.remove(outClass);
+            heroContent.classList.add(inClass);
+
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                heroImage.classList.remove(inClass);
+                heroContent.classList.remove(inClass);
+              });
+            });
+
+            setTimeout(() => {
+              isAnimating = false;
+            }, 600);
+          }, 250);
+        }
+
+        function startCarousel() {
+          if (carouselTimer) clearInterval(carouselTimer);
+          carouselTimer = setInterval(() => {
+            animateToSlide(currentSlideIndex + 1, 1);
+          }, 5000);
+        }
+
+        updateSlide(0);
+        startCarousel();
+
+        if (heroPrev) heroPrev.onclick = () => { animateToSlide(currentSlideIndex - 1, -1); startCarousel(); };
+        if (heroNext) heroNext.onclick = () => { animateToSlide(currentSlideIndex + 1, 1); startCarousel(); };
+      }
+
+      function renderIndexEvents() {
+        const grid = document.getElementById('index-events-grid');
+        if (!grid) return;
+
+        if (allEvents.length === 0) {
+          grid.innerHTML = '<p class="col-span-full text-center text-slate-500 font-bold uppercase tracking-widest text-xs">Nenhum evento disponível.</p>';
+          return;
+        }
+
+        grid.innerHTML = allEvents.slice(0, 6).map(ev => {
+          const dateParts = (ev.date || '').split('-');
+          const dateDisplay = dateParts.length === 3 ? dateParts[2] + '/' + dateParts[1] : 'Data em breve';
+          const statusMap = {
+            'confirmado': { label: 'CONFIRMADO', class: 'bg-emerald-500' },
+            'em_andamento': { label: 'EM ANDAMENTO', class: 'bg-yellow-400' },
+            'cheio': { label: 'ESGOTADO', class: 'bg-indigo-600' },
+            'cancelado': { label: 'CANCELADO', class: 'bg-rose-600' }
+          };
+          const statusInfo = statusMap[ev.status] || statusMap['em_andamento'];
+          const statusClass = statusInfo.class;
+          const statusLabel = statusInfo.label;
+
+          return `
+            <div onclick="window.location.href = 'evento.html?id=${ev.id}'" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col cursor-pointer">
+              <div class="relative h-52 overflow-hidden">
+                <img src="${ev.heroImage || 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="absolute top-4 left-4 ${statusClass} px-3 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-tighter">
+                  ${statusLabel}
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <span class="text-blue-600 font-bold text-xs mb-2 uppercase flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> ${dateDisplay} · ${ev.time || '20:00'}</span>
+                <h3 class="text-xl font-bold text-black mb-2 line-clamp-1">${ev.title}</h3>
+                <p class="text-slate-500 text-sm mb-6 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${ev.city || 'Belo Jardim, PE'}</p>
+                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                  <span class="font-black text-black text-lg">R$ ${parseFloat(ev.price || 0).toFixed(2).replace('.', ',')}</span>
+                  <button class="bg-slate-900 group-hover:bg-blue-600 text-white p-2.5 rounded-xl transition-all"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                </div>
+              </div>
+            </div>`;
+        }).join('');
+      }
+
+      function formatDateBR(dateStr) {
+        const parts = dateStr.split('-');
+        return parts.length === 3 ? parts[2] + '/' + parts[1] : dateStr;
+      }
+
+      initPage();
+</script>
   </body>
 </html>
-

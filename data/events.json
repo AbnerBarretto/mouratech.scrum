@@ -1,4 +1,4 @@
-window.eventsData = [
+[
   {
     "id": "capital-inicial",
     "title": "Capital Inicial",
@@ -207,4 +207,4 @@ window.eventsData = [
     "topic": "musica",
     "city": "Belo Jardim, PE"
   }
-];
+]

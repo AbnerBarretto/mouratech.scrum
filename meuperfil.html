@@ -11,197 +11,129 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .profile-card {
-        background: white;
-        border-radius: 2.5rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e2e8f0;
-      }
-
-      .input-readonly {
-        background: #f8fafc;
-        border: 2px solid #f1f5f9;
-      }
-
-      .btn-danger {
-        background: #fff1f2;
-        color: #e11d48;
-        transition: all 0.2s;
-      }
-
-      .btn-danger:hover {
-        background: #fb7185;
-        color: white;
-      }
-
-      .avatar-shadow {
-        box-shadow:
-          0 0 0 8px white,
-          0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Estilização do Modal de Exclusão */
-      #delete-modal {
-        transition:
-          opacity 0.3s ease,
-          visibility 0.3s ease;
-      }
-
-      .modal-content {
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-
-      /* Estado Escondido do Modal */
-      .modal-hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .modal-hidden .modal-content {
-        transform: scale(0.9) translateY(20px);
-      }
-
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-
-      .tab-btn.active {
-        background: #eff6ff;
-        color: #1d4ed8;
-      }
-
-      .tab-btn.tab-danger.active {
-        background: #fff1f2;
-        color: #e11d48;
-      }
-    </style>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="bg-slate-50 min-h-screen flex flex-col relative">
+    <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
     >
-      <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
         <div
-          class="logo-container flex items-center gap-4 cursor-pointer"
+          class="logo-container flex items-center gap-3 group cursor-pointer"
           onclick="window.location.href = 'index.html'"
         >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo-mark transition-transform duration-300 hover:scale-105"
-          >
-            <path
-              d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-              fill="#6366F1"
-            />
-            <path
-              d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-              fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-          </svg>
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
             <span
-              class="text-white text-2xl font-black tracking-tighter leading-none"
-              >Belo<span class="text-indigo-300">Eventos</span></span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
             >
             <span
-              class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1"
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
               >Cultura e Conexão</span
             >
           </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-        >
-          <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
-          >
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
           <a
             href="categorias.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROGRAMAÇÃO</a
-          >
-          <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
           >
           <a
             href="comunidade.html"
-            class="hover:text-yellow-400 transition-colors"
-            >COMUNIDADE</a
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
           >
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors"
-            >CONTATO</a
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
           >
         </nav>
 
-        <div class="hidden md:flex items-center gap-4">
+        <!-- Actions -->
+        <div class="hidden md:flex items-center gap-3">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
-            >ENTRAR</a
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
           >
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+            <span class="relative z-10">ENTRAR</span>
+          </a>
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
-              <i data-lucide="user" class="text-white w-6 h-6"></i>
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
-                href="#dados-pessoais"
+                href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="#ingressos"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
+    <!-- MOBILE MENU -->
     <div
       id="mobile-menu"
       class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
@@ -214,39 +146,47 @@
       <nav
         class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
       >
+        <a href="index.html">Início</a>
         <a href="categorias.html">Programação</a>
+        <a href="profissionais.html">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
-        <a href="#contato-section">Contato</a>
+        <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
-          >Entrar</a
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
         >
+          Entrar
+        </a>
       </nav>
     </div>
 
-    <main class="flex-grow container mx-auto px-4 sm:px-6 py-8 sm:py-12 pt-28 md:pt-36">
+    <main
+      class="flex-grow container mx-auto px-4 sm:px-6 py-8 sm:py-12 pt-28 md:pt-36"
+    >
       <div class="max-w-4xl mx-auto">
         <div class="relative mb-20 sm:mb-24">
           <div
             class="h-32 sm:h-48 w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[2.5rem] overflow-hidden"
           >
             <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200"
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&amp;fit=crop&amp;q=80&amp;w=1200"
               alt="Cover"
               class="w-full h-full object-cover opacity-40"
             />
           </div>
 
-          <div class="absolute -bottom-12 sm:-bottom-16 left-6 sm:left-12 flex items-end gap-4 sm:gap-6">
+          <div
+            class="absolute -bottom-12 sm:-bottom-16 left-6 sm:left-12 flex items-end gap-4 sm:gap-6"
+          >
             <div class="relative group inline-block">
               <div
                 class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-slate-300 avatar-shadow overflow-hidden relative"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200"
+                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=placeholder"
+                  id="profile-avatar"
                   alt="Profile"
                   class="w-full h-full object-cover"
                 />
@@ -256,16 +196,25 @@
                   Alterar Foto
                 </button>
               </div>
-              <div class="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 md:bottom-2 md:right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full border-2 sm:border-4 border-slate-50 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform cursor-pointer" title="Insígnia Ativa: Festeiro Ouro">
-                <i data-lucide="award" class="text-blue-700 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current"></i>
+              <div
+                id="active-insignia-display"
+                class="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 md:bottom-2 md:right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full border-2 sm:border-4 border-slate-50 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform cursor-pointer"
+                title="Insígnia Ativa: Festeiro Ouro"
+              >
+                <i
+                  id="active-insignia-icon"
+                  data-lucide="award"
+                  class="text-blue-700 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current"
+                ></i>
               </div>
             </div>
-            
+
             <div class="mb-2 sm:mb-4">
               <h1
+                id="profile-display-name"
                 class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter"
               >
-                Fulano Ciclano
+                ...
               </h1>
               <p
                 class="text-slate-500 font-bold uppercase text-[9px] sm:text-[10px] tracking-widest flex items-center gap-2"
@@ -287,7 +236,7 @@
                   data-tab="dados-pessoais"
                   class="tab-btn active w-full text-left px-4 py-3 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
-                  <i data-lucide="user" class="w-4 h-4"></i> Dados Pessoais
+                  <i data-lucide="user" class="w-4 h-4"></i> Meu Perfil
                 </button>
                 <button
                   data-tab="ingressos"
@@ -305,7 +254,8 @@
                   data-tab="gerenciamento"
                   class="tab-btn tab-danger w-full text-left px-4 py-3 text-rose-600 hover:bg-rose-50 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-colors"
                 >
-                  <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de Conta
+                  <i data-lucide="trash-2" class="w-4 h-4"></i> Gerenciamento de
+                  Conta
                 </button>
               </nav>
             </div>
@@ -317,10 +267,11 @@
                 Oferecer Serviços
               </h4>
               <p class="text-blue-100 text-xs font-medium mb-6 leading-relaxed">
-                Divulgue seu trabalho para a comunidade Belo Eventos ou contrate os melhores profissionais.
+                Divulgue seu trabalho para a comunidade Belo Eventos ou contrate
+                os melhores profissionais.
               </p>
               <button
-                onclick="window.location.href='profissionais.html'"
+                onclick="window.location.href = 'profissionais.html'"
                 class="w-full bg-yellow-400 text-blue-900 font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95 block text-center"
               >
                 Acessar Profissionais
@@ -329,170 +280,299 @@
           </aside>
 
           <div class="lg:col-span-2 space-y-8">
-            <section id="dados-pessoais" data-panel="dados-pessoais" class="tab-panel">
+            <section
+              id="dados-pessoais"
+              data-panel="dados-pessoais"
+              class="tab-panel"
+            >
               <div class="profile-card p-8 md:p-10">
                 <div class="flex items-center justify-between mb-8">
-                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+                  <h2
+                    class="text-xl font-black text-slate-900 uppercase tracking-tight"
+                  >
                     Informações Básicas
                   </h2>
-                  <button class="text-blue-600 font-bold text-xs uppercase hover:underline">
-                    Editar
-                  </button>
                 </div>
 
-                <form class="space-y-6">
+                <form id="profile-form" class="space-y-6">
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nome completo</label>
+                    <label
+                      class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
+                      >Nome completo</label
+                    >
                     <input
                       type="text"
-                      readonly
-                      value="Fulano Ciclano"
+                      id="profile-name"
+                      readonly=""
+                      value="..."
                       class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
                     />
                   </div>
 
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">E-mail de acesso</label>
+                    <label
+                      class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
+                      >E-mail de acesso</label
+                    >
                     <input
                       type="email"
-                      readonly
-                      value="fulaciclano@gmail.com"
+                      id="profile-email"
+                      readonly=""
+                      value="..."
                       class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
                     />
                   </div>
 
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Data de nascimento</label>
+                    <label
+                      class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1"
+                      >Data de nascimento</label
+                    >
                     <input
                       type="text"
-                      readonly
-                      value="03/12/2081"
+                      id="profile-birth"
+                      readonly=""
+                      value="..."
                       class="input-readonly w-full px-6 py-4 rounded-2xl font-semibold text-slate-900 outline-none"
                     />
+                  </div>
+
+                  <div class="pt-4 flex flex-col gap-3">
+                    <button
+                      type="button"
+                      id="profile-edit-btn"
+                      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-lg shadow-blue-600/20 uppercase tracking-widest text-xs transition-all active:scale-95"
+                    >
+                      Editar Perfil
+                    </button>
+                    <button
+                      type="button"
+                      id="profile-save-btn"
+                      class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-2xl shadow-lg shadow-emerald-500/20 uppercase tracking-widest text-xs transition-all active:scale-95 hidden"
+                    >
+                      Salvar Alterações
+                    </button>
+                    <button
+                      type="button"
+                      id="profile-cancel-btn"
+                      class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-black py-4 rounded-2xl uppercase tracking-widest text-xs transition-all active:scale-95 hidden"
+                    >
+                      Cancelar
+                    </button>
                   </div>
                 </form>
               </div>
             </section>
 
-            <section id="ingressos" data-panel="ingressos" class="tab-panel hidden">
+            <section
+              id="ingressos"
+              data-panel="ingressos"
+              class="tab-panel hidden"
+            >
               <div class="profile-card p-8 md:p-10">
                 <div class="flex items-center justify-between mb-8 gap-4">
-                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+                  <h2
+                    class="text-xl font-black text-slate-900 uppercase tracking-tight"
+                  >
                     Meus Ingressos
                   </h2>
-                  <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-2 rounded-full">2 ingressos ativos</span>
+                  <span
+                    class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-2 rounded-full"
+                    >...</span
+                  >
                 </div>
 
-                <div class="space-y-5">
-                  <article class="border border-slate-200 rounded-[1.5rem] overflow-hidden bg-white">
-                    <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5">
-                      <img
-                        src="https://djavan.com.br/content/uploads/2025/10/djavan_improviso_0389-1920x0-c-default.jpg"
-                        alt="Show Djavan"
-                        class="w-full md:w-40 h-28 rounded-xl object-cover"
-                      />
-                      <div class="flex-1">
-                        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Confirmado</p>
-                        <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight">Djavan - Turnê D</h3>
-                        <p class="text-slate-500 text-sm mt-1">15 de Junho · 21h · Marocas</p>
-                        <p class="text-slate-600 text-sm mt-2">Setor: Pista Premium · Portão B · Ingresso: Inteira</p>
-                      </div>
-                      <a
-                        href="evento.html?id=djavan-turne-d"
-                        class="bg-blue-600 hover:bg-blue-500 text-white font-black text-[10px] uppercase tracking-widest px-5 py-3 rounded-xl text-center"
-                      >
-                        Ver detalhes
-                      </a>
-                    </div>
-                  </article>
-
-                  <article class="border border-slate-200 rounded-[1.5rem] overflow-hidden bg-white">
-                    <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5">
-                      <img
-                        src="https://s2-g1.glbimg.com/3PHOW-V63BYBFuu43XAJS3n0lrg=/2048x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/b/8/lWkNIWQmeeagU30WMQcA/capital-inicial-1.jpg"
-                        alt="Show Capital Inicial"
-                        class="w-full md:w-40 h-28 rounded-xl object-cover"
-                      />
-                      <div class="flex-1">
-                        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Confirmado</p>
-                        <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight">Capital Inicial</h3>
-                        <p class="text-slate-500 text-sm mt-1">18 de Outubro · 21h · Centro de Eventos</p>
-                        <p class="text-slate-600 text-sm mt-2">Setor: Front Stage · Portão A · Ingresso: Meia-entrada</p>
-                      </div>
-                      <a
-                        href="evento.html?id=capital-inicial"
-                        class="bg-blue-600 hover:bg-blue-500 text-white font-black text-[10px] uppercase tracking-widest px-5 py-3 rounded-xl text-center"
-                      >
-                        Ver detalhes
-                      </a>
-                    </div>
-                  </article>
+                <div id="tickets-grid" class="flex flex-col gap-3">
+                  <p
+                    class="text-slate-400 text-xs font-bold uppercase tracking-widest text-center py-10"
+                  >
+                    Carregando seus ingressos...
+                  </p>
                 </div>
               </div>
             </section>
 
-            <section id="insignias" data-panel="insignias" class="tab-panel hidden">
+            <section
+              id="insignias"
+              data-panel="insignias"
+              class="tab-panel hidden"
+            >
               <div class="profile-card p-8 md:p-10">
                 <div class="flex items-center justify-between mb-8 gap-4">
-                  <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">Minhas Insígnias</h2>
-                  <span class="text-[10px] font-black text-yellow-600 uppercase tracking-widest bg-yellow-50 px-3 py-2 rounded-full">3 conquistadas</span>
+                  <h2
+                    class="text-xl font-black text-slate-900 uppercase tracking-tight"
+                  >
+                    Minhas Insígnias
+                  </h2>
+                  <span
+                    class="text-[10px] font-black text-yellow-600 uppercase tracking-widest bg-yellow-50 px-3 py-2 rounded-full"
+                    >3 conquistadas</span
+                  >
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-yellow-300 bg-yellow-50">
-                    <div class="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg">
-                      <i data-lucide="award" class="text-blue-700 w-7 h-7 fill-current"></i>
+                <div
+                  class="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                  id="insignias-grid"
+                >
+                  <div
+                    class="insignia-card flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-yellow-300 bg-yellow-50 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                    data-insignia="award"
+                    data-insignia-name="Festeiro Ouro"
+                    data-insignia-color="bg-yellow-400"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg"
+                    >
+                      <i
+                        data-lucide="award"
+                        class="text-blue-700 w-7 h-7 fill-current"
+                      ></i>
                     </div>
-                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Festeiro Ouro</p>
-                    <p class="text-[10px] text-slate-500 font-medium text-center">Participou de 10+ eventos</p>
+                    <p
+                      class="text-xs font-black text-slate-900 uppercase tracking-widest text-center"
+                    >
+                      Festeiro Ouro
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-500 font-medium text-center"
+                    >
+                      Participou de 10+ eventos
+                    </p>
+                    <span
+                      class="insignia-status-badge text-[8px] font-black uppercase bg-yellow-400 text-blue-900 px-2 py-1 rounded-full hidden"
+                      >Selecionada</span
+                    >
                   </div>
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50">
-                    <div class="w-14 h-14 rounded-full bg-indigo-500 flex items-center justify-center shadow-lg">
+                  <div
+                    class="insignia-card flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                    data-insignia="music"
+                    data-insignia-name="Fã de MPB"
+                    data-insignia-color="bg-indigo-500"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-indigo-500 flex items-center justify-center shadow-lg"
+                    >
                       <i data-lucide="music" class="text-white w-7 h-7"></i>
                     </div>
-                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Fã de MPB</p>
-                    <p class="text-[10px] text-slate-500 font-medium text-center">Comprou ingresso de MPB</p>
+                    <p
+                      class="text-xs font-black text-slate-900 uppercase tracking-widest text-center"
+                    >
+                      Fã de MPB
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-500 font-medium text-center"
+                    >
+                      Comprou ingresso de MPB
+                    </p>
+                    <span
+                      class="insignia-status-badge text-[8px] font-black uppercase bg-indigo-500 text-white px-2 py-1 rounded-full hidden"
+                      >Selecionada</span
+                    >
                   </div>
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
-                    <div class="w-14 h-14 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg">
+                  <div
+                    class="insignia-card flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                    data-insignia="ticket"
+                    data-insignia-name="Primeiro Ingresso"
+                    data-insignia-color="bg-emerald-500"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg"
+                    >
                       <i data-lucide="ticket" class="text-white w-7 h-7"></i>
                     </div>
-                    <p class="text-xs font-black text-slate-900 uppercase tracking-widest text-center">Primeiro Ingresso</p>
-                    <p class="text-[10px] text-slate-500 font-medium text-center">Comprou o 1º ingresso</p>
+                    <p
+                      class="text-xs font-black text-slate-900 uppercase tracking-widest text-center"
+                    >
+                      Primeiro Ingresso
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-500 font-medium text-center"
+                    >
+                      Comprou o 1º ingresso
+                    </p>
+                    <span
+                      class="insignia-status-badge text-[8px] font-black uppercase bg-emerald-500 text-white px-2 py-1 rounded-full hidden"
+                      >Selecionada</span
+                    >
                   </div>
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
-                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                  <div
+                    class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow"
+                    >
                       <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
                     </div>
-                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">Rockeiro NATO</p>
-                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                    <p
+                      class="text-xs font-black text-slate-400 uppercase tracking-widest text-center"
+                    >
+                      Rockeiro NATO
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-400 font-medium text-center"
+                    >
+                      Bloqueada
+                    </p>
                   </div>
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
-                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                  <div
+                    class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow"
+                    >
                       <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
                     </div>
-                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">VIP Club</p>
-                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                    <p
+                      class="text-xs font-black text-slate-400 uppercase tracking-widest text-center"
+                    >
+                      VIP Club
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-400 font-medium text-center"
+                    >
+                      Bloqueada
+                    </p>
                   </div>
-                  <div class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50">
-                    <div class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow">
+                  <div
+                    class="flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-slate-200 bg-slate-100 opacity-50"
+                  >
+                    <div
+                      class="w-14 h-14 rounded-full bg-slate-300 flex items-center justify-center shadow"
+                    >
                       <i data-lucide="lock" class="text-slate-500 w-7 h-7"></i>
                     </div>
-                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest text-center">Madrugador</p>
-                    <p class="text-[10px] text-slate-400 font-medium text-center">Bloqueada</p>
+                    <p
+                      class="text-xs font-black text-slate-400 uppercase tracking-widest text-center"
+                    >
+                      Madrugador
+                    </p>
+                    <p
+                      class="text-[10px] text-slate-400 font-medium text-center"
+                    >
+                      Bloqueada
+                    </p>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section id="gerenciamento" data-panel="gerenciamento" class="tab-panel hidden">
+            <section
+              id="gerenciamento"
+              data-panel="gerenciamento"
+              class="tab-panel hidden"
+            >
               <div class="profile-card p-8 md:p-10 border-rose-100">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div
+                  class="flex flex-col md:flex-row items-center justify-between gap-6"
+                >
                   <div class="text-center md:text-left">
-                    <h3 class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1">
+                    <h3
+                      class="text-lg font-black text-slate-900 uppercase tracking-tight mb-1"
+                    >
                       Gerenciamento de Conta
                     </h3>
                     <p class="text-slate-500 text-xs font-medium">
-                      A exclusão da conta é permanente e removerá todos os seus dados.
+                      A exclusão da conta é permanente e removerá todos os seus
+                      dados.
                     </p>
                   </div>
                   <button
@@ -540,7 +620,9 @@
           <span class="text-rose-600">apagar a conta?</span>
         </h2>
 
-        <p class="text-slate-500 font-medium text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed">
+        <p
+          class="text-slate-500 font-medium text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed"
+        >
           Esta ação é irreversível. Todos os seus ingressos, histórico de
           eventos e conexões na comunidade serão removidos permanentemente.
         </p>
@@ -570,7 +652,10 @@
         <div
           class="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
         >
-          <i data-lucide="check" class="w-10 h-10 sm:w-12 sm:h-12 text-green-600"></i>
+          <i
+            data-lucide="check"
+            class="w-10 h-10 sm:w-12 sm:h-12 text-green-600"
+          ></i>
         </div>
         <h1
           class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4"
@@ -589,114 +674,461 @@
       </div>
     </div>
 
-    <footer class="py-8 sm:py-12 border-t border-slate-200 mt-auto">
-      <div class="container mx-auto px-6 text-center">
-        <p
-          class="text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em]"
+    <footer
+      id="contato-section"
+      class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                  fill="#4f46e5"
+                ></path>
+                <path
+                  d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                  fill="#10b981"
+                ></path>
+              </svg>
+              <span
+                class="text-blue-700 font-black text-xl tracking-tighter uppercase"
+                >Belo Eventos</span
+              >
+            </div>
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+              A maior plataforma de cultura e entretenimento de Belo Jardim e
+              região.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Explore
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Shows</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Teatro</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Gastronomia</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Sobre Nós</a
+              >
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">
+              Contato
+            </h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Ajuda</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Anunciar</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Instagram</a
+              >
+              <a href="#" class="hover:text-blue-600 transition-colors"
+                >Privacidade</a
+              >
+            </nav>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
         >
-          © 2026 Belo Eventos · Privacidade e Segurança
-        </p>
+          <p>© 2024 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+          </div>
+        </div>
       </div>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    <script src="events-data.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
+    <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
-      lucide.createIcons();
-
-      const header = document.getElementById("main-header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-          header.classList.remove("bg-blue-700", "py-4");
-        } else {
-          header.classList.add("bg-blue-700", "py-4");
-          header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
-        }
-      });
-
-      const menuToggle = document.getElementById("menu-toggle");
-      const menuClose = document.getElementById("menu-close");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
-
-      menuClose.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-
-      // Lógica de Abas
-      const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
-      const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
-      const validTabs = new Set(["dados-pessoais", "ingressos", "insignias", "gerenciamento"]);
-
-      const activateTab = (tabId) => {
-        const safeTabId = validTabs.has(tabId) ? tabId : "dados-pessoais";
-
-        tabButtons.forEach((button) => {
-          const isActive = button.dataset.tab === safeTabId;
-          button.classList.toggle("active", isActive);
-          if (!button.classList.contains("tab-danger")) {
-            button.classList.toggle("text-slate-500", !isActive);
-          }
-        });
-
-        tabPanels.forEach((panel) => {
-          panel.classList.toggle("hidden", panel.dataset.panel !== safeTabId);
-        });
-
-        if (window.location.hash !== `#${safeTabId}`) {
-          history.replaceState(null, "", `#${safeTabId}`);
-        }
-      };
-
-      tabButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          activateTab(button.dataset.tab);
-        });
-      });
-
-      window.addEventListener("hashchange", () => {
-        activateTab(window.location.hash.replace("#", ""));
-      });
-
-      activateTab(window.location.hash.replace("#", "") || "dados-pessoais");
-
-      // Lógica de Modal de Exclusão
-      const deleteModal = document.getElementById("delete-modal");
-      const openModalBtn = document.getElementById("open-modal");
-      const closeModalBtn = document.getElementById("close-modal");
-      const overlay = document.getElementById("modal-overlay");
-      const confirmDeleteBtn = document.getElementById("confirm-delete");
-      const successScreen = document.getElementById("success-screen");
-
-      // Função para abrir modal
-      openModalBtn.addEventListener("click", () => {
-        deleteModal.classList.remove("modal-hidden");
-      });
-
-      // Função para fechar modal
-      const closeModal = () => {
-        deleteModal.classList.add("modal-hidden");
-      };
-
-      closeModalBtn.addEventListener("click", closeModal);
-      overlay.addEventListener("click", closeModal);
-
-      // Ação de Deletar
-      confirmDeleteBtn.addEventListener("click", () => {
-        // Feedback de carregamento no botão
-        confirmDeleteBtn.innerHTML =
-          '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Processando...';
-        confirmDeleteBtn.disabled = true;
+      document.addEventListener("DOMContentLoaded", () => {
         lucide.createIcons();
 
-        // Simulação de processo de backend (2 segundos)
-        setTimeout(() => {
-          successScreen.classList.remove("hidden");
-          closeModal();
-        }, 2000);
+        // --- 1. AUTH & CORE VARS ---
+        let currentUser = window.BeloEventosAuth.getUser();
+        if (!currentUser) {
+          window.location.href = "login.html?next=meuperfil.html";
+          return;
+        }
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuClose = document.getElementById("menu-close");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.remove("hidden");
+          });
+        }
+        if (menuClose && mobileMenu) {
+          menuClose.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        }
+        // --- 2. DOM ELEMENT CACHING ---
+        const dom = {
+          profileNameDisplay: document.getElementById("profile-display-name"),
+          inputName: document.getElementById("profile-name"),
+          inputEmail: document.getElementById("profile-email"),
+          inputBirth: document.getElementById("profile-birth"),
+          avatar: document.getElementById("profile-avatar"),
+          editBtn: document.getElementById("profile-edit-btn"),
+          saveBtn: document.getElementById("profile-save-btn"),
+          cancelBtn: document.getElementById("profile-cancel-btn"),
+          ticketsGrid: document.getElementById("tickets-grid"),
+          ticketsBadge: document.querySelector(
+            '[data-panel="ingressos"] .bg-blue-50',
+          ),
+          tabButtons: document.querySelectorAll(".tab-btn"),
+          tabPanels: document.querySelectorAll(".tab-panel"),
+          insigniaCards: document.querySelectorAll(".insignia-card"),
+          activeInsigniaDisplay: document.getElementById(
+            "active-insignia-display",
+          ),
+          activeInsigniaIcon: document.getElementById("active-insignia-icon"),
+          deleteModal: document.getElementById("delete-modal"),
+          openModalBtn: document.getElementById("open-modal"),
+          closeModalBtn: document.getElementById("close-modal"),
+          modalOverlay: document.getElementById("modal-overlay"),
+          confirmDeleteBtn: document.getElementById("confirm-delete"),
+          successScreen: document.getElementById("success-screen"),
+        };
+
+        // --- 3. FUNCTIONS ---
+
+        const loadUserData = () => {
+          if (dom.profileNameDisplay)
+            dom.profileNameDisplay.textContent = currentUser.name;
+          if (dom.inputName) dom.inputName.value = currentUser.name;
+          if (dom.inputEmail) dom.inputEmail.value = currentUser.email;
+          if (dom.inputBirth)
+            dom.inputBirth.value = currentUser.birthDate || "";
+          if (dom.avatar)
+            dom.avatar.src =
+              currentUser.profileImage ||
+              "https://api.dicebear.com/7.x/pixel-art/svg?seed=" +
+                encodeURIComponent(currentUser.name);
+        };
+
+        const renderTickets = (purchases) => {
+          if (!dom.ticketsGrid) return;
+          dom.ticketsGrid.classList.remove(
+            "max-h-[25rem]",
+            "overflow-y-scroll",
+            "pr-1",
+            "custom-scrollbar",
+          );
+
+          if (purchases.length === 0) {
+            dom.ticketsGrid.innerHTML =
+              '<div class="p-12 text-center"><i data-lucide="ticket" class="w-12 h-12 text-slate-200 mx-auto mb-4"></i><p class="text-slate-400 font-bold uppercase tracking-widest text-xs">Você ainda não tem ingressos.</p><a href="categorias.html" class="mt-6 text-blue-600 font-black uppercase text-[10px] hover:underline">Explorar eventos</a></div>';
+            if (dom.ticketsBadge) dom.ticketsBadge.textContent = "0 Ingressos";
+          } else {
+            if (purchases.length > 3) {
+              dom.ticketsGrid.classList.add(
+                "max-h-[25rem]",
+                "overflow-y-scroll",
+                "pr-1",
+                "custom-scrollbar",
+              );
+            }
+            if (dom.ticketsBadge)
+              dom.ticketsBadge.textContent =
+                purchases.length +
+                (purchases.length > 1 ? " Ingressos" : " Ingresso");
+            dom.ticketsGrid.innerHTML = purchases
+              .map((p) => {
+                const ev = p.event || {};
+                const dateDisplay = (ev.date || "")
+                  .split("-")
+                  .reverse()
+                  .join("/");
+                const paidAmount = parseFloat(p.amount || 0).toLocaleString(
+                  "pt-BR",
+                  { style: "currency", currency: "BRL" },
+                );
+                const fallbackEvent = (window.eventsData || []).find(
+                  (item) => item.title === ev.title,
+                );
+                const eventId =
+                  ev.id || p.eventId || (fallbackEvent && fallbackEvent.id) || "";
+                const eventHref = eventId
+                  ? "evento.html?id=" + encodeURIComponent(eventId)
+                  : "categorias.html";
+                return (
+                  '<article class="bg-white rounded-none border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-row items-stretch min-h-[7.5rem]">' +
+                  '<div class="w-28 sm:w-32 md:w-36 bg-slate-100 overflow-hidden shrink-0">' +
+                  '<img src="' +
+                  (ev.heroImage ||
+                    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=900") +
+                  '" alt="' +
+                  (ev.title || "Evento") +
+                  '" class="w-full h-full object-cover"/>' +
+                  "</div>" +
+                  '<div class="p-3 sm:p-3.5 flex-1">' +
+                  '<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-blue-50 text-blue-700 text-[9px] font-black uppercase tracking-widest">' +
+                  '<i data-lucide="ticket" class="w-3 h-3"></i> Ingresso Confirmado' +
+                  "</div>" +
+                  '<h3 class="text-sm font-black text-slate-900 uppercase tracking-tight mt-2 line-clamp-1">' +
+                  (ev.title || "Atração") +
+                  "</h3>" +
+                  '<p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider mt-1.5">' +
+                  (dateDisplay || "Data a confirmar") +
+                  " · " +
+                  (ev.time || "20:00") +
+                  "</p>" +
+                  '<p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider mt-0.5">' +
+                  (ev.city || "Belo Jardim, PE") +
+                  "</p>" +
+                  '<div class="mt-3 pt-2.5 border-t border-slate-100">' +
+                  '<p class="text-slate-700 text-xs sm:text-sm font-black">Pago: ' +
+                  paidAmount +
+                  "</p>" +
+                  '<a href="' +
+                  eventHref +
+                  '" class="mt-2 inline-flex w-full sm:w-auto items-center justify-center gap-1.5 px-3 py-2 rounded-none bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest transition-colors">' +
+                  'Visualizar Ingresso <i data-lucide="ticket" class="w-3 h-3"></i>' +
+                  "</a>" +
+                  "</div>" +
+                  "</div>" +
+                  "</article>"
+                );
+              })
+              .join("");
+          }
+          lucide.createIcons();
+        };
+
+        const fetchTickets = async () => {
+          try {
+            const purchases = await window.BeloEventosAuth.fetchUserPurchases(
+              currentUser.id,
+            );
+            renderTickets(Array.isArray(purchases) ? purchases : []);
+          } catch (err) {
+            console.error("Erro ao carregar ingressos:", err);
+            renderTickets([]);
+          }
+        };
+
+        const initTabs = () => {
+          const activateTab = (tabId) => {
+            const validTabs = [
+              "dados-pessoais",
+              "ingressos",
+              "insignias",
+              "gerenciamento",
+            ];
+            const safeTabId = validTabs.includes(tabId)
+              ? tabId
+              : "dados-pessoais";
+            dom.tabButtons.forEach((btn) =>
+              btn.classList.toggle("active", btn.dataset.tab === safeTabId),
+            );
+            dom.tabPanels.forEach((panel) =>
+              panel.classList.toggle(
+                "hidden",
+                panel.dataset.panel !== safeTabId,
+              ),
+            );
+            if (window.location.hash !== "#" + safeTabId)
+              history.replaceState(null, null, "#" + safeTabId);
+          };
+          dom.tabButtons.forEach(
+            (btn) => (btn.onclick = () => activateTab(btn.dataset.tab)),
+          );
+          window.onhashchange = () =>
+            activateTab(window.location.hash.slice(1));
+          activateTab(window.location.hash.slice(1) || "dados-pessoais");
+        };
+
+        const initProfileEditing = () => {
+          const toggleEditMode = (isEditing) => {
+            [dom.inputName, dom.inputEmail, dom.inputBirth].forEach((input) => {
+              if (input) {
+                input.readOnly = !isEditing;
+                input.classList.toggle("input-readonly", !isEditing);
+                input.classList.toggle("editable-input", isEditing);
+              }
+            });
+            if (dom.editBtn) dom.editBtn.classList.toggle("hidden", isEditing);
+            if (dom.saveBtn) dom.saveBtn.classList.toggle("hidden", !isEditing);
+            if (dom.cancelBtn)
+              dom.cancelBtn.classList.toggle("hidden", !isEditing);
+          };
+
+          if (dom.editBtn) dom.editBtn.onclick = () => toggleEditMode(true);
+          if (dom.cancelBtn)
+            dom.cancelBtn.onclick = () => {
+              loadUserData();
+              toggleEditMode(false);
+            };
+          if (dom.saveBtn) {
+            dom.saveBtn.onclick = async () => {
+              const name = (dom.inputName.value || "").trim();
+              const email = (dom.inputEmail.value || "").trim();
+              const birthDate = (dom.inputBirth.value || "").trim();
+
+              if (!name || !email) {
+                alert("Preencha nome e e-mail para salvar.");
+                return;
+              }
+
+              const updatedData = {
+                id: currentUser.id,
+                name,
+                email,
+                birthDate,
+              };
+              dom.saveBtn.innerText = "Salvando...";
+              dom.saveBtn.disabled = true;
+              try {
+                const result =
+                  await window.BeloEventosAuth.updateProfile(updatedData);
+                if (result.success) {
+                  currentUser = result.user;
+                  loadUserData();
+                  alert(
+                    result.local
+                      ? "Perfil salvo localmente. Inicie o backend para sincronizar no servidor."
+                      : "Perfil atualizado!",
+                  );
+                  toggleEditMode(false);
+                } else {
+                  alert(result.message || "Erro ao atualizar.");
+                }
+              } catch (err) {
+                console.error("Erro ao atualizar perfil:", err);
+                alert(
+                  err && err.message
+                    ? err.message
+                    : "Falha ao salvar no backend. Verifique o servidor.",
+                );
+              } finally {
+                dom.saveBtn.innerText = "Salvar Alterações";
+                dom.saveBtn.disabled = false;
+              }
+            };
+          }
+        };
+
+        const initInsignias = () => {
+          const updateInsigniaUI = (data) => {
+            if (!data || !dom.activeInsigniaDisplay) return;
+            // Remove a cor antiga e adiciona a nova
+            dom.activeInsigniaDisplay.className =
+              dom.activeInsigniaDisplay.className.replace(/bg-\w+-\d+/, "") +
+              " " +
+              data.color;
+            if (dom.activeInsigniaIcon) {
+              dom.activeInsigniaIcon.setAttribute("data-lucide", data.icon);
+              lucide.createIcons({ nodes: [dom.activeInsigniaIcon] });
+            }
+            // Atualiza o status visual dos cards
+            dom.insigniaCards.forEach((card) => {
+              const statusBadge = card.querySelector(".insignia-status-badge");
+              if (statusBadge) {
+                statusBadge.classList.toggle(
+                  "hidden",
+                  card.dataset.insignia !== data.icon,
+                );
+              }
+            });
+          };
+
+          dom.insigniaCards.forEach((card) => {
+            // Verifica se o card não é 'bloqueado'
+            if (!card.querySelector('[data-lucide="lock"]')) {
+              card.onclick = () => {
+                const data = {
+                  icon: card.dataset.insignia,
+                  name: card.dataset.insigniaName,
+                  color: card.dataset.insigniaColor,
+                };
+                localStorage.setItem(
+                  "beloEventosSelectedInsignia",
+                  JSON.stringify(data),
+                );
+                updateInsigniaUI(data);
+              };
+            }
+          });
+
+          const savedInsignia = localStorage.getItem(
+            "beloEventosSelectedInsignia",
+          );
+          if (savedInsignia) {
+            try {
+              updateInsigniaUI(JSON.parse(savedInsignia));
+            } catch (e) {
+              console.error("Erro ao carregar insígnia salva:", e);
+            }
+          }
+        };
+        const initDeleteModal = () => {
+          if (!dom.deleteModal) return;
+          const closeModal = () =>
+            dom.deleteModal.classList.add("modal-hidden");
+          if (dom.openModalBtn)
+            dom.openModalBtn.onclick = () =>
+              dom.deleteModal.classList.remove("modal-hidden");
+          if (dom.closeModalBtn) dom.closeModalBtn.onclick = closeModal;
+          if (dom.modalOverlay) dom.modalOverlay.onclick = closeModal;
+          if (dom.confirmDeleteBtn) {
+            dom.confirmDeleteBtn.onclick = async () => {
+              dom.confirmDeleteBtn.disabled = true;
+              const result = await window.BeloEventosAuth.deleteUser(
+                currentUser.id,
+              );
+              if (result.success) {
+                if (dom.successScreen)
+                  dom.successScreen.classList.remove("hidden");
+                closeModal();
+                setTimeout(() => {
+                  window.location.href = "index.html";
+                }, 2000);
+              } else {
+                alert("Erro ao deletar conta.");
+                dom.confirmDeleteBtn.disabled = false;
+              }
+            };
+          }
+        };
+
+        // --- 4. INITIALIZATION ---
+        loadUserData();
+        initTabs();
+        initProfileEditing();
+        initInsignias();
+        initDeleteModal();
+        fetchTickets(); // Fetch tickets after all initializations
+        window.addEventListener("beloEventosDataUpdated", fetchTickets);
       });
     </script>
   </body>

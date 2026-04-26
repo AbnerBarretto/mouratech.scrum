@@ -11,65 +11,18 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
-      .transition-header {
-        transition: all 0.3s ease;
-      }
-
-      .form-input {
-        background: #f1f5f9;
-        border: 2px solid transparent;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .form-input:focus {
-        background: white;
-        border-color: #0056e0;
-        box-shadow: 0 0 0 4px rgba(0, 86, 224, 0.1);
-        outline: none;
-      }
-
-      .custom-checkbox {
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 0.375rem;
-        border: 2px solid #cbd5e1;
-        appearance: none;
-        cursor: pointer;
-        transition: all 0.2s;
-        position: relative;
-      }
-
-      .custom-checkbox:checked {
-        background-color: #0056e0;
-        border-color: #0056e0;
-      }
-
-      .custom-checkbox:checked::after {
-        content: "✓";
-        color: white;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 0.75rem;
-        font-weight: 900;
-      }
-    </style>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="bg-slate-100 min-h-screen flex flex-col">
     <!-- HEADER -->
     <header
       id="main-header"
-      class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-header py-4"
     >
       <div class="container mx-auto px-4 flex items-center justify-between">
         <div
@@ -87,12 +40,12 @@
             <path
               d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
               fill="#6366F1"
-            />
+            ></path>
             <path
               d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
               fill="#10B981"
-            />
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
+            ></path>
+            <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
           </svg>
           <div class="flex flex-col text-left">
             <span
@@ -111,24 +64,19 @@
           class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
         >
           <a
-            href="index.html"
-            class="hover:text-yellow-400 transition-colors"
-            >INÍCIO</a
-          >
-          <a
             href="categorias.html"
             class="hover:text-yellow-400 transition-colors"
             >PROGRAMAÇÃO</a
           >
           <a
-            href="profissionais.html"
-            class="hover:text-yellow-400 transition-colors"
-            >PROFISSIONAIS</a
-          >
-          <a
             href="comunidade.html"
             class="hover:text-yellow-400 transition-colors"
             >COMUNIDADE</a
+          >
+          <a
+            href="profissionais.html"
+            class="hover:text-yellow-400 transition-colors"
+            >PROFISSIONAIS</a
           >
           <a href="contato.html" class="hover:text-yellow-400 transition-colors"
             >CONTATO</a
@@ -138,47 +86,33 @@
         <div class="hidden md:flex items-center gap-4">
           <a
             href="login.html"
-            data-auth-enter
-            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95"
+            data-auth-enter=""
+            class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95 order-2"
             >ENTRAR</a
           >
-          <div data-auth-profile class="relative group hidden">
-            <span
-              data-auth-user-name
-              class="text-white text-[10px] font-black uppercase tracking-widest"
-            ></span>
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
             <button
-              data-auth-btn
+              data-auth-btn=""
               class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
               aria-label="Menu do perfil"
             >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
             <div
-              data-auth-dropdown
+              data-auth-dropdown=""
               class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
             >
               <a
                 href="meuperfil.html#dados-pessoais"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Dados Pessoais</a
+                >Meu Perfil</a
               >
               <a
-                href="meuperfil.html#seguranca"
+                href="comunidade.html"
                 class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Segurança</a
+                >Minhas Comunidades</a
               >
-              <a
-                href="meuperfil.html#ingressos"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
-                >Meus Ingressos</a
-              >
-              <a
-                href="meuperfil.html#gerenciamento"
-                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50"
-                >Gerenciamento de Conta</a
-              >
-            </div>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
 
@@ -208,8 +142,8 @@
         <div class="h-px bg-white/20 my-4"></div>
         <a
           href="login.html"
-          data-auth-enter
-          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
           >Entrar</a
         >
       </nav>
@@ -244,7 +178,7 @@
                 type="text"
                 id="full-name"
                 name="full-name"
-                required
+                required=""
                 class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
                 placeholder="Ex: João Silva Sauro"
               />
@@ -261,7 +195,7 @@
                 type="email"
                 id="email"
                 name="email"
-                required
+                required=""
                 class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700 placeholder:text-slate-400"
                 placeholder="seu@email.com"
               />
@@ -279,7 +213,7 @@
                   type="password"
                   id="password"
                   name="password"
-                  required
+                  required=""
                   class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
                   placeholder="••••••••"
                 />
@@ -294,7 +228,7 @@
                   type="date"
                   id="birth-date"
                   name="birth-date"
-                  required
+                  required=""
                   class="form-input w-full px-6 py-4 rounded-2xl font-semibold text-slate-700"
                 />
               </div>
@@ -320,7 +254,7 @@
                 <input
                   type="checkbox"
                   name="terms"
-                  required
+                  required=""
                   class="custom-checkbox mt-1"
                 />
                 <span
@@ -367,7 +301,8 @@
       </p>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    <script src="auth-client.js"></script>
+
     <script>
       lucide.createIcons();
 
@@ -396,18 +331,46 @@
 
       document
         .getElementById("registration-form")
-        .addEventListener("submit", (e) => {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
-          // Lógica de submissão seria implementada aqui
+
           const button = e.target.querySelector("button");
+          const originalText = button.innerText;
+
           button.innerText = "Processando...";
           button.disabled = true;
           button.classList.add("opacity-50", "cursor-not-allowed");
 
-          setTimeout(() => {
-            alert("Cadastro realizado com sucesso! Redirecionando...");
-            window.location.href = "login.html";
-          }, 1500);
+          const fullName = document.getElementById("full-name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const birthDate = document.getElementById("birth-date").value;
+
+          let result;
+          try {
+            result = await window.BeloEventosAuth.register({
+              name: fullName,
+              email: email.toLowerCase(),
+              password,
+              birthDate,
+            });
+
+            if (result.success) {
+              alert("Cadastro realizado com sucesso! Redirecionando...");
+              window.location.href = "login.html";
+            } else {
+              alert(result.message || "Erro ao realizar cadastro.");
+              button.innerText = originalText;
+              button.disabled = false;
+              button.classList.remove("opacity-50", "cursor-not-allowed");
+            }
+          } catch (err) {
+            console.error("Erro no cadastro:", err);
+            alert("Ocorreu um erro inesperado no cadastro.");
+            button.innerText = originalText;
+            button.disabled = false;
+            button.classList.remove("opacity-50", "cursor-not-allowed");
+          }
         });
     </script>
   </body>

@@ -1,705 +1,273 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Profissional | Belo Eventos</title>
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja um Profissional | Belo Eventos</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z' fill='%236366F1'/><path d='M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z' fill='%2310B981'/><circle cx='24' cy='32' r='5' fill='%23f1f5f9'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="src/style.css">
     <style>
-        body {
-            font-family: "Inter", sans-serif;
-        }
-
-        .transition-header {
-            transition: all 0.3s ease;
-        }
-
-        .form-input {
-            background: #f1f5f9;
-            border: 2px solid transparent;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .form-input:focus {
-            background: white;
-            border-color: #0056e0;
-            box-shadow: 0 0 0 4px rgba(0, 86, 224, 0.1);
-            outline: none;
-        }
-
-        .custom-checkbox {
-            width: 1.25rem;
-            height: 1.25rem;
-            border-radius: 0.375rem;
-            border: 2px solid #cbd5e1;
-            appearance: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .custom-checkbox:checked {
-            background-color: #0056e0;
-            border-color: #0056e0;
-        }
-
-        .custom-checkbox:checked::after {
-            content: "✓";
-            color: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.75rem;
-            font-weight: 900;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3730a3 100%);
-        }
-
-        .form-section {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-section h3 {
-            font-size: 1.125rem;
-            font-weight: 900;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #334155;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.025em;
-        }
-
-        .form-group.error input,
-        .form-group.error textarea,
-        .form-group.error select {
-            border-color: #ef4444 !important;
-            background: #fee2e2;
-        }
-
-        .error-message {
-            color: #dc2626;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 0.25rem;
-        }
-
-        .grid-2-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2-cols {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-
-        .category-checkbox {
-            appearance: none;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
-            background: white;
-            cursor: pointer;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .category-checkbox:hover {
-            border-color: #1d4ed8;
-            background: #f0f4ff;
-        }
-
-        .category-checkbox:checked {
-            background: #1d4ed8;
-            border-color: #1d4ed8;
-            color: white;
-        }
-
-        .btn-primary {
-            background: #fbbf24;
-            color: #1e3a8a;
-            font-weight: 900;
-            padding: 1rem 2rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.875rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #f59e0b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.95);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #1d4ed8;
-            font-weight: 900;
-            padding: 1rem 2rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.875rem;
-            border: 2px solid #1d4ed8;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: #f0f4ff;
-        }
-
-        .success-message {
-            background: #dcfce7;
-            border: 2px solid #10b981;
-            color: #15803d;
-            padding: 1rem 1.5rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            display: none;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .success-message.show {
-            display: flex;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .form-card { background: white; border-radius: 32px; border: 1px solid #e2e8f0; }
+        .input-field { background: #f8fafc; border: 2px solid transparent; border-radius: 16px; transition: all 0.2s; }
+        .input-field:focus { background: white; border-color: #1d4ed8; outline: none; }
+        .section-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #64748b; margin-bottom: 8px; display: block; }
     </style>
 </head>
-
-<body class="bg-slate-100 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden flex flex-col min-h-screen">
 
     <!-- HEADER -->
-    <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
-        <div class="container mx-auto px-4 flex items-center justify-between">
-            <div class="logo-container flex items-center gap-4 cursor-pointer"
-                onclick="window.location.href='index.html'">
-                <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="logo-mark transition-transform duration-300 hover:scale-105">
-                    <path
-                        d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
-                        fill="#6366F1" />
-                    <path
-                        d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
-                        fill="#10B981" />
-                    <circle cx="24" cy="32" r="5" fill="#1d4ed8" />
-                </svg>
-                <div class="flex flex-col text-left">
-                    <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span
-                            class="text-indigo-300">Eventos</span></span>
-                    <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e
-                        Conexão</span>
-                </div>
-            </div>
-
-            <!-- Desktop Nav -->
-            <nav
-              class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm"
-            >
-              <a
-                href="index.html"
-                class="hover:text-yellow-400 transition-colors"
-                >INÍCIO</a
-              >
-              <a
-                href="categorias.html"
-                class="hover:text-yellow-400 transition-colors"
-                >PROGRAMAÇÃO</a
-              >
-              <a
-                href="profissionais.html"
-                class="hover:text-yellow-400 transition-colors"
-                >PROFISSIONAIS</a
-              >
-              <a
-                href="comunidade.html"
-                class="hover:text-yellow-400 transition-colors"
-                >COMUNIDADE</a
-              >
-              <a href="contato.html" class="hover:text-yellow-400 transition-colors"
-                >CONTATO</a
-              >
-            </nav>
-
-            <div class="hidden md:flex items-center gap-4">
-                <a href="login.html" data-auth-enter
-                    class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
-                <div data-auth-profile class="relative group hidden">
-                    <span data-auth-user-name
-                        class="text-white text-[10px] font-black uppercase tracking-widest"></span>
-                    <button
-                        class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden"
-                        aria-label="Menu do perfil">
-                        <i data-lucide="user" class="text-white w-5 h-5"></i>
-                    </button>
-                    <div data-auth-dropdown
-                        class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                    </div>
-                </div>
-            </div>
-
-            <button class="md:hidden text-white" id="menu-toggle">
-                <i data-lucide="menu" class="w-7 h-7"></i>
-            </button>
+    <header id="main-header" class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 py-4">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <div class="logo-container flex items-center gap-3 group cursor-pointer" onclick="window.location.href = 'index.html'">
+          <div class="relative">
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+              <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#6366F1"></path>
+              <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10B981"></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors">Belo<span class="text-indigo-300 group-hover:text-white">Eventos</span></span>
+            <span class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5">Cultura e Conexão</span>
+          </div>
         </div>
+
+        <nav class="hidden md:flex items-center gap-10">
+          <a href="categorias.html" class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all">Programação</a>
+          <a href="comunidade.html" class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all">Comunidade</a>
+          <a href="profissionais.html" class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all">Profissionais</a>
+          <a href="contato.html" class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all">Contato</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a href="login.html" data-auth-enter class="bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all order-2">ENTRAR</a>
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
+            <button data-auth-btn class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center cursor-pointer">
+              <i data-lucide="user" class="text-white w-5 h-5"></i>
+            </button>
+            <div data-auth-dropdown="" class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+              <a href="meuperfil.html#dados-pessoais" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Meu Perfil</a>
+              <a href="comunidade.html" class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50">Minhas Comunidades</a>
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button>
+            </div>
+          </div>
+        </div>
+        <button class="md:hidden text-white" id="menu-toggle"><i data-lucide="menu" class="w-7 h-7"></i></button>
+      </div>
     </header>
 
     <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
-        <div class="flex justify-end">
-            <button id="menu-close" class="text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
-        </div>
-        <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
-            <a href="categorias.html">Programação</a>
-            <a href="comunidade.html">Comunidade</a>
-            <a href="profissionais.html">Profissionais</a>
-            <div class="h-px bg-white/20 my-4"></div>
-            <a href="login.html" data-auth-enter
-                class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
-        </nav>
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300">
+      <div class="flex justify-end">
+        <button id="menu-close" class="text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
+      </div>
+      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Programação</a>
+        <a href="profissionais.html">Profissionais</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="contato.html">Contato</a>
+      </nav>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-gradient pt-32 pb-16 px-4 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white"></div>
-            <div class="absolute bottom-0 right-20 w-96 h-96 rounded-full bg-indigo-300"></div>
-        </div>
-        <div class="container mx-auto relative z-10 text-center">
-            <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white leading-none mb-4">
-                Cadastro de<br /><span class="text-yellow-400">Profissional</span>
-            </h1>
-            <p class="text-white/70 text-lg font-medium max-w-xl mx-auto mt-4">
-                Cadastre-se como profissional de eventos e conecte-se com centenas de produtores em Pernambuco.
-            </p>
-        </div>
-    </section>
-
     <!-- MAIN FORM -->
-    <main class="container mx-auto px-4 py-12 flex-grow max-w-4xl">
+    <main class="flex-grow pt-32 pb-20 px-4">
+        <div class="container mx-auto max-w-3xl">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">Seja um <span class="text-blue-600">Parceiro</span></h1>
+                <p class="text-slate-500 font-medium mt-4">Junte-se à maior rede de profissionais de eventos de Belo Jardim.</p>
+            </div>
 
-        <!-- Success Message -->
-        <div id="success-message" class="success-message">
-            <i data-lucide="check-circle" class="w-5 h-5"></i>
-            <span>Profissional cadastrado com sucesso! Você será redirecionado em instantes...</span>
+            <div class="form-card p-8 md:p-12 shadow-2xl shadow-slate-200/50">
+                <form id="prof-registration-form" class="space-y-10">
+                    <!-- Informações Básicas -->
+                    <section>
+                        <span class="section-tag">Identificação</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 ml-1">Nome Artístico ou Empresa</label>
+                                <input type="text" id="prof-name" required class="input-field w-full px-5 py-4 text-sm font-bold" placeholder="ex: DJ Robson">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 ml-1">Categoria de Serviço</label>
+                                <select id="prof-category" required class="input-field w-full px-5 py-4 text-sm font-bold appearance-none bg-white">
+                                    <option value="Música">Música / DJ</option>
+                                    <option value="Segurança">Segurança</option>
+                                    <option value="Fotografia">Fotografia</option>
+                                    <option value="Catering">Catering / Buffet</option>
+                                    <option value="Produção">Produção Técnica</option>
+                                    <option value="Outros">Outros Serviços</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Detalhes do Serviço -->
+                    <section>
+                        <span class="section-tag">O que você oferece</span>
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 ml-1">Descrição Curta</label>
+                                <textarea id="prof-description" required class="input-field w-full px-5 py-4 text-sm font-bold h-32 resize-none" placeholder="Conte um pouco sobre sua experiência e diferenciais..."></textarea>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-slate-700 ml-1">Preço da Diária (R$)</label>
+                                    <input type="number" id="prof-price" required class="input-field w-full px-5 py-4 text-sm font-bold" placeholder="ex: 500,00">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-slate-700 ml-1">URL da Foto de Perfil</label>
+                                    <input type="url" id="prof-image" required class="input-field w-full px-5 py-4 text-sm font-bold" placeholder="https://exemplo.com/foto.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contato -->
+                    <section>
+                        <span class="section-tag">Canais de Contato</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 ml-1">WhatsApp de Contato</label>
+                                <input type="tel" id="prof-phone" required class="input-field w-full px-5 py-4 text-sm font-bold" placeholder="(81) 99999-9999">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 ml-1">Email Profissional</label>
+                                <input type="email" id="prof-email" required class="input-field w-full px-5 py-4 text-sm font-bold" placeholder="contato@empresa.com">
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="pt-6">
+                        <button type="submit" id="submit-btn" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-black py-5 rounded-2xl uppercase tracking-widest text-xs transition-all shadow-xl shadow-blue-700/20 active:scale-95 flex items-center justify-center gap-3">
+                            CONCLUIR CADASTRO
+                        </button>
+                        <p class="text-center text-[10px] text-slate-400 font-bold mt-6 uppercase tracking-widest">Ao clicar, você concorda com nossos termos de parceria.</p>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <form id="form-cadastro" class="space-y-6">
-
-            <!-- SEÇÃO: INFORMAÇÕES PESSOAIS -->
-            <div class="form-section">
-                <h3>
-                    <i data-lucide="user" class="w-5 h-5 text-blue-700"></i>
-                    Informações Pessoais
-                </h3>
-                <div class="grid-2-cols">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo *</label>
-                        <input type="text" id="nome" name="nome" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: João da Silva" required />
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: joao@email.com" required />
-                        <span class="error-message"></span>
-                    </div>
-                </div>
-
-                <div class="grid-2-cols">
-                    <div class="form-group">
-                        <label for="telefone">Telefone *</label>
-                        <input type="tel" id="telefone" name="telefone" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: (81) 99999-9999" required />
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="cpf">CPF *</label>
-                        <input type="text" id="cpf" name="cpf" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: 123.456.789-00" required />
-                        <span class="error-message"></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEÇÃO: DADOS PROFISSIONAIS -->
-            <div class="form-section">
-                <h3>
-                    <i data-lucide="briefcase" class="w-5 h-5 text-blue-700"></i>
-                    Dados Profissionais
-                </h3>
-
-                <div class="form-group">
-                    <label for="categoria">Categoria de Serviço *</label>
-                    <select id="categoria" name="categoria" class="form-input w-full px-4 py-3 rounded-lg" required>
-                        <option value="">Selecione uma categoria</option>
-                        <option value="DJ">DJ / Animação</option>
-                        <option value="Fotografia">Fotografia</option>
-                        <option value="Videografia">Videografia</option>
-                        <option value="Catering">Catering / Buffet</option>
-                        <option value="Decoracao">Decoração</option>
-                        <option value="Som">Som e Iluminação</option>
-                        <option value="Banda">Banda / Música ao Vivo</option>
-                        <option value="Locacao">Locação de Espaço</option>
-                        <option value="Garcom">Serviço de Garcom</option>
-                        <option value="Florista">Florista</option>
-                        <option value="Bolo">Confeitaria</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="descricao">Descrição do Serviço *</label>
-                    <textarea id="descricao" name="descricao" class="form-input w-full px-4 py-3 rounded-lg" rows="5"
-                        placeholder="Descreva seu serviço, experiência e diferenciais..." required></textarea>
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="grid-2-cols">
-                    <div class="form-group">
-                        <label for="preco">Preço Diária (R$) *</label>
-                        <input type="number" id="preco" name="preco" class="form-input w-full px-4 py-3 rounded-lg"
-                            min="0" step="0.01" placeholder="ex: 500.00" required />
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="cidade">Cidade *</label>
-                        <input type="text" id="cidade" name="cidade" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: Belo Jardim" value="Belo Jardim" />
-                        <span class="error-message"></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEÇÃO: EXPERIÊNCIA E PORTFÓLIO -->
-            <div class="form-section">
-                <h3>
-                    <i data-lucide="star" class="w-5 h-5 text-blue-700"></i>
-                    Experiência e Portfólio
-                </h3>
-
-                <div class="form-group">
-                    <label for="experiencia">Anos de Experiência *</label>
-                    <input type="number" id="experiencia" name="experiencia"
-                        class="form-input w-full px-4 py-3 rounded-lg" min="0" max="70" placeholder="ex: 5" required />
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="foto">URL da Foto de Perfil *</label>
-                    <input type="url" id="foto" name="foto" class="form-input w-full px-4 py-3 rounded-lg"
-                        placeholder="ex: https://exemplo.com/foto.jpg" required />
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="portfolio">Link do Portfólio / Instagram (Opcional)</label>
-                    <input type="url" id="portfolio" name="portfolio" class="form-input w-full px-4 py-3 rounded-lg"
-                        placeholder="ex: https://instagram.com/seu_perfil" />
-                    <span class="error-message"></span>
-                </div>
-            </div>
-
-            <!-- SEÇÃO: LOCALIZAÇÃO E COBERTURA -->
-            <div class="form-section">
-                <h3>
-                    <i data-lucide="map-pin" class="w-5 h-5 text-blue-700"></i>
-                    Localização e Cobertura
-                </h3>
-
-                <div class="grid-2-cols">
-                    <div class="form-group">
-                        <label for="endereco">Endereço *</label>
-                        <input type="text" id="endereco" name="endereco" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: Rua das Flores, 123" required />
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="bairro">Bairro *</label>
-                        <input type="text" id="bairro" name="bairro" class="form-input w-full px-4 py-3 rounded-lg"
-                            placeholder="ex: Centro" required />
-                        <span class="error-message"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Cidades de Cobertura *</label>
-                    <div class="categories-grid">
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Belo Jardim" class="custom-checkbox" />
-                            Belo Jardim
-                        </label>
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Recife" class="custom-checkbox" />
-                            Recife
-                        </label>
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Caruaru" class="custom-checkbox" />
-                            Caruaru
-                        </label>
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Garanhuns" class="custom-checkbox" />
-                            Garanhuns
-                        </label>
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Olinda" class="custom-checkbox" />
-                            Olinda
-                        </label>
-                        <label class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                            <input type="checkbox" name="cobertura" value="Outras Cidades" class="custom-checkbox" />
-                            Outras Cidades
-                        </label>
-                    </div>
-                    <span class="error-message" id="cobertura-error"></span>
-                </div>
-            </div>
-
-            <!-- SEÇÃO: TERMOS -->
-            <div class="form-section">
-                <h3>
-                    <i data-lucide="shield-check" class="w-5 h-5 text-blue-700"></i>
-                    Termos e Condições
-                </h3>
-
-                <label class="flex items-start gap-3 mb-4">
-                    <input type="checkbox" id="termos" name="termos" class="custom-checkbox mt-1" required />
-                    <span class="text-sm font-semibold text-slate-700">
-                        Concordo com os <a href="#" class="text-blue-700 font-bold hover:underline">Termos de
-                            Serviço</a> e <a href="#" class="text-blue-700 font-bold hover:underline">Política de
-                            Privacidade</a>
-                    </span>
-                </label>
-
-                <label class="flex items-start gap-3">
-                    <input type="checkbox" id="newsletter" name="newsletter" class="custom-checkbox mt-1" />
-                    <span class="text-sm font-semibold text-slate-700">
-                        Desejo receber novidades e oportunidades por e-mail
-                    </span>
-                </label>
-            </div>
-
-            <!-- BOTÕES -->
-            <div class="flex gap-4 pb-12">
-                <button type="button" class="btn-secondary flex-1" onclick="window.history.back()">
-                    Cancelar
-                </button>
-                <button type="submit" class="btn-primary flex-1">
-                    Cadastrar Profissional
-                </button>
-            </div>
-
-        </form>
-
     </main>
 
     <!-- FOOTER -->
-    <footer class="p-8 text-center bg-slate-900">
-        <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
-            © 2026 Belo Eventos S.A. · Belo Jardim, PE
-        </p>
+    <footer id="contato-section" class="border-t border-slate-200 pt-20 pb-12 px-4 bg-blue-900 text-white">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#4f46e5"></path>
+                <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10b981"></path>
+              </svg>
+              <span class="text-blue-700 font-black text-xl tracking-tighter uppercase">Belo Eventos</span>
+            </div>
+            <p class="text-white/70 text-lg leading-relaxed max-w-sm">A maior plataforma de cultura e entretenimento de Belo Jardim e região.</p>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">Explore</h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="categorias.html" class="hover:text-blue-600 transition-colors">Programação</a>
+              <a href="profissionais.html" class="hover:text-blue-600 transition-colors">Profissionais</a>
+              <a href="comunidade.html" class="hover:text-blue-600 transition-colors">Comunidade</a>
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-black text-white uppercase tracking-widest mb-6">Contato</h4>
+            <nav class="flex flex-col gap-4 text-white/70 font-medium">
+              <a href="contato.html" class="hover:text-blue-600 transition-colors">Ajuda</a>
+              <a href="profissionais.html" class="hover:text-blue-600 transition-colors">Anunciar</a>
+            </nav>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
+          <p>© 2026 Belo Eventos. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+          </div>
+        </div>
+      </div>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    <script src="auth-client.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
 
-        // Header scroll
-        var header = document.getElementById("main-header");
-        window.addEventListener("scroll", function () {
-            if (window.scrollY > 50) {
-                header.classList.add("bg-blue-600", "shadow-xl", "py-2");
-                header.classList.remove("bg-blue-700", "py-4");
-            } else {
-                header.classList.add("bg-blue-700", "py-4");
-                header.classList.remove("bg-blue-600", "shadow-xl", "py-2");
-            }
+        // --- HEADER SCROLL ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            header.classList.add('bg-blue-600', 'shadow-xl', 'py-2');
+            header.classList.remove('bg-blue-700', 'py-4');
+          } else {
+            header.classList.add('bg-blue-700', 'py-4');
+            header.classList.remove('bg-blue-600', 'shadow-xl', 'py-2');
+          }
         });
 
-        // Mobile Menu
-        var menuToggle = document.getElementById("menu-toggle");
-        var menuClose = document.getElementById("menu-close");
-        var mobileMenu = document.getElementById("mobile-menu");
+        // --- FORM SUBMISSION ---
+        const form = document.getElementById('prof-registration-form');
+        const submitBtn = document.getElementById('submit-btn');
 
-        menuToggle.addEventListener("click", function () {
-            mobileMenu.classList.remove("hidden");
-        });
-
-        menuClose.addEventListener("click", function () {
-            mobileMenu.classList.add("hidden");
-        });
-
-        // Form Validation and Submission
-        var form = document.getElementById("form-cadastro");
-        var successMessage = document.getElementById("success-message");
-
-        function validarEmail(email) {
-            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email);
-        }
-
-        function validarCPF(cpf) {
-            cpf = cpf.replace(/\D/g, "");
-            return cpf.length === 11;
-        }
-
-        function validarTelefone(telefone) {
-            var regex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
-            return regex.test(telefone);
-        }
-
-        function validarFormulario() {
-            var campos = form.querySelectorAll("[required]");
-            var valido = true;
-
-            campos.forEach(function (campo) {
-                var grupo = campo.closest(".form-group");
-                if (!grupo) return;
-
-                var erro = grupo.querySelector(".error-message");
-                grupo.classList.remove("error");
-                if (erro) erro.textContent = "";
-
-                if (campo.type === "checkbox") {
-                    if (!campo.checked) {
-                        grupo.classList.add("error");
-                        if (erro) erro.textContent = "Este campo é obrigatório";
-                        valido = false;
-                    }
-                } else if (campo.type === "email") {
-                    if (!validarEmail(campo.value)) {
-                        grupo.classList.add("error");
-                        if (erro) erro.textContent = "E-mail inválido";
-                        valido = false;
-                    }
-                } else if (campo.name === "cpf") {
-                    if (!validarCPF(campo.value)) {
-                        grupo.classList.add("error");
-                        if (erro) erro.textContent = "CPF inválido";
-                        valido = false;
-                    }
-                } else if (campo.name === "telefone") {
-                    if (!validarTelefone(campo.value)) {
-                        grupo.classList.add("error");
-                        if (erro) erro.textContent = "Telefone inválido";
-                        valido = false;
-                    }
-                } else if (campo.type === "number") {
-                    if (!campo.value || parseFloat(campo.value) < 0) {
-                        grupo.classList.add("error");
-                        if (erro) erro.textContent = "Valor inválido";
-                        valido = false;
-                    }
-                } else if (!campo.value.trim()) {
-                    grupo.classList.add("error");
-                    if (erro) erro.textContent = "Este campo é obrigatório";
-                    valido = false;
-                }
-            });
-
-            // Validar cobertura
-            var coberutaCheckboxes = document.querySelectorAll("input[name='cobertura']");
-            var algumaSelecionada = Array.from(coberutaCheckboxes).some(function (cb) { return cb.checked; });
-            if (!algumaSelecionada) {
-                var coberturasError = document.getElementById("cobertura-error");
-                coberturasError.textContent = "Selecione pelo menos uma cidade";
-                valido = false;
-            }
-
-            return valido;
-        }
-
-        form.addEventListener("submit", function (e) {
+        if (form) {
+          form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            const name = document.getElementById('prof-name').value;
+            const category = document.getElementById('prof-category').value;
+            const description = document.getElementById('prof-description').value;
+            const price = document.getElementById('prof-price').value;
+            const image = document.getElementById('prof-image').value;
+            const phone = document.getElementById('prof-phone').value;
+            const email = document.getElementById('prof-email').value;
 
-            if (!validarFormulario()) {
-                console.log("Formulário com erros");
-                return;
+            const professionalData = {
+              nome: name,
+              categoria: category,
+              descricaoCurta: description.substring(0, 100) + '...',
+              bio: description,
+              precioDiaria: parseFloat(price),
+              imagem: image,
+              telefone: phone,
+              email: email,
+              avaliacao: 5.0,
+              totalAvaliacoes: 0,
+              badge: "VERIFICADO"
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i data-lucide=\"loader-2\" class=\"w-5 h-5 animate-spin\"></i> PROCESSANDO...';
+            lucide.createIcons();
+
+            try {
+              const result = await window.BeloEventosAuth.apiFetch('/professionals', {
+                method: 'POST',
+                body: JSON.stringify(profData)
+              });
+
+
+              if (result) {
+                alert('Cadastro realizado com sucesso! Bem-vindo à rede Belo Eventos.');
+                window.location.href = 'profissionais.html';
+              } else {
+                alert('Erro ao realizar cadastro. Tente novamente.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'CONCLUIR CADASTRO';
+              }
+            } catch (err) {
+              console.error('Erro:', err);
+              alert('Falha na conexão com o servidor.');
+              submitBtn.disabled = false;
+              submitBtn.innerText = 'CONCLUIR CADASTRO';
             }
-
-            // Coletar dados do formulário
-            var formData = new FormData(form);
-            var dadosProfissional = {};
-            var cidades = [];
-
-            formData.forEach(function (value, key) {
-                if (key === "cobertura") {
-                    cidades.push(value);
-                } else {
-                    dadosProfissional[key] = value;
-                }
-            });
-
-            dadosProfissional.cobertura = cidades;
-            dadosProfissional.id = "prof_" + Date.now();
-            dadosProfissional.avaliacao = 5;
-            dadosProfissional.totalAvaliacoes = 1;
-            dadosProfissional.badge = "VERIFICADO";
-            dadosProfissional.descricaoCurta = dadosProfissional.descricao.substring(0, 60) + "...";
-
-            // Salvar no localStorage
-            var profissionais = JSON.parse(localStorage.getItem("profissionais_customizados") || "{}");
-            profissionais[dadosProfissional.id] = dadosProfissional;
-            localStorage.setItem("profissionais_customizados", JSON.stringify(profissionais));
-
-            // Mostrar mensagem de sucesso
-            successMessage.classList.add("show");
-
-            // Redirecionar após 3 segundos
-            setTimeout(function () {
-                window.location.href = "profissionais.html";
-            }, 3000);
-        });
+          });
+        }
+      });
     </script>
 </body>
-
 </html>

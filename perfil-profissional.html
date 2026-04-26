@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -23,7 +23,12 @@
         transition: all 0.3s ease;
       }
       .hero-bg {
-        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #312e81 100%);
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #1d4ed8 60%,
+          #312e81 100%
+        );
       }
       .badge-verificado {
         background: linear-gradient(135deg, #10b981, #059669);
@@ -55,60 +60,146 @@
     </style>
   </head>
   <body class="bg-slate-100 min-h-screen flex flex-col">
-
     <!-- HEADER -->
-    <header id="main-header" class="fixed top-0 w-full z-50 py-4 bg-blue-700 transition-header">
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div class="logo-container flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
-          <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-mark transition-transform duration-300 hover:scale-105">
-            <path d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z" fill="#6366F1"/>
-            <path d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z" fill="#10B981"/>
-            <circle cx="24" cy="32" r="5" fill="#1d4ed8"/>
-          </svg>
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-50 bg-blue-700 transition-all duration-500 ease-in-out py-4"
+    >
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <!-- Logo: Now the primary home link -->
+        <div
+          class="logo-container flex items-center gap-3 group cursor-pointer"
+          onclick="window.location.href = 'index.html'"
+        >
+          <div class="relative">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="logo-mark transition-all duration-500 group-hover:rotate-12 group-hover:scale-110"
+            >
+              <path
+                d="M24 10C24 7.23858 26.2386 5 29 5H40C49.3888 5 57 12.6112 57 22C57 31.3888 49.3888 39 40 39H24V10Z"
+                fill="#6366F1"
+              ></path>
+              <path
+                d="M24 25H44C51.732 25 58 31.268 58 39C58 46.732 51.732 53 44 53H29C26.2386 53 24 50.7614 24 48V25Z"
+                fill="#10B981"
+              ></path>
+              <circle cx="24" cy="32" r="5" fill="#1d4ed8"></circle>
+            </svg>
+            <div
+              class="absolute -inset-1 bg-white/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
           <div class="flex flex-col text-left">
-            <span class="text-white text-2xl font-black tracking-tighter leading-none">Belo<span class="text-indigo-300">Eventos</span></span>
-            <span class="text-indigo-200/60 text-[8px] font-bold uppercase tracking-[0.4em] mt-1">Cultura e Conexão</span>
+            <span
+              class="text-white text-2xl font-black tracking-tighter leading-none group-hover:text-yellow-400 transition-colors"
+              >Belo<span class="text-indigo-300 group-hover:text-white"
+                >Eventos</span
+              ></span
+            >
+            <span
+              class="text-indigo-200/60 text-[7px] font-bold uppercase tracking-[0.5em] mt-1.5"
+              >Cultura e Conexão</span
+            >
           </div>
         </div>
 
-        <nav class="hidden md:flex items-center gap-8 text-white/90 font-medium text-sm">
-          <a href="index.html" class="hover:text-yellow-400 transition-colors">INÍCIO</a>
-          <a href="categorias.html" class="hover:text-yellow-400 transition-colors">PROGRAMAÇÃO</a>
-          <a href="profissionais.html" class="hover:text-yellow-400 transition-colors">PROFISSIONAIS</a>
-          <a href="comunidade.html" class="hover:text-yellow-400 transition-colors">COMUNIDADE</a>
-          <a href="contato.html" class="hover:text-yellow-400 transition-colors">CONTATO</a>
+        <!-- Desktop Nav: Redesigned without 'INÍCIO' -->
+        <nav class="hidden md:flex items-center gap-10">
+          <a
+            href="categorias.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Programação</a
+          >
+          <a
+            href="comunidade.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Comunidade</a
+          >
+          <a
+            href="profissionais.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Profissionais</a
+          >
+          <a
+            href="contato.html"
+            class="text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >Contato</a
+          >
         </nav>
 
-        <div class="hidden md:flex items-center gap-4">
-          <a href="login.html" data-auth-enter class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-6 py-2 rounded-full text-sm transition-all shadow-md active:scale-95">ENTRAR</a>
-          <div data-auth-profile class="relative group hidden">
-            <span data-auth-user-name class="text-white text-[10px] font-black uppercase tracking-widest"></span>
-            <button class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden" aria-label="Menu do perfil">
+        <!-- Actions -->
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="login.html"
+            data-auth-enter=""
+            class="relative overflow-hidden group bg-yellow-400 hover:bg-white text-blue-900 font-black px-8 py-2.5 rounded-full text-xs tracking-widest transition-all shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:shadow-yellow-400/50 order-2"
+          >
+            <span class="relative z-10">ENTRAR</span>
+          </a>
+          <!-- ... (Rest of auth profile) ... -->
+          <div data-auth-profile="" class="relative group hidden order-3 ml-1">
+            <button
+              data-auth-btn=""
+              class="w-10 h-10 rounded-full bg-blue-800 border-2 border-yellow-400 flex items-center justify-center overflow-hidden cursor-pointer"
+              aria-label="Menu do perfil"
+            >
               <i data-lucide="user" class="text-white w-5 h-5"></i>
             </button>
-            <div data-auth-dropdown class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"></div>
+            <div
+              data-auth-dropdown=""
+              class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            >
+              <a
+                href="meuperfil.html#dados-pessoais"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Meu Perfil</a
+              >
+              <a
+                href="comunidade.html"
+                class="block px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+                >Minhas Comunidades</a
+              >
+              <button type="button" data-auth-logout-btn class="w-full text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-rose-600 hover:bg-rose-50">Sair</button></div>
           </div>
         </div>
-
-        <button class="md:hidden text-white" id="menu-toggle">
-          <i data-lucide="menu" class="w-7 h-7"></i>
-        </button>
       </div>
+
+      <!-- Mobile Toggle -->
+      <button class="md:hidden text-white" id="menu-toggle">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
     </header>
 
     <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden">
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-blue-700 z-[60] flex flex-col p-8 hidden animate-in fade-in duration-300"
+    >
       <div class="flex justify-end">
-        <button id="menu-close" class="text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <button id="menu-close" class="text-white">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
       </div>
-      <nav class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight">
+      <nav
+        class="flex flex-col gap-6 mt-12 text-white text-2xl font-bold uppercase tracking-tight"
+      >
         <a href="index.html">Início</a>
         <a href="categorias.html">Programação</a>
-        <a href="profissionais.html">Profissionais</a>
+        <a href="profissionais.html" class="text-yellow-400">Profissionais</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="contato.html">Contato</a>
         <div class="h-px bg-white/20 my-4"></div>
-        <a href="login.html" data-auth-enter class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center">Entrar</a>
+        <a
+          href="login.html"
+          data-auth-enter=""
+          class="bg-yellow-400 text-blue-900 py-4 rounded-xl text-center order-2"
+          >Entrar</a
+        >
       </nav>
     </div>
 
@@ -116,10 +207,18 @@
     <div class="hero-bg pt-24 pb-10 px-4">
       <div class="container mx-auto">
         <!-- Breadcrumb -->
-        <nav class="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest mb-8">
-          <a href="index.html" class="hover:text-white transition-colors">Início</a>
+        <nav
+          class="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest mb-8"
+        >
+          <a href="index.html" class="hover:text-white transition-colors"
+            >Início</a
+          >
           <i data-lucide="chevron-right" class="w-3 h-3"></i>
-          <a href="profissionais.html" class="hover:text-white transition-colors">Profissionais</a>
+          <a
+            href="profissionais.html"
+            class="hover:text-white transition-colors"
+            >Profissionais</a
+          >
           <i data-lucide="chevron-right" class="w-3 h-3"></i>
           <span class="text-white/80" id="breadcrumb-nome">Carregando...</span>
         </nav>
@@ -127,56 +226,108 @@
     </div>
 
     <!-- ESTADO: NÃO ENCONTRADO -->
-    <div id="not-found-state" class="container mx-auto px-4 py-32 text-center flex-grow">
-      <div class="w-24 h-24 bg-slate-200 rounded-[2rem] flex items-center justify-center mx-auto mb-8">
+    <div
+      id="not-found-state"
+      class="container mx-auto px-4 py-32 text-center flex-grow"
+    >
+      <div
+        class="w-24 h-24 bg-slate-200 rounded-[2rem] flex items-center justify-center mx-auto mb-8"
+      >
         <i data-lucide="user-x" class="text-slate-400 w-12 h-12"></i>
       </div>
-      <h2 class="text-4xl font-black text-slate-700 uppercase tracking-tighter mb-3">Profissional não encontrado</h2>
-      <p class="text-slate-400 font-medium mb-8">O ID informado não corresponde a nenhum cadastro.</p>
-      <a href="profissionais.html" class="bg-blue-700 hover:bg-blue-600 text-white font-black px-8 py-4 rounded-full uppercase tracking-widest text-sm transition-all inline-block">
+      <h2
+        class="text-4xl font-black text-slate-700 uppercase tracking-tighter mb-3"
+      >
+        Profissional não encontrado
+      </h2>
+      <p class="text-slate-400 font-medium mb-8">
+        O ID informado não corresponde a nenhum cadastro.
+      </p>
+      <a
+        href="profissionais.html"
+        class="bg-blue-700 hover:bg-blue-600 text-white font-black px-8 py-4 rounded-full uppercase tracking-widest text-sm transition-all inline-block"
+      >
         Ver todos os profissionais
       </a>
     </div>
 
     <!-- CONTEÚDO DO PERFIL -->
     <main id="perfil-content" class="container mx-auto px-4 py-12 flex-grow">
-
       <!-- LAYOUT PRINCIPAL -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
         <!-- ====== SIDEBAR ESQUERDA ====== -->
         <aside class="lg:col-span-4 flex flex-col gap-6">
-
           <!-- Foto do Profissional -->
-          <div class="foto-perfil rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white" style="height: 420px;">
-            <img id="prof-imagem" src="" alt="Foto do profissional" class="w-full h-full object-cover" />
+          <div
+            class="foto-perfil rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white"
+            style="height: 420px"
+          >
+            <img
+              id="prof-imagem"
+              src=""
+              alt="Foto do profissional"
+              class="w-full h-full object-cover"
+            />
           </div>
 
           <!-- Card de Preço -->
           <div class="price-card rounded-[2rem] p-8 shadow-xl">
-            <p class="text-white/60 text-xs font-black uppercase tracking-widest mb-1">Valor da Diária</p>
-            <p id="prof-preco" class="text-5xl font-black text-white leading-none mb-1">—</p>
-            <p class="text-white/50 text-xs font-bold mt-1">Por dia de evento</p>
+            <p
+              class="text-white/60 text-xs font-black uppercase tracking-widest mb-1"
+            >
+              Valor da Diária
+            </p>
+            <p
+              id="prof-preco"
+              class="text-5xl font-black text-white leading-none mb-1"
+            >
+              —
+            </p>
+            <p class="text-white/50 text-xs font-bold mt-1">
+              Por dia de evento
+            </p>
             <div class="h-px bg-white/10 my-6"></div>
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-emerald-400/20 flex items-center justify-center shrink-0">
-                <i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>
+              <div
+                class="w-8 h-8 rounded-full bg-emerald-400/20 flex items-center justify-center shrink-0"
+              >
+                <i
+                  data-lucide="check-circle"
+                  class="text-emerald-400 w-4 h-4"
+                ></i>
               </div>
               <div>
-                <p class="text-white text-xs font-black uppercase tracking-widest">Preço negociável</p>
-                <p class="text-white/50 text-[10px] font-medium">Para eventos com mais de 1 diária</p>
+                <p
+                  class="text-white text-xs font-black uppercase tracking-widest"
+                >
+                  Preço negociável
+                </p>
+                <p class="text-white/50 text-[10px] font-medium">
+                  Para eventos com mais de 1 diária
+                </p>
               </div>
             </div>
           </div>
 
           <!-- Badge Verificado -->
-          <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm flex items-center gap-4">
-            <div class="w-12 h-12 badge-verificado rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
+          <div
+            class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm flex items-center gap-4"
+          >
+            <div
+              class="w-12 h-12 badge-verificado rounded-2xl flex items-center justify-center shrink-0 shadow-lg"
+            >
               <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
             </div>
             <div>
-              <p id="prof-badge-texto" class="text-sm font-black text-slate-900 uppercase tracking-wider">Verificado pelo App</p>
-              <p class="text-slate-400 text-xs font-medium mt-0.5">Identidade e qualificações confirmadas</p>
+              <p
+                id="prof-badge-texto"
+                class="text-sm font-black text-slate-900 uppercase tracking-wider"
+              >
+                Verificado pelo App
+              </p>
+              <p class="text-slate-400 text-xs font-medium mt-0.5">
+                Identidade e qualificações confirmadas
+              </p>
             </div>
           </div>
 
@@ -190,41 +341,69 @@
           </button>
 
           <!-- Voltar ao catálogo -->
-          <a href="profissionais.html" class="flex items-center justify-center gap-2 text-slate-400 hover:text-blue-700 text-xs font-black uppercase tracking-widest transition-colors py-2">
+          <a
+            href="profissionais.html"
+            class="flex items-center justify-center gap-2 text-slate-400 hover:text-blue-700 text-xs font-black uppercase tracking-widest transition-colors py-2"
+          >
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             Voltar ao catálogo
           </a>
-
         </aside>
 
         <!-- ====== CONTEÚDO PRINCIPAL ====== -->
         <div class="lg:col-span-8 flex flex-col gap-8">
-
           <!-- Cabeçalho do Profissional -->
-          <div class="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm">
-
+          <div
+            class="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm"
+          >
             <!-- Categoria e badge de avaliação -->
             <div class="flex flex-wrap items-center gap-3 mb-6">
-              <span id="prof-categoria-badge" class="bg-blue-50 text-blue-700 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full border border-blue-100 flex items-center gap-1.5">
-                <i id="prof-categoria-icon" data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+              <span
+                id="prof-categoria-badge"
+                class="bg-blue-50 text-blue-700 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full border border-blue-100 flex items-center gap-1.5"
+              >
+                <i
+                  id="prof-categoria-icon"
+                  data-lucide="briefcase"
+                  class="w-3.5 h-3.5"
+                ></i>
                 <span id="prof-categoria-texto">—</span>
               </span>
-              <span id="prof-status-badge" class="badge-verificado text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full">✓ Verificado</span>
+              <span
+                id="prof-status-badge"
+                class="badge-verificado text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
+                >✓ Verificado</span
+              >
             </div>
 
             <!-- Nome -->
-            <h1 id="prof-nome" class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-6">—</h1>
+            <h1
+              id="prof-nome"
+              class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-6"
+            >
+              —
+            </h1>
 
             <!-- Avaliação -->
             <div class="flex flex-wrap items-center gap-4 mb-8">
               <div class="flex items-center gap-1.5">
                 <div id="prof-estrelas" class="flex items-center gap-0.5"></div>
-                <span id="prof-avaliacao-num" class="text-2xl font-black text-slate-900 ml-2">—</span>
+                <span
+                  id="prof-avaliacao-num"
+                  class="text-2xl font-black text-slate-900 ml-2"
+                  >—</span
+                >
               </div>
               <div class="h-6 w-px bg-slate-200"></div>
-              <span id="prof-total-avaliacoes" class="text-slate-500 font-semibold text-sm">— avaliações</span>
+              <span
+                id="prof-total-avaliacoes"
+                class="text-slate-500 font-semibold text-sm"
+                >— avaliações</span
+              >
               <div class="h-6 w-px bg-slate-200"></div>
-              <span class="text-emerald-600 font-black text-sm flex items-center gap-1">
+              <span
+                class="text-emerald-600 font-black text-sm flex items-center gap-1"
+              >
                 <i data-lucide="trending-up" class="w-4 h-4"></i>
                 Alta demanda
               </span>
@@ -238,16 +417,29 @@
             </div>
 
             <!-- Descrição -->
-            <p id="prof-descricao" class="text-slate-600 font-medium text-base leading-relaxed">—</p>
+            <p
+              id="prof-descricao"
+              class="text-slate-600 font-medium text-base leading-relaxed"
+            >
+              —
+            </p>
           </div>
 
           <!-- Qualificações -->
-          <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-100 shadow-sm">
+          <div
+            class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-100 shadow-sm"
+          >
             <div class="flex items-center gap-3 mb-8">
-              <div class="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center">
+              <div
+                class="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center"
+              >
                 <i data-lucide="award" class="text-blue-700 w-5 h-5"></i>
               </div>
-              <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">Qualificações</h2>
+              <h2
+                class="text-xl font-black text-slate-900 uppercase tracking-tight"
+              >
+                Qualificações
+              </h2>
             </div>
             <ul id="prof-qualificacoes" class="flex flex-col gap-4">
               <!-- Itens injetados via JS -->
@@ -255,69 +447,135 @@
           </div>
 
           <!-- Portfólio -->
-          <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-100 shadow-sm">
+          <div
+            class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-100 shadow-sm"
+          >
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center">
-                <i data-lucide="folder-open" class="text-indigo-700 w-5 h-5"></i>
+              <div
+                class="w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center"
+              >
+                <i
+                  data-lucide="folder-open"
+                  class="text-indigo-700 w-5 h-5"
+                ></i>
               </div>
-              <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">Portfólio</h2>
+              <h2
+                class="text-xl font-black text-slate-900 uppercase tracking-tight"
+              >
+                Portfólio
+              </h2>
             </div>
             <p class="text-slate-500 font-medium text-sm mb-6">
-              Acesse o portfólio completo deste profissional e conheça seus trabalhos anteriores em detalhes.
+              Acesse o portfólio completo deste profissional e conheça seus
+              trabalhos anteriores em detalhes.
             </p>
-            <a id="prof-portfolio-link" href="#" class="inline-flex items-center gap-3 bg-slate-900 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-widest px-6 py-4 rounded-2xl transition-all group shadow-lg">
-              <i data-lucide="download" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+            <a
+              id="prof-portfolio-link"
+              href="#"
+              class="inline-flex items-center gap-3 bg-slate-900 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-widest px-6 py-4 rounded-2xl transition-all group shadow-lg"
+            >
+              <i
+                data-lucide="download"
+                class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"
+              ></i>
               Baixar Portfólio
             </a>
           </div>
 
           <!-- Stats Rápidas -->
           <div class="grid grid-cols-3 gap-4">
-            <div class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm">
-              <p id="stat-avaliacoes" class="text-3xl font-black text-blue-700 mb-1">—</p>
-              <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Avaliações</p>
+            <div
+              class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm"
+            >
+              <p
+                id="stat-avaliacoes"
+                class="text-3xl font-black text-blue-700 mb-1"
+              >
+                —
+              </p>
+              <p
+                class="text-slate-400 text-xs font-black uppercase tracking-widest"
+              >
+                Avaliações
+              </p>
             </div>
-            <div class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm">
-              <p id="stat-nota" class="text-3xl font-black text-yellow-500 mb-1">—</p>
-              <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Nota Média</p>
+            <div
+              class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm"
+            >
+              <p
+                id="stat-nota"
+                class="text-3xl font-black text-yellow-500 mb-1"
+              >
+                —
+              </p>
+              <p
+                class="text-slate-400 text-xs font-black uppercase tracking-widest"
+              >
+                Nota Média
+              </p>
             </div>
-            <div class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm">
-              <p id="stat-qualificacoes" class="text-3xl font-black text-emerald-600 mb-1">—</p>
-              <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Qualificações</p>
+            <div
+              class="bg-white rounded-[2rem] p-6 text-center border border-slate-100 shadow-sm"
+            >
+              <p
+                id="stat-qualificacoes"
+                class="text-3xl font-black text-emerald-600 mb-1"
+              >
+                —
+              </p>
+              <p
+                class="text-slate-400 text-xs font-black uppercase tracking-widest"
+              >
+                Qualificações
+              </p>
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- SEÇÃO: OUTROS PROFISSIONAIS -->
       <section class="mt-20">
         <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tighter">Outros Profissionais</h2>
-          <a href="profissionais.html" class="text-blue-700 text-xs font-black uppercase tracking-widest hover:underline">Ver todos →</a>
+          <h2
+            class="text-2xl font-black text-slate-900 uppercase tracking-tighter"
+          >
+            Outros Profissionais
+          </h2>
+          <a
+            href="profissionais.html"
+            class="text-blue-700 text-xs font-black uppercase tracking-widest hover:underline"
+            >Ver todos →</a
+          >
         </div>
-        <div id="outros-profissionais" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          id="outros-profissionais"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <!-- Injetado via JS -->
         </div>
       </section>
-
     </main>
 
     <!-- FOOTER -->
     <footer id="contato-section" class="p-8 text-center bg-slate-900 mt-16">
-      <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
+      <p
+        class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]"
+      >
         © 2026 Belo Eventos S.A. · Belo Jardim, PE
       </p>
     </footer>
 
-    <script src="auth-mock.js"></script>
+    <script src="events-data.js"></script>
+    <script src="users-data.js"></script>
+    <script src="purchases-data.js"></script>
     <script src="profissionais-data.js"></script>
+    <script src="auth-client.js"></script>
     <script>
       lucide.createIcons();
 
       // Header scroll
       var header = document.getElementById("main-header");
-      window.addEventListener("scroll", function() {
+      window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
           header.classList.add("bg-blue-600", "shadow-xl", "py-2");
           header.classList.remove("bg-blue-700", "py-4");
@@ -332,11 +590,11 @@
       var menuClose = document.getElementById("menu-close");
       var mobileMenu = document.getElementById("mobile-menu");
 
-      menuToggle.addEventListener("click", function() {
+      menuToggle.addEventListener("click", function () {
         mobileMenu.classList.remove("hidden");
       });
 
-      menuClose.addEventListener("click", function() {
+      menuClose.addEventListener("click", function () {
         mobileMenu.classList.add("hidden");
       });
 
@@ -348,12 +606,14 @@
       function renderStars(rating) {
         var html = "";
         var ratingFloor = Math.floor(rating);
-        var temMeio = (rating - ratingFloor) >= 0.5;
+        var temMeio = rating - ratingFloor >= 0.5;
         for (var i = 1; i <= 5; i++) {
           if (i <= ratingFloor) {
-            html += '<i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>';
+            html +=
+              '<i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>';
           } else if (i === ratingFloor + 1 && temMeio) {
-            html += '<i data-lucide="star-half" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>';
+            html +=
+              '<i data-lucide="star-half" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>';
           } else {
             html += '<i data-lucide="star" class="w-5 h-5 text-slate-300"></i>';
           }
@@ -364,14 +624,17 @@
       function renderStarsSmall(rating) {
         var html = "";
         var ratingFloor = Math.floor(rating);
-        var temMeio = (rating - ratingFloor) >= 0.5;
+        var temMeio = rating - ratingFloor >= 0.5;
         for (var i = 1; i <= 5; i++) {
           if (i <= ratingFloor) {
-            html += '<i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
+            html +=
+              '<i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
           } else if (i === ratingFloor + 1 && temMeio) {
-            html += '<i data-lucide="star-half" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
+            html +=
+              '<i data-lucide="star-half" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>';
           } else {
-            html += '<i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>';
+            html +=
+              '<i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>';
           }
         }
         return html;
@@ -390,14 +653,16 @@
         imgEl.alt = "Foto de " + prof.nome;
 
         // Preço
-        document.getElementById("prof-preco").textContent = "R$ " + prof.precioDiaria.toFixed(2).replace(".", ",");
+        document.getElementById("prof-preco").textContent =
+          "R$ " + prof.precioDiaria.toFixed(2).replace(".", ",");
 
         // Badge
         var badgeTexto = document.getElementById("prof-badge-texto");
         var statusBadge = document.getElementById("prof-status-badge");
         if (prof.badge === "EM ALTA") {
           badgeTexto.textContent = "Profissional em Alta";
-          statusBadge.className = "badge-emalta text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full";
+          statusBadge.className =
+            "badge-emalta text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full";
           statusBadge.textContent = "↑ Em Alta";
         } else {
           badgeTexto.textContent = "Verificado pelo Aplicativo";
@@ -405,7 +670,8 @@
         }
 
         // Categoria
-        document.getElementById("prof-categoria-texto").textContent = prof.categoria;
+        document.getElementById("prof-categoria-texto").textContent =
+          prof.categoria;
         var iconEl = document.getElementById("prof-categoria-icon");
         iconEl.setAttribute("data-lucide", prof.categoriaIcon || "briefcase");
 
@@ -413,34 +679,46 @@
         document.getElementById("prof-nome").textContent = prof.nome;
 
         // Estrelas
-        document.getElementById("prof-estrelas").innerHTML = renderStars(prof.avaliacao);
-        document.getElementById("prof-avaliacao-num").textContent = prof.avaliacao.toFixed(1);
-        document.getElementById("prof-total-avaliacoes").textContent = prof.totalAvaliacoes + " avaliações";
+        document.getElementById("prof-estrelas").innerHTML = renderStars(
+          prof.avaliacao,
+        );
+        document.getElementById("prof-avaliacao-num").textContent =
+          prof.avaliacao.toFixed(1);
+        document.getElementById("prof-total-avaliacoes").textContent =
+          prof.totalAvaliacoes + " avaliações";
 
         // Descrição
-        document.getElementById("prof-descricao").textContent = prof.descricaoCompleta;
+        document.getElementById("prof-descricao").textContent =
+          prof.descricaoCompleta;
 
         // Qualificações
         var listaQual = document.getElementById("prof-qualificacoes");
         listaQual.innerHTML = "";
         for (var i = 0; i < prof.qualificacoes.length; i++) {
           var li = document.createElement("li");
-          li.className = "qualificacao-item flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100";
+          li.className =
+            "qualificacao-item flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100";
           li.innerHTML =
             '<div class="w-7 h-7 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center shrink-0 mt-0.5">' +
-              '<i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i>' +
-            '</div>' +
-            '<span class="text-slate-700 font-semibold text-sm leading-relaxed">' + prof.qualificacoes[i] + '</span>';
+            '<i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i>' +
+            "</div>" +
+            '<span class="text-slate-700 font-semibold text-sm leading-relaxed">' +
+            prof.qualificacoes[i] +
+            "</span>";
           listaQual.appendChild(li);
         }
 
         // Portfólio
-        document.getElementById("prof-portfolio-link").href = prof.portfolioUrl || "#";
+        document.getElementById("prof-portfolio-link").href =
+          prof.portfolioUrl || "#";
 
         // Stats
-        document.getElementById("stat-avaliacoes").textContent = prof.totalAvaliacoes;
-        document.getElementById("stat-nota").textContent = prof.avaliacao.toFixed(1);
-        document.getElementById("stat-qualificacoes").textContent = prof.qualificacoes.length;
+        document.getElementById("stat-avaliacoes").textContent =
+          prof.totalAvaliacoes;
+        document.getElementById("stat-nota").textContent =
+          prof.avaliacao.toFixed(1);
+        document.getElementById("stat-qualificacoes").textContent =
+          prof.qualificacoes.length;
 
         // Mostrar conteúdo
         document.getElementById("perfil-content").style.display = "block";
@@ -459,26 +737,41 @@
           var prof = window.PROFISSIONAIS_DATA[chave];
 
           var card = document.createElement("div");
-          card.className = "bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group";
+          card.className =
+            "bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group";
           card.setAttribute("data-id", prof.id);
 
           card.innerHTML =
             '<div class="relative overflow-hidden" style="height: 180px;">' +
-              '<img src="' + prof.imagem + '" alt="' + prof.nome + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />' +
-              '<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>' +
-              '<div class="absolute bottom-3 left-3">' +
-                '<span class="bg-blue-700 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1.5 rounded-full">' + prof.categoria + '</span>' +
-              '</div>' +
-            '</div>' +
+            '<img src="' +
+            prof.imagem +
+            '" alt="' +
+            prof.nome +
+            '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />' +
+            '<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>' +
+            '<div class="absolute bottom-3 left-3">' +
+            '<span class="bg-blue-700 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1.5 rounded-full">' +
+            prof.categoria +
+            "</span>" +
+            "</div>" +
+            "</div>" +
             '<div class="p-5">' +
-              '<h4 class="font-black text-slate-900 uppercase tracking-tight text-sm mb-1">' + prof.nome + '</h4>' +
-              '<div class="flex items-center justify-between mt-3">' +
-                '<div class="flex items-center gap-1">' + renderStarsSmall(prof.avaliacao) + '<span class="text-xs font-black text-slate-600 ml-1">' + prof.avaliacao.toFixed(1) + '</span></div>' +
-                '<span class="text-blue-700 text-xs font-black">R$ ' + prof.precioDiaria.toFixed(0) + '/dia</span>' +
-              '</div>' +
-            '</div>';
+            '<h4 class="font-black text-slate-900 uppercase tracking-tight text-sm mb-1">' +
+            prof.nome +
+            "</h4>" +
+            '<div class="flex items-center justify-between mt-3">' +
+            '<div class="flex items-center gap-1">' +
+            renderStarsSmall(prof.avaliacao) +
+            '<span class="text-xs font-black text-slate-600 ml-1">' +
+            prof.avaliacao.toFixed(1) +
+            "</span></div>" +
+            '<span class="text-blue-700 text-xs font-black">R$ ' +
+            prof.precioDiaria.toFixed(0) +
+            "/dia</span>" +
+            "</div>" +
+            "</div>";
 
-          card.addEventListener("click", function() {
+          card.addEventListener("click", function () {
             var id = this.getAttribute("data-id");
             window.location.href = "perfil-profissional.html?id=" + id;
           });
@@ -491,21 +784,59 @@
       }
 
       function contratarProfissional() {
-        alert("Funcionalidade de contato em breve! Faça login para acessar o chat com o profissional.");
+        alert(
+          "Funcionalidade de contato em breve! Faça login para acessar o chat com o profissional.",
+        );
       }
 
-      function inicializarPagina() {
-        var id = obterParametroId();
+      function normalizarDadosProfissionais(dados) {
+        if (Array.isArray(dados)) {
+          var mapa = {};
+          for (var i = 0; i < dados.length; i++) {
+            mapa[dados[i].id] = dados[i];
+          }
+          return mapa;
+        }
 
-        if (!id || !window.PROFISSIONAIS_DATA[id]) {
-          document.getElementById("not-found-state").style.display = "block";
-          lucide.createIcons();
+        if (dados && typeof dados === "object") {
+          return dados;
+        }
+
+        return {};
+      }
+
+      async function inicializarPagina() {
+        const id = obterParametroId();
+        if (!id) {
+          window.location.href = "profissionais.html";
           return;
         }
 
-        var profissional = window.PROFISSIONAIS_DATA[id];
-        preencherPerfil(profissional);
-        renderOutrosProfissionais(id);
+        try {
+          try {
+            const data = await window.BeloEventosAuth.apiFetch("/professionals");
+            window.PROFISSIONAIS_DATA = normalizarDadosProfissionais(data);
+          } catch (fetchErr) {
+            console.warn("API indisponível, usando fallback");
+            var fallbackData =
+              window.PROFISSIONAIS_DATA || window.profissionaisData;
+            window.PROFISSIONAIS_DATA =
+              normalizarDadosProfissionais(fallbackData);
+          }
+
+          const profissional = window.PROFISSIONAIS_DATA[id];
+
+          if (!profissional) {
+            document.getElementById("not-found-state").style.display = "block";
+            lucide.createIcons();
+            return;
+          }
+
+          preencherPerfil(profissional);
+          renderOutrosProfissionais(id);
+        } catch (err) {
+          console.error("Erro crítico ao inicializar página:", err);
+        }
       }
 
       // Inicializar quando o DOM estiver pronto
