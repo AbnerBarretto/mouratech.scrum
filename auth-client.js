@@ -14,15 +14,15 @@
     const protocol = (location.protocol && location.protocol.startsWith('http')) ? location.protocol : 'http:';
     const isLocalHost = host === "localhost" || host === "127.0.0.1" || host === "";
 
-    // Se estivermos no Vite (5173) ou qualquer outra porta, a prioridade absoluta é o servidor na 3000
-    if (host && port !== "3000") {
-      bases.push(`${protocol}//${host}:3000/api`);
-      if (isLocalHost) bases.push("http://localhost:3000/api");
-    }
-
     const origin = (location.origin && location.origin !== "null") ? location.origin.replace(/\/+$/, "") : "";
     if (origin) {
       bases.push(origin + "/api");
+    }
+
+    // Se estivermos em um ambiente de desenvolvimento (porta diferente de 3000 ou localhost)
+    if (host && port !== "3000" && port !== "") {
+      bases.push(`${protocol}//${host}:3000/api`);
+      if (isLocalHost) bases.push("http://localhost:3000/api");
     }
 
     // Fallbacks
