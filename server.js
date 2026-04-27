@@ -192,6 +192,8 @@ if (fs.existsSync(distPath)) {
   console.log("Serving from production folder: /dist");
   app.use(express.static(distPath));
 
+  app.use(express.static(__dirname));
+
   app.use((req, res, next) => {
     if (req.method !== "GET") return next();
     if (req.url.startsWith("/api")) return next();
