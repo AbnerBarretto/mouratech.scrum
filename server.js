@@ -177,8 +177,10 @@ const distPath = path.join(__dirname, "dist");
 if (fs.existsSync(distPath)) {
   console.log("Serving from production folder: /dist");
   app.use(express.static(distPath));
-  // Suporte para Single Page Application (SPA) se necessário
-  app.use((req, res, next) => {
+
+  app.get("*", (req, res, next) => {
+
+    if (req.method !== "GET") return next();
     if (req.url.startsWith("/api")) return next();
     res.sendFile(path.join(distPath, "index.html"));
   });
