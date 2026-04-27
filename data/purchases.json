@@ -1,0 +1,15 @@
+[
+  {
+    "userId": "user-1777151900725",
+    "eventId": "guns-n-roses",
+    "amount": 365.37,
+    "quantity": 1,
+    "unitPrice": 325.2,
+    "serviceFee": 10,
+    "interestAmount": 30.168,
+    "cardName": "Usuário",
+    "installments": "7",
+    "id": "buy-1777225000744",
+    "date": "2026-04-26T17:36:40.744Z"
+  }
+]
