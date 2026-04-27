@@ -107,6 +107,20 @@ const writePurchasesData = (purchases) => {
   );
 };
 
+try {
+  const existingUsers = readData(USERS_FILE);
+  writeUsersData(existingUsers);
+  const existingEvents = readData(EVENTS_FILE);
+  writeEventsData(existingEvents);
+  const existingPurchases = readData(PURCHASES_FILE);
+  writePurchasesData(existingPurchases);
+  console.log(
+    "Sincronizados users-data.js, events-data.js, purchases-data.js a partir de data/*.json",
+  );
+} catch (err) {
+  console.error("Erro ao sincronizar arquivos data -> *-data.js:", err);
+}
+
 const toMoney = (v) => {
   const n = parseFloat(v);
   return !isNaN(n) && n >= 0 ? n : 0;
@@ -178,9 +192,7 @@ if (fs.existsSync(distPath)) {
   console.log("Serving from production folder: /dist");
   app.use(express.static(distPath));
 
-
   app.use((req, res, next) => {
-
     if (req.method !== "GET") return next();
     if (req.url.startsWith("/api")) return next();
 
