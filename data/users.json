@@ -8,11 +8,11 @@
   },
   {
     "id": "user-1777151900725",
-    "name": "Abner Barreto",
-    "email": "abner@moura.com",
+    "name": "Usuário",
+    "email": "usuario@beloeventos.com",
     "password": "123",
-    "birthDate": "2006-06-08",
+    "birthDate": "2002-04-08",
     "role": "user",
-    "profileImage": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Abner%20Barreto"
+    "profileImage": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Usuario%20Beloeventos"
   }
 ]
